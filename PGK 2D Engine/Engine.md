@@ -566,4 +566,4 @@ Klasa `Engine` może być rozszerzona o dodatkowe funkcjonalności:
 
 ---
 
-© 2024 | Opracowano na potrzeby projektu silnika 2D dla Politechniki Świętokrzyskiej 
+© 2025 | Opracowano na potrzeby projektu silnika 2D dla Politechniki Świętokrzyskiej 
