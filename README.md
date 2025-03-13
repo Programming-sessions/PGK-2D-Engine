@@ -41,6 +41,10 @@ int main() {
     return 0;
 }
 ```
+## To Do
+
+- Poprawić strukturę plików
+- Lab 2
 
 ## Struktura projektu
 
