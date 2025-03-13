@@ -45,6 +45,7 @@ int main() {
 
 - Poprawić strukturę plików
 - Lab 2
+- Komentarze dla doxygena
 
 ## Struktura projektu
 
