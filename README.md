@@ -8,8 +8,8 @@ Ten projekt zawiera prosty silnik gry 2D stworzony na potrzeby zajęć z Grafiki
 
 Silnik składa się z następujących głównych klas:
 
-- [Engine](PGK-2D-Engine/Engine.md) - główna klasa silnika odpowiedzialna za inicjalizację biblioteki graficznej, obsługę głównej pętli gry oraz urządzeń wejścia
-- [Logger](PGK-2D-Engine/Logger.md) - system logowania informacji, ostrzeżeń i błędów
+- [Engine](PGK%202D%20Engine/Engine.md) - główna klasa silnika odpowiedzialna za inicjalizację biblioteki graficznej, obsługę głównej pętli gry oraz urządzeń wejścia
+- [Logger](PGK%202D%20Engine/Logger.md) - system logowania informacji, ostrzeżeń i błędów
 
 ## Wymagania systemowe
 
