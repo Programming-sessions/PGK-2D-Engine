@@ -181,4 +181,4 @@ Przy implementacji klasy `Logger` należy pamiętać o:
 
 ---
 
-© 2024 | Opracowano na potrzeby projektu silnika 2D dla Politechniki Świętokrzyskiej. 
+© 2025 | Opracowano na potrzeby projektu silnika 2D dla Politechniki Świętokrzyskiej. 
