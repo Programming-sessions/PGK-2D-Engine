@@ -58,4 +58,4 @@ int main() {
 
 ---
 
-© 2024 | Politechnika Świętokrzyska w Kielcach | Wydział Elektrotechniki, Automatyki i Informatyki 
+© 2025 | Politechnika Świętokrzyska w Kielcach | Wydział Elektrotechniki, Automatyki i Informatyki 
