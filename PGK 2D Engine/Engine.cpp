@@ -17,7 +17,7 @@ Engine::Engine() :
     screenHeight(600),
     fullscreen(false),
     fps(60),
-    title("Allegro Engine"),
+    title("PGK Engine"),
     display(nullptr),
     eventQueue(nullptr),
     timer(nullptr),
