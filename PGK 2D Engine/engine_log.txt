@@ -46,3 +46,27 @@
 [INFO] Thu Mar 13 13:01:35 2025 - Engine initialized successfully
 [INFO] Thu Mar 13 13:01:35 2025 - Game loop started
 [INFO] Thu Mar 13 13:02:23 2025 - Game loop ended
+[INFO] Sun Mar 16 09:09:15 2025 - Engine initialization started
+[INFO] Sun Mar 16 09:09:15 2025 - Allegro library initialized
+[INFO] Sun Mar 16 09:09:16 2025 - Display initialized: 800x600 windowed
+[INFO] Sun Mar 16 09:09:16 2025 - Input devices initialized
+[INFO] Sun Mar 16 09:09:16 2025 - Timers initialized at 60 FPS
+[INFO] Sun Mar 16 09:09:16 2025 - Engine initialized successfully
+[INFO] Sun Mar 16 09:09:16 2025 - Game loop started
+[INFO] Sun Mar 16 09:12:37 2025 - Game loop ended
+[INFO] Sun Mar 16 09:50:49 2025 - Engine initialization started
+[INFO] Sun Mar 16 09:50:49 2025 - Allegro library initialized
+[INFO] Sun Mar 16 09:50:50 2025 - Display initialized: 800x600 windowed
+[INFO] Sun Mar 16 09:50:50 2025 - Input devices initialized
+[INFO] Sun Mar 16 09:50:50 2025 - Timers initialized at 60 FPS
+[INFO] Sun Mar 16 09:50:50 2025 - Engine initialized successfully
+[INFO] Sun Mar 16 09:50:50 2025 - Game loop started
+[INFO] Sun Mar 16 09:51:26 2025 - Game loop ended
+[INFO] Sun Mar 16 09:55:50 2025 - Engine initialization started
+[INFO] Sun Mar 16 09:55:50 2025 - Allegro library initialized
+[INFO] Sun Mar 16 09:55:51 2025 - Display initialized: 800x600 windowed
+[INFO] Sun Mar 16 09:55:51 2025 - Input devices initialized
+[INFO] Sun Mar 16 09:55:51 2025 - Timers initialized at 60 FPS
+[INFO] Sun Mar 16 09:55:51 2025 - Engine initialized successfully
+[INFO] Sun Mar 16 09:55:51 2025 - Game loop started
+[INFO] Sun Mar 16 09:56:31 2025 - Game loop ended
