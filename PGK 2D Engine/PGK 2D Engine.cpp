@@ -38,16 +38,16 @@ void update(float deltaTime) {
     Engine* engine = Engine::getInstance();
 
     // Obsługa klawiatury - poruszanie prostokątem
-    if (engine->isKeyDown(ALLEGRO_KEY_W)) {
+    if (engine->isKeyDown(ALLEGRO_KEY_W) || engine->isKeyDown(ALLEGRO_KEY_UP)) {
         playerY -= playerSpeed * deltaTime;
     }
-    if (engine->isKeyDown(ALLEGRO_KEY_S)) {
+    if (engine->isKeyDown(ALLEGRO_KEY_S) || engine->isKeyDown(ALLEGRO_KEY_DOWN)) {
         playerY += playerSpeed * deltaTime;
     }
-    if (engine->isKeyDown(ALLEGRO_KEY_A)) {
+    if (engine->isKeyDown(ALLEGRO_KEY_A) || engine->isKeyDown(ALLEGRO_KEY_LEFT)) {
         playerX -= playerSpeed * deltaTime;
     }
-    if (engine->isKeyDown(ALLEGRO_KEY_D)) {
+    if (engine->isKeyDown(ALLEGRO_KEY_D) || engine->isKeyDown(ALLEGRO_KEY_RIGHT)) {
         playerX += playerSpeed * deltaTime;
     }
 
