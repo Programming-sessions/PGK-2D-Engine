@@ -48,4 +48,65 @@ public:
     void setLine(float x1, float y1, float x2, float y2);
 };
 
+class Triangle {
+private:
+    Point2D p1;
+    Point2D p2;
+    Point2D p3;
+    bool filled;
+
+public:
+    // Constructors
+    Triangle();
+    Triangle(const Point2D& p1, const Point2D& p2, const Point2D& p3, bool filled = false);
+    Triangle(float x1, float y1, float x2, float y2, float x3, float y3, bool filled = false);
+
+    // Getters
+    Point2D getP1() const;
+    Point2D getP2() const;
+    Point2D getP3() const;
+    bool isFilled() const;
+
+    // Setters
+    void setP1(const Point2D& point);
+    void setP2(const Point2D& point);
+    void setP3(const Point2D& point);
+    void setPoints(const Point2D& p1, const Point2D& p2, const Point2D& p3);
+    void setPoints(float x1, float y1, float x2, float y2, float x3, float y3);
+    void setFilled(bool fill);
+};
+
+class Rectangle {
+private:
+    Point2D topLeft;
+    float width;
+    float height;
+    bool filled;
+
+public:
+    // Constructors
+    Rectangle();
+    Rectangle(const Point2D& topLeft, float width, float height, bool filled = false);
+    Rectangle(float x, float y, float width, float height, bool filled = false);
+
+    // Getters
+    Point2D getTopLeft() const;
+    Point2D getTopRight() const;
+    Point2D getBottomLeft() const;
+    Point2D getBottomRight() const;
+    float getWidth() const;
+    float getHeight() const;
+    bool isFilled() const;
+
+    // Setters
+    void setTopLeft(const Point2D& point);
+    void setTopLeft(float x, float y);
+    void setSize(float width, float height);
+    void setFilled(bool fill);
+
+    // Additional methods
+    bool contains(const Point2D& point) const;
+    bool intersects(const Rectangle& other) const;
+};
+
 #endif // PRIMITIVES_H
