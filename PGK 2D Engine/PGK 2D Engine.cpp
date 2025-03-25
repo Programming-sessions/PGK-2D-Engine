@@ -1,4 +1,6 @@
 ﻿#include "Engine.h"
+#include "Primitives.h"
+#include "PrimitiveRenderer.h"
 #include <iostream>
 
 // Deklaracje funkcji
@@ -6,9 +8,9 @@ void update(float deltaTime);
 void render();
 
 // Globalne zmienne
-float playerX = 400.0f;
-float playerY = 300.0f;
+Point2D playerPosition(400.0f, 300.0f);
 float playerSpeed = 200.0f;
+PrimitiveRenderer* renderer = nullptr;
 
 int main() {
     // Pobierz instancję silnika
@@ -27,55 +29,58 @@ int main() {
         return -1;
     }
 
+    // Utworzenie renderera prymitywów
+    renderer = new PrimitiveRenderer(engine->getDisplay());
+
     // Uruchomienie głównej pętli gry
     engine->startGameLoop(update, render);
+
+    // Czyszczenie
+    delete renderer;
 
     return 0;
 }
 
-// Funkcja aktualizująca logikę gry
 void update(float deltaTime) {
     Engine* engine = Engine::getInstance();
 
-    // Obsługa klawiatury - poruszanie prostokątem
+    // Obsługa klawiatury - poruszanie punktem
     if (engine->isKeyDown(ALLEGRO_KEY_W) || engine->isKeyDown(ALLEGRO_KEY_UP)) {
-        playerY -= playerSpeed * deltaTime;
+        playerPosition.setY(playerPosition.getY() - playerSpeed * deltaTime);
     }
     if (engine->isKeyDown(ALLEGRO_KEY_S) || engine->isKeyDown(ALLEGRO_KEY_DOWN)) {
-        playerY += playerSpeed * deltaTime;
+        playerPosition.setY(playerPosition.getY() + playerSpeed * deltaTime);
     }
     if (engine->isKeyDown(ALLEGRO_KEY_A) || engine->isKeyDown(ALLEGRO_KEY_LEFT)) {
-        playerX -= playerSpeed * deltaTime;
+        playerPosition.setX(playerPosition.getX() - playerSpeed * deltaTime);
     }
     if (engine->isKeyDown(ALLEGRO_KEY_D) || engine->isKeyDown(ALLEGRO_KEY_RIGHT)) {
-        playerX += playerSpeed * deltaTime;
+        playerPosition.setX(playerPosition.getX() + playerSpeed * deltaTime);
     }
 
     // Ograniczenie ruchu do obszaru ekranu
-    if (playerX < 0) playerX = 0;
-    if (playerY < 0) playerY = 0;
-    if (playerX > engine->getScreenWidth()) playerX = engine->getScreenWidth();
-    if (playerY > engine->getScreenHeight()) playerY = engine->getScreenHeight();
+    playerPosition.clamp(0, 0,
+        engine->getScreenWidth(),
+        engine->getScreenHeight());
 }
 
-// Funkcja renderująca
 void render() {
     Engine* engine = Engine::getInstance();
 
-    // Rysowanie gracza (prostokąt)
-    al_draw_filled_rectangle(playerX - 20, playerY - 20,
-        playerX + 20, playerY + 20,
-        al_map_rgb(255, 0, 0));
+    // Rysowanie gracza (punkt)
+    renderer->setColor(al_map_rgb(255, 0, 0));  // Czerwony kolor
+    renderer->drawPoint(playerPosition);
 
-    // Rysowanie tekstu z informacją o położeniu myszy
+    // Rysowanie punktu w pozycji kursora myszy
     int mouseX = engine->getMouseX();
     int mouseY = engine->getMouseY();
+    Point2D mousePoint(mouseX, mouseY);
 
-    // Rysowanie okręgu w pozycji kursora myszy gdy lewy przycisk wciśnięty
     if (engine->isMouseButtonDown(0)) {
-        al_draw_filled_circle(mouseX, mouseY, 15, al_map_rgb(0, 255, 0));
+        renderer->setColor(al_map_rgb(0, 255, 0));  // Zielony gdy wciśnięty
     }
     else {
-        al_draw_circle(mouseX, mouseY, 15, al_map_rgb(255, 255, 255), 2);
+        renderer->setColor(al_map_rgb(255, 255, 255));  // Biały gdy nie wciśnięty
     }
+    renderer->drawPoint(mousePoint);
 }
