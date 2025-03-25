@@ -16,6 +16,14 @@ private:
     // Implementacja algorytmu Bresenhama dla linii
     void bresenhamLine(int x1, int y1, int x2, int y2, ALLEGRO_COLOR color);
 
+    // Metody pomocnicze do wype³niania
+    void scanlineFill(int y, int x1, int x2);
+    void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3);
+
+	// Metody pomocnicze do rysowania okrêgów
+    void plotCirclePoints(int centerX, int centerY, int x, int y);
+    void fillCircle(int centerX, int centerY, int radius);
+
 public:
     PrimitiveRenderer(ALLEGRO_DISPLAY* display);
 
@@ -26,6 +34,18 @@ public:
     void drawPoint(const Point2D& point);
     void drawLine(const LineSegment& line);
     void drawLine(const Point2D& start, const Point2D& end);
+
+    // Metody do rysowania trójk¹tów
+    void drawTriangle(const Triangle& triangle);
+    void drawTriangle(const Point2D& p1, const Point2D& p2, const Point2D& p3, bool filled);
+
+    // Metody do rysowania prostok¹tów
+    void drawRectangle(const Rectangle& rectangle);
+    void drawRectangle(const Point2D& topLeft, float width, float height, bool filled);
+
+	// Metody do rysowania okrêgów
+    void drawCircle(const Circle& circle);
+    void drawCircle(const Point2D& center, float radius, bool filled);
 };
 
 #endif // PRIMITIVE_RENDERER_H
