@@ -109,4 +109,32 @@ public:
     bool intersects(const Rectangle& other) const;
 };
 
+class Circle {
+private:
+    Point2D center;
+    float radius;
+    bool filled;
+
+public:
+    // Konstruktory
+    Circle();
+    Circle(const Point2D& center, float radius, bool filled = false);
+    Circle(float x, float y, float radius, bool filled = false);
+
+    // Gettery
+    Point2D getCenter() const;
+    float getRadius() const;
+    bool isFilled() const;
+
+    // Settery
+    void setCenter(const Point2D& point);
+    void setCenter(float x, float y);
+    void setRadius(float newRadius);
+    void setFilled(bool fill);
+
+    // Dodatkowe metody
+    bool contains(const Point2D& point) const;
+};
+
+
 #endif // PRIMITIVES_H
