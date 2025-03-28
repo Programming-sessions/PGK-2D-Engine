@@ -1,5 +1,5 @@
 #include "Primitives.h"
-
+#include "Transform.h"
 // Constructors
 Point2D::Point2D() : x(0.0f), y(0.0f) {}
 
@@ -26,6 +26,19 @@ void Point2D::setY(float newY) {
 void Point2D::setPosition(float newX, float newY) {
     x = newX;
     y = newY;
+}
+
+// Transformations
+void Point2D::translate(float dx, float dy) {
+    Transform::translate(*this, dx, dy);
+}
+
+void Point2D::scale(float sx, float sy, const Point2D& center) {
+    Transform::scale(*this, sx, sy, center);
+}
+
+void Point2D::rotate(float angle, const Point2D& center) {
+    Transform::rotate(*this, angle, center);
 }
 
 // Other Functions
@@ -83,6 +96,23 @@ void LineSegment::setLine(float x1, float y1, float x2, float y2) {
     end.setPosition(x2, y2);
 }
 
+// Transformations
+void LineSegment::translate(float dx, float dy) {
+    start.translate(dx, dy);
+    end.translate(dx, dy);
+}
+
+void LineSegment::scale(float sx, float sy, const Point2D& center) {
+    start.scale(sx, sy, center);
+    end.scale(sx, sy, center);
+}
+
+void LineSegment::rotate(float angle, const Point2D& center) {
+    start.rotate(angle, center);
+    end.rotate(angle, center);
+}
+
+
 // Triangle Implementation
 Triangle::Triangle() : p1(0.0f, 0.0f), p2(0.0f, 0.0f), p3(0.0f, 0.0f), filled(false) {}
 
@@ -116,6 +146,25 @@ void Triangle::setPoints(float x1, float y1, float x2, float y2, float x3, float
 }
 
 void Triangle::setFilled(bool fill) { filled = fill; }
+
+// Transformations
+void Triangle::translate(float dx, float dy) {
+    p1.translate(dx, dy);
+    p2.translate(dx, dy);
+    p3.translate(dx, dy);
+}
+
+void Triangle::scale(float sx, float sy, const Point2D& center) {
+    p1.scale(sx, sy, center);
+    p2.scale(sx, sy, center);
+    p3.scale(sx, sy, center);
+}
+
+void Triangle::rotate(float angle, const Point2D& center) {
+    p1.rotate(angle, center);
+    p2.rotate(angle, center);
+    p3.rotate(angle, center);
+}
 
 // Rectangle Implementation
 Rectangle::Rectangle()
@@ -186,6 +235,35 @@ bool Rectangle::intersects(const Rectangle& other) const {
         bottom1 < top2 || top1 > bottom2);
 }
 
+// Transformations
+void Rectangle::translate(float dx, float dy) {
+    topLeft.translate(dx, dy);
+}
+
+void Rectangle::scale(float sx, float sy, const Point2D& center) {
+    topLeft.scale(sx, sy, center);
+    width *= sx;
+    height *= sy;
+}
+
+void Rectangle::rotate(float angle, const Point2D& center) {
+    // Dla prostok¹ta rotacja jest bardziej skomplikowana
+    // Trzeba przekszta³ciæ go w cztery punkty, obróciæ i utworzyæ nowy prostok¹t
+    Point2D tr = getTopRight();
+    Point2D bl = getBottomLeft();
+    Point2D br = getBottomRight();
+
+    topLeft.rotate(angle, center);
+    tr.rotate(angle, center);
+    bl.rotate(angle, center);
+    br.rotate(angle, center);
+
+    // Po obrocie mo¿emy potrzebowaæ przekalkulowaæ wymiary
+    // To jest uproszczona wersja - w praktyce mo¿e wymagaæ dodatkowych obliczeñ
+    width = tr.getX() - topLeft.getX();
+    height = bl.getY() - topLeft.getY();
+}
+
 Circle::Circle()
     : center(0.0f, 0.0f), radius(0.0f), filled(false) {
 }
@@ -208,6 +286,17 @@ void Circle::setCenter(const Point2D& point) { center = point; }
 void Circle::setCenter(float x, float y) { center.setPosition(x, y); }
 void Circle::setRadius(float newRadius) { radius = newRadius; }
 void Circle::setFilled(bool fill) { filled = fill; }
+
+// Transformations
+void Circle::translate(float dx, float dy) {
+    center.translate(dx, dy);
+}
+
+void Circle::scale(float sx, float sy) {
+    // Dla ko³a u¿ywamy tylko jednego wspó³czynnika skalowania
+    float scale = (sx + sy) / 2.0f;  // Mo¿na te¿ u¿yæ std::max(sx, sy)
+    radius *= scale;
+}
 
 // Dodatkowe metody
 bool Circle::contains(const Point2D& point) const {
