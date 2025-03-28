@@ -1,4 +1,3 @@
-// W PrimitiveRenderer.cpp:
 #include "PrimitiveRenderer.h"
 #include <cmath>
 #include <algorithm>
@@ -167,6 +166,16 @@ void PrimitiveRenderer::drawRectangle(const Point2D& topLeft, float width, float
     int w = static_cast<int>(width);
     int h = static_cast<int>(height);
 
+    // Normalizacja wymiarów - obs³uga ujemnych wartoœci
+    if (w < 0) {
+        x += w;
+        w = -w;
+    }
+    if (h < 0) {
+        y += h;
+        h = -h;
+    }
+
     if (filled) {
         // Wype³niamy prostok¹t linia po linii
         for (int currY = y; currY <= y + h; currY++) {
@@ -178,9 +187,62 @@ void PrimitiveRenderer::drawRectangle(const Point2D& topLeft, float width, float
     Point2D topRight(x + w, y);
     Point2D bottomLeft(x, y + h);
     Point2D bottomRight(x + w, y + h);
+    Point2D actualTopLeft(x, y);
 
-    drawLine(topLeft, topRight);
+    drawLine(actualTopLeft, topRight);
     drawLine(topRight, bottomRight);
     drawLine(bottomRight, bottomLeft);
-    drawLine(bottomLeft, topLeft);
+    drawLine(bottomLeft, actualTopLeft);
 }
+
+void PrimitiveRenderer::plotCirclePoints(int centerX, int centerY, int x, int y) {
+    putPixel(centerX + x, centerY + y, currentColor);
+    putPixel(centerX - x, centerY + y, currentColor);
+    putPixel(centerX + x, centerY - y, currentColor);
+    putPixel(centerX - x, centerY - y, currentColor);
+    putPixel(centerX + y, centerY + x, currentColor);
+    putPixel(centerX - y, centerY + x, currentColor);
+    putPixel(centerX + y, centerY - x, currentColor);
+    putPixel(centerX - y, centerY - x, currentColor);
+}
+
+void PrimitiveRenderer::fillCircle(int centerX, int centerY, int radius) {
+    for (int y = -radius; y <= radius; y++) {
+        int x_val = static_cast<int>(sqrt(radius * radius - y * y));
+        scanlineFill(centerY + y, centerX - x_val, centerX + x_val);
+    }
+}
+
+void PrimitiveRenderer::drawCircle(const Circle& circle) {
+    drawCircle(circle.getCenter(), circle.getRadius(), circle.isFilled());
+}
+
+void PrimitiveRenderer::drawCircle(const Point2D& center, float radius, bool filled) {
+    int centerX = static_cast<int>(center.getX());
+    int centerY = static_cast<int>(center.getY());
+    int intRadius = static_cast<int>(radius);
+
+    if (filled) {
+        fillCircle(centerX, centerY, intRadius);
+    }
+
+    // Algorytm Bresenhama dla okrêgu
+    int x = 0;
+    int y = intRadius;
+    int d = 3 - 2 * intRadius;
+
+    plotCirclePoints(centerX, centerY, x, y);
+
+    while (y >= x) {
+        x++;
+        if (d > 0) {
+            y--;
+            d = d + 4 * (x - y) + 10;
+        }
+        else {
+            d = d + 4 * x + 6;
+        }
+        plotCirclePoints(centerX, centerY, x, y);
+    }
+}
+

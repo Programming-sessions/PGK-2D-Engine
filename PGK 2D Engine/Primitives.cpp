@@ -185,3 +185,33 @@ bool Rectangle::intersects(const Rectangle& other) const {
     return !(right1 < left2 || left1 > right2 ||
         bottom1 < top2 || top1 > bottom2);
 }
+
+Circle::Circle()
+    : center(0.0f, 0.0f), radius(0.0f), filled(false) {
+}
+
+Circle::Circle(const Point2D& center, float radius, bool filled)
+    : center(center), radius(radius), filled(filled) {
+}
+
+Circle::Circle(float x, float y, float radius, bool filled)
+    : center(x, y), radius(radius), filled(filled) {
+}
+
+// Gettery
+Point2D Circle::getCenter() const { return center; }
+float Circle::getRadius() const { return radius; }
+bool Circle::isFilled() const { return filled; }
+
+// Settery
+void Circle::setCenter(const Point2D& point) { center = point; }
+void Circle::setCenter(float x, float y) { center.setPosition(x, y); }
+void Circle::setRadius(float newRadius) { radius = newRadius; }
+void Circle::setFilled(bool fill) { filled = fill; }
+
+// Dodatkowe metody
+bool Circle::contains(const Point2D& point) const {
+    float dx = point.getX() - center.getX();
+    float dy = point.getY() - center.getY();
+    return (dx * dx + dy * dy) <= (radius * radius);
+}

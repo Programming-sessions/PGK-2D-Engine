@@ -25,7 +25,7 @@ int main() {
     engine->setScreenSize(800, 600);
     engine->setFullscreen(false);
     engine->setFPS(60);
-    engine->setTitle("2D Engine Demo - Line Comparison");
+    engine->setTitle("2D Engine Demo");
     engine->setClearColor(al_map_rgb(64, 64, 100));
 
     if (!engine->init()) {
@@ -111,6 +111,16 @@ void render() {
         renderer->setColor(al_map_rgb(0, 255, 0));
         renderer->drawRectangle(rectangle);
     }
+    else if (engine->isKeyDown(ALLEGRO_KEY_3)) {
+        // Rysowanie  Circle
+        float radius = sqrt(
+            pow(mouseX - playerPosition.getX(), 2) +
+            pow(mouseY - playerPosition.getY(), 2)
+        );
+        Circle circle(playerPosition, radius, isFilled);
+        renderer->setColor(al_map_rgb(0, 0, 255));
+        renderer->drawCircle(circle);
+    }
     else if (engine->isMouseButtonDown(1)) {  // PPM
         al_draw_line(
             playerPosition.getX(),
@@ -150,7 +160,7 @@ void render() {
         textColor,
         10, 10,
         0,
-        "LPM - zmiana koloru kursora | PPM - przelaczenie na linie Allegro | 1 - trojkat | 2 - prostokat"
+        "LPM - zmiana koloru kursora | PPM - przelaczenie na linie Allegro | 1 - trojkat | 2 - prostokat | 3 - okrag"
     );
 
     // Współrzędne gracza

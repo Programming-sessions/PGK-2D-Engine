@@ -1,4 +1,3 @@
-// W PrimitiveRenderer.h:
 #ifndef PRIMITIVE_RENDERER_H
 #define PRIMITIVE_RENDERER_H
 
