@@ -1,23 +1,26 @@
 ﻿#include "Engine.h"
 #include "Primitives.h"
 #include "PrimitiveRenderer.h"
+#include "Transform.h"
 #include <iostream>
-#include <sstream>
-#include <iomanip>
 
 // Deklaracje funkcji
 void update(float deltaTime);
 void render();
-std::string getCoordinatesString(const char* label, float x, float y);
 
 // Globalne zmienne
 Point2D playerPosition(400.0f, 300.0f);
 float playerSpeed = 200.0f;
 PrimitiveRenderer* renderer = nullptr;
 ALLEGRO_FONT* font = nullptr;
-bool drawingTriangle = false;
-bool drawingRectangle = false;
-bool isFilled = false;
+
+// Zmienne dla aktualnie rysowanej figury
+enum class ShapeType { NONE, LINE, TRIANGLE, RECTANGLE, CIRCLE };
+ShapeType currentShapeType = ShapeType::NONE;
+LineSegment currentLine;
+Triangle currentTriangle;
+Rectangle currentRectangle;
+Circle currentCircle;
 
 int main() {
     Engine* engine = Engine::getInstance();
@@ -41,24 +44,15 @@ int main() {
 
     renderer = new PrimitiveRenderer(engine->getDisplay());
     engine->startGameLoop(update, render);
-
-    al_destroy_font(font);
     delete renderer;
 
     return 0;
 }
 
-std::string getCoordinatesString(const char* label, float x, float y) {
-    std::stringstream ss;
-    ss << label << ": ("
-        << std::fixed << std::setprecision(1) << x << ", "
-        << std::fixed << std::setprecision(1) << y << ")";
-    return ss.str();
-}
-
 void update(float deltaTime) {
     Engine* engine = Engine::getInstance();
 
+    // Obsługa ruchu gracza
     if (engine->isKeyDown(ALLEGRO_KEY_W) || engine->isKeyDown(ALLEGRO_KEY_UP)) {
         playerPosition.setY(playerPosition.getY() - playerSpeed * deltaTime);
     }
@@ -72,12 +66,58 @@ void update(float deltaTime) {
         playerPosition.setX(playerPosition.getX() + playerSpeed * deltaTime);
     }
 
-    playerPosition.clamp(0, 0,
-        engine->getScreenWidth(),
-        engine->getScreenHeight());
+    playerPosition.clamp(0, 0, engine->getScreenWidth(), engine->getScreenHeight());
 
-    if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
-        isFilled = !isFilled;
+    // Obsługa transformacji dla aktualnej figury
+    Point2D mousePoint(engine->getMouseX(), engine->getMouseY());
+    float rotationSpeed = 2.0f; // stopnie na klatkę
+    float scaleSpeed = 0.02f; // procent zmiany na klatkę
+
+    switch (currentShapeType) {
+    case ShapeType::LINE:
+        if (engine->isKeyDown(ALLEGRO_KEY_R)) {
+            currentLine.rotate(rotationSpeed, playerPosition);
+        }
+        if (engine->isKeyDown(ALLEGRO_KEY_E)) {
+            currentLine.scale(1.0f + scaleSpeed, 1.0f + scaleSpeed, playerPosition);
+        }
+        if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
+            currentLine.scale(1.0f - scaleSpeed, 1.0f - scaleSpeed, playerPosition);
+        }
+        break;
+
+    case ShapeType::TRIANGLE:
+        if (engine->isKeyDown(ALLEGRO_KEY_R)) {
+            currentTriangle.rotate(rotationSpeed, playerPosition);
+        }
+        if (engine->isKeyDown(ALLEGRO_KEY_E)) {
+            currentTriangle.scale(1.0f + scaleSpeed, 1.0f + scaleSpeed, playerPosition);
+        }
+        if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
+            currentTriangle.scale(1.0f - scaleSpeed, 1.0f - scaleSpeed, playerPosition);
+        }
+        break;
+
+    case ShapeType::RECTANGLE:
+        if (engine->isKeyDown(ALLEGRO_KEY_R)) {
+            currentRectangle.rotate(rotationSpeed, playerPosition);
+        }
+        if (engine->isKeyDown(ALLEGRO_KEY_E)) {
+            currentRectangle.scale(1.0f + scaleSpeed, 1.0f + scaleSpeed, playerPosition);
+        }
+        if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
+            currentRectangle.scale(1.0f - scaleSpeed, 1.0f - scaleSpeed, playerPosition);
+        }
+        break;
+
+    case ShapeType::CIRCLE:
+        if (engine->isKeyDown(ALLEGRO_KEY_E)) {
+            currentCircle.scale(1.0f + scaleSpeed, 1.0f + scaleSpeed);
+        }
+        if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
+            currentCircle.scale(1.0f - scaleSpeed, 1.0f - scaleSpeed);
+        }
+        break;
     }
 }
 
@@ -88,96 +128,72 @@ void render() {
     int mouseY = engine->getMouseY();
     Point2D mousePoint(mouseX, mouseY);
 
-    // Rysowanie różnych kształtów w zależności od wciśniętego klawisza
+    // Obliczanie promienia dla koła
+    float radius = sqrt(
+        pow(mouseX - playerPosition.getX(), 2) +
+        pow(mouseY - playerPosition.getY(), 2)
+    );
+
+    // Wybór i rysowanie figury
     if (engine->isKeyDown(ALLEGRO_KEY_1)) {
-        // Rysowanie trójkąta
-        Triangle triangle(
-            playerPosition,                          // pierwszy wierzchołek
-            Point2D(mouseX, mouseY),                // drugi wierzchołek
-            Point2D(playerPosition.getX() - (mouseX - playerPosition.getX()), mouseY), // trzeci wierzchołek
-            isFilled // wypełniony?
+        currentShapeType = ShapeType::TRIANGLE;
+        currentTriangle = Triangle(
+            playerPosition,
+            Point2D(mouseX, mouseY),
+            Point2D(playerPosition.getX() - (mouseX - playerPosition.getX()), mouseY),
+            true
         );
-        renderer->setColor(al_map_rgb(255, 0, 0));
-        renderer->drawTriangle(triangle);
     }
     else if (engine->isKeyDown(ALLEGRO_KEY_2)) {
-        // Rysowanie prostokąta
-        Rectangle rectangle(
-            playerPosition,  // lewy górny róg
-            mouseX - playerPosition.getX(),  // szerokość
-            mouseY - playerPosition.getY(),  // wysokość
-            isFilled  // wypełniony?
+        currentShapeType = ShapeType::RECTANGLE;
+        currentRectangle = Rectangle(
+            playerPosition,
+            mouseX - playerPosition.getX(),
+            mouseY - playerPosition.getY(),
+            true
         );
-        renderer->setColor(al_map_rgb(0, 255, 0));
-        renderer->drawRectangle(rectangle);
     }
     else if (engine->isKeyDown(ALLEGRO_KEY_3)) {
-        // Rysowanie  Circle
-        float radius = sqrt(
-            pow(mouseX - playerPosition.getX(), 2) +
-            pow(mouseY - playerPosition.getY(), 2)
-        );
-        Circle circle(playerPosition, radius, isFilled);
-        renderer->setColor(al_map_rgb(0, 0, 255));
-        renderer->drawCircle(circle);
+        currentShapeType = ShapeType::CIRCLE;
+        currentCircle = Circle(playerPosition, radius, true);
     }
-    else if (engine->isMouseButtonDown(1)) {  // PPM
-        al_draw_line(
-            playerPosition.getX(),
-            playerPosition.getY(),
-            mousePoint.getX(),
-            mousePoint.getY(),
-            al_map_rgb(255, 0, 0),
-            2.0f
-        );
+    else if (engine->isMouseButtonDown(1)) {
+        currentShapeType = ShapeType::LINE;
+        currentLine = LineSegment(playerPosition, mousePoint);
     }
-    else {
-        LineSegment playerToMouse(playerPosition, mousePoint);
-        renderer->setColor(al_map_rgb(255, 255, 0));
-        renderer->drawLine(playerToMouse);
+
+    // Rysowanie aktualnej figury
+    renderer->setColor(al_map_rgb(255, 255, 0));
+    switch (currentShapeType) {
+    case ShapeType::LINE:
+        renderer->drawLine(currentLine);
+        break;
+    case ShapeType::TRIANGLE:
+        renderer->drawTriangle(currentTriangle);
+        break;
+    case ShapeType::RECTANGLE:
+        renderer->drawRectangle(currentRectangle);
+        break;
+    case ShapeType::CIRCLE:
+        renderer->drawCircle(currentCircle);
+        break;
     }
 
     // Rysowanie gracza
     renderer->setColor(al_map_rgb(255, 0, 0));
     renderer->drawPoint(playerPosition);
 
-    // Rysowanie punktu kursora
-    if (engine->isMouseButtonDown(0)) {  // LPM
-        renderer->setColor(al_map_rgb(0, 255, 0));
-    }
-    else {
-        renderer->setColor(al_map_rgb(255, 255, 255));
-    }
+    // Rysowanie kursora
+    renderer->setColor(engine->isMouseButtonDown(0) ?
+        al_map_rgb(0, 255, 0) : al_map_rgb(255, 255, 255));
     renderer->drawPoint(mousePoint);
 
-    // Rysowanie legendy i współrzędnych
-    ALLEGRO_COLOR textColor = al_map_rgb(255, 255, 255);
-    int lineHeight = al_get_font_line_height(font);
-
-    // Instrukcje
+    // Wyświetlanie instrukcji
     al_draw_text(
         font,
-        textColor,
+        al_map_rgb(255, 255, 255),
         10, 10,
         0,
-        "LPM - zmiana koloru kursora | PPM - przelaczenie na linie Allegro | 1 - trojkat | 2 - prostokat | 3 - okrag"
-    );
-
-    // Współrzędne gracza
-    al_draw_text(
-        font,
-        textColor,
-        10, 10 + lineHeight,
-        0,
-        getCoordinatesString("Gracz", playerPosition.getX(), playerPosition.getY()).c_str()
-    );
-
-    // Współrzędne kursora
-    al_draw_text(
-        font,
-        textColor,
-        10, 10 + 2 * lineHeight,
-        0,
-        getCoordinatesString("Kursor", mousePoint.getX(), mousePoint.getY()).c_str()
+        "1-trojkat | 2-prostokat | 3-okrag | PPM-linia | Q/E-skala | R-obrot"
     );
 }
