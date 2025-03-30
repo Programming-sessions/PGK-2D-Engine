@@ -1,7 +1,6 @@
 #ifndef PRIMITIVES_H
 #define PRIMITIVES_H
 
-
 class Point2D {
 private:
     float x;
@@ -20,6 +19,7 @@ public:
     void setX(float newX);
     void setY(float newY);
     void setPosition(float newX, float newY);
+
 
     //Transformations
     void translate(float dx, float dy);
@@ -40,6 +40,7 @@ public:
     LineSegment();
     LineSegment(const Point2D& start, const Point2D& end);
     LineSegment(float x1, float y1, float x2, float y2);
+
 
     // Getters
     Point2D getStart() const;
@@ -120,10 +121,12 @@ public:
     void setSize(float width, float height);
     void setFilled(bool fill);
 
+
 	// Transformations
     void translate(float dx, float dy);
     void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
     void rotate(float angle, const Point2D& center = Point2D(0, 0));
+
 
     // Additional methods
     bool contains(const Point2D& point) const;
@@ -147,16 +150,18 @@ public:
     float getRadius() const;
     bool isFilled() const;
 
+
     // Setters
     void setCenter(const Point2D& point);
     void setCenter(float x, float y);
     void setRadius(float newRadius);
     void setFilled(bool fill);
 
+
     // Transformations
     void translate(float dx, float dy);
-    void scale(float sx, float sy);  // Dla ko³a sx i sy powinny byæ równe
-    // Ko³o nie potrzebuje rotacji, bo jest symetryczne
+    void scale(float sx, float sy);  // Dla koï¿½a sx i sy powinny byï¿½ rï¿½wne
+    // Koï¿½o nie potrzebuje rotacji, bo jest symetryczne
 
 	// Additional methods
     bool contains(const Point2D& point) const;
