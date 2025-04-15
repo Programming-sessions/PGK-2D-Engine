@@ -4,6 +4,7 @@
 #include "src/game/Player.h"
 #include "src/game/Camera.h"
 #include "src/game/Map.h"
+#include "src/game/Enemy.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -22,6 +23,7 @@ ALLEGRO_FONT* font = nullptr;
 Player* player = nullptr;
 Camera* camera = nullptr;
 Map* gameMap = nullptr;
+std::vector<Enemy*> enemies;
 
 // Funkcje pomocnicze
 std::string getCoordinatesString(const std::string& name, float x, float y) {
@@ -39,6 +41,9 @@ void update(float deltaTime) {
     if (camera) {
         camera->update();
     }
+    for (auto enemy : enemies) {
+        enemy->update(deltaTime);
+    }
 }
 
 void render() {
@@ -55,9 +60,14 @@ void render() {
         player->draw();
     }
 
+    for (auto enemy : enemies) {
+        enemy->draw();
+    }
+
     if (camera) {
         camera->endScene();
     }
+
 
     // UI - rysowane bez transformacji kamery
     ALLEGRO_COLOR textColor = al_map_rgb(255, 255, 255);
@@ -112,6 +122,21 @@ int main() {
         return -1;
     }
 
+    for (int i = 0; i < 3; i++) {
+        Enemy* enemy = new Enemy();
+        if (!enemy->loadResources()) {
+            std::cerr << "Failed to load enemy resources!" << std::endl;
+            return -1;
+        }
+        enemy->setPosition(
+            200.0f + i * 500.0f,  // Różne pozycje X
+            200.0f + i * 300.0f   // Różne pozycje Y
+        );
+        enemy->setMap(gameMap);
+        enemy->setTarget(player);
+        enemies.push_back(enemy);
+    }
+
     // Główna pętla gry
     engine->startGameLoop(update, render);
 
@@ -120,6 +145,10 @@ int main() {
     delete camera;
     delete renderer;
     delete gameMap;
+    for (auto enemy : enemies) {
+        delete enemy;
+    }
+    enemies.clear();
     al_destroy_font(font);
     engine->shutdown();
 
