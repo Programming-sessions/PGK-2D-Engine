@@ -182,3 +182,94 @@
 [INFO] Tue Apr 15 16:54:47 2025 - Game loop ended
 [INFO] Tue Apr 15 16:54:47 2025 - Engine shutdown initiated
 [INFO] Tue Apr 15 16:54:47 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 16:59:16 2025 - Engine initialization started
+[INFO] Tue Apr 15 16:59:16 2025 - Allegro library initialized
+[INFO] Tue Apr 15 16:59:16 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 16:59:16 2025 - Input devices initialized
+[INFO] Tue Apr 15 16:59:16 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 16:59:16 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 16:59:16 2025 - Game loop started
+[INFO] Tue Apr 15 16:59:17 2025 - Game loop ended
+[INFO] Tue Apr 15 16:59:17 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 16:59:17 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 16:59:22 2025 - Engine initialization started
+[INFO] Tue Apr 15 16:59:22 2025 - Allegro library initialized
+[INFO] Tue Apr 15 16:59:22 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 16:59:22 2025 - Input devices initialized
+[INFO] Tue Apr 15 16:59:22 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 16:59:22 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 16:59:22 2025 - Game loop started
+[INFO] Tue Apr 15 17:00:07 2025 - Game loop ended
+[INFO] Tue Apr 15 17:00:07 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 17:00:07 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 17:03:11 2025 - Engine initialization started
+[INFO] Tue Apr 15 17:03:11 2025 - Allegro library initialized
+[INFO] Tue Apr 15 17:03:11 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 17:03:11 2025 - Input devices initialized
+[INFO] Tue Apr 15 17:03:11 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 17:03:11 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 17:03:11 2025 - Game loop started
+[INFO] Tue Apr 15 17:03:12 2025 - Game loop ended
+[INFO] Tue Apr 15 17:03:12 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 17:03:12 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 17:03:52 2025 - Engine initialization started
+[INFO] Tue Apr 15 17:03:52 2025 - Allegro library initialized
+[INFO] Tue Apr 15 17:03:52 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 17:03:52 2025 - Input devices initialized
+[INFO] Tue Apr 15 17:03:52 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 17:03:52 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 17:03:52 2025 - Game loop started
+[INFO] Tue Apr 15 17:04:29 2025 - Game loop ended
+[INFO] Tue Apr 15 17:04:29 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 17:04:29 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 17:04:40 2025 - Engine initialization started
+[INFO] Tue Apr 15 17:04:40 2025 - Allegro library initialized
+[INFO] Tue Apr 15 17:04:40 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 17:04:40 2025 - Input devices initialized
+[INFO] Tue Apr 15 17:04:40 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 17:04:40 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 17:04:40 2025 - Game loop started
+[INFO] Tue Apr 15 17:04:45 2025 - Game loop ended
+[INFO] Tue Apr 15 17:04:45 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 17:04:45 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 17:05:48 2025 - Engine initialization started
+[INFO] Tue Apr 15 17:05:48 2025 - Allegro library initialized
+[INFO] Tue Apr 15 17:05:48 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 17:05:48 2025 - Input devices initialized
+[INFO] Tue Apr 15 17:05:48 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 17:05:48 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 17:05:48 2025 - Game loop started
+[INFO] Tue Apr 15 17:06:27 2025 - Game loop ended
+[INFO] Tue Apr 15 17:06:27 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 17:06:27 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 17:08:17 2025 - Engine initialization started
+[INFO] Tue Apr 15 17:08:17 2025 - Allegro library initialized
+[INFO] Tue Apr 15 17:08:17 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 17:08:17 2025 - Input devices initialized
+[INFO] Tue Apr 15 17:08:17 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 17:08:17 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 17:08:17 2025 - Game loop started
+[INFO] Tue Apr 15 17:08:32 2025 - Engine initialization started
+[INFO] Tue Apr 15 17:08:32 2025 - Allegro library initialized
+[INFO] Tue Apr 15 17:08:32 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 17:08:32 2025 - Input devices initialized
+[INFO] Tue Apr 15 17:08:32 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 17:08:32 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 17:08:32 2025 - Game loop started
+[INFO] Tue Apr 15 17:09:46 2025 - Engine initialization started
+[INFO] Tue Apr 15 17:09:46 2025 - Allegro library initialized
+[INFO] Tue Apr 15 17:09:46 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 17:09:46 2025 - Input devices initialized
+[INFO] Tue Apr 15 17:09:46 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 17:09:46 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 17:09:46 2025 - Game loop started
+[INFO] Tue Apr 15 17:11:57 2025 - Engine initialization started
+[INFO] Tue Apr 15 17:11:57 2025 - Allegro library initialized
+[INFO] Tue Apr 15 17:11:57 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 17:11:57 2025 - Input devices initialized
+[INFO] Tue Apr 15 17:11:57 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 17:11:57 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 17:11:57 2025 - Game loop started
+[INFO] Tue Apr 15 17:12:30 2025 - Game loop ended
+[INFO] Tue Apr 15 17:12:30 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 17:12:30 2025 - Engine shutdown completed

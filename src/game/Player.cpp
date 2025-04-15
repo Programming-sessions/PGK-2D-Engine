@@ -104,17 +104,24 @@ void Player::handleInput(float deltaTime) {
     }
 }
 
+
+void Player::setCamera(Camera* cam) {
+    camera = cam;
+}
+
 void Player::lookAtMouse() {
+    if (!camera) return;
+
     Engine* engine = Engine::getInstance();
+    Point2D mouseScreen(engine->getMouseX(), engine->getMouseY());
+    Point2D mouseWorld = camera->screenToWorld(mouseScreen);
 
-    float mouseX = engine->getMouseX();
-    float mouseY = engine->getMouseY();
-
-    // Obliczanie k¹ta miêdzy graczem a kursorem
-    float dx = mouseX - position.getX();
-    float dy = mouseY - position.getY();
+    float dx = mouseWorld.getX() - position.getX();
+    float dy = mouseWorld.getY() - position.getY();
     rotation = atan2(dy, dx);
 }
+
+
 
 void Player::update(float deltaTime) {
     if (!isActive) return;

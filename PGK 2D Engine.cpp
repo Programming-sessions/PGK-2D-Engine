@@ -2,6 +2,7 @@
 #include "src/engine/PrimitiveRenderer.h"
 #include "src/engine/Sprite.h"
 #include "src/game/Player.h"
+#include "src/game/Camera.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -18,6 +19,7 @@ Engine* engine = nullptr;
 PrimitiveRenderer* renderer = nullptr;
 ALLEGRO_FONT* font = nullptr;
 Player* player = nullptr;
+Camera* camera = nullptr;
 
 // Funkcje pomocnicze
 std::string getCoordinatesString(const std::string& name, float x, float y) {
@@ -28,19 +30,21 @@ std::string getCoordinatesString(const std::string& name, float x, float y) {
 
 // Główne funkcje
 void update(float deltaTime) {
-    Engine* engine = Engine::getInstance();
-
     if (player) {
         player->update(deltaTime);
     }
 
-    // Tu będzie logika gry
+    if (camera) {
+        camera->update();
+    }
 }
 
 void render() {
-    Engine* engine = Engine::getInstance();
+    if (camera) {
+        camera->beginScene();
+    }
 
-    // Tymczasowo rysujemy siatkę dla wizualizacji mapy
+    // Rysowanie siatki
     renderer->setColor(al_map_rgb(50, 50, 50));
 
     // Rysowanie linii pionowych
@@ -60,11 +64,15 @@ void render() {
         player->draw();
     }
 
-    // Debug info
+    if (camera) {
+        camera->endScene();
+    }
+
+    // UI - rysowane bez transformacji kamery
     ALLEGRO_COLOR textColor = al_map_rgb(255, 255, 255);
     Point2D playerPos = player->getPosition();
-    al_draw_textf(font, textColor, 10, 30, ALLEGRO_ALIGN_LEFT,
-        "Player pos: X=%.1f Y=%.1f", playerPos.getX(), playerPos.getY());
+    al_draw_textf(font, textColor, 10, 10, ALLEGRO_ALIGN_LEFT,
+        "Player World Pos: X=%.1f Y=%.1f", playerPos.getX(), playerPos.getY());
 }
 
 int main() {
@@ -88,6 +96,11 @@ int main() {
     }
     player->setPosition(400, 300);  // Początkowa pozycja na środku ekranu
 
+    camera = new Camera();
+    camera->setViewport(engine->getScreenWidth(), engine->getScreenHeight());
+    camera->setTarget(player);
+    player->setCamera(camera);  // Ustawienie kamery dla gracza
+
     // Inicjalizacja renderera prymitywów
     renderer = new PrimitiveRenderer(engine->getDisplay());
 
@@ -103,6 +116,7 @@ int main() {
 
     // Sprzątanie
     delete player;
+    delete camera;
     delete renderer;
     al_destroy_font(font);
     engine->shutdown();

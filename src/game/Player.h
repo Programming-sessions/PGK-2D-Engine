@@ -4,6 +4,7 @@
 
 #include "Entity.h"
 #include "../engine/Engine.h"
+#include "../game/Camera.h"
 
 class Player : public Entity {
 private:
@@ -13,6 +14,7 @@ private:
     bool isMoving;
     float health;
     float maxHealth;
+    Camera* camera;
 
 public:
     Player();
@@ -32,6 +34,8 @@ public:
     float getHealth() const;
     float getMaxHealth() const;
     bool isAlive() const;
+
+    void setCamera(Camera* cam);
 };
 
 #endif // PLAYER_H
