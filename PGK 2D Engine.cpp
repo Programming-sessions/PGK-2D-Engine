@@ -85,7 +85,7 @@ int main() {
         std::cerr << "Failed to load player resources!" << std::endl;
         return -1;
     }
-    player->setPosition(0, 0);  // Początkowa pozycja na środku ekranu
+    player->setPosition(100, 100);  // Początkowa pozycja na środku ekranu
 
     camera = new Camera();
     camera->setViewport(engine->getScreenWidth(), engine->getScreenHeight());
@@ -104,7 +104,7 @@ int main() {
         std::cerr << "Failed to initialize map!" << std::endl;
         return -1;
     }
-	//player->setMap(gameMap);  // Ustawienie mapy dla gracza
+	player->setMap(gameMap);  // Ustawienie mapy dla gracza
     // Inicjalizacja czcionki
     font = al_create_builtin_font();
     if (!font) {

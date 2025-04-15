@@ -104,11 +104,6 @@ void Player::handleInput(float deltaTime) {
     }
 }
 
-
-void Player::setCamera(Camera* cam) {
-    camera = cam;
-}
-
 void Player::lookAtMouse() {
     if (!camera) return;
 
@@ -126,12 +121,39 @@ void Player::lookAtMouse() {
 void Player::update(float deltaTime) {
     if (!isActive) return;
 
+    // Obs³uga sterowania
     handleInput(deltaTime);
     lookAtMouse();
 
-    // Aktualizacja pozycji
-    Entity::update(deltaTime);
+    Point2D previousPosition = position;
+
+    // Próba ruchu w osi X
+    position.setX(position.getX() + velocity.getX() * deltaTime);
+    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
+        position.setX(previousPosition.getX());  // Cofnij tylko X
+        velocity.setX(0.0f);  // Zatrzymaj ruch w osi X
+    }
+
+    // Próba ruchu w osi Y
+    position.setY(position.getY() + velocity.getY() * deltaTime);
+    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
+        position.setY(previousPosition.getY());  // Cofnij tylko Y
+        velocity.setY(0.0f);  // Zatrzymaj ruch w osi Y
+    }
+
+    // Aktualizacja sprite'a
+    if (sprite) {
+        sprite->setPosition(position.getX(), position.getY());
+        sprite->setRotation(rotation);
+        sprite->updateAnimation(deltaTime);
+    }
 }
+
+
+
+
+
+
 
 void Player::takeDamage(float amount) {
     health = std::max(0.0f, health - amount);
@@ -151,4 +173,11 @@ float Player::getMaxHealth() const {
 
 bool Player::isAlive() const {
     return health > 0;
+}
+
+void Player::setCamera(Camera* cam) {
+    camera = cam;
+}
+void Player::setMap(Map* map) {
+    gameMap = map;
 }

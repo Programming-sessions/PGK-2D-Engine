@@ -5,6 +5,7 @@
 #include "Entity.h"
 #include "../engine/Engine.h"
 #include "../game/Camera.h"
+#include "Map.h"
 
 class Player : public Entity {
 private:
@@ -15,6 +16,7 @@ private:
     float health;
     float maxHealth;
     Camera* camera;
+    Map* gameMap;  // WskaŸnik na mapê
 
 public:
     Player();
@@ -36,6 +38,7 @@ public:
     bool isAlive() const;
 
     void setCamera(Camera* cam);
+    void setMap(Map* map);  // Setter dla mapy
 };
 
 #endif // PLAYER_H
