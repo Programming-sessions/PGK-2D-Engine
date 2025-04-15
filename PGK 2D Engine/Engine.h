@@ -71,7 +71,6 @@ public:
 
     // Obs³uga urz¹dzeñ wejœcia
     bool isKeyDown(int keycode);
-    bool isKeyPressed(int keycode);
     bool isMouseButtonDown(int button);
     int getMouseX();
     int getMouseY();
