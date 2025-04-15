@@ -677,3 +677,11 @@
 [INFO] Tue Apr 15 13:35:42 2025 - Engine initialized successfully
 [INFO] Tue Apr 15 13:35:42 2025 - Game loop started
 [INFO] Tue Apr 15 13:35:44 2025 - Game loop ended
+[INFO] Tue Apr 15 13:41:35 2025 - Engine initialization started
+[INFO] Tue Apr 15 13:41:35 2025 - Allegro library initialized
+[INFO] Tue Apr 15 13:41:35 2025 - Display initialized: 800x600 windowed
+[INFO] Tue Apr 15 13:41:35 2025 - Input devices initialized
+[INFO] Tue Apr 15 13:41:35 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 13:41:35 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 13:41:35 2025 - Game loop started
+[INFO] Tue Apr 15 13:41:37 2025 - Game loop ended
