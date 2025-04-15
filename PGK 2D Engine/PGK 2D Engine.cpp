@@ -2,17 +2,18 @@
 #include "Primitives.h"
 #include "PrimitiveRenderer.h"
 #include "Transform.h"
+#include "Sprite.h"
 #include <iostream>
 
 // Deklaracje funkcji
 void update(float deltaTime);
 void render();
-
 // Globalne zmienne
 Point2D playerPosition(400.0f, 300.0f);
 float playerSpeed = 200.0f;
 PrimitiveRenderer* renderer = nullptr;
 ALLEGRO_FONT* font = nullptr;
+Sprite* playerSprite = nullptr;
 
 // Zmienne dla aktualnie rysowanej figury
 enum class ShapeType { NONE, LINE, TRIANGLE, RECTANGLE, CIRCLE };
@@ -43,7 +44,45 @@ int main() {
     }
 
     renderer = new PrimitiveRenderer(engine->getDisplay());
+    playerSprite = new Sprite();
+    if (!playerSprite->loadTexture("assets/textures/hero_idle.png")) {
+        std::cerr << "Failed to load hero_idle texture!" << std::endl;
+        return -1;
+    }
+    // Tworzenie animacji idle
+    Animation* idleAnimation = new Animation("idle", true); // true dla zapętlenia
+
+    // Szerokość i wysokość pojedynczej klatki
+    const int FRAME_WIDTH = 253;
+    const int FRAME_HEIGHT = 216;
+    const float FRAME_DURATION = 0.05f; // 20 fps
+
+    // Dodawanie 20 klatek w odpowiedniej kolejności
+    // Numeracja klatek:
+    // 0  1  2  3  4
+    // 5  6  7  8  9
+    // 10 11 12 13 14
+    // 15 16 17 18 19
+    for (int frame = 0; frame < 20; frame++) {
+        // Obliczamy pozycję klatki w sprite sheet
+        int row = frame / 5;        // Dzielenie całkowite da nam numer wiersza
+        int col = frame % 5;        // Modulo da nam numer kolumny
+
+        int x = col * FRAME_WIDTH;  // Pozycja X klatki
+        int y = row * FRAME_HEIGHT; // Pozycja Y klatki
+
+        idleAnimation->addFrame(x, y, FRAME_WIDTH, FRAME_HEIGHT, FRAME_DURATION);
+    }
+
+    // Dodajemy animację do sprite'a
+    playerSprite->addAnimation(idleAnimation);
+
+    // Rozpoczynamy odtwarzanie animacji
+    playerSprite->playAnimation("idle");
+    playerSprite->setPosition(400.0f, 300.0f);  // Początkowa pozycja na środku
+    playerSprite->setScale(1.0f, 1.0f);         // Domyślna skala
     engine->startGameLoop(update, render);
+    delete playerSprite;
     delete renderer;
 
     return 0;
@@ -52,7 +91,11 @@ int main() {
 void update(float deltaTime) {
     Engine* engine = Engine::getInstance();
 
-    // Obsługa ruchu gracza
+    // Zapisanie poprzedniej pozycji (na wypadek kolizji ze ścianami)
+    float previousX = playerPosition.getX();
+    float previousY = playerPosition.getY();
+
+    // Obsługa ruchu
     if (engine->isKeyDown(ALLEGRO_KEY_W) || engine->isKeyDown(ALLEGRO_KEY_UP)) {
         playerPosition.setY(playerPosition.getY() - playerSpeed * deltaTime);
     }
@@ -66,61 +109,42 @@ void update(float deltaTime) {
         playerPosition.setX(playerPosition.getX() + playerSpeed * deltaTime);
     }
 
-    playerPosition.clamp(0, 0, engine->getScreenWidth(), engine->getScreenHeight());
+    // Pobierz wymiary sprite'a
+    const float SPRITE_HALF_WIDTH = 253.0f / 2;  // Połowa szerokości klatki
+    const float SPRITE_HALF_HEIGHT = 216.0f / 2; // Połowa wysokości klatki
 
-    // Obsługa transformacji dla aktualnej figury
-    Point2D mousePoint(engine->getMouseX(), engine->getMouseY());
-    float rotationSpeed = 2.0f; // stopnie na klatkę
-    float scaleSpeed = 0.02f; // procent zmiany na klatkę
+    // Clamp z uwzględnieniem wymiarów sprite'a
+    playerPosition.clamp(
+        SPRITE_HALF_WIDTH,                           // minX
+        SPRITE_HALF_HEIGHT,                          // minY
+        engine->getScreenWidth() - SPRITE_HALF_WIDTH,   // maxX
+        engine->getScreenHeight() - SPRITE_HALF_HEIGHT  // maxY
+    );
 
-    switch (currentShapeType) {
-    case ShapeType::LINE:
-        if (engine->isKeyDown(ALLEGRO_KEY_R)) {
-            currentLine.rotate(rotationSpeed, playerPosition);
-        }
-        if (engine->isKeyDown(ALLEGRO_KEY_E)) {
-            currentLine.scale(1.0f + scaleSpeed, 1.0f + scaleSpeed, playerPosition);
-        }
-        if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
-            currentLine.scale(1.0f - scaleSpeed, 1.0f - scaleSpeed, playerPosition);
-        }
-        break;
+    // Obliczanie kąta między sprite'em a kursorem
+    float mouseX = engine->getMouseX();
+    float mouseY = engine->getMouseY();
+    float spriteX = playerPosition.getX();
+    float spriteY = playerPosition.getY();
 
-    case ShapeType::TRIANGLE:
-        if (engine->isKeyDown(ALLEGRO_KEY_R)) {
-            currentTriangle.rotate(rotationSpeed, playerPosition);
-        }
-        if (engine->isKeyDown(ALLEGRO_KEY_E)) {
-            currentTriangle.scale(1.0f + scaleSpeed, 1.0f + scaleSpeed, playerPosition);
-        }
-        if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
-            currentTriangle.scale(1.0f - scaleSpeed, 1.0f - scaleSpeed, playerPosition);
-        }
-        break;
+    // Obliczanie różnicy pozycji
+    float dx = mouseX - spriteX;
+    float dy = mouseY - spriteY;
 
-    case ShapeType::RECTANGLE:
-        if (engine->isKeyDown(ALLEGRO_KEY_R)) {
-            currentRectangle.rotate(rotationSpeed, playerPosition);
-        }
-        if (engine->isKeyDown(ALLEGRO_KEY_E)) {
-            currentRectangle.scale(1.0f + scaleSpeed, 1.0f + scaleSpeed, playerPosition);
-        }
-        if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
-            currentRectangle.scale(1.0f - scaleSpeed, 1.0f - scaleSpeed, playerPosition);
-        }
-        break;
+    // Obliczanie kąta w radianach
+    float angle = atan2(dy, dx);
 
-    case ShapeType::CIRCLE:
-        if (engine->isKeyDown(ALLEGRO_KEY_E)) {
-            currentCircle.scale(1.0f + scaleSpeed, 1.0f + scaleSpeed);
-        }
-        if (engine->isKeyDown(ALLEGRO_KEY_Q)) {
-            currentCircle.scale(1.0f - scaleSpeed, 1.0f - scaleSpeed);
-        }
-        break;
-    }
+    // Ustawianie rotacji sprite'a
+    playerSprite->setRotation(angle);
+
+    // Aktualizacja pozycji sprite'a
+    playerSprite->setPosition(playerPosition.getX(), playerPosition.getY());
+
+    // Aktualizacja animacji
+    playerSprite->updateAnimation(deltaTime);
 }
 
+// Modyfikujemy funkcję render():
 void render() {
     Engine* engine = Engine::getInstance();
 
@@ -128,72 +152,54 @@ void render() {
     int mouseY = engine->getMouseY();
     Point2D mousePoint(mouseX, mouseY);
 
-    // Obliczanie promienia dla koła
-    float radius = sqrt(
-        pow(mouseX - playerPosition.getX(), 2) +
-        pow(mouseY - playerPosition.getY(), 2)
-    );
-
-    // Wybór i rysowanie figury
+    // Rysowanie różnych kształtów w zależności od wciśniętego klawisza
     if (engine->isKeyDown(ALLEGRO_KEY_1)) {
-        currentShapeType = ShapeType::TRIANGLE;
-        currentTriangle = Triangle(
+        // Rysowanie trójkąta
+        Triangle triangle(
             playerPosition,
             Point2D(mouseX, mouseY),
             Point2D(playerPosition.getX() - (mouseX - playerPosition.getX()), mouseY),
             true
         );
+        renderer->setColor(al_map_rgb(255, 0, 0));
+        renderer->drawTriangle(triangle);
     }
     else if (engine->isKeyDown(ALLEGRO_KEY_2)) {
-        currentShapeType = ShapeType::RECTANGLE;
-        currentRectangle = Rectangle(
+        // Rysowanie prostokąta
+        Rectangle rectangle(
             playerPosition,
             mouseX - playerPosition.getX(),
             mouseY - playerPosition.getY(),
             true
         );
+        renderer->setColor(al_map_rgb(0, 255, 0));
+        renderer->drawRectangle(rectangle);
     }
-    else if (engine->isKeyDown(ALLEGRO_KEY_3)) {
-        currentShapeType = ShapeType::CIRCLE;
-        currentCircle = Circle(playerPosition, radius, true);
+    else if (engine->isMouseButtonDown(1)) {  // PPM
+        al_draw_line(
+            playerPosition.getX(),
+            playerPosition.getY(),
+            mousePoint.getX(),
+            mousePoint.getY(),
+            al_map_rgb(255, 0, 0),
+            2.0f
+        );
     }
-    else if (engine->isMouseButtonDown(1)) {
-        currentShapeType = ShapeType::LINE;
-        currentLine = LineSegment(playerPosition, mousePoint);
-    }
-
-    // Rysowanie aktualnej figury
-    renderer->setColor(al_map_rgb(255, 255, 0));
-    switch (currentShapeType) {
-    case ShapeType::LINE:
-        renderer->drawLine(currentLine);
-        break;
-    case ShapeType::TRIANGLE:
-        renderer->drawTriangle(currentTriangle);
-        break;
-    case ShapeType::RECTANGLE:
-        renderer->drawRectangle(currentRectangle);
-        break;
-    case ShapeType::CIRCLE:
-        renderer->drawCircle(currentCircle);
-        break;
+    else {
+        LineSegment playerToMouse(playerPosition, mousePoint);
+        renderer->setColor(al_map_rgb(255, 255, 0));
+        renderer->drawLine(playerToMouse);
     }
 
-    // Rysowanie gracza
-    renderer->setColor(al_map_rgb(255, 0, 0));
-    renderer->drawPoint(playerPosition);
+    // Rysowanie sprite'a gracza zamiast punktu
+    playerSprite->draw();
 
-    // Rysowanie kursora
-    renderer->setColor(engine->isMouseButtonDown(0) ?
-        al_map_rgb(0, 255, 0) : al_map_rgb(255, 255, 255));
+    // Rysowanie punktu kursora
+    if (engine->isMouseButtonDown(0)) {  // LPM
+        renderer->setColor(al_map_rgb(0, 255, 0));
+    }
+    else {
+        renderer->setColor(al_map_rgb(255, 255, 255));
+    }
     renderer->drawPoint(mousePoint);
-
-    // Wyświetlanie instrukcji
-    al_draw_text(
-        font,
-        al_map_rgb(255, 255, 255),
-        10, 10,
-        0,
-        "1-trojkat | 2-prostokat | 3-okrag | PPM-linia | Q/E-skala | R-obrot"
-    );
 }
