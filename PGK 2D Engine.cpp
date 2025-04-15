@@ -1,8 +1,8 @@
-﻿#include "Engine.h"
-#include "Primitives.h"
-#include "PrimitiveRenderer.h"
-#include "Transform.h"
-#include "Sprite.h"
+﻿#include "src/engine/Engine.h"
+#include "src/engine/Primitives.h"
+#include "src/engine/PrimitiveRenderer.h"
+#include "src/engine/Transform.h"
+#include "src/engine/Sprite.h"
 #include <iostream>
 
 // Deklaracje funkcji
