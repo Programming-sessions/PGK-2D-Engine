@@ -26,8 +26,8 @@ bool Player::loadResources() {
     Animation* idleAnimation = new Animation("idle", true);
 
     // Ustawienia klatek animacji
-    const int FRAME_WIDTH = 253;
-    const int FRAME_HEIGHT = 216;
+    const int FRAME_WIDTH = 180;
+    const int FRAME_HEIGHT = 150;
     const float FRAME_DURATION = 0.05f;
 
     // Dodawanie klatek animacji (4 rzêdy po 5 klatek)

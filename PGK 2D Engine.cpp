@@ -3,14 +3,15 @@
 #include "src/engine/Sprite.h"
 #include "src/game/Player.h"
 #include "src/game/Camera.h"
+#include "src/game/Map.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 
 // Stałe dla mapy
 const int TILE_SIZE = 250;
-const int MAP_WIDTH = 8;  // w kafelkach
-const int MAP_HEIGHT = 16; // w kafelkach
+const int MAP_WIDTH = 16;  // w kafelkach
+const int MAP_HEIGHT = 8; // w kafelkach
 const int MAP_PIXEL_WIDTH = MAP_WIDTH * TILE_SIZE;   // 2000px
 const int MAP_PIXEL_HEIGHT = MAP_HEIGHT * TILE_SIZE; // 4000px
 
@@ -20,6 +21,7 @@ PrimitiveRenderer* renderer = nullptr;
 ALLEGRO_FONT* font = nullptr;
 Player* player = nullptr;
 Camera* camera = nullptr;
+Map* gameMap = nullptr;
 
 // Funkcje pomocnicze
 std::string getCoordinatesString(const std::string& name, float x, float y) {
@@ -44,19 +46,8 @@ void render() {
         camera->beginScene();
     }
 
-    // Rysowanie siatki
-    renderer->setColor(al_map_rgb(50, 50, 50));
-
-    // Rysowanie linii pionowych
-    for (int x = 0; x <= MAP_WIDTH; x++) {
-        int pixelX = x * TILE_SIZE;
-        renderer->drawLine(Point2D(pixelX, 0), Point2D(pixelX, MAP_PIXEL_HEIGHT));
-    }
-
-    // Rysowanie linii poziomych
-    for (int y = 0; y <= MAP_HEIGHT; y++) {
-        int pixelY = y * TILE_SIZE;
-        renderer->drawLine(Point2D(0, pixelY), Point2D(MAP_PIXEL_WIDTH, pixelY));
+    if (gameMap) {
+        gameMap->draw();
     }
 
     // Rysowanie gracza
@@ -94,7 +85,7 @@ int main() {
         std::cerr << "Failed to load player resources!" << std::endl;
         return -1;
     }
-    player->setPosition(400, 300);  // Początkowa pozycja na środku ekranu
+    player->setPosition(0, 0);  // Początkowa pozycja na środku ekranu
 
     camera = new Camera();
     camera->setViewport(engine->getScreenWidth(), engine->getScreenHeight());
@@ -103,7 +94,17 @@ int main() {
 
     // Inicjalizacja renderera prymitywów
     renderer = new PrimitiveRenderer(engine->getDisplay());
+	if (!renderer) {
+		std::cerr << "Failed to create renderer!" << std::endl;
+		return -1;
+	}
 
+    gameMap = new Map(MAP_WIDTH, MAP_HEIGHT, TILE_SIZE);
+    if (!gameMap->init(renderer)) {
+        std::cerr << "Failed to initialize map!" << std::endl;
+        return -1;
+    }
+	//player->setMap(gameMap);  // Ustawienie mapy dla gracza
     // Inicjalizacja czcionki
     font = al_create_builtin_font();
     if (!font) {
@@ -118,6 +119,7 @@ int main() {
     delete player;
     delete camera;
     delete renderer;
+    delete gameMap;
     al_destroy_font(font);
     engine->shutdown();
 
