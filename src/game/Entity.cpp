@@ -10,7 +10,6 @@ Entity::Entity()
     , speed(0.0f)
     , isActive(true)
     , tag("")
-    , collisionRadius(0.0f)
 {
     sprite = new Sprite();
 }
@@ -86,9 +85,6 @@ void Entity::setTag(const std::string& newTag) {
     tag = newTag;
 }
 
-void Entity::setCollisionRadius(float radius) {
-    collisionRadius = radius;
-}
 
 // Gettery
 Point2D Entity::getPosition() const {
@@ -113,18 +109,4 @@ bool Entity::getIsActive() const {
 
 std::string Entity::getTag() const {
     return tag;
-}
-
-float Entity::getCollisionRadius() const {
-    return collisionRadius;
-}
-
-bool Entity::checkCollision(const Entity* other) const {
-    if (!other || !isActive || !other->getIsActive()) return false;
-
-    float dx = position.getX() - other->getPosition().getX();
-    float dy = position.getY() - other->getPosition().getY();
-    float distance = sqrt(dx * dx + dy * dy);
-
-    return distance < (collisionRadius + other->getCollisionRadius());
 }

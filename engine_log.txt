@@ -1684,3 +1684,33 @@
 [INFO] Wed Apr 16 18:43:30 2025 - Game loop ended
 [INFO] Wed Apr 16 18:43:30 2025 - Engine shutdown initiated
 [INFO] Wed Apr 16 18:43:30 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 19:08:54 2025 - Engine initialization started
+[INFO] Wed Apr 16 19:08:54 2025 - Allegro library initialized
+[INFO] Wed Apr 16 19:08:55 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 19:08:55 2025 - Input devices initialized
+[INFO] Wed Apr 16 19:08:55 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 19:08:55 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 19:08:55 2025 - Game loop started
+[INFO] Wed Apr 16 19:09:54 2025 - Game loop ended
+[INFO] Wed Apr 16 19:09:54 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 19:09:55 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 19:16:23 2025 - Engine initialization started
+[INFO] Wed Apr 16 19:16:23 2025 - Allegro library initialized
+[INFO] Wed Apr 16 19:16:24 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 19:16:24 2025 - Input devices initialized
+[INFO] Wed Apr 16 19:16:24 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 19:16:24 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 19:16:24 2025 - Game loop started
+[INFO] Wed Apr 16 19:16:29 2025 - Game loop ended
+[INFO] Wed Apr 16 19:16:29 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 19:16:29 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 19:16:54 2025 - Engine initialization started
+[INFO] Wed Apr 16 19:16:54 2025 - Allegro library initialized
+[INFO] Wed Apr 16 19:16:55 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 19:16:55 2025 - Input devices initialized
+[INFO] Wed Apr 16 19:16:55 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 19:16:55 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 19:16:55 2025 - Game loop started
+[INFO] Wed Apr 16 19:17:04 2025 - Game loop ended
+[INFO] Wed Apr 16 19:17:04 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 19:17:04 2025 - Engine shutdown completed

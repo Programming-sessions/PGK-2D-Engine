@@ -17,8 +17,6 @@ protected:
     bool isActive;
     std::string tag;
 
-    // Kolizja
-    float collisionRadius;
 
 public:
     Entity();
@@ -46,9 +44,6 @@ public:
     bool getIsActive() const;
     std::string getTag() const;
     float getCollisionRadius() const;
-
-    // Kolizje
-    bool checkCollision(const Entity* other) const;
 
     // £adowanie zasobów
     virtual bool loadResources();
