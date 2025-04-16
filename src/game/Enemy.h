@@ -18,6 +18,7 @@ private:
     float health;
     float maxHealth;
     bool isMoving;
+    Collision* collision;
 
     // Pomocnicze metody AI
     void updateAI(float deltaTime);
@@ -43,6 +44,7 @@ public:
     float getHealth() const;
     float getMaxHealth() const;
     bool isAlive() const;
+    Collision* getCollision() const { return collision; }
 };
 
 #endif // ENEMY_H

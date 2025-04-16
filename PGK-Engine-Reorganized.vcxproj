@@ -203,6 +203,7 @@
     <ClCompile Include="src\engine\TextureManager.cpp" />
     <ClCompile Include="src\engine\Transform.cpp" />
     <ClCompile Include="src\game\Camera.cpp" />
+    <ClCompile Include="src\game\CollisionManager.cpp" />
     <ClCompile Include="src\game\Enemy.cpp" />
     <ClCompile Include="src\game\Entity.cpp" />
     <ClCompile Include="src\game\Map.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="src\engine\TextureManager.h" />
     <ClInclude Include="src\engine\Transform.h" />
     <ClInclude Include="src\game\Camera.h" />
+    <ClInclude Include="src\game\CollisionManager.h" />
     <ClInclude Include="src\game\Enemy.h" />
     <ClInclude Include="src\game\Entity.h" />
     <ClInclude Include="src\game\Map.h" />

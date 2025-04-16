@@ -793,3 +793,894 @@
 [INFO] Tue Apr 15 20:53:03 2025 - Game loop ended
 [INFO] Tue Apr 15 20:53:03 2025 - Engine shutdown initiated
 [INFO] Tue Apr 15 20:53:03 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 21:30:28 2025 - Engine initialization started
+[INFO] Tue Apr 15 21:30:28 2025 - Allegro library initialized
+[INFO] Tue Apr 15 21:30:29 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 21:30:29 2025 - Input devices initialized
+[INFO] Tue Apr 15 21:30:29 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 21:30:29 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 21:30:29 2025 - Game loop started
+[INFO] Tue Apr 15 21:30:33 2025 - Game loop ended
+[INFO] Tue Apr 15 21:30:33 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 21:30:34 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 21:37:34 2025 - Engine initialization started
+[INFO] Tue Apr 15 21:37:34 2025 - Allegro library initialized
+[INFO] Tue Apr 15 21:37:35 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 21:37:35 2025 - Input devices initialized
+[INFO] Tue Apr 15 21:37:35 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 21:37:35 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 21:37:35 2025 - Game loop started
+[INFO] Tue Apr 15 21:38:11 2025 - Game loop ended
+[INFO] Tue Apr 15 21:38:11 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 21:38:11 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 21:39:44 2025 - Engine initialization started
+[INFO] Tue Apr 15 21:39:44 2025 - Allegro library initialized
+[INFO] Tue Apr 15 21:39:45 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 21:39:45 2025 - Input devices initialized
+[INFO] Tue Apr 15 21:39:45 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 21:39:45 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 21:39:45 2025 - Game loop started
+[INFO] Tue Apr 15 21:39:49 2025 - Game loop ended
+[INFO] Tue Apr 15 21:39:49 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 21:39:49 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 21:45:19 2025 - Engine initialization started
+[INFO] Tue Apr 15 21:45:19 2025 - Allegro library initialized
+[INFO] Tue Apr 15 21:45:19 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 21:45:19 2025 - Input devices initialized
+[INFO] Tue Apr 15 21:45:19 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 21:45:19 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 21:45:20 2025 - Game loop started
+[INFO] Tue Apr 15 21:45:48 2025 - Game loop ended
+[INFO] Tue Apr 15 21:45:48 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 21:45:49 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 21:45:58 2025 - Engine initialization started
+[INFO] Tue Apr 15 21:45:58 2025 - Allegro library initialized
+[INFO] Tue Apr 15 21:45:58 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 21:45:58 2025 - Input devices initialized
+[INFO] Tue Apr 15 21:45:58 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 21:45:58 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 21:45:59 2025 - Game loop started
+[INFO] Tue Apr 15 21:46:01 2025 - Game loop ended
+[INFO] Tue Apr 15 21:46:01 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 21:46:02 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 21:50:38 2025 - Engine initialization started
+[INFO] Tue Apr 15 21:50:38 2025 - Allegro library initialized
+[INFO] Tue Apr 15 21:50:38 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 21:50:38 2025 - Input devices initialized
+[INFO] Tue Apr 15 21:50:38 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 21:50:38 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 21:50:39 2025 - Game loop started
+[INFO] Tue Apr 15 21:50:59 2025 - Game loop ended
+[INFO] Tue Apr 15 21:50:59 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 21:50:59 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:00:56 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:00:56 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:00:56 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:00:56 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:00:56 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:00:56 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:00:57 2025 - Game loop started
+[INFO] Tue Apr 15 22:01:26 2025 - Game loop ended
+[INFO] Tue Apr 15 22:01:26 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:01:26 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:01:29 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:01:29 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:01:30 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:01:30 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:01:30 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:01:30 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:01:30 2025 - Game loop started
+[INFO] Tue Apr 15 22:01:47 2025 - Game loop ended
+[INFO] Tue Apr 15 22:01:47 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:01:47 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:02:04 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:02:04 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:02:04 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:02:04 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:02:04 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:02:04 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:02:05 2025 - Game loop started
+[INFO] Tue Apr 15 22:02:23 2025 - Game loop ended
+[INFO] Tue Apr 15 22:02:23 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:02:23 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:02:27 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:02:27 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:02:27 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:02:27 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:02:27 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:02:27 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:02:28 2025 - Game loop started
+[INFO] Tue Apr 15 22:05:20 2025 - Game loop ended
+[INFO] Tue Apr 15 22:05:20 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:05:20 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:05:24 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:05:24 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:05:24 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:05:24 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:05:24 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:05:24 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:05:25 2025 - Game loop started
+[INFO] Tue Apr 15 22:05:39 2025 - Game loop ended
+[INFO] Tue Apr 15 22:05:39 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:05:39 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:05:43 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:05:43 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:05:43 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:05:43 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:05:43 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:05:43 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:05:44 2025 - Game loop started
+[INFO] Tue Apr 15 22:06:02 2025 - Game loop ended
+[INFO] Tue Apr 15 22:06:02 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:06:02 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:06:04 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:06:04 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:06:05 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:06:05 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:06:05 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:06:05 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:06:05 2025 - Game loop started
+[INFO] Tue Apr 15 22:06:34 2025 - Game loop ended
+[INFO] Tue Apr 15 22:06:34 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:06:34 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:12:58 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:12:58 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:12:58 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:12:58 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:12:58 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:12:58 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:12:59 2025 - Game loop started
+[INFO] Tue Apr 15 22:13:12 2025 - Game loop ended
+[INFO] Tue Apr 15 22:13:12 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:13:12 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:13:17 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:13:17 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:13:17 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:13:17 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:13:17 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:13:17 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:13:17 2025 - Game loop started
+[INFO] Tue Apr 15 22:13:41 2025 - Game loop ended
+[INFO] Tue Apr 15 22:13:41 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:13:41 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:27:44 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:27:44 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:27:44 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:27:44 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:27:44 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:27:44 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:27:45 2025 - Game loop started
+[INFO] Tue Apr 15 22:27:51 2025 - Player position: X=368.778 Y=100
+[INFO] Tue Apr 15 22:27:51 2025 - Bullet start position: X=456.922 Y=119.79
+[INFO] Tue Apr 15 22:27:51 2025 - Player rotation: -0.237836 radians
+[INFO] Tue Apr 15 22:27:55 2025 - Player position: X=1248.61 Y=347.691
+[INFO] Tue Apr 15 22:27:55 2025 - Bullet start position: X=1161.19 Y=370.468
+[INFO] Tue Apr 15 22:27:55 2025 - Player rotation: 2.42801 radians
+[INFO] Tue Apr 15 22:27:57 2025 - Player position: X=1476.79 Y=368.65
+[INFO] Tue Apr 15 22:27:57 2025 - Bullet start position: X=1565.47 Y=385.895
+[INFO] Tue Apr 15 22:27:57 2025 - Player rotation: -0.266625 radians
+[INFO] Tue Apr 15 22:28:00 2025 - Player position: X=2281.79 Y=570.29
+[INFO] Tue Apr 15 22:28:00 2025 - Bullet start position: X=2371.58 Y=580.227
+[INFO] Tue Apr 15 22:28:00 2025 - Player rotation: -0.34847 radians
+[INFO] Tue Apr 15 22:28:02 2025 - Player position: X=2646.33 Y=741.223
+[INFO] Tue Apr 15 22:28:02 2025 - Bullet start position: X=2570.99 Y=791.07
+[INFO] Tue Apr 15 22:28:02 2025 - Player rotation: 2.0984 radians
+[INFO] Tue Apr 15 22:30:12 2025 - Player position: X=2646.33 Y=741.223
+[INFO] Tue Apr 15 22:30:12 2025 - Bullet start position: X=2556.75 Y=729.513
+[INFO] Tue Apr 15 22:30:12 2025 - Player rotation: 2.81288 radians
+[INFO] Tue Apr 15 22:30:13 2025 - Player position: X=2646.33 Y=741.223
+[INFO] Tue Apr 15 22:30:13 2025 - Bullet start position: X=2557.05 Y=727.403
+[INFO] Tue Apr 15 22:30:13 2025 - Player rotation: 2.83648 radians
+[INFO] Tue Apr 15 22:30:18 2025 - Player position: X=2393.67 Y=866.179
+[INFO] Tue Apr 15 22:30:18 2025 - Bullet start position: X=2422.26 Y=780.484
+[INFO] Tue Apr 15 22:30:18 2025 - Player rotation: -1.70749 radians
+[INFO] Tue Apr 15 22:30:19 2025 - Player position: X=2634.49 Y=698.841
+[INFO] Tue Apr 15 22:30:19 2025 - Bullet start position: X=2594.74 Y=779.963
+[INFO] Tue Apr 15 22:30:19 2025 - Player rotation: 1.56775 radians
+[INFO] Tue Apr 15 22:30:20 2025 - Player position: X=2855.5 Y=583.347
+[INFO] Tue Apr 15 22:30:20 2025 - Bullet start position: X=2885.43 Y=498.11
+[INFO] Tue Apr 15 22:30:20 2025 - Player rotation: -1.69182 radians
+[INFO] Tue Apr 15 22:30:27 2025 - Player position: X=2855.5 Y=583.347
+[INFO] Tue Apr 15 22:30:27 2025 - Bullet start position: X=2912.94 Y=513.622
+[INFO] Tue Apr 15 22:30:27 2025 - Player rotation: -1.34039 radians
+[INFO] Tue Apr 15 22:30:31 2025 - Player position: X=2855.5 Y=583.347
+[INFO] Tue Apr 15 22:30:31 2025 - Bullet start position: X=2942.42 Y=558.73
+[INFO] Tue Apr 15 22:30:31 2025 - Player rotation: -0.73468 radians
+[INFO] Tue Apr 15 22:30:47 2025 - Player position: X=2855.5 Y=583.347
+[INFO] Tue Apr 15 22:30:47 2025 - Bullet start position: X=2899.8 Y=504.617
+[INFO] Tue Apr 15 22:30:47 2025 - Player rotation: -1.51694 radians
+[INFO] Tue Apr 15 22:30:49 2025 - Game loop ended
+[INFO] Tue Apr 15 22:30:49 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:30:49 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:30:53 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:30:53 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:30:53 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:30:53 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:30:53 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:30:53 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:30:54 2025 - Game loop started
+[INFO] Tue Apr 15 22:31:01 2025 - Game loop ended
+[INFO] Tue Apr 15 22:31:01 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:31:01 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:31:05 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:31:05 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:31:05 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:31:05 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:31:05 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:31:05 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:31:06 2025 - Game loop started
+[INFO] Tue Apr 15 22:31:25 2025 - Player position: X=405.679 Y=802.059
+[INFO] Tue Apr 15 22:31:25 2025 - Bullet start position: X=483.862 Y=756.801
+[INFO] Tue Apr 15 22:31:25 2025 - Player rotation: -0.983442 radians
+[INFO] Tue Apr 15 22:36:24 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:36:24 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:36:25 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:36:25 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:36:25 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:36:25 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:36:25 2025 - Game loop started
+[INFO] Tue Apr 15 22:36:36 2025 - Player position: X=380 Y=100
+[INFO] Tue Apr 15 22:36:36 2025 - Bullet start position: X=436.627 Y=170.387
+[INFO] Tue Apr 15 22:36:36 2025 - Player rotation: 0.434619 radians
+[INFO] Tue Apr 15 22:36:36 2025 - Created projectile: Start[436.627,170.387] Dir[0.907031,0.421065] Speed=600
+[INFO] Tue Apr 15 22:36:38 2025 - Projectile expired at position: X=1534.13 Y=679.876
+[INFO] Tue Apr 15 22:36:46 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:46 2025 - Bullet start position: X=699.765 Y=174.574
+[INFO] Tue Apr 15 22:36:46 2025 - Player rotation: 0.512389 radians
+[INFO] Tue Apr 15 22:36:46 2025 - Created projectile: Start[699.765,174.574] Dir[0.871576,0.490261] Speed=600
+[INFO] Tue Apr 15 22:36:47 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:47 2025 - Bullet start position: X=726.716 Y=145.679
+[INFO] Tue Apr 15 22:36:47 2025 - Player rotation: 0.0714315 radians
+[INFO] Tue Apr 15 22:36:47 2025 - Created projectile: Start[726.716,145.679] Dir[0.99745,0.0713708] Speed=600
+[INFO] Tue Apr 15 22:36:48 2025 - Projectile expired at position: X=1754.37 Y=767.789
+[INFO] Tue Apr 15 22:36:49 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:49 2025 - Bullet start position: X=688.202 Y=181.282
+[INFO] Tue Apr 15 22:36:49 2025 - Player rotation: 0.660501 radians
+[INFO] Tue Apr 15 22:36:49 2025 - Created projectile: Start[688.202,181.282] Dir[0.789685,0.613513] Speed=600
+[INFO] Tue Apr 15 22:36:49 2025 - Projectile expired at position: X=1933.63 Y=232.038
+[INFO] Tue Apr 15 22:36:50 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:50 2025 - Bullet start position: X=725.201 Y=148.171
+[INFO] Tue Apr 15 22:36:50 2025 - Player rotation: 0.103716 radians
+[INFO] Tue Apr 15 22:36:50 2025 - Created projectile: Start[725.201,148.171] Dir[0.994626,0.10353] Speed=600
+[INFO] Tue Apr 15 22:36:51 2025 - Projectile expired at position: X=1643.72 Y=923.633
+[INFO] Tue Apr 15 22:36:51 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:51 2025 - Bullet start position: X=694.142 Y=178.122
+[INFO] Tue Apr 15 22:36:51 2025 - Player rotation: 0.586 radians
+[INFO] Tue Apr 15 22:36:51 2025 - Created projectile: Start[694.142,178.122] Dir[0.833159,0.553033] Speed=600
+[INFO] Tue Apr 15 22:36:52 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:52 2025 - Bullet start position: X=725.993 Y=146.892
+[INFO] Tue Apr 15 22:36:52 2025 - Player rotation: 0.0870658 radians
+[INFO] Tue Apr 15 22:36:52 2025 - Created projectile: Start[725.993,146.892] Dir[0.996212,0.0869559] Speed=600
+[INFO] Tue Apr 15 22:36:52 2025 - Projectile expired at position: X=1928.7 Y=273.442
+[INFO] Tue Apr 15 22:36:53 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:53 2025 - Bullet start position: X=692.749 Y=178.915
+[INFO] Tue Apr 15 22:36:53 2025 - Player rotation: 0.603749 radians
+[INFO] Tue Apr 15 22:36:53 2025 - Created projectile: Start[692.749,178.915] Dir[0.823213,0.567733] Speed=600
+[INFO] Tue Apr 15 22:36:53 2025 - Projectile expired at position: X=1702.26 Y=847.292
+[INFO] Tue Apr 15 22:36:54 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:54 2025 - Bullet start position: X=692.864 Y=178.851
+[INFO] Tue Apr 15 22:36:54 2025 - Player rotation: 0.602287 radians
+[INFO] Tue Apr 15 22:36:54 2025 - Created projectile: Start[692.864,178.851] Dir[0.824042,0.566529] Speed=600
+[INFO] Tue Apr 15 22:36:54 2025 - Projectile expired at position: X=1931.41 Y=252.108
+[INFO] Tue Apr 15 22:36:55 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:55 2025 - Bullet start position: X=610.657 Y=181.901
+[INFO] Tue Apr 15 22:36:55 2025 - Player rotation: 1.54772 radians
+[INFO] Tue Apr 15 22:36:55 2025 - Created projectile: Start[610.657,181.901] Dir[0.0230707,0.999734] Speed=600
+[INFO] Tue Apr 15 22:36:55 2025 - Projectile expired at position: X=1688.84 Y=865.871
+[INFO] Tue Apr 15 22:36:55 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:55 2025 - Bullet start position: X=588.287 Y=167.096
+[INFO] Tue Apr 15 22:36:55 2025 - Player rotation: 1.84577 radians
+[INFO] Tue Apr 15 22:36:55 2025 - Created projectile: Start[588.287,167.096] Dir[-0.271518,0.962433] Speed=600
+[INFO] Tue Apr 15 22:36:56 2025 - Projectile expired at position: X=1689.96 Y=864.35
+[INFO] Tue Apr 15 22:36:56 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:56 2025 - Bullet start position: X=671.487 Y=187.437
+[INFO] Tue Apr 15 22:36:56 2025 - Player rotation: 0.857998 radians
+[INFO] Tue Apr 15 22:36:56 2025 - Created projectile: Start[671.487,187.437] Dir[0.653954,0.756535] Speed=600
+[INFO] Tue Apr 15 22:36:57 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:57 2025 - Bullet start position: X=729.239 Y=141.072
+[INFO] Tue Apr 15 22:36:57 2025 - Player rotation: 0.0132819 radians
+[INFO] Tue Apr 15 22:36:57 2025 - Created projectile: Start[729.239,141.072] Dir[0.999912,0.0132816] Speed=600
+[INFO] Tue Apr 15 22:36:57 2025 - Projectile expired at position: X=259.752 Y=1331.64
+[INFO] Tue Apr 15 22:36:58 2025 - Player position: X=648.778 Y=100
+[INFO] Tue Apr 15 22:36:58 2025 - Bullet start position: X=572.883 Y=50.9998
+[INFO] Tue Apr 15 22:36:58 2025 - Player rotation: -3.02699 radians
+[INFO] Tue Apr 15 22:36:58 2025 - Created projectile: Start[572.883,50.9998] Dir[-0.99344,-0.114353] Speed=600
+[INFO] Tue Apr 15 22:36:59 2025 - Projectile expired at position: X=1939.14 Y=157.143
+[INFO] Tue Apr 15 22:37:00 2025 - Projectile expired at position: X=-629.18 Y=-87.367
+[INFO] Tue Apr 15 22:37:00 2025 - Player position: X=941.307 Y=483.338
+[INFO] Tue Apr 15 22:37:00 2025 - Bullet start position: X=857.771 Y=448.947
+[INFO] Tue Apr 15 22:37:00 2025 - Player rotation: 3.07344 radians
+[INFO] Tue Apr 15 22:37:00 2025 - Created projectile: Start[857.771,448.947] Dir[-0.997678,0.068101] Speed=600
+[INFO] Tue Apr 15 22:37:05 2025 - Player position: X=2196.8 Y=462.41
+[INFO] Tue Apr 15 22:37:05 2025 - Bullet start position: X=2232.92 Y=379.608
+[INFO] Tue Apr 15 22:37:05 2025 - Player rotation: -1.61815 radians
+[INFO] Tue Apr 15 22:37:05 2025 - Created projectile: Start[2232.92,379.608] Dir[-0.0473403,-0.998879] Speed=600
+[INFO] Tue Apr 15 22:37:07 2025 - Projectile expired at position: X=2175.64 Y=-829.036
+[INFO] Tue Apr 15 22:37:08 2025 - Player position: X=3176.31 Y=441.587
+[INFO] Tue Apr 15 22:37:08 2025 - Bullet start position: X=3091.84 Y=409.576
+[INFO] Tue Apr 15 22:37:08 2025 - Player rotation: 3.04512 radians
+[INFO] Tue Apr 15 22:37:08 2025 - Created projectile: Start[3091.84,409.576] Dir[-0.99535,0.0963243] Speed=600
+[INFO] Tue Apr 15 22:37:10 2025 - Projectile expired at position: X=1887.45 Y=526.13
+[INFO] Tue Apr 15 22:37:12 2025 - Player position: X=3051.31 Y=441.42
+[INFO] Tue Apr 15 22:37:12 2025 - Bullet start position: X=2966.94 Y=409.129
+[INFO] Tue Apr 15 22:37:12 2025 - Player rotation: 3.04843 radians
+[INFO] Tue Apr 15 22:37:12 2025 - Created projectile: Start[2966.94,409.129] Dir[-0.995663,0.0930292] Speed=600
+[INFO] Tue Apr 15 22:37:14 2025 - Player position: X=3051.31 Y=441.42
+[INFO] Tue Apr 15 22:37:14 2025 - Bullet start position: X=2961.74 Y=453.127
+[INFO] Tue Apr 15 22:37:14 2025 - Player rotation: 2.55294 radians
+[INFO] Tue Apr 15 22:37:14 2025 - Created projectile: Start[2961.74,453.127] Dir[-0.83169,0.555241] Speed=600
+[INFO] Tue Apr 15 22:37:14 2025 - Player position: X=3051.31 Y=441.42
+[INFO] Tue Apr 15 22:37:14 2025 - Bullet start position: X=2961.74 Y=453.127
+[INFO] Tue Apr 15 22:37:14 2025 - Player rotation: 2.55294 radians
+[INFO] Tue Apr 15 22:37:14 2025 - Created projectile: Start[2961.74,453.127] Dir[-0.83169,0.555241] Speed=600
+[INFO] Tue Apr 15 22:37:16 2025 - Projectile expired at position: X=1955.39 Y=1124.97
+[INFO] Tue Apr 15 22:37:16 2025 - Projectile expired at position: X=1955.39 Y=1124.97
+[INFO] Tue Apr 15 22:37:21 2025 - Player position: X=3051.31 Y=441.42
+[INFO] Tue Apr 15 22:37:21 2025 - Bullet start position: X=3027.69 Y=528.616
+[INFO] Tue Apr 15 22:37:21 2025 - Player rotation: 1.37664 radians
+[INFO] Tue Apr 15 22:37:21 2025 - Created projectile: Start[3027.69,528.616] Dir[0.192935,0.981212] Speed=600
+[INFO] Tue Apr 15 22:37:23 2025 - Projectile expired at position: X=3261.16 Y=1715.88
+[INFO] Tue Apr 15 22:37:24 2025 - Player position: X=3051.31 Y=441.42
+[INFO] Tue Apr 15 22:37:24 2025 - Bullet start position: X=3061.2 Y=531.216
+[INFO] Tue Apr 15 22:37:24 2025 - Player rotation: 1.00247 radians
+[INFO] Tue Apr 15 22:37:24 2025 - Created projectile: Start[3061.2,531.216] Dir[0.538225,0.842801] Speed=600
+[INFO] Tue Apr 15 22:37:26 2025 - Projectile expired at position: X=3712.46 Y=1551.01
+[INFO] Tue Apr 15 22:37:28 2025 - Game loop ended
+[INFO] Tue Apr 15 22:37:28 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:37:28 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:37:31 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:37:31 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:37:31 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:37:31 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:37:31 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:37:31 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:37:32 2025 - Game loop started
+[INFO] Tue Apr 15 22:37:36 2025 - Player position: X=180.205 Y=693.827
+[INFO] Tue Apr 15 22:37:36 2025 - Bullet start position: X=265.024 Y=724.919
+[INFO] Tue Apr 15 22:37:36 2025 - Player rotation: -0.107336 radians
+[INFO] Tue Apr 15 22:37:36 2025 - Created projectile: Start[265.024,724.919] Dir[0.994245,-0.10713] Speed=600
+[INFO] Tue Apr 15 22:37:38 2025 - Projectile expired at position: X=1468.06 Y=595.293
+[INFO] Tue Apr 15 22:37:40 2025 - Player position: X=515.429 Y=1330.43
+[INFO] Tue Apr 15 22:37:40 2025 - Bullet start position: X=581.524 Y=1268.85
+[INFO] Tue Apr 15 22:37:40 2025 - Player rotation: -1.20877 radians
+[INFO] Tue Apr 15 22:37:40 2025 - Created projectile: Start[581.524,1268.85] Dir[0.354174,-0.935179] Speed=600
+[INFO] Tue Apr 15 22:37:42 2025 - Projectile expired at position: X=1010.08 Y=137.283
+[INFO] Tue Apr 15 22:37:43 2025 - Player position: X=913.586 Y=1188.24
+[INFO] Tue Apr 15 22:37:43 2025 - Bullet start position: X=992.323 Y=1143.95
+[INFO] Tue Apr 15 22:37:43 2025 - Player rotation: -0.97107 radians
+[INFO] Tue Apr 15 22:37:43 2025 - Created projectile: Start[992.323,1143.95] Dir[0.564416,-0.82549] Speed=600
+[INFO] Tue Apr 15 22:37:46 2025 - Player position: X=1497.36 Y=1188.24
+[INFO] Tue Apr 15 22:37:46 2025 - Bullet start position: X=1545.05 Y=1264.96
+[INFO] Tue Apr 15 22:37:46 2025 - Player rotation: 0.556038 radians
+[INFO] Tue Apr 15 22:37:46 2025 - Created projectile: Start[1545.05,1264.96] Dir[0.849353,0.527825] Speed=600
+[INFO] Tue Apr 15 22:37:48 2025 - Projectile expired at position: X=2572.76 Y=1903.63
+[INFO] Tue Apr 15 22:37:53 2025 - Player position: X=1752.75 Y=569.985
+[INFO] Tue Apr 15 22:37:53 2025 - Bullet start position: X=1671.18 Y=608.816
+[INFO] Tue Apr 15 22:37:53 2025 - Player rotation: 2.23857 radians
+[INFO] Tue Apr 15 22:37:53 2025 - Created projectile: Start[1671.18,608.816] Dir[-0.619243,0.7852] Speed=600
+[INFO] Tue Apr 15 22:37:57 2025 - Player position: X=2195.92 Y=492.026
+[INFO] Tue Apr 15 22:37:57 2025 - Bullet start position: X=2107.12 Y=475.414
+[INFO] Tue Apr 15 22:37:57 2025 - Player rotation: 2.86783 radians
+[INFO] Tue Apr 15 22:37:57 2025 - Created projectile: Start[2107.12,475.414] Dir[-0.962761,0.270354] Speed=600
+[INFO] Tue Apr 15 22:37:59 2025 - Player position: X=2030.73 Y=251.981
+[INFO] Tue Apr 15 22:37:59 2025 - Bullet start position: X=1942.6 Y=271.815
+[INFO] Tue Apr 15 22:37:59 2025 - Player rotation: 2.46154 radians
+[INFO] Tue Apr 15 22:37:59 2025 - Created projectile: Start[1942.6,271.815] Dir[-0.777537,0.628837] Speed=600
+[INFO] Tue Apr 15 22:38:01 2025 - Player position: X=1493.89 Y=212.118
+[INFO] Tue Apr 15 22:38:01 2025 - Bullet start position: X=1519.27 Y=298.817
+[INFO] Tue Apr 15 22:38:01 2025 - Player rotation: 0.82729 radians
+[INFO] Tue Apr 15 22:38:01 2025 - Created projectile: Start[1519.27,298.817] Dir[0.676873,0.7361] Speed=600
+[INFO] Tue Apr 15 22:38:04 2025 - Player position: X=1045.41 Y=621.216
+[INFO] Tue Apr 15 22:38:04 2025 - Bullet start position: X=986.394 Y=552.822
+[INFO] Tue Apr 15 22:38:04 2025 - Player rotation: -2.74145 radians
+[INFO] Tue Apr 15 22:38:04 2025 - Created projectile: Start[986.394,552.822] Dir[-0.921006,-0.389549] Speed=600
+[INFO] Tue Apr 15 22:38:05 2025 - Player position: X=1262.64 Y=1021.09
+[INFO] Tue Apr 15 22:38:05 2025 - Bullet start position: X=1263.61 Y=930.757
+[INFO] Tue Apr 15 22:38:05 2025 - Player rotation: -2.01878 radians
+[INFO] Tue Apr 15 22:38:05 2025 - Created projectile: Start[1263.61,930.757] Dir[-0.433145,-0.901324] Speed=600
+[INFO] Tue Apr 15 22:38:08 2025 - Player position: X=1957.68 Y=1495.11
+[INFO] Tue Apr 15 22:38:08 2025 - Bullet start position: X=1872.64 Y=1464.65
+[INFO] Tue Apr 15 22:38:08 2025 - Player rotation: 3.02687 radians
+[INFO] Tue Apr 15 22:38:08 2025 - Created projectile: Start[1872.64,1464.65] Dir[-0.993427,0.114469] Speed=600
+[INFO] Tue Apr 15 22:38:09 2025 - Player position: X=2135.65 Y=1511.84
+[INFO] Tue Apr 15 22:38:09 2025 - Bullet start position: X=2225.78 Y=1505.7
+[INFO] Tue Apr 15 22:38:09 2025 - Player rotation: -0.526764 radians
+[INFO] Tue Apr 15 22:38:09 2025 - Created projectile: Start[2225.78,1505.7] Dir[0.864438,-0.502739] Speed=600
+[INFO] Tue Apr 15 22:38:09 2025 - Game loop ended
+[INFO] Tue Apr 15 22:38:09 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:38:09 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:39:41 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:39:41 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:39:41 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:39:41 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:39:41 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:39:41 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:39:42 2025 - Game loop started
+[INFO] Tue Apr 15 22:39:47 2025 - Player position: X=453.048 Y=884.509
+[INFO] Tue Apr 15 22:39:47 2025 - Bullet start position: X=399.7 Y=811.606
+[INFO] Tue Apr 15 22:39:47 2025 - Player rotation: -2.66123 radians
+[INFO] Tue Apr 15 22:39:47 2025 - Created projectile: Start[399.7,811.606] Dir[-0.886827,-0.462101] Speed=600
+[INFO] Tue Apr 15 22:39:49 2025 - Player position: X=453.048 Y=884.509
+[INFO] Tue Apr 15 22:39:49 2025 - Bullet start position: X=505.484 Y=958.072
+[INFO] Tue Apr 15 22:39:49 2025 - Player rotation: 0.492836 radians
+[INFO] Tue Apr 15 22:39:49 2025 - Created projectile: Start[505.484,958.072] Dir[0.880994,0.473127] Speed=600
+[INFO] Tue Apr 15 22:39:49 2025 - Projectile expired at position: X=-673.362 Y=252.463
+[INFO] Tue Apr 15 22:39:50 2025 - Player position: X=453.048 Y=884.509
+[INFO] Tue Apr 15 22:39:50 2025 - Bullet start position: X=363.507 Y=872.539
+[INFO] Tue Apr 15 22:39:50 2025 - Player rotation: 2.81579 radians
+[INFO] Tue Apr 15 22:39:50 2025 - Created projectile: Start[363.507,872.539] Dir[-0.947395,0.320066] Speed=600
+[INFO] Tue Apr 15 22:39:51 2025 - Projectile expired at position: X=1571.49 Y=1530.56
+[INFO] Tue Apr 15 22:39:52 2025 - Projectile expired at position: X=-782.841 Y=1259.82
+[INFO] Tue Apr 15 22:39:58 2025 - Player position: X=453.048 Y=884.509
+[INFO] Tue Apr 15 22:39:58 2025 - Bullet start position: X=362.747 Y=887.088
+[INFO] Tue Apr 15 22:39:58 2025 - Player rotation: 2.65435 radians
+[INFO] Tue Apr 15 22:39:58 2025 - Created projectile: Start[362.747,887.088] Dir[-0.883627,0.468191] Speed=600
+[INFO] Tue Apr 15 22:40:00 2025 - Projectile expired at position: X=-706.443 Y=1453.6
+[INFO] Tue Apr 15 22:40:05 2025 - Player position: X=453.048 Y=884.509
+[INFO] Tue Apr 15 22:40:05 2025 - Bullet start position: X=422.131 Y=799.627
+[INFO] Tue Apr 15 22:40:05 2025 - Player rotation: -2.3788 radians
+[INFO] Tue Apr 15 22:40:05 2025 - Created projectile: Start[422.131,799.627] Dir[-0.722909,-0.690943] Speed=600
+[INFO] Tue Apr 15 22:40:07 2025 - Projectile expired at position: X=-452.59 Y=-36.4142
+[INFO] Tue Apr 15 22:40:09 2025 - Player position: X=453.048 Y=884.509
+[INFO] Tue Apr 15 22:40:09 2025 - Bullet start position: X=376.681 Y=836.25
+[INFO] Tue Apr 15 22:40:09 2025 - Player rotation: -3.03672 radians
+[INFO] Tue Apr 15 22:40:09 2025 - Created projectile: Start[376.681,836.25] Dir[-0.994505,-0.104685] Speed=600
+[INFO] Tue Apr 15 22:40:11 2025 - Projectile expired at position: X=-826.672 Y=709.578
+[INFO] Tue Apr 15 22:40:11 2025 - Player position: X=453.048 Y=884.509
+[INFO] Tue Apr 15 22:40:11 2025 - Bullet start position: X=376.681 Y=836.25
+[INFO] Tue Apr 15 22:40:11 2025 - Player rotation: -3.03672 radians
+[INFO] Tue Apr 15 22:40:11 2025 - Created projectile: Start[376.681,836.25] Dir[-0.994505,-0.104685] Speed=600
+[INFO] Tue Apr 15 22:40:13 2025 - Projectile expired at position: X=-826.672 Y=709.578
+[INFO] Tue Apr 15 22:40:13 2025 - Player position: X=453.048 Y=884.509
+[INFO] Tue Apr 15 22:40:13 2025 - Bullet start position: X=364.694 Y=865.682
+[INFO] Tue Apr 15 22:40:13 2025 - Player rotation: 2.89285 radians
+[INFO] Tue Apr 15 22:40:13 2025 - Created projectile: Start[364.694,865.682] Dir[-0.969222,0.246187] Speed=600
+[INFO] Tue Apr 15 22:40:15 2025 - Projectile expired at position: X=-808.065 Y=1163.57
+[INFO] Tue Apr 15 22:40:16 2025 - Game loop ended
+[INFO] Tue Apr 15 22:40:16 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:40:16 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:44:34 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:44:34 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:44:34 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:44:34 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:44:34 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:44:34 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:44:35 2025 - Game loop started
+[INFO] Tue Apr 15 22:44:42 2025 - Player position: X=804.467 Y=214.661
+[INFO] Tue Apr 15 22:44:42 2025 - Bullet start position: X=739.683 Y=277.622
+[INFO] Tue Apr 15 22:44:42 2025 - Player rotation: 1.91178 radians
+[INFO] Tue Apr 15 22:44:42 2025 - Created projectile: Start[739.683,277.622] Dir[-0.33441,0.942428] Speed=600
+[INFO] Tue Apr 15 22:44:52 2025 - Player position: X=1844.94 Y=522.343
+[INFO] Tue Apr 15 22:44:52 2025 - Bullet start position: X=1754.97 Y=530.417
+[INFO] Tue Apr 15 22:44:52 2025 - Player rotation: 2.5934 radians
+[INFO] Tue Apr 15 22:44:52 2025 - Created projectile: Start[1754.97,530.417] Dir[-0.853468,0.521145] Speed=600
+[INFO] Tue Apr 15 22:44:53 2025 - Game loop ended
+[INFO] Tue Apr 15 22:44:53 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:44:53 2025 - Engine shutdown completed
+[INFO] Tue Apr 15 22:45:18 2025 - Engine initialization started
+[INFO] Tue Apr 15 22:45:18 2025 - Allegro library initialized
+[INFO] Tue Apr 15 22:45:18 2025 - Display initialized: 1600x900 windowed
+[INFO] Tue Apr 15 22:45:18 2025 - Input devices initialized
+[INFO] Tue Apr 15 22:45:18 2025 - Timers initialized at 60 FPS
+[INFO] Tue Apr 15 22:45:18 2025 - Engine initialized successfully
+[INFO] Tue Apr 15 22:45:19 2025 - Game loop started
+[INFO] Tue Apr 15 22:45:46 2025 - Player position: X=1949.56 Y=549.152
+[INFO] Tue Apr 15 22:45:46 2025 - Bullet start position: X=1861.77 Y=527.843
+[INFO] Tue Apr 15 22:45:46 2025 - Player rotation: 2.92103 radians
+[INFO] Tue Apr 15 22:45:46 2025 - Created projectile: Start[1861.77,527.843] Dir[-0.975773,0.218783] Speed=600
+[INFO] Tue Apr 15 22:46:08 2025 - Player position: X=2412.23 Y=477.636
+[INFO] Tue Apr 15 22:46:08 2025 - Bullet start position: X=2363 Y=401.888
+[INFO] Tue Apr 15 22:46:08 2025 - Player rotation: -2.60578 radians
+[INFO] Tue Apr 15 22:46:08 2025 - Created projectile: Start[2363,401.888] Dir[-0.859855,-0.510539] Speed=600
+[INFO] Tue Apr 15 22:46:09 2025 - Player position: X=2196.85 Y=347.677
+[INFO] Tue Apr 15 22:46:09 2025 - Bullet start position: X=2147.62 Y=271.929
+[INFO] Tue Apr 15 22:46:09 2025 - Player rotation: -2.60578 radians
+[INFO] Tue Apr 15 22:46:09 2025 - Created projectile: Start[2147.62,271.929] Dir[-0.859855,-0.510539] Speed=600
+[INFO] Tue Apr 15 22:46:10 2025 - Player position: X=1941.51 Y=301.089
+[INFO] Tue Apr 15 22:46:10 2025 - Bullet start position: X=1851.19 Y=299.464
+[INFO] Tue Apr 15 22:46:10 2025 - Player rotation: 2.70089 radians
+[INFO] Tue Apr 15 22:46:10 2025 - Created projectile: Start[1851.19,299.464] Dir[-0.904451,0.426577] Speed=600
+[INFO] Tue Apr 15 22:46:10 2025 - Projectile expired at position: X=1322.58 Y=-215.864
+[INFO] Tue Apr 15 22:46:11 2025 - Player position: X=1696.98 Y=286.568
+[INFO] Tue Apr 15 22:46:11 2025 - Bullet start position: X=1606.67 Y=284.604
+[INFO] Tue Apr 15 22:46:11 2025 - Player rotation: 2.70464 radians
+[INFO] Tue Apr 15 22:46:11 2025 - Created projectile: Start[1606.67,284.604] Dir[-0.906044,0.423182] Speed=600
+[INFO] Tue Apr 15 22:46:11 2025 - Projectile expired at position: X=1107.2 Y=-345.823
+[INFO] Tue Apr 15 22:46:12 2025 - Player position: X=1452.04 Y=281.617
+[INFO] Tue Apr 15 22:46:12 2025 - Bullet start position: X=1361.74 Y=284.267
+[INFO] Tue Apr 15 22:46:12 2025 - Player rotation: 2.65356 radians
+[INFO] Tue Apr 15 22:46:12 2025 - Created projectile: Start[1361.74,284.267] Dir[-0.883257,0.468889] Speed=600
+[INFO] Tue Apr 15 22:46:12 2025 - Projectile expired at position: X=756.798 Y=815.621
+[INFO] Tue Apr 15 22:46:13 2025 - Player position: X=1187.04 Y=279.857
+[INFO] Tue Apr 15 22:46:13 2025 - Bullet start position: X=1096.76 Y=282.957
+[INFO] Tue Apr 15 22:46:13 2025 - Player rotation: 2.64858 radians
+[INFO] Tue Apr 15 22:46:13 2025 - Created projectile: Start[1096.76,282.957] Dir[-0.88091,0.473284] Speed=600
+[INFO] Tue Apr 15 22:46:13 2025 - Projectile expired at position: X=510.354 Y=796.653
+[INFO] Tue Apr 15 22:46:14 2025 - Player position: X=927.043 Y=279.314
+[INFO] Tue Apr 15 22:46:14 2025 - Bullet start position: X=836.803 Y=283.517
+[INFO] Tue Apr 15 22:46:14 2025 - Player rotation: 2.63635 radians
+[INFO] Tue Apr 15 22:46:14 2025 - Created projectile: Start[836.803,283.517] Dir[-0.875059,0.484017] Speed=600
+[INFO] Tue Apr 15 22:46:15 2025 - Player position: X=784.265 Y=279.025
+[INFO] Tue Apr 15 22:46:15 2025 - Bullet start position: X=834.602 Y=354.039
+[INFO] Tue Apr 15 22:46:15 2025 - Player rotation: 0.521082 radians
+[INFO] Tue Apr 15 22:46:15 2025 - Created projectile: Start[834.602,354.039] Dir[0.867281,0.497819] Speed=600
+[INFO] Tue Apr 15 22:46:16 2025 - Player position: X=991.932 Y=278.803
+[INFO] Tue Apr 15 22:46:16 2025 - Bullet start position: X=1042.27 Y=353.818
+[INFO] Tue Apr 15 22:46:16 2025 - Player rotation: 0.521082 radians
+[INFO] Tue Apr 15 22:46:16 2025 - Created projectile: Start[1042.27,353.818] Dir[0.867281,0.497819] Speed=600
+[INFO] Tue Apr 15 22:46:17 2025 - Projectile expired at position: X=1884.02 Y=956.402
+[INFO] Tue Apr 15 22:46:17 2025 - Player position: X=1401.93 Y=278.696
+[INFO] Tue Apr 15 22:46:17 2025 - Bullet start position: X=1319.44 Y=315.516
+[INFO] Tue Apr 15 22:46:17 2025 - Player rotation: 2.26309 radians
+[INFO] Tue Apr 15 22:46:17 2025 - Created projectile: Start[1319.44,315.516] Dir[-0.638308,0.769781] Speed=600
+[INFO] Tue Apr 15 22:46:18 2025 - Projectile expired at position: X=2091.68 Y=956.18
+[INFO] Tue Apr 15 22:46:18 2025 - Player position: X=1761.9 Y=279.814
+[INFO] Tue Apr 15 22:46:18 2025 - Bullet start position: X=1671.57 Y=279.112
+[INFO] Tue Apr 15 22:46:18 2025 - Player rotation: 2.69067 radians
+[INFO] Tue Apr 15 22:46:18 2025 - Created projectile: Start[1671.57,279.112] Dir[-0.900045,0.435797] Speed=600
+[INFO] Tue Apr 15 22:46:19 2025 - Player position: X=2112.47 Y=332.543
+[INFO] Tue Apr 15 22:46:19 2025 - Bullet start position: X=2036.74 Y=283.29
+[INFO] Tue Apr 15 22:46:19 2025 - Player rotation: -3.02365 radians
+[INFO] Tue Apr 15 22:46:19 2025 - Created projectile: Start[2036.74,283.29] Dir[-0.993053,-0.117669] Speed=600
+[INFO] Tue Apr 15 22:46:20 2025 - Player position: X=2357.21 Y=343.325
+[INFO] Tue Apr 15 22:46:20 2025 - Bullet start position: X=2281.68 Y=392.889
+[INFO] Tue Apr 15 22:46:20 2025 - Player rotation: 2.10214 radians
+[INFO] Tue Apr 15 22:46:20 2025 - Created projectile: Start[2281.68,392.889] Dir[-0.50669,0.862128] Speed=600
+[INFO] Tue Apr 15 22:46:20 2025 - Projectile expired at position: X=582.509 Y=806.426
+[INFO] Tue Apr 15 22:46:21 2025 - Player position: X=2607.18 Y=347.04
+[INFO] Tue Apr 15 22:46:21 2025 - Bullet start position: X=2566.94 Y=427.921
+[INFO] Tue Apr 15 22:46:21 2025 - Player rotation: 1.57376 radians
+[INFO] Tue Apr 15 22:46:21 2025 - Created projectile: Start[2566.94,427.921] Dir[-0.0029674,0.999996] Speed=600
+[INFO] Tue Apr 15 22:46:21 2025 - Projectile expired at position: X=835.144 Y=140.911
+[INFO] Tue Apr 15 22:46:22 2025 - Projectile expired at position: X=1668.59 Y=1436.07
+[INFO] Tue Apr 15 22:46:23 2025 - Projectile expired at position: X=2563.34 Y=1637.92
+[INFO] Tue Apr 15 22:46:23 2025 - Player position: X=3337.18 Y=348.823
+[INFO] Tue Apr 15 22:46:23 2025 - Bullet start position: X=3247.55 Y=360.123
+[INFO] Tue Apr 15 22:46:23 2025 - Player rotation: 2.55748 radians
+[INFO] Tue Apr 15 22:46:23 2025 - Created projectile: Start[3247.55,360.123] Dir[-0.834201,0.551461] Speed=600
+[INFO] Tue Apr 15 22:46:25 2025 - Projectile expired at position: X=2238.16 Y=1027.39
+[INFO] Tue Apr 15 22:46:27 2025 - Game loop ended
+[INFO] Tue Apr 15 22:46:27 2025 - Engine shutdown initiated
+[INFO] Tue Apr 15 22:46:27 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 00:46:57 2025 - Engine initialization started
+[INFO] Wed Apr 16 00:46:57 2025 - Allegro library initialized
+[INFO] Wed Apr 16 00:46:58 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 00:46:58 2025 - Input devices initialized
+[INFO] Wed Apr 16 00:46:58 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 00:46:58 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 00:46:58 2025 - Game loop started
+[INFO] Wed Apr 16 00:47:18 2025 - Game loop ended
+[INFO] Wed Apr 16 00:47:18 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 00:47:18 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 01:01:18 2025 - Engine initialization started
+[INFO] Wed Apr 16 01:01:18 2025 - Allegro library initialized
+[INFO] Wed Apr 16 01:01:19 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 01:01:19 2025 - Input devices initialized
+[INFO] Wed Apr 16 01:01:19 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 01:01:19 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 01:01:19 2025 - Game loop started
+[INFO] Wed Apr 16 01:01:45 2025 - Game loop ended
+[INFO] Wed Apr 16 01:01:45 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 01:01:45 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 01:27:30 2025 - Engine initialization started
+[INFO] Wed Apr 16 01:27:30 2025 - Allegro library initialized
+[INFO] Wed Apr 16 01:27:30 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 01:27:30 2025 - Input devices initialized
+[INFO] Wed Apr 16 01:27:30 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 01:27:30 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 01:27:31 2025 - Game loop started
+[INFO] Wed Apr 16 01:27:55 2025 - Game loop ended
+[INFO] Wed Apr 16 01:27:55 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 01:27:55 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 01:39:38 2025 - Engine initialization started
+[INFO] Wed Apr 16 01:39:38 2025 - Allegro library initialized
+[INFO] Wed Apr 16 01:39:38 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 01:39:38 2025 - Input devices initialized
+[INFO] Wed Apr 16 01:39:38 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 01:39:38 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 01:39:58 2025 - Engine initialization started
+[INFO] Wed Apr 16 01:39:58 2025 - Allegro library initialized
+[INFO] Wed Apr 16 01:39:59 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 01:39:59 2025 - Input devices initialized
+[INFO] Wed Apr 16 01:39:59 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 01:39:59 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 01:39:59 2025 - Game loop started
+[INFO] Wed Apr 16 01:40:12 2025 - Game loop ended
+[INFO] Wed Apr 16 01:40:12 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 01:40:12 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 01:49:04 2025 - Engine initialization started
+[INFO] Wed Apr 16 01:49:04 2025 - Allegro library initialized
+[INFO] Wed Apr 16 01:49:04 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 01:49:04 2025 - Input devices initialized
+[INFO] Wed Apr 16 01:49:04 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 01:49:04 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 01:49:20 2025 - Engine initialization started
+[INFO] Wed Apr 16 01:49:20 2025 - Allegro library initialized
+[INFO] Wed Apr 16 01:49:20 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 01:49:20 2025 - Input devices initialized
+[INFO] Wed Apr 16 01:49:20 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 01:49:20 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 01:49:20 2025 - Game loop started
+[INFO] Wed Apr 16 01:49:26 2025 - Game loop ended
+[INFO] Wed Apr 16 01:49:26 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 01:49:26 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 14:54:58 2025 - Engine initialization started
+[INFO] Wed Apr 16 14:54:58 2025 - Allegro library initialized
+[INFO] Wed Apr 16 14:54:58 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 14:54:58 2025 - Input devices initialized
+[INFO] Wed Apr 16 14:54:58 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 14:54:58 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 14:54:58 2025 - Game loop started
+[INFO] Wed Apr 16 14:55:14 2025 - Game loop ended
+[INFO] Wed Apr 16 14:55:14 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 14:55:14 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 14:57:27 2025 - Engine initialization started
+[INFO] Wed Apr 16 14:57:27 2025 - Allegro library initialized
+[INFO] Wed Apr 16 14:57:27 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 14:57:27 2025 - Input devices initialized
+[INFO] Wed Apr 16 14:57:27 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 14:57:27 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 14:57:28 2025 - Game loop started
+[INFO] Wed Apr 16 14:57:49 2025 - Game loop ended
+[INFO] Wed Apr 16 14:57:49 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 14:57:49 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 15:18:48 2025 - Engine initialization started
+[INFO] Wed Apr 16 15:18:48 2025 - Allegro library initialized
+[INFO] Wed Apr 16 15:18:49 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 15:18:49 2025 - Input devices initialized
+[INFO] Wed Apr 16 15:18:49 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 15:18:49 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 15:18:49 2025 - Game loop started
+[INFO] Wed Apr 16 15:18:52 2025 - Game loop ended
+[INFO] Wed Apr 16 15:18:52 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 15:18:52 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 15:31:05 2025 - Engine initialization started
+[INFO] Wed Apr 16 15:31:05 2025 - Allegro library initialized
+[INFO] Wed Apr 16 15:31:06 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 15:31:06 2025 - Input devices initialized
+[INFO] Wed Apr 16 15:31:06 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 15:31:06 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 15:31:06 2025 - Game loop started
+[INFO] Wed Apr 16 15:31:16 2025 - Game loop ended
+[INFO] Wed Apr 16 15:31:16 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 15:31:16 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 15:55:30 2025 - Engine initialization started
+[INFO] Wed Apr 16 15:55:30 2025 - Allegro library initialized
+[INFO] Wed Apr 16 15:55:30 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 15:55:30 2025 - Input devices initialized
+[INFO] Wed Apr 16 15:55:30 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 15:55:30 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 15:55:31 2025 - Game loop started
+[INFO] Wed Apr 16 15:56:07 2025 - Game loop ended
+[INFO] Wed Apr 16 15:56:07 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 15:56:08 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 15:56:12 2025 - Engine initialization started
+[INFO] Wed Apr 16 15:56:12 2025 - Allegro library initialized
+[INFO] Wed Apr 16 15:56:12 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 15:56:12 2025 - Input devices initialized
+[INFO] Wed Apr 16 15:56:12 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 15:56:12 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 15:56:12 2025 - Game loop started
+[INFO] Wed Apr 16 15:56:30 2025 - Game loop ended
+[INFO] Wed Apr 16 15:56:30 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 15:56:30 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 15:56:40 2025 - Engine initialization started
+[INFO] Wed Apr 16 15:56:40 2025 - Allegro library initialized
+[INFO] Wed Apr 16 15:56:40 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 15:56:40 2025 - Input devices initialized
+[INFO] Wed Apr 16 15:56:40 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 15:56:40 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 15:56:41 2025 - Game loop started
+[INFO] Wed Apr 16 15:56:48 2025 - Game loop ended
+[INFO] Wed Apr 16 15:56:48 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 15:56:48 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:06:22 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:06:22 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:06:22 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:06:22 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:06:22 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:06:22 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:06:23 2025 - Game loop started
+[INFO] Wed Apr 16 16:06:52 2025 - Game loop ended
+[INFO] Wed Apr 16 16:06:52 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:06:52 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:23:24 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:23:24 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:23:24 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:23:24 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:23:24 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:23:24 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:23:25 2025 - Game loop started
+[INFO] Wed Apr 16 16:24:25 2025 - Game loop ended
+[INFO] Wed Apr 16 16:24:25 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:24:25 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:29:22 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:29:22 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:29:22 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:29:22 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:29:22 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:29:22 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:29:22 2025 - Game loop started
+[INFO] Wed Apr 16 16:29:50 2025 - Game loop ended
+[INFO] Wed Apr 16 16:29:50 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:29:50 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:45:15 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:45:15 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:45:15 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:45:15 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:45:15 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:45:15 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:45:15 2025 - Game loop started
+[INFO] Wed Apr 16 16:45:29 2025 - Game loop ended
+[INFO] Wed Apr 16 16:45:29 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:45:29 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:45:56 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:45:56 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:45:56 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:45:56 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:45:56 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:45:56 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:45:56 2025 - Game loop started
+[INFO] Wed Apr 16 16:46:00 2025 - Game loop ended
+[INFO] Wed Apr 16 16:46:00 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:46:00 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:48:00 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:48:00 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:48:00 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:48:00 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:48:00 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:48:00 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:48:00 2025 - Game loop started
+[INFO] Wed Apr 16 16:48:03 2025 - Game loop ended
+[INFO] Wed Apr 16 16:48:03 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:48:03 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:48:41 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:48:41 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:48:41 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:48:41 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:48:41 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:48:41 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:48:42 2025 - Game loop started
+[INFO] Wed Apr 16 16:49:12 2025 - Game loop ended
+[INFO] Wed Apr 16 16:49:12 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:49:12 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:53:52 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:53:52 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:53:52 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:53:52 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:53:52 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:53:52 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:53:52 2025 - Game loop started
+[INFO] Wed Apr 16 16:53:55 2025 - Game loop ended
+[INFO] Wed Apr 16 16:53:55 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:53:55 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:56:50 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:56:50 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:56:50 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:56:50 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:56:50 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:56:50 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:56:50 2025 - Game loop started
+[INFO] Wed Apr 16 16:57:11 2025 - Game loop ended
+[INFO] Wed Apr 16 16:57:11 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:57:11 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 16:57:50 2025 - Engine initialization started
+[INFO] Wed Apr 16 16:57:50 2025 - Allegro library initialized
+[INFO] Wed Apr 16 16:57:51 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 16:57:51 2025 - Input devices initialized
+[INFO] Wed Apr 16 16:57:51 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 16:57:51 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 16:57:51 2025 - Game loop started
+[INFO] Wed Apr 16 16:58:26 2025 - Game loop ended
+[INFO] Wed Apr 16 16:58:26 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 16:58:26 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 17:02:32 2025 - Engine initialization started
+[INFO] Wed Apr 16 17:02:32 2025 - Allegro library initialized
+[INFO] Wed Apr 16 17:02:32 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 17:02:32 2025 - Input devices initialized
+[INFO] Wed Apr 16 17:02:32 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 17:02:32 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 17:02:32 2025 - Game loop started
+[INFO] Wed Apr 16 17:03:14 2025 - Game loop ended
+[INFO] Wed Apr 16 17:03:14 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 17:03:14 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 17:11:52 2025 - Engine initialization started
+[INFO] Wed Apr 16 17:11:52 2025 - Allegro library initialized
+[INFO] Wed Apr 16 17:11:53 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 17:11:53 2025 - Input devices initialized
+[INFO] Wed Apr 16 17:11:53 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 17:11:53 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 17:11:53 2025 - Game loop started
+[INFO] Wed Apr 16 17:15:53 2025 - Game loop ended
+[INFO] Wed Apr 16 17:15:53 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 17:15:53 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 17:23:14 2025 - Engine initialization started
+[INFO] Wed Apr 16 17:23:14 2025 - Allegro library initialized
+[INFO] Wed Apr 16 17:23:14 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 17:23:14 2025 - Input devices initialized
+[INFO] Wed Apr 16 17:23:14 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 17:23:14 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 17:23:14 2025 - Game loop started
+[INFO] Wed Apr 16 17:23:27 2025 - Game loop ended
+[INFO] Wed Apr 16 17:23:27 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 17:23:27 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 17:23:49 2025 - Engine initialization started
+[INFO] Wed Apr 16 17:23:49 2025 - Allegro library initialized
+[INFO] Wed Apr 16 17:23:50 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 17:23:50 2025 - Input devices initialized
+[INFO] Wed Apr 16 17:23:50 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 17:23:50 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 17:23:50 2025 - Game loop started
+[INFO] Wed Apr 16 17:23:55 2025 - Game loop ended
+[INFO] Wed Apr 16 17:23:55 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 17:23:55 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 17:30:06 2025 - Engine initialization started
+[INFO] Wed Apr 16 17:30:06 2025 - Allegro library initialized
+[INFO] Wed Apr 16 17:30:06 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 17:30:06 2025 - Input devices initialized
+[INFO] Wed Apr 16 17:30:06 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 17:30:06 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 17:30:06 2025 - Game loop started
+[INFO] Wed Apr 16 17:32:04 2025 - Game loop ended
+[INFO] Wed Apr 16 17:32:04 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 17:32:04 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 17:34:37 2025 - Engine initialization started
+[INFO] Wed Apr 16 17:34:37 2025 - Allegro library initialized
+[INFO] Wed Apr 16 17:34:37 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 17:34:37 2025 - Input devices initialized
+[INFO] Wed Apr 16 17:34:37 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 17:34:37 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 17:34:37 2025 - Game loop started
+[INFO] Wed Apr 16 17:34:48 2025 - Game loop ended
+[INFO] Wed Apr 16 17:34:48 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 17:34:48 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 17:40:36 2025 - Engine initialization started
+[INFO] Wed Apr 16 17:40:36 2025 - Allegro library initialized
+[INFO] Wed Apr 16 17:40:36 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 17:40:36 2025 - Input devices initialized
+[INFO] Wed Apr 16 17:40:36 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 17:40:36 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 17:40:36 2025 - Game loop started
+[INFO] Wed Apr 16 17:42:08 2025 - Game loop ended
+[INFO] Wed Apr 16 17:42:08 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 17:42:08 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 17:43:31 2025 - Engine initialization started
+[INFO] Wed Apr 16 17:43:31 2025 - Allegro library initialized
+[INFO] Wed Apr 16 17:43:31 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 17:43:31 2025 - Input devices initialized
+[INFO] Wed Apr 16 17:43:31 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 17:43:31 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 17:43:31 2025 - Game loop started
+[INFO] Wed Apr 16 17:43:32 2025 - Game loop ended
+[INFO] Wed Apr 16 17:43:32 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 17:43:32 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 18:18:33 2025 - Engine initialization started
+[INFO] Wed Apr 16 18:18:33 2025 - Allegro library initialized
+[INFO] Wed Apr 16 18:18:33 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 18:18:33 2025 - Input devices initialized
+[INFO] Wed Apr 16 18:18:33 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 18:18:33 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 18:18:33 2025 - Game loop started
+[INFO] Wed Apr 16 18:18:37 2025 - Game loop ended
+[INFO] Wed Apr 16 18:18:37 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 18:18:37 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 18:18:41 2025 - Engine initialization started
+[INFO] Wed Apr 16 18:18:41 2025 - Allegro library initialized
+[INFO] Wed Apr 16 18:18:41 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 18:18:41 2025 - Input devices initialized
+[INFO] Wed Apr 16 18:18:41 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 18:18:41 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 18:18:41 2025 - Game loop started
+[INFO] Wed Apr 16 18:19:45 2025 - Game loop ended
+[INFO] Wed Apr 16 18:19:45 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 18:19:45 2025 - Engine shutdown completed
+[INFO] Wed Apr 16 18:42:51 2025 - Engine initialization started
+[INFO] Wed Apr 16 18:42:51 2025 - Allegro library initialized
+[INFO] Wed Apr 16 18:42:52 2025 - Display initialized: 1600x900 windowed
+[INFO] Wed Apr 16 18:42:52 2025 - Input devices initialized
+[INFO] Wed Apr 16 18:42:52 2025 - Timers initialized at 60 FPS
+[INFO] Wed Apr 16 18:42:52 2025 - Engine initialized successfully
+[INFO] Wed Apr 16 18:42:52 2025 - Game loop started
+[INFO] Wed Apr 16 18:43:30 2025 - Game loop ended
+[INFO] Wed Apr 16 18:43:30 2025 - Engine shutdown initiated
+[INFO] Wed Apr 16 18:43:30 2025 - Engine shutdown completed

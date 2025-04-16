@@ -4,14 +4,16 @@
 #include "src/engine/Sprite.h"
 #include "src/game/Player.h"
 #include "src/game/Camera.h"
+#include "src/game/Map.h"
+#include "src/game/Enemy.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 
 // StaÅ‚e dla mapy
 const int TILE_SIZE = 250;
-const int MAP_WIDTH = 8;  // w kafelkach
-const int MAP_HEIGHT = 16; // w kafelkach
+const int MAP_WIDTH = 16;  // w kafelkach
+const int MAP_HEIGHT = 8; // w kafelkach
 const int MAP_PIXEL_WIDTH = MAP_WIDTH * TILE_SIZE;   // 2000px
 const int MAP_PIXEL_HEIGHT = MAP_HEIGHT * TILE_SIZE; // 4000px
 
@@ -21,6 +23,8 @@ PrimitiveRenderer* renderer = nullptr;
 ALLEGRO_FONT* font = nullptr;
 Player* player = nullptr;
 Camera* camera = nullptr;
+Map* gameMap = nullptr;
+std::vector<Enemy*> enemies;
 
 // Funkcje pomocnicze
 std::string getCoordinatesString(const std::string& name, float x, float y) {
@@ -38,6 +42,9 @@ void update(float deltaTime) {
     if (camera) {
         camera->update();
     }
+    for (auto enemy : enemies) {
+        enemy->update(deltaTime);
+    }
 }
 
 void render() {
@@ -45,19 +52,8 @@ void render() {
         camera->beginScene();
     }
 
-    // Rysowanie siatki
-    renderer->setColor(al_map_rgb(50, 50, 50));
-
-    // Rysowanie linii pionowych
-    for (int x = 0; x <= MAP_WIDTH; x++) {
-        int pixelX = x * TILE_SIZE;
-        renderer->drawLine(Point2D(pixelX, 0), Point2D(pixelX, MAP_PIXEL_HEIGHT));
-    }
-
-    // Rysowanie linii poziomych
-    for (int y = 0; y <= MAP_HEIGHT; y++) {
-        int pixelY = y * TILE_SIZE;
-        renderer->drawLine(Point2D(0, pixelY), Point2D(MAP_PIXEL_WIDTH, pixelY));
+    if (gameMap) {
+        gameMap->draw();
     }
 
     // Rysowanie gracza
@@ -65,9 +61,14 @@ void render() {
         player->draw();
     }
 
+    for (auto enemy : enemies) {
+        enemy->draw();
+    }
+
     if (camera) {
         camera->endScene();
     }
+
 
     // UI - rysowane bez transformacji kamery
     ALLEGRO_COLOR textColor = al_map_rgb(255, 255, 255);
@@ -95,7 +96,7 @@ int main() {
         std::cerr << "Failed to load player resources!" << std::endl;
         return -1;
     }
-    player->setPosition(400, 300);  // PoczÄ…tkowa pozycja na Å›rodku ekranu
+    player->setPosition(100, 100);  // PoczÄ…tkowa pozycja na Å›rodku ekranu
 
     camera = new Camera();
     camera->setViewport(engine->getScreenWidth(), engine->getScreenHeight());
@@ -104,12 +105,37 @@ int main() {
 
     // Inicjalizacja renderera prymitywÃ³w
     renderer = new PrimitiveRenderer(engine->getDisplay());
+	if (!renderer) {
+		std::cerr << "Failed to create renderer!" << std::endl;
+		return -1;
+	}
 
+    gameMap = new Map(MAP_WIDTH, MAP_HEIGHT, TILE_SIZE);
+    if (!gameMap->init(renderer)) {
+        std::cerr << "Failed to initialize map!" << std::endl;
+        return -1;
+    }
+	player->setMap(gameMap);  // Ustawienie mapy dla gracza
     // Inicjalizacja czcionki
     font = al_create_builtin_font();
     if (!font) {
         std::cerr << "Failed to create font!" << std::endl;
         return -1;
+    }
+
+    for (int i = 0; i < 3; i++) {
+        Enemy* enemy = new Enemy();
+        if (!enemy->loadResources()) {
+            std::cerr << "Failed to load enemy resources!" << std::endl;
+            return -1;
+        }
+        enemy->setPosition(
+            200.0f + i * 500.0f,  // RÃ³Å¼ne pozycje X
+            200.0f + i * 300.0f   // RÃ³Å¼ne pozycje Y
+        );
+        enemy->setMap(gameMap);
+        enemy->setTarget(player);
+        enemies.push_back(enemy);
     }
 
     // GÅ‚Ã³wna pÄ™tla gry
@@ -119,6 +145,11 @@ int main() {
     delete player;
     delete camera;
     delete renderer;
+    delete gameMap;
+    for (auto enemy : enemies) {
+        delete enemy;
+    }
+    enemies.clear();
     al_destroy_font(font);
     engine->shutdown();
 
@@ -175,12 +206,12 @@ void Animation::update(float deltaTime) {
 
     currentFrameTime += deltaTime;
 
-    // Sprawdzamy czy czas obecnej klatki siï¿½ skoï¿½czyï¿½
+    // Sprawdzamy czy czas obecnej klatki siê skoñczy³
     while (currentFrameTime >= frames[currentFrameIndex].duration) {
         currentFrameTime -= frames[currentFrameIndex].duration;
         currentFrameIndex++;
 
-        // Sprawdzamy czy dotarliï¿½my do koï¿½ca animacji
+        // Sprawdzamy czy dotarliœmy do koñca animacji
         if (currentFrameIndex >= frames.size()) {
             if (isLooping) {
                 currentFrameIndex = 0;
@@ -224,12 +255,12 @@ void Animation::setLooping(bool loop) {
 #include <vector>
 #include <string>
 
-// Struktura przechowujï¿½ca dane pojedynczej klatki animacji
+// Struktura przechowuj¹ca dane pojedynczej klatki animacji
 struct AnimationFrame {
     int x;          // Pozycja X w sprite sheet
     int y;          // Pozycja Y w sprite sheet
-    int width;      // Szerokoï¿½ï¿½ klatki
-    int height;     // Wysokoï¿½ï¿½ klatki
+    int width;      // Szerokoœæ klatki
+    int height;     // Wysokoœæ klatki
     float duration; // Czas trwania klatki w sekundach
 
     AnimationFrame(int x, int y, int width, int height, float duration)
@@ -241,18 +272,18 @@ class Animation {
 private:
     std::string name;                    // Nazwa animacji
     std::vector<AnimationFrame> frames;  // Klatki animacji
-    float totalDuration;                 // Caï¿½kowity czas trwania
-    bool isLooping;                      // Czy animacja siï¿½ zapï¿½tla
+    float totalDuration;                 // Ca³kowity czas trwania
+    bool isLooping;                      // Czy animacja siê zapêtla
 
     // Stan animacji
     int currentFrameIndex;               // Indeks aktualnej klatki
-    float currentFrameTime;              // Czas spï¿½dzony na aktualnej klatce
+    float currentFrameTime;              // Czas spêdzony na aktualnej klatce
     bool isPlaying;                      // Czy animacja jest odtwarzana
 
 public:
     Animation(const std::string& name, bool looping = true);
 
-    // Zarzï¿½dzanie klatkami
+    // Zarz¹dzanie klatkami
     void addFrame(int x, int y, int width, int height, float duration);
     const AnimationFrame& getCurrentFrame() const;
 
@@ -285,7 +316,7 @@ public:
 #include <iostream>
 #include <allegro5/allegro_color.h>
 
-// Inicjalizacja statycznego wskaï¿½nika
+// Inicjalizacja statycznego wskaŸnika
 Engine* Engine::instance = nullptr;
 
 Engine* Engine::getInstance() {
@@ -311,7 +342,7 @@ Engine::Engine() :
 
     clearColor = al_map_rgb(0, 0, 0);
 
-    // Inicjalizacja stanï¿½w klawiszy i myszy
+    // Inicjalizacja stanów klawiszy i myszy
     for (int i = 0; i < ALLEGRO_KEY_MAX; i++) {
         keys[i] = false;
     }
@@ -334,7 +365,7 @@ bool Engine::init() {
 
     logger.info("Engine initialization started");
 
-    // Inicjalizacja poszczegï¿½lnych komponentï¿½w
+    // Inicjalizacja poszczególnych komponentów
     if (!initAllegro()) {
         logger.fatal("Failed to initialize Allegro library");
         return false;
@@ -390,7 +421,7 @@ bool Engine::initAllegro() {
 }
 
 bool Engine::initDisplay() {
-    // Ustawienie parametrï¿½w wyï¿½wietlania
+    // Ustawienie parametrów wyœwietlania
     al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 1, ALLEGRO_SUGGEST);
     al_set_new_display_option(ALLEGRO_SAMPLES, 8, ALLEGRO_SUGGEST);
     al_set_new_display_flags(fullscreen ? ALLEGRO_FULLSCREEN : ALLEGRO_WINDOWED);
@@ -465,7 +496,7 @@ void Engine::startGameLoop(std::function<void(float)> updateCallback,
         if (redraw && al_is_event_queue_empty(eventQueue)) {
             redraw = false;
 
-            // Wywoï¿½anie funkcji aktualizujï¿½cej logikï¿½ gry
+            // Wywo³anie funkcji aktualizuj¹cej logikê gry
             if (updateCallback) {
                 updateCallback(deltaTime);
             }
@@ -473,12 +504,12 @@ void Engine::startGameLoop(std::function<void(float)> updateCallback,
             // Czyszczenie ekranu
             clearScreen();
 
-            // Wywoï¿½anie funkcji renderujï¿½cej
+            // Wywo³anie funkcji renderuj¹cej
             if (renderCallback) {
                 renderCallback();
             }
 
-            // Zamiana buforï¿½w
+            // Zamiana buforów
             flipDisplay();
         }
     }
@@ -533,7 +564,7 @@ void Engine::processEvents() {
 void Engine::shutdown() {
     logger.info("Engine shutdown initiated");
 
-    // Zniszczenie zasobï¿½w Allegro w odwrotnej kolejnoï¿½ci od utworzenia
+    // Zniszczenie zasobów Allegro w odwrotnej kolejnoœci od utworzenia
     if (timer) {
         al_destroy_timer(timer);
         timer = nullptr;
@@ -549,7 +580,7 @@ void Engine::shutdown() {
         display = nullptr;
     }
 
-    // Deinicjalizacja dodatkï¿½w Allegro
+    // Deinicjalizacja dodatków Allegro
     al_shutdown_font_addon();
     al_shutdown_ttf_addon();
     al_shutdown_image_addon();
@@ -559,7 +590,7 @@ void Engine::shutdown() {
     logger.close();
 }
 
-// Obsï¿½uga urzï¿½dzeï¿½ wejï¿½cia
+// Obs³uga urz¹dzeñ wejœcia
 bool Engine::isKeyDown(int keycode) {
     if (keycode >= 0 && keycode < ALLEGRO_KEY_MAX) {
         return keys[keycode];
@@ -713,10 +744,10 @@ private:
     bool running;
     bool redraw;
 
-    // Obsï¿½uga bï¿½ï¿½dï¿½w
+    // Obs³uga b³êdów
     Logger logger;
 
-    // Inicjalizacja komponentï¿½w
+    // Inicjalizacja komponentów
     bool initAllegro();
     bool initDisplay();
     bool initInput();
@@ -727,7 +758,7 @@ public:
     static Engine* getInstance();
     ~Engine();
 
-    // Inicjalizacja i zamkniï¿½cie
+    // Inicjalizacja i zamkniêcie
     bool init();
     void shutdown();
 
@@ -738,12 +769,12 @@ public:
     void setTitle(const std::string& title);
     void setClearColor(ALLEGRO_COLOR color);
 
-    // Gï¿½ï¿½wna pï¿½tla i obsï¿½uga zdarzeï¿½
+    // G³ówna pêtla i obs³uga zdarzeñ
     void startGameLoop(std::function<void(float)> updateCallback,
         std::function<void()> renderCallback);
     void processEvents();
 
-    // Obsï¿½uga urzï¿½dzeï¿½ wejï¿½cia
+    // Obs³uga urz¹dzeñ wejœcia
     bool isKeyDown(int keycode);
     bool isMouseButtonDown(int button);
     int getMouseX();
@@ -796,11 +827,11 @@ void Logger::log(LogLevel level, const std::string& message) {
     auto now = std::chrono::system_clock::now();
     auto time = std::chrono::system_clock::to_time_t(now);
 
-    // Bezpieczna konwersja czasu do ciï¿½gu znakï¿½w
+    // Bezpieczna konwersja czasu do ci¹gu znaków
     char timeStr[26];
     ctime_s(timeStr, sizeof(timeStr), &time);
     std::string timeString(timeStr);
-    // Usuniï¿½cie znaku nowej linii, ktï¿½ry dodaje ctime_s
+    // Usuniêcie znaku nowej linii, który dodaje ctime_s
     if (!timeString.empty() && timeString[timeString.length() - 1] == '\n') {
         timeString.erase(timeString.length() - 1);
     }
@@ -966,22 +997,22 @@ void PrimitiveRenderer::drawLine(const Point2D& start, const Point2D& end) {
 }
 
 void PrimitiveRenderer::scanlineFill(int y, int x1, int x2) {
-    // Upewniamy siï¿½, ï¿½e x1 < x2
+    // Upewniamy siê, ¿e x1 < x2
     if (x1 > x2) std::swap(x1, x2);
 
-    // Rysujemy liniï¿½ poziomï¿½ punkt po punkcie
+    // Rysujemy liniê poziom¹ punkt po punkcie
     for (int x = x1; x <= x2; x++) {
         putPixel(x, y, currentColor);
     }
 }
 
 void PrimitiveRenderer::fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
-    // Sortujemy punkty wedï¿½ug y
+    // Sortujemy punkty wed³ug y
     if (y1 > y2) { std::swap(x1, x2); std::swap(y1, y2); }
     if (y2 > y3) { std::swap(x2, x3); std::swap(y2, y3); }
     if (y1 > y2) { std::swap(x1, x2); std::swap(y1, y2); }
 
-    if (y2 == y3) { // Trï¿½jkï¿½t z pï¿½askï¿½ podstawï¿½ na dole
+    if (y2 == y3) { // Trójk¹t z p³ask¹ podstaw¹ na dole
         float slope1 = (float)(x2 - x1) / (y2 - y1);
         float slope2 = (float)(x3 - x1) / (y3 - y1);
 
@@ -994,7 +1025,7 @@ void PrimitiveRenderer::fillTriangle(int x1, int y1, int x2, int y2, int x3, int
             curX2 += slope2;
         }
     }
-    else if (y1 == y2) { // Trï¿½jkï¿½t z pï¿½askï¿½ podstawï¿½ na gï¿½rze
+    else if (y1 == y2) { // Trójk¹t z p³ask¹ podstaw¹ na górze
         float slope1 = (float)(x3 - x1) / (y3 - y1);
         float slope2 = (float)(x3 - x2) / (y3 - y2);
 
@@ -1015,14 +1046,14 @@ void PrimitiveRenderer::fillTriangle(int x1, int y1, int x2, int y2, int x3, int
         float curX1 = x1;
         float curX2 = x1;
 
-        // Pierwsza czï¿½ï¿½ trï¿½jkï¿½ta
+        // Pierwsza czêœæ trójk¹ta
         for (int y = y1; y <= y2; y++) {
             scanlineFill(y, (int)curX1, (int)curX2);
             curX1 += slope1;
             curX2 += slope2;
         }
 
-        // Druga czï¿½ï¿½ trï¿½jkï¿½ta
+        // Druga czêœæ trójk¹ta
         curX1 = x2;
         for (int y = y2; y <= y3; y++) {
             scanlineFill(y, (int)curX1, (int)curX2);
@@ -1067,7 +1098,7 @@ void PrimitiveRenderer::drawRectangle(const Point2D& topLeft, float width, float
     int w = static_cast<int>(width);
     int h = static_cast<int>(height);
 
-    // Normalizacja wymiarï¿½w - obsï¿½uga ujemnych wartoï¿½ci
+    // Normalizacja wymiarów - obs³uga ujemnych wartoœci
     if (w < 0) {
         x += w;
         w = -w;
@@ -1078,13 +1109,13 @@ void PrimitiveRenderer::drawRectangle(const Point2D& topLeft, float width, float
     }
 
     if (filled) {
-        // Wypeï¿½niamy prostokï¿½t linia po linii
+        // Wype³niamy prostok¹t linia po linii
         for (int currY = y; currY <= y + h; currY++) {
             scanlineFill(currY, x, x + w);
         }
     }
 
-    // Rysujemy obrys prostokï¿½ta
+    // Rysujemy obrys prostok¹ta
     Point2D topRight(x + w, y);
     Point2D bottomLeft(x, y + h);
     Point2D bottomRight(x + w, y + h);
@@ -1127,7 +1158,7 @@ void PrimitiveRenderer::drawCircle(const Point2D& center, float radius, bool fil
         fillCircle(centerX, centerY, intRadius);
     }
 
-    // Algorytm Bresenhama dla okrï¿½gu
+    // Algorytm Bresenhama dla okrêgu
     int x = 0;
     int y = intRadius;
     int d = 3 - 2 * intRadius;
@@ -1167,11 +1198,11 @@ private:
     // Implementacja algorytmu Bresenhama dla linii
     void bresenhamLine(int x1, int y1, int x2, int y2, ALLEGRO_COLOR color);
 
-    // Metody pomocnicze do wypeï¿½niania
+    // Metody pomocnicze do wype³niania
     void scanlineFill(int y, int x1, int x2);
     void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3);
 
-    // Metody pomocnicze do rysowania okrï¿½gï¿½w
+    // Metody pomocnicze do rysowania okrêgów
     void plotCirclePoints(int centerX, int centerY, int x, int y);
     void fillCircle(int centerX, int centerY, int radius);
 
@@ -1181,20 +1212,20 @@ public:
     // Ustawienie koloru rysowania
     void setColor(ALLEGRO_COLOR color);
 
-    // Metody rysujï¿½ce
+    // Metody rysuj¹ce
     void drawPoint(const Point2D& point);
     void drawLine(const LineSegment& line);
     void drawLine(const Point2D& start, const Point2D& end);
 
-    // Metody do rysowania trï¿½jkï¿½tï¿½w
+    // Metody do rysowania trójk¹tów
     void drawTriangle(const Triangle& triangle);
     void drawTriangle(const Point2D& p1, const Point2D& p2, const Point2D& p3, bool filled);
 
-    // Metody do rysowania prostokï¿½tï¿½w
+    // Metody do rysowania prostok¹tów
     void drawRectangle(const Rectangle& rectangle);
     void drawRectangle(const Point2D& topLeft, float width, float height, bool filled);
 
-    // Metody do rysowania okrï¿½gï¿½w
+    // Metody do rysowania okrêgów
     void drawCircle(const Circle& circle);
     void drawCircle(const Point2D& center, float radius, bool filled);
 };
@@ -1451,8 +1482,8 @@ void Rectangle::scale(float sx, float sy, const Point2D& center) {
 }
 
 void Rectangle::rotate(float angle, const Point2D& center) {
-    // Dla prostokï¿½ta rotacja jest bardziej skomplikowana
-    // Trzeba przeksztaï¿½ciï¿½ go w cztery punkty, obrï¿½ciï¿½ i utworzyï¿½ nowy prostokï¿½t
+    // Dla prostok¹ta rotacja jest bardziej skomplikowana
+    // Trzeba przekszta³ciæ go w cztery punkty, obróciæ i utworzyæ nowy prostok¹t
     Point2D tr = getTopRight();
     Point2D bl = getBottomLeft();
     Point2D br = getBottomRight();
@@ -1462,8 +1493,8 @@ void Rectangle::rotate(float angle, const Point2D& center) {
     bl.rotate(angle, center);
     br.rotate(angle, center);
 
-    // Po obrocie moï¿½emy potrzebowaï¿½ przekalkulowaï¿½ wymiary
-    // To jest uproszczona wersja - w praktyce moï¿½e wymagaï¿½ dodatkowych obliczeï¿½
+    // Po obrocie mo¿emy potrzebowaæ przekalkulowaæ wymiary
+    // To jest uproszczona wersja - w praktyce mo¿e wymagaæ dodatkowych obliczeñ
     width = tr.getX() - topLeft.getX();
     height = bl.getY() - topLeft.getY();
 }
@@ -1497,8 +1528,8 @@ void Circle::translate(float dx, float dy) {
 }
 
 void Circle::scale(float sx, float sy) {
-    // Dla koï¿½a uï¿½ywamy tylko jednego wspï¿½czynnika skalowania
-    float scale = (sx + sy) / 2.0f;  // Moï¿½na teï¿½ uï¿½yï¿½ std::max(sx, sy)
+    // Dla ko³a u¿ywamy tylko jednego wspó³czynnika skalowania
+    float scale = (sx + sy) / 2.0f;  // Mo¿na te¿ u¿yæ std::max(sx, sy)
     radius *= scale;
 }
 
@@ -1752,7 +1783,7 @@ void Sprite::resetSourceRect() {
 
 void Sprite::addAnimation(Animation* animation) {
     if (animation) {
-        // Jeï¿½li animacja o tej nazwie juï¿½ istnieje, usuï¿½ jï¿½
+        // Jeœli animacja o tej nazwie ju¿ istnieje, usuñ j¹
         auto it = animations.find(animation->getName());
         if (it != animations.end()) {
             delete it->second;
@@ -1760,7 +1791,7 @@ void Sprite::addAnimation(Animation* animation) {
 
         animations[animation->getName()] = animation;
 
-        // Jeï¿½li to pierwsza animacja, ustaw jï¿½ jako aktualnï¿½
+        // Jeœli to pierwsza animacja, ustaw j¹ jako aktualn¹
         if (!currentAnimation) {
             currentAnimation = animation;
         }
@@ -1802,7 +1833,7 @@ void Sprite::updateAnimation(float deltaTime) {
     if (currentAnimation) {
         currentAnimation->update(deltaTime);
 
-        // Aktualizacja ï¿½rï¿½dï¿½owego prostokï¿½ta na podstawie aktualnej klatki
+        // Aktualizacja Ÿród³owego prostok¹ta na podstawie aktualnej klatki
         const AnimationFrame& frame = currentAnimation->getCurrentFrame();
         sourceX = frame.x;
         sourceY = frame.y;
@@ -1858,7 +1889,7 @@ void Sprite::draw() {
     // Zastosowanie transformacji
     al_use_transform(&spriteTransform);
 
-    // Rysowanie z uwzglï¿½dnieniem przezroczystoï¿½ci i aktualnej klatki animacji
+    // Rysowanie z uwzglêdnieniem przezroczystoœci i aktualnej klatki animacji
     al_draw_tinted_bitmap_region(
         texture,
         al_map_rgba_f(1.0f, 1.0f, 1.0f, alpha),
@@ -1868,7 +1899,7 @@ void Sprite::draw() {
         0
     );
 
-    // Przywrï¿½cenie poprzedniej transformacji
+    // Przywrócenie poprzedniej transformacji
     al_use_transform(&transform);
 }
 
@@ -1896,7 +1927,7 @@ private:
     std::map<std::string, Animation*> animations;
     Animation* currentAnimation;
 
-    // ï¿½rï¿½dï¿½owy prostokï¿½t dla sprite sheet
+    // ród³owy prostok¹t dla sprite sheet
     int sourceX;
     int sourceY;
     int sourceWidth;
@@ -1915,7 +1946,7 @@ public:
     void setSourceRect(int x, int y, int width, int height);
     void resetSourceRect();
 
-    // Zarzï¿½dzanie animacjami 
+    // Zarz¹dzanie animacjami 
     void addAnimation(Animation* animation);
     void playAnimation(const std::string& name);
     void stopAnimation();
@@ -1947,7 +1978,7 @@ public:
 TextureManager* TextureManager::instance = nullptr;
 
 TextureManager::TextureManager() {
-    // Inicjalizacja dodatku do obsï¿½ugi obrazï¿½w
+    // Inicjalizacja dodatku do obs³ugi obrazów
     if (!al_init_image_addon()) {
         logger.error("Failed to initialize image addon!");
     }
@@ -1972,12 +2003,12 @@ void TextureManager::releaseInstance() {
 }
 
 ALLEGRO_BITMAP* TextureManager::loadTexture(const std::string& path) {
-    // Sprawdï¿½ czy tekstura juï¿½ jest zaï¿½adowana
+    // SprawdŸ czy tekstura ju¿ jest za³adowana
     if (isTextureLoaded(path)) {
         return textures[path];
     }
 
-    // Zaï¿½aduj nowï¿½ teksturï¿½
+    // Za³aduj now¹ teksturê
     ALLEGRO_BITMAP* texture = al_load_bitmap(path.c_str());
 
     if (texture == nullptr) {
@@ -1985,7 +2016,7 @@ ALLEGRO_BITMAP* TextureManager::loadTexture(const std::string& path) {
         return nullptr;
     }
 
-    // Zapisz teksturï¿½ w mapie
+    // Zapisz teksturê w mapie
     textures[path] = texture;
     logger.info("Texture loaded: " + path);
 
@@ -2047,10 +2078,10 @@ private:
     // Singleton instance
     static TextureManager* instance;
 
-    // Mapa przechowujï¿½ca tekstury (ï¿½cieï¿½ka -> bitmap)
+    // Mapa przechowuj¹ca tekstury (œcie¿ka -> bitmap)
     std::map<std::string, ALLEGRO_BITMAP*> textures;
 
-    // Logger do obsï¿½ugi bï¿½ï¿½dï¿½w
+    // Logger do obs³ugi b³êdów
     Logger logger;
 
     // Prywatny konstruktor (Singleton)
@@ -2070,13 +2101,13 @@ public:
     // Zwolnienie instancji
     static void releaseInstance();
 
-    // ï¿½adowanie tekstury
+    // £adowanie tekstury
     ALLEGRO_BITMAP* loadTexture(const std::string& path);
 
-    // Pobranie zaï¿½adowanej tekstury
+    // Pobranie za³adowanej tekstury
     ALLEGRO_BITMAP* getTexture(const std::string& path);
 
-    // Sprawdzenie czy tekstura jest zaï¿½adowana
+    // Sprawdzenie czy tekstura jest za³adowana
     bool isTextureLoaded(const std::string& path) const;
 
     // Zwolnienie pojedynczej tekstury
@@ -2085,7 +2116,7 @@ public:
     // Zwolnienie wszystkich tekstur
     void unloadAllTextures();
 
-    // Pobranie wymiarï¿½w tekstury
+    // Pobranie wymiarów tekstury
     bool getTextureDimensions(const std::string& path, int& width, int& height);
 };
 
@@ -2102,7 +2133,7 @@ void Transform::translate(Point2D& point, float dx, float dy) {
 }
 
 void Transform::scale(Point2D& point, float sx, float sy, const Point2D& center) {
-    // Przesuniï¿½cie do punktu (0,0)
+    // Przesuniêcie do punktu (0,0)
     float x = point.getX() - center.getX();
     float y = point.getY() - center.getY();
 
@@ -2110,16 +2141,16 @@ void Transform::scale(Point2D& point, float sx, float sy, const Point2D& center)
     x *= sx;
     y *= sy;
 
-    // Przesuniï¿½cie z powrotem
+    // Przesuniêcie z powrotem
     point.setX(x + center.getX());
     point.setY(y + center.getY());
 }
 
 void Transform::rotate(Point2D& point, float angle, const Point2D& center) {
-    // Konwersja kï¿½ta na radiany
+    // Konwersja k¹ta na radiany
     float radians = angle * PI / 180.0f;
 
-    // Przesuniï¿½cie do punktu (0,0)
+    // Przesuniêcie do punktu (0,0)
     float x = point.getX() - center.getX();
     float y = point.getY() - center.getY();
 
@@ -2127,7 +2158,7 @@ void Transform::rotate(Point2D& point, float angle, const Point2D& center) {
     float newX = x * cos(radians) - y * sin(radians);
     float newY = x * sin(radians) + y * cos(radians);
 
-    // Przesuniï¿½cie z powrotem
+    // Przesuniêcie z powrotem
     point.setX(newX + center.getX());
     point.setY(newY + center.getY());
 }
@@ -2170,7 +2201,7 @@ Camera::~Camera() {
 
 void Camera::update() {
     if (target) {
-        // Pï¿½ynne ï¿½ledzenie celu (gracza)
+        // P³ynne œledzenie celu (gracza)
         Point2D targetPos = target->getPosition();
         position = targetPos;
     }
@@ -2180,7 +2211,7 @@ void Camera::beginScene() {
     ALLEGRO_TRANSFORM transform;
     al_identity_transform(&transform);
 
-    // Przesuniï¿½cie do ï¿½rodka ekranu
+    // Przesuniêcie do œrodka ekranu
     al_translate_transform(&transform,
         viewportWidth / 2.0f - position.getX() * zoom,
         viewportHeight / 2.0f - position.getY() * zoom);
@@ -2270,12 +2301,236 @@ public:
     Point2D getPosition() const;
     float getZoom() const;
 
-    // Konwersja wspï¿½rzï¿½dnych
+    // Konwersja wspó³rzêdnych
     Point2D worldToScreen(const Point2D& worldPos) const;
     Point2D screenToWorld(const Point2D& screenPos) const;
 };
 
 #endif // CAMERA_H
+
+## C:\Users\zyraf\source\repos\PGK-Engine-Reorganized\src\game\Enemy.cpp
+#include "Enemy.h"
+#include <cmath>
+
+Enemy::Enemy()
+    : Entity()
+    , gameMap(nullptr)
+    , targetPlayer(nullptr)
+    , detectionRange(500.0f)
+    , maxSpeed(200.0f)        // Trochê wolniejszy ni¿ gracz
+    , acceleration(300.0f)
+    , deceleration(600.0f)
+    , health(100.0f)
+    , maxHealth(100.0f)
+    , isMoving(false)
+{
+    tag = "Enemy";
+    collisionRadius = 30.0f;
+}
+
+Enemy::~Enemy() {
+}
+
+bool Enemy::loadResources() {
+    if (!sprite->loadTexture("assets/textures/enemy_idle.png")) {
+        return false;
+    }
+
+    // Konfiguracja animacji (podobnie jak w Player)
+    Animation* idleAnimation = new Animation("idle", true);
+
+    const int FRAME_WIDTH = 180;
+    const int FRAME_HEIGHT = 150;
+    const float FRAME_DURATION = 0.07f;
+
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 5; col++) {
+            idleAnimation->addFrame(
+                col * FRAME_WIDTH,
+                row * FRAME_HEIGHT,
+                FRAME_WIDTH,
+                FRAME_HEIGHT,
+                FRAME_DURATION
+            );
+        }
+    }
+
+    sprite->addAnimation(idleAnimation);
+    sprite->playAnimation("idle");
+
+    return true;
+}
+
+void Enemy::update(float deltaTime) {
+    if (!isActive) return;
+
+    // Aktualizacja AI
+    updateAI(deltaTime);
+
+    // Zapisz poprzedni¹ pozycjê przed ruchem
+    Point2D previousPosition = position;
+
+    // Aktualizacja pozycji
+    position.setX(position.getX() + velocity.getX() * deltaTime);
+    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
+        position.setX(previousPosition.getX());
+        velocity.setX(0.0f);
+    }
+
+    position.setY(position.getY() + velocity.getY() * deltaTime);
+    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
+        position.setY(previousPosition.getY());
+        velocity.setY(0.0f);
+    }
+
+    // Aktualizacja sprite'a
+    if (sprite) {
+        sprite->setPosition(position.getX(), position.getY());
+        sprite->setRotation(rotation);
+        sprite->updateAnimation(deltaTime);
+    }
+}
+
+void Enemy::updateAI(float deltaTime) {
+    if (!targetPlayer) return;
+
+    if (isPlayerInRange()) {
+        rotateTowardsPlayer();
+        moveTowardsPlayer(deltaTime);
+    }
+    else {
+        // Zatrzymaj siê jeœli gracz jest poza zasiêgiem
+        velocity.setPosition(0.0f, 0.0f);
+        isMoving = false;
+    }
+}
+
+bool Enemy::isPlayerInRange() const {
+    if (!targetPlayer) return false;
+
+    float dx = targetPlayer->getPosition().getX() - position.getX();
+    float dy = targetPlayer->getPosition().getY() - position.getY();
+    float distanceSquared = dx * dx + dy * dy;
+
+    return distanceSquared <= detectionRange * detectionRange;
+}
+
+void Enemy::rotateTowardsPlayer() {
+    if (!targetPlayer) return;
+
+    float dx = targetPlayer->getPosition().getX() - position.getX();
+    float dy = targetPlayer->getPosition().getY() - position.getY();
+    rotation = atan2(dy, dx);
+}
+
+void Enemy::moveTowardsPlayer(float deltaTime) {
+    if (!targetPlayer) return;
+
+    // Oblicz kierunek do gracza
+    float dx = targetPlayer->getPosition().getX() - position.getX();
+    float dy = targetPlayer->getPosition().getY() - position.getY();
+    float length = sqrt(dx * dx + dy * dy);
+
+    if (length > 0) {
+        dx /= length;
+        dy /= length;
+        isMoving = true;
+    }
+
+    // Aktualizacja prêdkoœci z przyspieszeniem
+    if (isMoving) {
+        velocity.setX(velocity.getX() + dx * acceleration * deltaTime);
+        velocity.setY(velocity.getY() + dy * acceleration * deltaTime);
+
+        // Ograniczenie maksymalnej prêdkoœci
+        float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+        if (speed > maxSpeed) {
+            float scale = maxSpeed / speed;
+            velocity.setX(velocity.getX() * scale);
+            velocity.setY(velocity.getY() * scale);
+        }
+    }
+}
+
+void Enemy::setMap(Map* map) {
+    gameMap = map;
+}
+
+void Enemy::setTarget(Player* player) {
+    targetPlayer = player;
+}
+
+void Enemy::setDetectionRange(float range) {
+    detectionRange = range;
+}
+
+void Enemy::takeDamage(float amount) {
+    health = std::max(0.0f, health - amount);
+}
+
+float Enemy::getHealth() const {
+    return health;
+}
+
+float Enemy::getMaxHealth() const {
+    return maxHealth;
+}
+
+bool Enemy::isAlive() const {
+    return health > 0;
+}
+
+
+## C:\Users\zyraf\source\repos\PGK-Engine-Reorganized\src\game\Enemy.h
+#pragma
+#ifndef ENEMY_H
+#define ENEMY_H
+
+#include "Entity.h"
+#include "Player.h"
+#include "Map.h"
+
+class Enemy : public Entity {
+private:
+    Map* gameMap;
+    Player* targetPlayer;
+
+    float detectionRange;     // Zasiêg wykrywania gracza
+    float maxSpeed;           // Maksymalna prêdkoœæ
+    float acceleration;       // Przyspieszenie
+    float deceleration;       // Hamowanie
+    float health;
+    float maxHealth;
+    bool isMoving;
+
+    // Pomocnicze metody AI
+    void updateAI(float deltaTime);
+    bool isPlayerInRange() const;
+    void rotateTowardsPlayer();
+    void moveTowardsPlayer(float deltaTime);
+
+public:
+    Enemy();
+    virtual ~Enemy();
+
+    // Nadpisane metody z klasy Entity
+    virtual void update(float deltaTime) override;
+    virtual bool loadResources() override;
+
+    // Settery
+    void setMap(Map* map);
+    void setTarget(Player* player);
+    void takeDamage(float amount);
+    void setDetectionRange(float range);
+
+    // Gettery
+    float getHealth() const;
+    float getMaxHealth() const;
+    bool isAlive() const;
+};
+
+#endif // ENEMY_H
+
 
 ## C:\Users\zyraf\source\repos\PGK-Engine-Reorganized\src\game\Entity.cpp
 // src/game/Entity.cpp
@@ -2302,7 +2557,7 @@ Entity::~Entity() {
 void Entity::update(float deltaTime) {
     if (!isActive) return;
 
-    // Aktualizacja pozycji na podstawie prï¿½dkoï¿½ci
+    // Aktualizacja pozycji na podstawie prêdkoœci
     position.setX(position.getX() + velocity.getX() * deltaTime);
     position.setY(position.getY() + velocity.getY() * deltaTime);
 
@@ -2463,7 +2718,7 @@ public:
     // Kolizje
     bool checkCollision(const Entity* other) const;
 
-    // ï¿½adowanie zasobï¿½w
+    // £adowanie zasobów
     virtual bool loadResources();
 };
 
@@ -2472,9 +2727,221 @@ public:
 
 
 ## C:\Users\zyraf\source\repos\PGK-Engine-Reorganized\src\game\Map.cpp
+// src/game/Map.cpp
+#include "Map.h"
+#include "../engine/Engine.h"
+
+Map::Map(int width, int height, int tileSize)
+    : mapTexture(nullptr)
+    , width(width)
+    , height(height)
+    , tileSize(tileSize)
+    , wallColor(al_map_rgb(100, 100, 150))  // Kolor œcian/przeszkód
+{
+    initializeMapObjects();
+}
+
+Map::~Map() {
+    if (mapTexture) {
+        al_destroy_bitmap(mapTexture);
+    }
+}
+
+bool Map::init(PrimitiveRenderer* renderer) {
+    // Tworzymy teksturê o rozmiarze mapy
+    mapTexture = al_create_bitmap(width * tileSize, height * tileSize);
+    if (!mapTexture) return false;
+
+    // Zapisujemy aktualny target
+    ALLEGRO_BITMAP* prevTarget = al_get_target_bitmap();
+
+    // Ustawiamy teksturê mapy jako cel renderowania
+    al_set_target_bitmap(mapTexture);
+    al_clear_to_color(al_map_rgb(0, 0, 0));
+
+    // Generujemy mapê
+    generateMapTexture(renderer);
+
+    // Przywracamy poprzedni target
+    al_set_target_bitmap(prevTarget);
+
+    return true;
+}
+
+void Map::drawGrid(PrimitiveRenderer* renderer) {
+    renderer->setColor(al_map_rgb(50, 50, 50));
+
+    // Linie pionowe
+    for (int x = 0; x <= width; x++) {
+        int pixelX = x * tileSize;
+        renderer->drawLine(Point2D(pixelX, 0),
+            Point2D(pixelX, height * tileSize));
+    }
+
+    // Linie poziome
+    for (int y = 0; y <= height; y++) {
+        int pixelY = y * tileSize;
+        renderer->drawLine(Point2D(0, pixelY),
+            Point2D(width * tileSize, pixelY));
+    }
+}
+
+void Map::initializeMapObjects() {
+    // Œrodkowa przeszkoda
+    Rectangle centerWall(
+        Point2D((width * tileSize) / 2 - 300, (height * tileSize) / 2 - 150),
+        600, 300
+    );
+    colliders.push_back(centerWall);
+
+    // Przeszkody w rogach
+    // Lewy górny róg
+    Rectangle topLeft(Point2D(200, 200), 300, 300);
+    colliders.push_back(topLeft);
+
+    // Prawy górny róg
+    Rectangle topRight(
+        Point2D(width * tileSize - 500, 200),
+        300, 300
+    );
+    colliders.push_back(topRight);
+
+    // Lewy dolny róg
+    Rectangle bottomLeft(
+        Point2D(200, height * tileSize - 500),
+        300, 300
+    );
+    colliders.push_back(bottomLeft);
+
+    // Prawy dolny róg
+    Rectangle bottomRight(
+        Point2D(width * tileSize - 500, height * tileSize - 500),
+        300, 300
+    );
+    colliders.push_back(bottomRight);
+
+    // Dodanie kilku mniejszych przeszkód
+    for (int i = 0; i < 5; i++) {
+        Rectangle obstacle(
+            Point2D(
+                (width * tileSize) / 6 + i * 600,
+                (height * tileSize) / 2 + (i % 2 == 0 ? -400 : 400)
+            ),
+            200, 200
+        );
+        colliders.push_back(obstacle);
+    }
+}
+
+void Map::drawMapObjects(PrimitiveRenderer* renderer) {
+    renderer->setColor(wallColor);
+
+    // Rysowanie wszystkich obiektów z kolizj¹
+    for (const auto& collider : colliders) {
+        // Rysowanie wype³nionego prostok¹ta
+        renderer->drawRectangle(
+            collider.getTopLeft(),
+            collider.getWidth(),
+            collider.getHeight(),
+            true  // filled
+        );
+
+        // Rysowanie obramowania
+        renderer->setColor(al_map_rgb(150, 150, 200));
+        renderer->drawRectangle(
+            collider.getTopLeft(),
+            collider.getWidth(),
+            collider.getHeight(),
+            false  // not filled, only outline
+        );
+        renderer->setColor(wallColor);
+    }
+}
+
+
+void Map::generateMapTexture(PrimitiveRenderer* renderer) {
+    // Najpierw rysujemy siatkê
+    drawGrid(renderer);
+
+    // Nastêpnie rysujemy obiekty mapy
+    drawMapObjects(renderer);
+}
+void Map::draw() {
+    if (!mapTexture) return;
+
+    al_draw_bitmap(mapTexture, 0, 0, 0);
+}
+
+void Map::addCollider(const Rectangle& collider) {
+    colliders.push_back(collider);
+}
+
+bool Map::checkCollision(const Point2D& position, float radius) const {
+    // Sprawdzanie kolizji z granicami mapy
+    if (position.getX() - radius < 0 ||
+        position.getX() + radius > width * tileSize ||
+        position.getY() - radius < 0 ||
+        position.getY() + radius > height * tileSize) {
+        return true;
+    }
+
+    // Sprawdzanie kolizji z przeszkodami
+    for (const auto& collider : colliders) {
+        Point2D topLeft = collider.getTopLeft();
+
+        if (position.getX() + radius > topLeft.getX() &&
+            position.getX() - radius < topLeft.getX() + collider.getWidth() &&
+            position.getY() + radius > topLeft.getY() &&
+            position.getY() - radius < topLeft.getY() + collider.getHeight()) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 
 
 ## C:\Users\zyraf\source\repos\PGK-Engine-Reorganized\src\game\Map.h
+// src/game/Map.h
+#ifndef MAP_H
+#define MAP_H
+
+#include <vector>
+#include "../engine/Primitives.h"
+#include "../engine/PrimitiveRenderer.h"
+#include <allegro5/allegro.h>
+
+class Map {
+private:
+    ALLEGRO_BITMAP* mapTexture;
+    std::vector<Rectangle> colliders;
+    int width;
+    int height;
+    int tileSize;
+
+    void generateMapTexture(PrimitiveRenderer* renderer);
+    void drawGrid(PrimitiveRenderer* renderer);
+
+    void initializeMapObjects();
+    void drawMapObjects(PrimitiveRenderer* renderer);
+    ALLEGRO_COLOR wallColor;
+public:
+    Map(int width, int height, int tileSize);
+    ~Map();
+
+    bool init(PrimitiveRenderer* renderer);
+    void draw();
+    void addCollider(const Rectangle& collider);
+    bool checkCollision(const Point2D& position, float radius) const;
+
+    // Gettery
+    int getWidth() const { return width * tileSize; }
+    int getHeight() const { return height * tileSize; }
+    int getTileSize() const { return tileSize; }
+};
+
+#endif // MAP_H
 
 
 ## C:\Users\zyraf\source\repos\PGK-Engine-Reorganized\src\game\Player.cpp
@@ -2483,7 +2950,7 @@ public:
 
 Player::Player()
     : Entity()
-    , maxSpeed(300.0f)  // Piksele na sekundï¿½
+    , maxSpeed(300.0f)  // Piksele na sekundê
     , acceleration(400.0f)
     , deceleration(800.0f)
     , isMoving(false)
@@ -2491,7 +2958,7 @@ Player::Player()
     , maxHealth(100.0f)
 {
     tag = "Player";
-    collisionRadius = 30.0f;  // Dostosuj wedï¿½ug rozmiaru sprite'a
+    collisionRadius = 30.0f;  // Dostosuj wed³ug rozmiaru sprite'a
 }
 
 Player::~Player() {
@@ -2506,11 +2973,11 @@ bool Player::loadResources() {
     Animation* idleAnimation = new Animation("idle", true);
 
     // Ustawienia klatek animacji
-    const int FRAME_WIDTH = 253;
-    const int FRAME_HEIGHT = 216;
+    const int FRAME_WIDTH = 180;
+    const int FRAME_HEIGHT = 150;
     const float FRAME_DURATION = 0.05f;
 
-    // Dodawanie klatek animacji (4 rzï¿½dy po 5 klatek)
+    // Dodawanie klatek animacji (4 rzêdy po 5 klatek)
     for (int row = 0; row < 4; row++) {
         for (int col = 0; col < 5; col++) {
             idleAnimation->addFrame(
@@ -2532,7 +2999,7 @@ bool Player::loadResources() {
 void Player::handleInput(float deltaTime) {
     Engine* engine = Engine::getInstance();
 
-    // Obliczanie wektora kierunku na podstawie wciï¿½niï¿½tych klawiszy
+    // Obliczanie wektora kierunku na podstawie wciœniêtych klawiszy
     float dirX = 0.0f;
     float dirY = 0.0f;
 
@@ -2560,12 +3027,12 @@ void Player::handleInput(float deltaTime) {
         isMoving = false;
     }
 
-    // Aktualizacja prï¿½dkoï¿½ci z przyspieszeniem
+    // Aktualizacja prêdkoœci z przyspieszeniem
     if (isMoving) {
         velocity.setX(velocity.getX() + dirX * acceleration * deltaTime);
         velocity.setY(velocity.getY() + dirY * acceleration * deltaTime);
 
-        // Ograniczenie maksymalnej prï¿½dkoï¿½ci
+        // Ograniczenie maksymalnej prêdkoœci
         float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
         if (speed > maxSpeed) {
             float scale = maxSpeed / speed;
@@ -2582,11 +3049,6 @@ void Player::handleInput(float deltaTime) {
             velocity.setY(velocity.getY() * scale);
         }
     }
-}
-
-
-void Player::setCamera(Camera* cam) {
-    camera = cam;
 }
 
 void Player::lookAtMouse() {
@@ -2606,12 +3068,39 @@ void Player::lookAtMouse() {
 void Player::update(float deltaTime) {
     if (!isActive) return;
 
+    // Obs³uga sterowania
     handleInput(deltaTime);
     lookAtMouse();
 
-    // Aktualizacja pozycji
-    Entity::update(deltaTime);
+    Point2D previousPosition = position;
+
+    // Próba ruchu w osi X
+    position.setX(position.getX() + velocity.getX() * deltaTime);
+    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
+        position.setX(previousPosition.getX());  // Cofnij tylko X
+        velocity.setX(0.0f);  // Zatrzymaj ruch w osi X
+    }
+
+    // Próba ruchu w osi Y
+    position.setY(position.getY() + velocity.getY() * deltaTime);
+    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
+        position.setY(previousPosition.getY());  // Cofnij tylko Y
+        velocity.setY(0.0f);  // Zatrzymaj ruch w osi Y
+    }
+
+    // Aktualizacja sprite'a
+    if (sprite) {
+        sprite->setPosition(position.getX(), position.getY());
+        sprite->setRotation(rotation);
+        sprite->updateAnimation(deltaTime);
+    }
 }
+
+
+
+
+
+
 
 void Player::takeDamage(float amount) {
     health = std::max(0.0f, health - amount);
@@ -2633,6 +3122,13 @@ bool Player::isAlive() const {
     return health > 0;
 }
 
+void Player::setCamera(Camera* cam) {
+    camera = cam;
+}
+void Player::setMap(Map* map) {
+    gameMap = map;
+}
+
 
 ## C:\Users\zyraf\source\repos\PGK-Engine-Reorganized\src\game\Player.h
 #pragma once
@@ -2642,6 +3138,7 @@ bool Player::isAlive() const {
 #include "Entity.h"
 #include "../engine/Engine.h"
 #include "../game/Camera.h"
+#include "Map.h"
 
 class Player : public Entity {
 private:
@@ -2652,6 +3149,7 @@ private:
     float health;
     float maxHealth;
     Camera* camera;
+    Map* gameMap;  // WskaŸnik na mapê
 
 public:
     Player();
@@ -2673,6 +3171,7 @@ public:
     bool isAlive() const;
 
     void setCamera(Camera* cam);
+    void setMap(Map* map);  // Setter dla mapy
 };
 
 #endif // PLAYER_H

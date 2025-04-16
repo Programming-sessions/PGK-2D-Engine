@@ -90,6 +90,8 @@ int main() {
         return -1;
     }
 
+    CollisionManager* collisionManager = CollisionManager::getInstance();
+
     player = new Player();
     if (!player->loadResources()) {
         std::cerr << "Failed to load player resources!" << std::endl;
@@ -137,6 +139,13 @@ int main() {
         enemies.push_back(enemy);
     }
 
+    // Dodaj kolizje gracza i przeciwników
+    collisionManager->addCollision(player->getCollision());
+
+    for (auto enemy : enemies) {
+        collisionManager->addCollision(enemy->getCollision());
+    }
+
     // Główna pętla gry
     engine->startGameLoop(update, render);
 
@@ -149,6 +158,7 @@ int main() {
         delete enemy;
     }
     enemies.clear();
+    CollisionManager::releaseInstance();
     al_destroy_font(font);
     engine->shutdown();
 

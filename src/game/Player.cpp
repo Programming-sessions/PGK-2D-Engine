@@ -11,10 +11,12 @@ Player::Player()
     , maxHealth(100.0f)
 {
     tag = "Player";
-    collisionRadius = 30.0f;  // Dostosuj wed³ug rozmiaru sprite'a
+    collision = new Collision(CollisionShape::CIRCLE, CollisionLayer::ENTITY);
+    collision->setRadius(30.0f);  // Dostosuj promieñ kolizji
 }
 
 Player::~Player() {
+    delete collision;
 }
 
 bool Player::loadResources() {
@@ -126,20 +128,51 @@ void Player::update(float deltaTime) {
     lookAtMouse();
 
     Point2D previousPosition = position;
+    Point2D newPosition = position;
+    Point2D movement(velocity.getX() * deltaTime, velocity.getY() * deltaTime);
 
-    // Próba ruchu w osi X
-    position.setX(position.getX() + velocity.getX() * deltaTime);
-    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
-        position.setX(previousPosition.getX());  // Cofnij tylko X
-        velocity.setX(0.0f);  // Zatrzymaj ruch w osi X
+    // Próba ruchu po przek¹tnej
+    newPosition = previousPosition;
+    newPosition.setX(previousPosition.getX() + movement.getX());
+    newPosition.setY(previousPosition.getY() + movement.getY());
+    collision->setPosition(newPosition);
+
+    if (CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
+        // Jeœli wyst¹pi³a kolizja, próbujemy ruch osobno w osiach X i Y
+
+        // Próba ruchu w osi X
+        newPosition = previousPosition;
+        newPosition.setX(previousPosition.getX() + movement.getX());
+        collision->setPosition(newPosition);
+
+        if (!CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
+            // Ruch w osi X jest mo¿liwy
+            previousPosition = newPosition;
+        }
+        else {
+            velocity.setX(0.0f);
+        }
+
+        // Próba ruchu w osi Y
+        newPosition = previousPosition;
+        newPosition.setY(previousPosition.getY() + movement.getY());
+        collision->setPosition(newPosition);
+
+        if (!CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
+            // Ruch w osi Y jest mo¿liwy
+            previousPosition = newPosition;
+        }
+        else {
+            velocity.setY(0.0f);
+        }
+
+        // Koñcowa pozycja to previousPosition
+        newPosition = previousPosition;
     }
 
-    // Próba ruchu w osi Y
-    position.setY(position.getY() + velocity.getY() * deltaTime);
-    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
-        position.setY(previousPosition.getY());  // Cofnij tylko Y
-        velocity.setY(0.0f);  // Zatrzymaj ruch w osi Y
-    }
+    // Aktualizacja pozycji
+    position = newPosition;
+    collision->setPosition(position);
 
     // Aktualizacja sprite'a
     if (sprite) {

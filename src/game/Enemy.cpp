@@ -14,10 +14,13 @@ Enemy::Enemy()
     , isMoving(false)
 {
     tag = "Enemy";
-    collisionRadius = 30.0f;
+    // Inicjalizacja kolizji
+    collision = new Collision(CollisionShape::CIRCLE, CollisionLayer::ENTITY);
+    collision->setRadius(30.0f);
 }
 
 Enemy::~Enemy() {
+    delete collision;
 }
 
 bool Enemy::loadResources() {
@@ -53,24 +56,56 @@ bool Enemy::loadResources() {
 void Enemy::update(float deltaTime) {
     if (!isActive) return;
 
-    // Aktualizacja AI
+    // Aktualizacja AI - to ju¿ zawiera logikê sprawdzania zasiêgu, rotacji i ruchu
     updateAI(deltaTime);
 
-    // Zapisz poprzedni¹ pozycjê przed ruchem
+    // Obs³uga kolizji i ruchu
     Point2D previousPosition = position;
+    Point2D newPosition = position;
+    Point2D movement(velocity.getX() * deltaTime, velocity.getY() * deltaTime);
+
+    // Próba ruchu po przek¹tnej
+    newPosition = previousPosition;
+    newPosition.setX(previousPosition.getX() + movement.getX());
+    newPosition.setY(previousPosition.getY() + movement.getY());
+    collision->setPosition(newPosition);
+
+    if (CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
+        // Jeœli wyst¹pi³a kolizja, próbujemy ruch osobno w osiach X i Y
+
+        // Próba ruchu w osi X
+        newPosition = previousPosition;
+        newPosition.setX(previousPosition.getX() + movement.getX());
+        collision->setPosition(newPosition);
+
+        if (!CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
+            // Ruch w osi X jest mo¿liwy
+            previousPosition = newPosition;
+        }
+        else {
+            velocity.setX(0.0f);
+        }
+
+        // Próba ruchu w osi Y
+        newPosition = previousPosition;
+        newPosition.setY(previousPosition.getY() + movement.getY());
+        collision->setPosition(newPosition);
+
+        if (!CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
+            // Ruch w osi Y jest mo¿liwy
+            previousPosition = newPosition;
+        }
+        else {
+            velocity.setY(0.0f);
+        }
+
+        // Koñcowa pozycja to previousPosition
+        newPosition = previousPosition;
+    }
 
     // Aktualizacja pozycji
-    position.setX(position.getX() + velocity.getX() * deltaTime);
-    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
-        position.setX(previousPosition.getX());
-        velocity.setX(0.0f);
-    }
-
-    position.setY(position.getY() + velocity.getY() * deltaTime);
-    if (gameMap && gameMap->checkCollision(position, collisionRadius)) {
-        position.setY(previousPosition.getY());
-        velocity.setY(0.0f);
-    }
+    position = newPosition;
+    collision->setPosition(position);
 
     // Aktualizacja sprite'a
     if (sprite) {
@@ -79,6 +114,7 @@ void Enemy::update(float deltaTime) {
         sprite->updateAnimation(deltaTime);
     }
 }
+
 
 void Enemy::updateAI(float deltaTime) {
     if (!targetPlayer) return;
