@@ -16,6 +16,10 @@ private:
     float acceleration;       // Przyspieszenie
     float deceleration;       // Hamowanie
     bool isMoving;
+    float shootCooldown;
+    float currentCooldown;
+    float shootRange;      // Zasiêg z którego przeciwnik bêdzie strzela³
+    bool canShoot;         // Flaga okreœlaj¹ca czy przeciwnik mo¿e strzelaæ
     Collision* collision;
 
     // Pomocnicze metody AI
@@ -40,6 +44,14 @@ public:
     // Gettery
     bool isAlive() const;
     Collision* getCollision() const { return collision; }
+
+    void shoot();
+    bool isPlayerInShootRange() const;
+
+    float preferredDistance;  // Preferowana odleg³oœæ od gracza
+    float distanceMargin;     // Margines odleg³oœci (¿eby nie byli sztywno na jednej odleg³oœci)
+
+    bool hasLineOfSight() const;
 };
 
 #endif // ENEMY_H

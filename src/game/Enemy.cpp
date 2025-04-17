@@ -10,6 +10,10 @@ Enemy::Enemy()
     , acceleration(300.0f)
     , deceleration(600.0f)
     , isMoving(false)
+    , shootCooldown(2.0f)       // Strza³ co 2 sekundy
+    , currentCooldown(0.0f)
+    , shootRange(400.0f)         // Zasiêg strza³u
+    , canShoot(true)
 {
     tag = "Enemy";
     // Inicjalizacja kolizji
@@ -118,10 +122,21 @@ void Enemy::update(float deltaTime) {
 void Enemy::updateAI(float deltaTime) {
     if (!targetPlayer) return;
 
+    // Aktualizacja cooldownu
+    if (currentCooldown > 0) {
+        currentCooldown -= deltaTime;
+    }
+
     if (isPlayerInRange()) {
         rotateTowardsPlayer();
         moveTowardsPlayer(deltaTime);
         isMoving = true;
+
+        // Sprawdzenie czy mo¿e strzelaæ
+        if (isPlayerInShootRange() && currentCooldown <= 0) {
+            shoot();
+            currentCooldown = shootCooldown;
+        }
     }
     else {
         // P³ynne hamowanie
@@ -182,6 +197,42 @@ void Enemy::moveTowardsPlayer(float deltaTime) {
         }
     }
 }
+
+bool Enemy::isPlayerInShootRange() const {
+    if (!targetPlayer) return false;
+
+    // Obliczamy odleg³oœæ miêdzy przeciwnikiem a graczem
+    float dx = targetPlayer->getPosition().getX() - position.getX();
+    float dy = targetPlayer->getPosition().getY() - position.getY();
+    float distanceToPlayer = sqrt(dx * dx + dy * dy);
+
+    return distanceToPlayer <= shootRange;
+}
+
+void Enemy::shoot() {
+    if (!canShoot || !targetPlayer) return;
+
+    // Offset dla punktu startowego pocisku
+    const float MUZZLE_OFFSET_X = 80.0f;
+    const float MUZZLE_OFFSET_Y = 40.0f;
+
+    // Oblicz pozycjê lufy
+    Point2D bulletPos = position;
+    float rotatedMuzzleX = MUZZLE_OFFSET_X * cos(rotation) - MUZZLE_OFFSET_Y * sin(rotation);
+    float rotatedMuzzleY = MUZZLE_OFFSET_X * sin(rotation) + MUZZLE_OFFSET_Y * cos(rotation);
+
+    bulletPos.setX(bulletPos.getX() + rotatedMuzzleX);
+    bulletPos.setY(bulletPos.getY() + rotatedMuzzleY);
+
+    // Oblicz now¹ rotacjê od punktu lufy do gracza
+    Point2D targetPos = targetPlayer->getPosition();
+    float dx = targetPos.getX() - bulletPos.getX();
+    float dy = targetPos.getY() - bulletPos.getY();
+    float bulletRotation = atan2(dy, dx);
+
+    BulletManager::getInstance()->createBullet(bulletPos, bulletRotation, this);
+}
+
 
 void Enemy::setMap(Map* map) {
     gameMap = map;

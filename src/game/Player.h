@@ -16,8 +16,6 @@ private:
     float acceleration;
     float deceleration;
     bool isMoving;
-    float health;
-    float maxHealth;
     float shootCooldown;
     float currentCooldown;
     Camera* camera;
@@ -37,13 +35,10 @@ public:
     // Specyficzne metody dla gracza
     void handleInput(float deltaTime);
     void lookAtMouse();
-    void takeDamage(float amount);
     void heal(float amount);
     void shoot();
 
     // Gettery
-    float getHealth() const;
-    float getMaxHealth() const;
     bool isAlive() const;
     Collision* getCollision() const { return collision; }
 

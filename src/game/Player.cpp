@@ -7,13 +7,13 @@ Player::Player()
     , acceleration(400.0f)
     , deceleration(800.0f)
     , isMoving(false)
-    , health(100.0f)
-    , maxHealth(100.0f)
     , shootCooldown(0.25f)  // 4 strza³y na sekundê
     , currentCooldown(0.0f)
 	, logMovement(false)
 {
     tag = "Player";
+	maxHealth = 100.0f;
+	health = maxHealth;
     collision = new Collision(CollisionShape::CIRCLE, CollisionLayer::ENTITY);
     collision->setRadius(30.0f);  // Dostosuj promieñ kolizji
     collision->setOwner(this);
@@ -207,20 +207,9 @@ void Player::update(float deltaTime) {
     }
 }
 
-void Player::takeDamage(float amount) {
-    health = std::max(0.0f, health - amount);
-}
 
 void Player::heal(float amount) {
     health = std::min(maxHealth, health + amount);
-}
-
-float Player::getHealth() const {
-    return health;
-}
-
-float Player::getMaxHealth() const {
-    return maxHealth;
 }
 
 bool Player::isAlive() const {
