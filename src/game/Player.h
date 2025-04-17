@@ -36,7 +36,7 @@ public:
     void handleInput(float deltaTime);
     void lookAtMouse();
     void heal(float amount);
-    void shoot();
+    void shoot(Logger& logger);
 
     // Gettery
     bool isAlive() const;

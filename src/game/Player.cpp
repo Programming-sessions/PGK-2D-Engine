@@ -111,22 +111,7 @@ void Player::handleInput(float deltaTime) {
 
     // Obs³uga strzelania
     if (engine->isMouseButtonDown(0) && currentCooldown <= 0) {
-        // Offset od œrodka postaci do lufy pistoletu gdy postaæ patrzy w prawo
-        const float MUZZLE_OFFSET_X = 80.0f;  // (170 - 90) wzglêdem œrodka
-        const float MUZZLE_OFFSET_Y = 40.0f;  // (115 - 75) wzglêdem œrodka
-
-        // Obliczamy pozycjê lufy z uwzglêdnieniem rotacji postaci
-        Point2D bulletPos = position;
-        float rotatedMuzzleX = MUZZLE_OFFSET_X * cos(rotation) - MUZZLE_OFFSET_Y * sin(rotation);
-        float rotatedMuzzleY = MUZZLE_OFFSET_X * sin(rotation) + MUZZLE_OFFSET_Y * cos(rotation);
-
-        bulletPos.setX(bulletPos.getX() + rotatedMuzzleX);
-        bulletPos.setY(bulletPos.getY() + rotatedMuzzleY);
-
-        BulletManager::getInstance()->createBullet(bulletPos, rotation, this);
-        currentCooldown = shootCooldown;
-
-        logger.info("Shot fired - Mouse state before shot: isMoving=" + std::to_string(isMoving));
+		shoot(logger);
     }
 
 
@@ -207,7 +192,32 @@ void Player::update(float deltaTime) {
     }
 }
 
+void Player::shoot(Logger& logger) {
+    // Offset od œrodka postaci do lufy pistoletu gdy postaæ patrzy w prawo
+    const float MUZZLE_OFFSET_X = 80.0f;  // (170 - 90) wzglêdem œrodka
+    const float MUZZLE_OFFSET_Y = 40.0f;  // (115 - 75) wzglêdem œrodka
 
+    // Obliczamy pozycjê lufy z uwzglêdnieniem rotacji postaci
+    Point2D bulletPos = position;
+    float rotatedMuzzleX = MUZZLE_OFFSET_X * cos(rotation) - MUZZLE_OFFSET_Y * sin(rotation);
+    float rotatedMuzzleY = MUZZLE_OFFSET_X * sin(rotation) + MUZZLE_OFFSET_Y * cos(rotation);
+
+    bulletPos.setX(bulletPos.getX() + rotatedMuzzleX);
+    bulletPos.setY(bulletPos.getY() + rotatedMuzzleY);
+
+    // Oblicz now¹ rotacjê od punktu lufy do gracza
+    Engine* engine = Engine::getInstance();
+    Point2D mouseScreen(engine->getMouseX(), engine->getMouseY());
+    Point2D mouseWorld = camera->screenToWorld(mouseScreen);
+    float dx = mouseWorld.getX() - bulletPos.getX();
+    float dy = mouseWorld.getY() - bulletPos.getY();
+    float bulletRotation = atan2(dy, dx);
+
+    BulletManager::getInstance()->createBullet(bulletPos, bulletRotation, this);
+    currentCooldown = shootCooldown;
+
+    logger.info("Shot fired - Mouse state before shot: isMoving=" + std::to_string(isMoving));
+}
 void Player::heal(float amount) {
     health = std::min(maxHealth, health + amount);
 }
