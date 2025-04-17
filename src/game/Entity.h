@@ -17,6 +17,7 @@ protected:
     float health;
 	float maxHealth;
     bool isActive;
+    bool isDying; // Bêdê w szoku jeœli to zadzia³a
     std::string tag;
 
 
@@ -49,6 +50,7 @@ public:
     std::string getTag() const;
 	float getHealth() const;
 	float getMaxHealth() const;
+    bool getIsDying() const { return isDying; }
 
     // £adowanie zasobów
     virtual bool loadResources();

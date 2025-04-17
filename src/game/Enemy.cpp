@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "BodyManager.h"
 #include <cmath>
 
 Enemy::Enemy()
@@ -30,7 +31,11 @@ Enemy::Enemy()
 }
 
 Enemy::~Enemy() {
-    delete collision;
+    if (collision) {
+        CollisionManager::getInstance()->removeCollision(collision);
+        delete collision;
+        collision = nullptr;
+    }
 }
 
 bool Enemy::loadResources() {
@@ -65,7 +70,18 @@ bool Enemy::loadResources() {
 
 void Enemy::update(float deltaTime) {
     if (!isActive) return;
+    if (isDying) {
+        // Jeœli jednostka jest w trakcie umierania
+        if (collision) {
+            CollisionManager::getInstance()->removeCollision(collision);
+            delete collision;
+            collision = nullptr;
+        }
 
+        BodyManager::getInstance()->addBody(position, rotation, tag);
+        destroy();
+        return;
+    }
     // Aktualizacja AI - to ju¿ zawiera logikê sprawdzania zasiêgu, rotacji i ruchu
     updateAI(deltaTime);
 
@@ -390,13 +406,17 @@ void Enemy::updateLastKnownPlayerPosition(const Point2D& position) {
 }
 
 void Enemy::takeDamage(float damage) {
-    Entity::takeDamage(damage);  // Wywo³aj metodê bazow¹
+    health -= damage;
 
-	// Zak³adamy ¿e ka¿dy pocisk który trafia bota jest od gracza //TODO : Przekazywanie ownera Bulleta przez TakeDamage
-    if (targetPlayer) {  // Upewniamy siê ¿e mamy referencjê do gracza
+    // Aktualizacja œwiadomoœci o graczu
+    if (targetPlayer) {
         updateLastKnownPlayerPosition(targetPlayer->getPosition());
         isAlerted = true;
         currentAlertTime = alertDuration;
+    }
+
+    if (health <= 0) {
+        isDying = true;  // Zaznaczamy ¿e jednostka umiera, ale jeszcze nie usuwamy
     }
 }
 

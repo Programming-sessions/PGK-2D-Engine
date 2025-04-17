@@ -5,6 +5,7 @@
 #include "src/game/Camera.h"
 #include "src/game/Map.h"
 #include "src/game/Enemy.h"
+#include "src/game/BodyManager.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -56,6 +57,8 @@ void render() {
         gameMap->draw();
     }
 
+    BodyManager::getInstance()->draw();
+
     // Rysowanie gracza
     if (player) {
         player->draw();
@@ -64,6 +67,7 @@ void render() {
     for (auto enemy : enemies) {
         enemy->draw();
     }
+
 
     BulletManager::getInstance()->draw();
 

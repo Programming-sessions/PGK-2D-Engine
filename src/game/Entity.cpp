@@ -1,6 +1,8 @@
 // src/game/Entity.cpp
 #include "Entity.h"
 #include <cmath>
+#include "DeadBody.h"
+#include "BodyManager.h"
 
 Entity::Entity()
     : sprite(nullptr)
@@ -51,11 +53,14 @@ void Entity::destroy() {
 }
 
 void Entity::takeDamage(float damage) {
-	health -= damage;
-	if (health <= 0) {
-		Entity::destroy();
-	}
+    health -= damage;
+
+    if (health <= 0) {
+        BodyManager::getInstance()->addBody(position, rotation, tag);
+        destroy();
+    }
 }
+
 
 bool Entity::loadResources() {
     // Podstawowa implementacja - do nadpisania w klasach pochodnych
