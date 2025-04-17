@@ -49,6 +49,13 @@ void Entity::destroy() {
     isActive = false;
 }
 
+void Entity::takeDamage(float damage) {
+	health -= damage;
+	if (health <= 0) {
+		Entity::destroy();
+	}
+}
+
 bool Entity::loadResources() {
     // Podstawowa implementacja - do nadpisania w klasach pochodnych
     return true;

@@ -4,6 +4,7 @@
 
 #include <vector>
 #include "../engine/Primitives.h"
+#include "Entity.h"
 
 enum class CollisionShape {
     RECTANGLE,
@@ -27,6 +28,7 @@ private:
     CollisionLayer layer;
     bool active;
     std::vector<Point2D> trianglePoints;
+    Entity* owner;
 
 public:
     Collision(CollisionShape shape = CollisionShape::CIRCLE,
@@ -51,6 +53,7 @@ public:
     void setTrianglePoints(const Point2D& p1, const Point2D& p2, const Point2D& p3) {
         trianglePoints = { p1, p2, p3 };
     }
+	void setOwner(Entity* entity) { owner = entity; }
 
     // Gettery
     Point2D getPosition() const { return position; }
@@ -61,6 +64,7 @@ public:
     CollisionShape getShape() const { return shape; }
     CollisionLayer getLayer() const { return layer; }
     const std::vector<Point2D>& getTrianglePoints() const { return trianglePoints; }
+    Entity* getOwner() const { return owner; }
 };
 
 class CollisionManager {

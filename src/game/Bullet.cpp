@@ -5,7 +5,7 @@
 Bullet::Bullet()
     : Entity()
     , lifeTime(2.0f)
-    , speed(800.0f)
+    , speed(1500.0f)
     , damage(10.0f)
     , owner(nullptr)
     , bulletTexture(nullptr)
@@ -64,6 +64,9 @@ void Bullet::update(float deltaTime) {
                     std::to_string(newPos.getY()) +
                     " with object of layer: " + std::to_string(static_cast<int>(hitCollision->getLayer())));
             }
+			if (hitCollision->getLayer() == CollisionLayer::ENTITY && hitCollision->getOwner() != owner) {
+				hitCollision->getOwner()->takeDamage(damage);
+			}
             destroy();
             return;
         }

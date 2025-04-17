@@ -14,6 +14,7 @@ protected:
     Point2D velocity;
     float rotation;
     float speed;
+    float health;
     bool isActive;
     std::string tag;
 
@@ -26,6 +27,7 @@ public:
     virtual void update(float deltaTime);
     virtual void draw();
     virtual void destroy();
+    virtual void takeDamage(float damage);
 
     // Settery
     void setPosition(float x, float y);

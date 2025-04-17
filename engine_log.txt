@@ -46991,3 +46991,815 @@
 [INFO] Thu Apr 17 16:29:02 2025 - Game loop ended
 [INFO] Thu Apr 17 16:29:02 2025 - Engine shutdown initiated
 [INFO] Thu Apr 17 16:29:02 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 16:41:26 2025 - Engine initialization started
+[INFO] Thu Apr 17 16:41:26 2025 - Allegro library initialized
+[INFO] Thu Apr 17 16:41:26 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 16:41:26 2025 - Input devices initialized
+[INFO] Thu Apr 17 16:41:26 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 16:41:26 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 16:41:26 2025 - Game loop started
+[INFO] Thu Apr 17 16:41:27 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:41:27 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:41:28 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:41:28 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:41:29 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:29 2025 - Bullet destroyed - collision detected at: X=198.688049 Y=162.911926 with object of layer: 1
+[INFO] Thu Apr 17 16:41:29 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:29 2025 - Bullet destroyed - lifetime exceeded at: X=330.786926 Y=1764.553101
+[INFO] Thu Apr 17 16:41:29 2025 - Bullet destroyed - collision detected at: X=273.729065 Y=359.136902 with object of layer: 0
+[INFO] Thu Apr 17 16:41:29 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:29 2025 - Bullet destroyed - lifetime exceeded at: X=331.955627 Y=1764.392700
+[INFO] Thu Apr 17 16:41:30 2025 - Bullet destroyed - lifetime exceeded at: X=331.955627 Y=1764.392700
+[INFO] Thu Apr 17 16:41:30 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:30 2025 - Bullet destroyed - lifetime exceeded at: X=331.955627 Y=1764.392700
+[INFO] Thu Apr 17 16:41:30 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:30 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:30 2025 - Bullet destroyed - collision detected at: X=681.225952 Y=697.211548 with object of layer: 0
+[INFO] Thu Apr 17 16:41:31 2025 - Bullet destroyed - collision detected at: X=682.454956 Y=543.437927 with object of layer: 1
+[INFO] Thu Apr 17 16:41:31 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:31 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:31 2025 - Bullet destroyed - collision detected at: X=628.272339 Y=504.246765 with object of layer: 1
+[INFO] Thu Apr 17 16:41:31 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:31 2025 - Bullet destroyed - collision detected at: X=181.926331 Y=1938.267578 with object of layer: 0
+[INFO] Thu Apr 17 16:41:31 2025 - Bullet destroyed - collision detected at: X=648.682678 Y=565.589172 with object of layer: 1
+[INFO] Thu Apr 17 16:41:32 2025 - Bullet destroyed - collision detected at: X=1068.448608 Y=69.196533 with object of layer: 0
+[INFO] Thu Apr 17 16:41:32 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:32 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:32 2025 - Bullet destroyed - collision detected at: X=685.790100 Y=66.754555 with object of layer: 0
+[INFO] Thu Apr 17 16:41:32 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:32 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:33 2025 - Bullet destroyed - collision detected at: X=522.134399 Y=69.546104 with object of layer: 0
+[INFO] Thu Apr 17 16:41:33 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:33 2025 - Bullet destroyed - collision detected at: X=877.543945 Y=68.793373 with object of layer: 0
+[INFO] Thu Apr 17 16:41:33 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:33 2025 - Bullet destroyed - collision detected at: X=481.855347 Y=248.487381 with object of layer: 0
+[INFO] Thu Apr 17 16:41:33 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:41:34 2025 - Bullet destroyed - collision detected at: X=494.657257 Y=215.742493 with object of layer: 0
+[INFO] Thu Apr 17 16:41:34 2025 - Bullet destroyed - collision detected at: X=450.294556 Y=308.706665 with object of layer: 0
+[INFO] Thu Apr 17 16:41:34 2025 - Bullet destroyed - collision detected at: X=405.658569 Y=394.837097 with object of layer: 0
+[INFO] Thu Apr 17 16:41:34 2025 - Game loop ended
+[INFO] Thu Apr 17 16:41:34 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 16:41:34 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 16:42:03 2025 - Engine initialization started
+[INFO] Thu Apr 17 16:42:03 2025 - Allegro library initialized
+[INFO] Thu Apr 17 16:42:03 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 16:42:03 2025 - Input devices initialized
+[INFO] Thu Apr 17 16:42:03 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 16:42:03 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 16:42:03 2025 - Game loop started
+[INFO] Thu Apr 17 16:42:04 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:42:04 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:42:06 2025 - Game loop ended
+[INFO] Thu Apr 17 16:42:06 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 16:42:06 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 16:42:28 2025 - Engine initialization started
+[INFO] Thu Apr 17 16:42:28 2025 - Allegro library initialized
+[INFO] Thu Apr 17 16:42:29 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 16:42:29 2025 - Input devices initialized
+[INFO] Thu Apr 17 16:42:29 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 16:42:29 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 16:42:29 2025 - Game loop started
+[INFO] Thu Apr 17 16:42:29 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:42:30 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:42:30 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:42:31 2025 - Game loop ended
+[INFO] Thu Apr 17 16:42:31 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 16:42:31 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 16:46:08 2025 - Engine initialization started
+[INFO] Thu Apr 17 16:46:08 2025 - Allegro library initialized
+[INFO] Thu Apr 17 16:46:08 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 16:46:08 2025 - Input devices initialized
+[INFO] Thu Apr 17 16:46:08 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 16:46:08 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 16:46:08 2025 - Game loop started
+[INFO] Thu Apr 17 16:46:09 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:46:09 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:10 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:10 2025 - Bullet destroyed - collision detected at: X=317.808319 Y=1942.600830 with object of layer: 0
+[INFO] Thu Apr 17 16:46:10 2025 - Bullet destroyed - collision detected at: X=288.156433 Y=383.192505 with object of layer: 0
+[INFO] Thu Apr 17 16:46:10 2025 - Bullet destroyed - collision detected at: X=530.204895 Y=1314.868408 with object of layer: 0
+[INFO] Thu Apr 17 16:46:10 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:10 2025 - Bullet destroyed - collision detected at: X=344.644989 Y=462.303436 with object of layer: 0
+[INFO] Thu Apr 17 16:46:11 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:11 2025 - Bullet destroyed - collision detected at: X=681.325806 Y=502.765472 with object of layer: 1
+[INFO] Thu Apr 17 16:46:11 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:11 2025 - Bullet destroyed - collision detected at: X=682.269653 Y=475.921875 with object of layer: 1
+[INFO] Thu Apr 17 16:46:12 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:12 2025 - Bullet destroyed - collision detected at: X=684.216431 Y=501.520844 with object of layer: 1
+[INFO] Thu Apr 17 16:46:12 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:13 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:13 2025 - Bullet destroyed - collision detected at: X=1181.277832 Y=69.038925 with object of layer: 0
+[INFO] Thu Apr 17 16:46:13 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:13 2025 - Bullet destroyed - collision detected at: X=454.268890 Y=307.479218 with object of layer: 0
+[INFO] Thu Apr 17 16:46:14 2025 - Bullet destroyed - collision detected at: X=54.460682 Y=829.371582 with object of layer: 0
+[INFO] Thu Apr 17 16:46:14 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:14 2025 - Bullet destroyed - collision detected at: X=53.629150 Y=1074.755493 with object of layer: 0
+[INFO] Thu Apr 17 16:46:14 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:15 2025 - Bullet destroyed - collision detected at: X=1187.325806 Y=832.523071 with object of layer: 1
+[INFO] Thu Apr 17 16:46:15 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:15 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:15 2025 - Bullet destroyed - collision detected at: X=53.815887 Y=794.294128 with object of layer: 0
+[INFO] Thu Apr 17 16:46:16 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:16 2025 - Bullet destroyed - collision detected at: X=70.243118 Y=826.649414 with object of layer: 0
+[INFO] Thu Apr 17 16:46:16 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:46:16 2025 - Bullet destroyed - collision detected at: X=56.544312 Y=736.254578 with object of layer: 0
+[INFO] Thu Apr 17 16:46:16 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:46:17 2025 - Bullet destroyed - collision detected at: X=63.080257 Y=830.444702 with object of layer: 0
+[INFO] Thu Apr 17 16:46:17 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 16:46:17 2025 - Bullet destroyed - collision detected at: X=51.879913 Y=845.441772 with object of layer: 0
+[INFO] Thu Apr 17 16:46:17 2025 - Bullet destroyed - collision detected at: X=51.879913 Y=845.441772 with object of layer: 0
+[INFO] Thu Apr 17 16:46:18 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:18 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:18 2025 - Bullet destroyed - collision detected at: X=338.612885 Y=492.503418 with object of layer: 0
+[INFO] Thu Apr 17 16:46:19 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:19 2025 - Bullet destroyed - collision detected at: X=831.176758 Y=949.699890 with object of layer: 0
+[INFO] Thu Apr 17 16:46:19 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:19 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:19 2025 - Bullet destroyed - collision detected at: X=769.956482 Y=941.020264 with object of layer: 0
+[INFO] Thu Apr 17 16:46:20 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:20 2025 - Bullet destroyed - collision detected at: X=1353.070923 Y=59.650131 with object of layer: 0
+[INFO] Thu Apr 17 16:46:20 2025 - Bullet destroyed - collision detected at: X=762.774902 Y=939.480469 with object of layer: 0
+[INFO] Thu Apr 17 16:46:20 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:20 2025 - Bullet destroyed - collision detected at: X=57.662430 Y=1265.589111 with object of layer: 0
+[INFO] Thu Apr 17 16:46:20 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:20 2025 - Bullet destroyed - collision detected at: X=61.123352 Y=1461.368164 with object of layer: 0
+[INFO] Thu Apr 17 16:46:21 2025 - Bullet destroyed - collision detected at: X=50.738220 Y=1390.707642 with object of layer: 0
+[INFO] Thu Apr 17 16:46:21 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:21 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:21 2025 - Bullet destroyed - collision detected at: X=67.444092 Y=1779.659668 with object of layer: 0
+[INFO] Thu Apr 17 16:46:21 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:22 2025 - Bullet destroyed - collision detected at: X=57.435860 Y=1739.874756 with object of layer: 0
+[INFO] Thu Apr 17 16:46:22 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:22 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:23 2025 - Bullet destroyed - collision detected at: X=1895.780884 Y=1169.688965 with object of layer: 0
+[INFO] Thu Apr 17 16:46:23 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:23 2025 - Bullet destroyed - collision detected at: X=3930.454590 Y=1744.165405 with object of layer: 0
+[INFO] Thu Apr 17 16:46:23 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:23 2025 - Bullet destroyed - collision detected at: X=3949.701660 Y=1703.601929 with object of layer: 0
+[INFO] Thu Apr 17 16:46:24 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:24 2025 - Bullet destroyed - collision detected at: X=962.046265 Y=67.842125 with object of layer: 0
+[INFO] Thu Apr 17 16:46:24 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:24 2025 - Bullet destroyed - collision detected at: X=1015.640381 Y=58.877918 with object of layer: 0
+[INFO] Thu Apr 17 16:46:24 2025 - Bullet destroyed - collision detected at: X=926.643860 Y=714.486267 with object of layer: 0
+[INFO] Thu Apr 17 16:46:24 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 16:46:24 2025 - Bullet destroyed - collision detected at: X=1197.289307 Y=822.292603 with object of layer: 1
+[INFO] Thu Apr 17 16:46:25 2025 - Bullet destroyed - collision detected at: X=936.711914 Y=818.635132 with object of layer: 0
+[INFO] Thu Apr 17 16:46:25 2025 - Game loop ended
+[INFO] Thu Apr 17 16:46:25 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 16:46:25 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:00:52 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:00:52 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:00:53 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:00:53 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:00:53 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:00:53 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:00:53 2025 - Game loop started
+[INFO] Thu Apr 17 17:00:53 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:00:54 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:00:54 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:55 2025 - Bullet destroyed - collision detected at: X=654.574219 Y=1309.523071 with object of layer: 0
+[INFO] Thu Apr 17 17:00:55 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:55 2025 - Bullet destroyed - collision detected at: X=252.511444 Y=294.746368 with object of layer: 0
+[INFO] Thu Apr 17 17:00:55 2025 - Bullet destroyed - collision detected at: X=1089.539795 Y=1929.977417 with object of layer: 0
+[INFO] Thu Apr 17 17:00:55 2025 - Bullet destroyed - collision detected at: X=650.107178 Y=1311.895020 with object of layer: 0
+[INFO] Thu Apr 17 17:00:55 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:55 2025 - Bullet destroyed - collision detected at: X=311.249084 Y=404.367065 with object of layer: 0
+[INFO] Thu Apr 17 17:00:55 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:56 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:56 2025 - Bullet destroyed - collision detected at: X=680.209717 Y=513.457458 with object of layer: 1
+[INFO] Thu Apr 17 17:00:56 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:56 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:56 2025 - Bullet destroyed - collision detected at: X=668.869446 Y=484.196838 with object of layer: 1
+[INFO] Thu Apr 17 17:00:56 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:56 2025 - Bullet destroyed - collision detected at: X=1835.343872 Y=888.199158 with object of layer: 0
+[INFO] Thu Apr 17 17:00:56 2025 - Bullet destroyed - collision detected at: X=681.674011 Y=484.604797 with object of layer: 1
+[INFO] Thu Apr 17 17:00:57 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:57 2025 - Bullet destroyed - collision detected at: X=711.836426 Y=530.635742 with object of layer: 1
+[INFO] Thu Apr 17 17:00:57 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:57 2025 - Bullet destroyed - collision detected at: X=688.500610 Y=509.500061 with object of layer: 1
+[INFO] Thu Apr 17 17:00:57 2025 - Bullet destroyed - collision detected at: X=691.051880 Y=509.982727 with object of layer: 1
+[INFO] Thu Apr 17 17:00:57 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:58 2025 - Bullet destroyed - collision detected at: X=69.966919 Y=1327.709229 with object of layer: 0
+[INFO] Thu Apr 17 17:00:58 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:58 2025 - Bullet destroyed - collision detected at: X=69.822998 Y=1534.161865 with object of layer: 0
+[INFO] Thu Apr 17 17:00:58 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:58 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:59 2025 - Bullet destroyed - collision detected at: X=1174.697266 Y=811.156860 with object of layer: 1
+[INFO] Thu Apr 17 17:00:59 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:59 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:59 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:00:59 2025 - Bullet destroyed - collision detected at: X=1178.461914 Y=769.834961 with object of layer: 1
+[INFO] Thu Apr 17 17:01:00 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:00 2025 - Bullet destroyed - collision detected at: X=2643.759521 Y=62.780426 with object of layer: 0
+[INFO] Thu Apr 17 17:01:00 2025 - Bullet destroyed - collision detected at: X=694.394409 Y=1482.423950 with object of layer: 0
+[INFO] Thu Apr 17 17:01:00 2025 - Bullet destroyed - collision detected at: X=2564.510010 Y=68.469101 with object of layer: 0
+[INFO] Thu Apr 17 17:01:00 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:00 2025 - Bullet destroyed - collision detected at: X=1514.810303 Y=67.800690 with object of layer: 0
+[INFO] Thu Apr 17 17:01:00 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:01 2025 - Bullet destroyed - collision detected at: X=384.888916 Y=1931.893555 with object of layer: 0
+[INFO] Thu Apr 17 17:01:01 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:01 2025 - Bullet destroyed - collision detected at: X=656.012939 Y=1942.222290 with object of layer: 0
+[INFO] Thu Apr 17 17:01:01 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:01 2025 - Bullet destroyed - collision detected at: X=1567.031738 Y=1936.567749 with object of layer: 0
+[INFO] Thu Apr 17 17:01:01 2025 - Bullet destroyed - collision detected at: X=1605.433472 Y=1929.141846 with object of layer: 0
+[INFO] Thu Apr 17 17:01:02 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:02 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:03 2025 - Bullet destroyed - collision detected at: X=2894.459961 Y=1928.066406 with object of layer: 0
+[INFO] Thu Apr 17 17:01:03 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:03 2025 - Bullet destroyed - collision detected at: X=2878.429688 Y=1929.578613 with object of layer: 0
+[INFO] Thu Apr 17 17:01:03 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:03 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:04 2025 - Bullet destroyed - collision detected at: X=3315.635254 Y=1931.434570 with object of layer: 0
+[INFO] Thu Apr 17 17:01:04 2025 - Bullet destroyed - collision detected at: X=3576.864258 Y=1931.099731 with object of layer: 0
+[INFO] Thu Apr 17 17:01:05 2025 - Bullet destroyed - collision detected at: X=3725.454102 Y=1931.489014 with object of layer: 0
+[INFO] Thu Apr 17 17:01:05 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:05 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:05 2025 - Bullet destroyed - collision detected at: X=2236.220459 Y=1449.769531 with object of layer: 0
+[INFO] Thu Apr 17 17:01:06 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:06 2025 - Bullet destroyed - collision detected at: X=2263.373291 Y=49.583405 with object of layer: 0
+[INFO] Thu Apr 17 17:01:06 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:06 2025 - Bullet destroyed - collision detected at: X=2094.145752 Y=1935.253662 with object of layer: 0
+[INFO] Thu Apr 17 17:01:06 2025 - Bullet destroyed - collision detected at: X=2073.529053 Y=1929.446533 with object of layer: 0
+[INFO] Thu Apr 17 17:01:07 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:07 2025 - Bullet destroyed - collision detected at: X=2250.760010 Y=1939.870605 with object of layer: 0
+[INFO] Thu Apr 17 17:01:07 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:07 2025 - Bullet destroyed - collision detected at: X=2539.599609 Y=1944.064331 with object of layer: 0
+[INFO] Thu Apr 17 17:01:08 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:08 2025 - Bullet destroyed - collision detected at: X=2198.988037 Y=1469.175049 with object of layer: 0
+[INFO] Thu Apr 17 17:01:09 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:09 2025 - Bullet destroyed - collision detected at: X=2192.024414 Y=1499.503540 with object of layer: 0
+[INFO] Thu Apr 17 17:01:09 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:10 2025 - Bullet destroyed - collision detected at: X=2150.915283 Y=1950.533081 with object of layer: 0
+[INFO] Thu Apr 17 17:01:10 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:10 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:10 2025 - Bullet destroyed - collision detected at: X=2220.456543 Y=1938.706909 with object of layer: 0
+[INFO] Thu Apr 17 17:01:10 2025 - Bullet destroyed - collision detected at: X=2220.456543 Y=1938.706909 with object of layer: 0
+[INFO] Thu Apr 17 17:01:10 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:11 2025 - Bullet destroyed - collision detected at: X=2223.601074 Y=1939.102173 with object of layer: 0
+[INFO] Thu Apr 17 17:01:11 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:11 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:11 2025 - Bullet destroyed - collision detected at: X=2313.232666 Y=1942.078003 with object of layer: 0
+[INFO] Thu Apr 17 17:01:11 2025 - Bullet destroyed - collision detected at: X=2348.406982 Y=1938.891968 with object of layer: 0
+[INFO] Thu Apr 17 17:01:11 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:11 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:11 2025 - Bullet destroyed - collision detected at: X=2297.446533 Y=1942.708252 with object of layer: 0
+[INFO] Thu Apr 17 17:01:12 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:12 2025 - Bullet destroyed - collision detected at: X=2229.654053 Y=1939.805054 with object of layer: 0
+[INFO] Thu Apr 17 17:01:12 2025 - Bullet destroyed - collision detected at: X=2293.082275 Y=1942.794434 with object of layer: 0
+[INFO] Thu Apr 17 17:01:12 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:12 2025 - Bullet destroyed - collision detected at: X=2266.347412 Y=1942.505859 with object of layer: 0
+[INFO] Thu Apr 17 17:01:12 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:13 2025 - Bullet destroyed - collision detected at: X=2261.761475 Y=1942.315796 with object of layer: 0
+[INFO] Thu Apr 17 17:01:13 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:13 2025 - Bullet destroyed - collision detected at: X=2262.898926 Y=1942.366333 with object of layer: 0
+[INFO] Thu Apr 17 17:01:13 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:13 2025 - Bullet destroyed - collision detected at: X=2118.148682 Y=1940.859009 with object of layer: 0
+[INFO] Thu Apr 17 17:01:13 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:14 2025 - Bullet destroyed - collision detected at: X=2351.134277 Y=1938.541992 with object of layer: 0
+[INFO] Thu Apr 17 17:01:14 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:14 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:14 2025 - Bullet destroyed - collision detected at: X=3049.197754 Y=816.516174 with object of layer: 0
+[INFO] Thu Apr 17 17:01:15 2025 - Bullet destroyed - collision detected at: X=2184.799316 Y=1035.272583 with object of layer: 0
+[INFO] Thu Apr 17 17:01:15 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:15 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:15 2025 - Bullet destroyed - collision detected at: X=3090.945312 Y=880.287354 with object of layer: 0
+[INFO] Thu Apr 17 17:01:16 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:16 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:16 2025 - Bullet destroyed - collision detected at: X=3070.249512 Y=861.808899 with object of layer: 0
+[INFO] Thu Apr 17 17:01:16 2025 - Bullet destroyed - collision detected at: X=1816.652100 Y=60.319489 with object of layer: 0
+[INFO] Thu Apr 17 17:01:16 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:16 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:16 2025 - Bullet destroyed - collision detected at: X=3069.798096 Y=749.891907 with object of layer: 0
+[INFO] Thu Apr 17 17:01:17 2025 - Bullet destroyed - collision detected at: X=1605.703247 Y=57.442116 with object of layer: 0
+[INFO] Thu Apr 17 17:01:17 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:17 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:17 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:17 2025 - Bullet destroyed - collision detected at: X=1299.524902 Y=68.109413 with object of layer: 0
+[INFO] Thu Apr 17 17:01:17 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:17 2025 - Bullet destroyed - collision detected at: X=3642.161133 Y=479.790955 with object of layer: 0
+[INFO] Thu Apr 17 17:01:18 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:18 2025 - Bullet destroyed - collision detected at: X=3602.283203 Y=420.883820 with object of layer: 0
+[INFO] Thu Apr 17 17:01:18 2025 - Bullet destroyed - collision detected at: X=480.559692 Y=243.107162 with object of layer: 0
+[INFO] Thu Apr 17 17:01:18 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:18 2025 - Bullet destroyed - collision detected at: X=2584.246826 Y=55.549805 with object of layer: 0
+[INFO] Thu Apr 17 17:01:18 2025 - Bullet destroyed - collision detected at: X=947.401123 Y=794.845337 with object of layer: 0
+[INFO] Thu Apr 17 17:01:18 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:19 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:19 2025 - Bullet destroyed - collision detected at: X=1415.204346 Y=71.904587 with object of layer: 0
+[INFO] Thu Apr 17 17:01:19 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:19 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:19 2025 - Bullet destroyed - collision detected at: X=488.416870 Y=1933.299438 with object of layer: 0
+[INFO] Thu Apr 17 17:01:19 2025 - Bullet destroyed - collision detected at: X=825.162415 Y=67.589828 with object of layer: 0
+[INFO] Thu Apr 17 17:01:20 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:20 2025 - Bullet destroyed - collision detected at: X=986.015259 Y=1946.921265 with object of layer: 0
+[INFO] Thu Apr 17 17:01:20 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:20 2025 - Bullet destroyed - collision detected at: X=1502.088379 Y=1930.696533 with object of layer: 0
+[INFO] Thu Apr 17 17:01:20 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:20 2025 - Bullet destroyed - collision detected at: X=454.792389 Y=271.843384 with object of layer: 0
+[INFO] Thu Apr 17 17:01:21 2025 - Bullet destroyed - collision detected at: X=1430.644775 Y=1936.618530 with object of layer: 0
+[INFO] Thu Apr 17 17:01:21 2025 - Bullet destroyed - collision detected at: X=967.100037 Y=1931.482788 with object of layer: 0
+[INFO] Thu Apr 17 17:01:24 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:24 2025 - Bullet destroyed - collision detected at: X=835.766602 Y=418.664612 with object of layer: 1
+[INFO] Thu Apr 17 17:01:24 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:24 2025 - Bullet destroyed - collision detected at: X=669.816650 Y=322.929199 with object of layer: 1
+[INFO] Thu Apr 17 17:01:25 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:25 2025 - Bullet destroyed - collision detected at: X=693.075623 Y=61.662498 with object of layer: 0
+[INFO] Thu Apr 17 17:01:25 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:25 2025 - Bullet destroyed - collision detected at: X=643.579956 Y=543.854980 with object of layer: 1
+[INFO] Thu Apr 17 17:01:26 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:26 2025 - Bullet destroyed - collision detected at: X=623.372864 Y=529.049988 with object of layer: 1
+[INFO] Thu Apr 17 17:01:26 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:27 2025 - Bullet destroyed - collision detected at: X=66.659470 Y=618.877319 with object of layer: 0
+[INFO] Thu Apr 17 17:01:27 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:27 2025 - Bullet destroyed - collision detected at: X=64.143761 Y=1055.789429 with object of layer: 0
+[INFO] Thu Apr 17 17:01:27 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:28 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:01:28 2025 - Bullet destroyed - collision detected at: X=52.645657 Y=1121.364746 with object of layer: 0
+[INFO] Thu Apr 17 17:01:28 2025 - Bullet destroyed - collision detected at: X=68.059875 Y=1081.774292 with object of layer: 0
+[INFO] Thu Apr 17 17:01:30 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:30 2025 - Bullet destroyed - collision detected at: X=674.701050 Y=535.275452 with object of layer: 1
+[INFO] Thu Apr 17 17:01:30 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:31 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:31 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:31 2025 - Bullet destroyed - collision detected at: X=405.138641 Y=352.373901 with object of layer: 0
+[INFO] Thu Apr 17 17:01:31 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:31 2025 - Bullet destroyed - collision detected at: X=405.138641 Y=352.373901 with object of layer: 0
+[INFO] Thu Apr 17 17:01:32 2025 - Bullet destroyed - collision detected at: X=405.138641 Y=352.373901 with object of layer: 0
+[INFO] Thu Apr 17 17:01:32 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:32 2025 - Bullet destroyed - collision detected at: X=405.138641 Y=352.373901 with object of layer: 0
+[INFO] Thu Apr 17 17:01:32 2025 - Bullet destroyed - collision detected at: X=405.138641 Y=352.373901 with object of layer: 0
+[INFO] Thu Apr 17 17:01:33 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:33 2025 - Bullet destroyed - collision detected at: X=405.138641 Y=352.373901 with object of layer: 0
+[INFO] Thu Apr 17 17:01:34 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:35 2025 - Bullet destroyed - collision detected at: X=666.551208 Y=499.157349 with object of layer: 1
+[INFO] Thu Apr 17 17:01:35 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:35 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:36 2025 - Bullet destroyed - collision detected at: X=409.304413 Y=345.300415 with object of layer: 0
+[INFO] Thu Apr 17 17:01:36 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:36 2025 - Bullet destroyed - collision detected at: X=407.437347 Y=348.456116 with object of layer: 0
+[INFO] Thu Apr 17 17:01:37 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:01:37 2025 - Bullet destroyed - collision detected at: X=664.089417 Y=503.340424 with object of layer: 1
+[INFO] Thu Apr 17 17:01:37 2025 - Bullet destroyed - collision detected at: X=664.089417 Y=503.340424 with object of layer: 1
+[INFO] Thu Apr 17 17:01:38 2025 - Game loop ended
+[INFO] Thu Apr 17 17:01:38 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:01:38 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:03:47 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:03:47 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:03:47 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:03:47 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:03:47 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:03:47 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:03:47 2025 - Game loop started
+[INFO] Thu Apr 17 17:03:48 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:03:48 2025 - Bullet destroyed - collision detected at: X=328.541321 Y=466.427277 with object of layer: 0
+[INFO] Thu Apr 17 17:03:48 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:03:48 2025 - Bullet destroyed - collision detected at: X=314.866669 Y=445.626160 with object of layer: 0
+[INFO] Thu Apr 17 17:03:48 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:03:48 2025 - Bullet destroyed - collision detected at: X=314.866669 Y=445.626160 with object of layer: 0
+[INFO] Thu Apr 17 17:03:49 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:03:49 2025 - Bullet destroyed - collision detected at: X=177.466339 Y=211.798782 with object of layer: 1
+[INFO] Thu Apr 17 17:03:49 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:03:49 2025 - Bullet destroyed - collision detected at: X=177.466339 Y=211.798782 with object of layer: 1
+[INFO] Thu Apr 17 17:03:50 2025 - Game loop ended
+[INFO] Thu Apr 17 17:03:50 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:03:50 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:08:27 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:08:27 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:08:27 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:08:27 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:08:27 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:08:27 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:08:27 2025 - Game loop started
+[INFO] Thu Apr 17 17:08:35 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:08:35 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:08:36 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:08:36 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:08:36 2025 - Bullet destroyed - collision detected at: X=383.785217 Y=1933.600342 with object of layer: 0
+[INFO] Thu Apr 17 17:08:37 2025 - Bullet destroyed - collision detected at: X=396.462311 Y=1932.703369 with object of layer: 0
+[INFO] Thu Apr 17 17:08:37 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:08:37 2025 - Bullet destroyed - collision detected at: X=330.331787 Y=448.585510 with object of layer: 0
+[INFO] Thu Apr 17 17:08:37 2025 - Bullet destroyed - collision detected at: X=392.822723 Y=1932.528687 with object of layer: 0
+[INFO] Thu Apr 17 17:08:37 2025 - Bullet destroyed - collision detected at: X=379.061371 Y=1940.779053 with object of layer: 0
+[INFO] Thu Apr 17 17:08:37 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:08:37 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:08:37 2025 - Bullet destroyed - collision detected at: X=684.221375 Y=500.501709 with object of layer: 1
+[INFO] Thu Apr 17 17:08:38 2025 - Bullet destroyed - collision detected at: X=677.151978 Y=521.777527 with object of layer: 1
+[INFO] Thu Apr 17 17:08:38 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:08:38 2025 - Bullet destroyed - collision detected at: X=676.171570 Y=526.713135 with object of layer: 1
+[INFO] Thu Apr 17 17:08:38 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:08:38 2025 - Bullet destroyed - collision detected at: X=711.203125 Y=532.633179 with object of layer: 1
+[INFO] Thu Apr 17 17:08:39 2025 - Game loop ended
+[INFO] Thu Apr 17 17:08:39 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:08:39 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:09:03 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:09:03 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:09:04 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:09:04 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:09:04 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:09:04 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:09:04 2025 - Game loop started
+[INFO] Thu Apr 17 17:09:04 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:09:06 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:06 2025 - Bullet destroyed - lifetime exceeded at: X=1038.890137 Y=3033.683594
+[INFO] Thu Apr 17 17:09:07 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:08 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:08 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:08 2025 - Bullet destroyed - lifetime exceeded at: X=3233.735107 Y=303.298462
+[INFO] Thu Apr 17 17:09:08 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:09 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:09 2025 - Bullet destroyed - lifetime exceeded at: X=3214.443115 Y=53.868233
+[INFO] Thu Apr 17 17:09:09 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:09 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:10 2025 - Bullet destroyed - lifetime exceeded at: X=3204.900146 Y=1.163760
+[INFO] Thu Apr 17 17:09:10 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:10 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:10 2025 - Bullet destroyed - lifetime exceeded at: X=3201.920654 Y=-14.294462
+[INFO] Thu Apr 17 17:09:10 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:10 2025 - Bullet destroyed - lifetime exceeded at: X=3196.206055 Y=-42.853195
+[INFO] Thu Apr 17 17:09:11 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:11 2025 - Bullet destroyed - lifetime exceeded at: X=3196.206055 Y=-42.853195
+[INFO] Thu Apr 17 17:09:11 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:11 2025 - Bullet destroyed - lifetime exceeded at: X=3196.206055 Y=-42.853195
+[INFO] Thu Apr 17 17:09:11 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:11 2025 - Bullet destroyed - lifetime exceeded at: X=3196.206055 Y=-42.853195
+[INFO] Thu Apr 17 17:09:12 2025 - Bullet destroyed - lifetime exceeded at: X=3196.206055 Y=-42.853195
+[INFO] Thu Apr 17 17:09:12 2025 - Bullet destroyed - lifetime exceeded at: X=3196.206055 Y=-42.853195
+[INFO] Thu Apr 17 17:09:12 2025 - Bullet destroyed - lifetime exceeded at: X=3196.206055 Y=-42.853195
+[INFO] Thu Apr 17 17:09:12 2025 - Game loop ended
+[INFO] Thu Apr 17 17:09:12 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:09:13 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:09:20 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:09:20 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:09:21 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:09:21 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:09:21 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:09:21 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:09:21 2025 - Game loop started
+[INFO] Thu Apr 17 17:09:21 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:22 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:09:22 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:09:22 2025 - Bullet destroyed - collision detected at: X=397.645416 Y=1473.692261 with object of layer: 0
+[INFO] Thu Apr 17 17:09:22 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:09:22 2025 - Bullet destroyed - collision detected at: X=274.171448 Y=330.533539 with object of layer: 0
+[INFO] Thu Apr 17 17:09:23 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:09:23 2025 - Bullet destroyed - collision detected at: X=397.993774 Y=1481.369629 with object of layer: 0
+[INFO] Thu Apr 17 17:09:23 2025 - Bullet destroyed - collision detected at: X=282.794983 Y=374.207214 with object of layer: 0
+[INFO] Thu Apr 17 17:09:23 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:09:23 2025 - Bullet destroyed - collision detected at: X=507.188690 Y=1950.036987 with object of layer: 0
+[INFO] Thu Apr 17 17:09:24 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:24 2025 - Bullet destroyed - collision detected at: X=681.607910 Y=514.297485 with object of layer: 1
+[INFO] Thu Apr 17 17:09:24 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:09:24 2025 - Bullet destroyed - collision detected at: X=683.042603 Y=524.435181 with object of layer: 1
+[INFO] Thu Apr 17 17:09:24 2025 - Bullet destroyed - collision detected at: X=683.080139 Y=526.940674 with object of layer: 1
+[INFO] Thu Apr 17 17:09:25 2025 - Game loop ended
+[INFO] Thu Apr 17 17:09:25 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:09:25 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:10:47 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:10:47 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:10:47 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:10:47 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:10:47 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:10:47 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:10:47 2025 - Game loop started
+[INFO] Thu Apr 17 17:10:48 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:10:49 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:10:49 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:10:50 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:10:50 2025 - Bullet destroyed - lifetime exceeded at: X=2249.602295 Y=2306.170898
+[INFO] Thu Apr 17 17:10:50 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:10:50 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:10:50 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:10:51 2025 - Bullet destroyed - lifetime exceeded at: X=2739.925049 Y=1742.184448
+[INFO] Thu Apr 17 17:10:51 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:10:51 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:10:51 2025 - Bullet destroyed - lifetime exceeded at: X=3104.216553 Y=1010.201599
+[INFO] Thu Apr 17 17:10:52 2025 - Bullet destroyed - lifetime exceeded at: X=3145.564941 Y=864.758728
+[INFO] Thu Apr 17 17:10:52 2025 - Bullet destroyed - lifetime exceeded at: X=3130.912354 Y=952.915161
+[INFO] Thu Apr 17 17:10:52 2025 - Game loop ended
+[INFO] Thu Apr 17 17:10:52 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:10:52 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:11:58 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:11:58 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:11:58 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:11:58 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:11:58 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:11:58 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:11:58 2025 - Game loop started
+[INFO] Thu Apr 17 17:12:04 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:12:06 2025 - Bullet destroyed - lifetime exceeded at: X=3232.692627 Y=-76.848770
+[INFO] Thu Apr 17 17:12:07 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:12:09 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:12:09 2025 - Bullet destroyed - lifetime exceeded at: X=3158.573730 Y=-352.830994
+[INFO] Thu Apr 17 17:12:10 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:12:11 2025 - Bullet destroyed - lifetime exceeded at: X=-1037.292603 Y=-1881.988403
+[INFO] Thu Apr 17 17:12:12 2025 - Bullet destroyed - lifetime exceeded at: X=-142.100357 Y=-1765.222290
+[INFO] Thu Apr 17 17:12:12 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:12:13 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:12:14 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:12:14 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:12:14 2025 - Bullet destroyed - lifetime exceeded at: X=-117.084183 Y=-1657.448364
+[INFO] Thu Apr 17 17:12:14 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:12:15 2025 - Bullet destroyed - lifetime exceeded at: X=-146.120331 Y=-1655.075073
+[INFO] Thu Apr 17 17:12:15 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:12:15 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:12:15 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:12:16 2025 - Bullet destroyed - lifetime exceeded at: X=-60.780186 Y=-1645.199463
+[INFO] Thu Apr 17 17:12:16 2025 - Bullet destroyed - lifetime exceeded at: X=-59.719067 Y=-1524.295654
+[INFO] Thu Apr 17 17:12:16 2025 - Bullet destroyed - lifetime exceeded at: X=-47.665977 Y=-1430.053833
+[INFO] Thu Apr 17 17:12:17 2025 - Bullet destroyed - lifetime exceeded at: X=-37.704441 Y=-1402.473999
+[INFO] Thu Apr 17 17:12:17 2025 - Bullet destroyed - lifetime exceeded at: X=-37.704441 Y=-1402.473999
+[INFO] Thu Apr 17 17:12:17 2025 - Bullet destroyed - lifetime exceeded at: X=-37.704441 Y=-1402.473999
+[INFO] Thu Apr 17 17:12:18 2025 - Game loop ended
+[INFO] Thu Apr 17 17:12:18 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:12:18 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:15:05 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:15:05 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:15:05 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:15:05 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:15:05 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:15:05 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:15:05 2025 - Game loop started
+[INFO] Thu Apr 17 17:15:07 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:08 2025 - Bullet destroyed - collision detected at: X=680.665588 Y=528.539917 with object of layer: 1
+[INFO] Thu Apr 17 17:15:11 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:12 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:13 2025 - Bullet destroyed - lifetime exceeded at: X=3180.166260 Y=533.061523
+[INFO] Thu Apr 17 17:15:14 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:14 2025 - Bullet destroyed - collision detected at: X=681.357666 Y=503.936493 with object of layer: 1
+[INFO] Thu Apr 17 17:15:14 2025 - Bullet destroyed - lifetime exceeded at: X=3180.234863 Y=495.216400
+[INFO] Thu Apr 17 17:15:15 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:16 2025 - Bullet destroyed - collision detected at: X=681.357666 Y=503.936493 with object of layer: 1
+[INFO] Thu Apr 17 17:15:17 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:17 2025 - Bullet destroyed - collision detected at: X=356.716431 Y=481.913422 with object of layer: 0
+[INFO] Thu Apr 17 17:15:17 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:18 2025 - Bullet destroyed - collision detected at: X=653.627197 Y=812.087891 with object of layer: 0
+[INFO] Thu Apr 17 17:15:18 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:18 2025 - Bullet destroyed - collision detected at: X=658.816833 Y=802.416626 with object of layer: 0
+[INFO] Thu Apr 17 17:15:20 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:20 2025 - Bullet destroyed - collision detected at: X=676.635376 Y=885.999878 with object of layer: 0
+[INFO] Thu Apr 17 17:15:20 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:21 2025 - Bullet destroyed - collision detected at: X=676.635376 Y=885.999878 with object of layer: 0
+[INFO] Thu Apr 17 17:15:21 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:22 2025 - Bullet destroyed - collision detected at: X=676.635376 Y=885.999878 with object of layer: 0
+[INFO] Thu Apr 17 17:15:24 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:24 2025 - Bullet destroyed - collision detected at: X=698.702332 Y=533.296509 with object of layer: 1
+[INFO] Thu Apr 17 17:15:26 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:26 2025 - Bullet destroyed - collision detected at: X=698.702332 Y=533.296509 with object of layer: 1
+[INFO] Thu Apr 17 17:15:27 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:27 2025 - Bullet destroyed - collision detected at: X=755.866150 Y=650.668701 with object of layer: 0
+[INFO] Thu Apr 17 17:15:27 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:28 2025 - Bullet destroyed - collision detected at: X=755.866150 Y=650.668701 with object of layer: 0
+[INFO] Thu Apr 17 17:15:28 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:28 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:15:28 2025 - Bullet destroyed - collision detected at: X=755.866150 Y=650.668701 with object of layer: 0
+[INFO] Thu Apr 17 17:15:29 2025 - Bullet destroyed - collision detected at: X=755.866150 Y=650.668701 with object of layer: 0
+[INFO] Thu Apr 17 17:16:14 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:14 2025 - Bullet destroyed - collision detected at: X=669.576050 Y=512.565491 with object of layer: 1
+[INFO] Thu Apr 17 17:16:14 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:14 2025 - Bullet destroyed - collision detected at: X=669.304260 Y=511.244843 with object of layer: 1
+[INFO] Thu Apr 17 17:16:15 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:15 2025 - Bullet destroyed - collision detected at: X=670.939270 Y=519.437561 with object of layer: 1
+[INFO] Thu Apr 17 17:16:15 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:15 2025 - Bullet destroyed - collision detected at: X=664.985046 Y=492.027283 with object of layer: 1
+[INFO] Thu Apr 17 17:16:16 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:16 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:16 2025 - Bullet destroyed - collision detected at: X=698.915771 Y=534.638306 with object of layer: 1
+[INFO] Thu Apr 17 17:16:16 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:16 2025 - Bullet destroyed - collision detected at: X=670.931274 Y=519.395691 with object of layer: 1
+[INFO] Thu Apr 17 17:16:16 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:16 2025 - Bullet destroyed - collision detected at: X=669.294678 Y=511.198639 with object of layer: 1
+[INFO] Thu Apr 17 17:16:17 2025 - Bullet destroyed - collision detected at: X=669.294678 Y=511.198639 with object of layer: 1
+[INFO] Thu Apr 17 17:16:17 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:18 2025 - Bullet destroyed - collision detected at: X=669.294678 Y=511.198639 with object of layer: 1
+[INFO] Thu Apr 17 17:16:18 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:18 2025 - Bullet destroyed - collision detected at: X=669.294678 Y=511.198639 with object of layer: 1
+[INFO] Thu Apr 17 17:16:19 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:19 2025 - Bullet destroyed - collision detected at: X=669.294678 Y=511.198639 with object of layer: 1
+[INFO] Thu Apr 17 17:16:20 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:20 2025 - Bullet destroyed - collision detected at: X=669.294678 Y=511.198639 with object of layer: 1
+[INFO] Thu Apr 17 17:16:20 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:21 2025 - Bullet destroyed - collision detected at: X=669.294678 Y=511.198639 with object of layer: 1
+[INFO] Thu Apr 17 17:16:22 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:23 2025 - Bullet destroyed - collision detected at: X=1280.778687 Y=71.987755 with object of layer: 0
+[INFO] Thu Apr 17 17:16:23 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:25 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:16:25 2025 - Bullet destroyed - collision detected at: X=697.812439 Y=527.892700 with object of layer: 1
+[INFO] Thu Apr 17 17:16:25 2025 - Bullet destroyed - collision detected at: X=3078.391602 Y=70.842438 with object of layer: 0
+[INFO] Thu Apr 17 17:19:01 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:19:01 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:19:01 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:19:01 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:19:01 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:19:01 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:19:01 2025 - Game loop started
+[INFO] Thu Apr 17 17:19:04 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:19:04 2025 - Bullet destroyed - collision detected at: X=705.388611 Y=537.384460 with object of layer: 1
+[INFO] Thu Apr 17 17:19:46 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:19:46 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:19:46 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:19:46 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:19:46 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:19:46 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:19:46 2025 - Game loop started
+[INFO] Thu Apr 17 17:19:47 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:19:47 2025 - Bullet destroyed - collision detected at: X=180.332458 Y=209.757446 with object of layer: 1
+[INFO] Thu Apr 17 17:19:51 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:19:51 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:19:51 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:19:51 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:19:51 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:19:51 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:19:51 2025 - Game loop started
+[INFO] Thu Apr 17 17:27:04 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:27:04 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:27:04 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:27:04 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:27:04 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:27:04 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:27:04 2025 - Game loop started
+[INFO] Thu Apr 17 17:27:05 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:05 2025 - Bullet destroyed - collision detected at: X=70.376274 Y=208.385590 with object of layer: 0
+[INFO] Thu Apr 17 17:27:06 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:06 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:07 2025 - Bullet destroyed - collision detected at: X=544.911560 Y=1308.188599 with object of layer: 0
+[INFO] Thu Apr 17 17:27:07 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:07 2025 - Bullet destroyed - collision detected at: X=643.965271 Y=1300.977539 with object of layer: 0
+[INFO] Thu Apr 17 17:27:07 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:07 2025 - Bullet destroyed - collision detected at: X=18.525078 Y=505.708008 with object of layer: 0
+[INFO] Thu Apr 17 17:27:07 2025 - Bullet destroyed - collision detected at: X=595.911804 Y=1293.279907 with object of layer: 0
+[INFO] Thu Apr 17 17:27:08 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:08 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:08 2025 - Bullet destroyed - collision detected at: X=514.887939 Y=1311.878052 with object of layer: 0
+[INFO] Thu Apr 17 17:27:08 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:09 2025 - Bullet destroyed - collision detected at: X=331.692078 Y=437.246582 with object of layer: 0
+[INFO] Thu Apr 17 17:27:09 2025 - Bullet destroyed - collision detected at: X=494.051208 Y=1311.801025 with object of layer: 0
+[INFO] Thu Apr 17 17:27:09 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:09 2025 - Bullet destroyed - collision detected at: X=329.001892 Y=452.067322 with object of layer: 0
+[INFO] Thu Apr 17 17:27:09 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:09 2025 - Bullet destroyed - collision detected at: X=203.883804 Y=216.381439 with object of layer: 0
+[INFO] Thu Apr 17 17:27:09 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:10 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:10 2025 - Bullet destroyed - collision detected at: X=586.586792 Y=558.811462 with object of layer: 1
+[INFO] Thu Apr 17 17:27:10 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:10 2025 - Bullet destroyed - collision detected at: X=1152.442749 Y=57.966621 with object of layer: 0
+[INFO] Thu Apr 17 17:27:10 2025 - Bullet destroyed - collision detected at: X=557.048523 Y=573.300720 with object of layer: 1
+[INFO] Thu Apr 17 17:27:10 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:11 2025 - Bullet destroyed - collision detected at: X=590.578125 Y=590.034790 with object of layer: 1
+[INFO] Thu Apr 17 17:27:11 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:11 2025 - Bullet destroyed - collision detected at: X=561.324402 Y=590.447021 with object of layer: 1
+[INFO] Thu Apr 17 17:27:11 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:11 2025 - Bullet destroyed - collision detected at: X=539.357300 Y=610.050171 with object of layer: 1
+[INFO] Thu Apr 17 17:27:11 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:11 2025 - Bullet destroyed - collision detected at: X=537.524170 Y=597.619812 with object of layer: 1
+[INFO] Thu Apr 17 17:27:12 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:12 2025 - Bullet destroyed - collision detected at: X=393.424225 Y=1361.984985 with object of layer: 0
+[INFO] Thu Apr 17 17:27:13 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:13 2025 - Bullet destroyed - collision detected at: X=64.239914 Y=1875.119629 with object of layer: 0
+[INFO] Thu Apr 17 17:27:13 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:13 2025 - Bullet destroyed - collision detected at: X=419.055359 Y=1493.804199 with object of layer: 0
+[INFO] Thu Apr 17 17:27:13 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:14 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:14 2025 - Bullet destroyed - collision detected at: X=425.939545 Y=1484.398804 with object of layer: 0
+[INFO] Thu Apr 17 17:27:14 2025 - Bullet destroyed - collision detected at: X=289.113647 Y=381.763611 with object of layer: 0
+[INFO] Thu Apr 17 17:27:15 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:15 2025 - Bullet destroyed - collision detected at: X=622.037964 Y=1501.863281 with object of layer: 0
+[INFO] Thu Apr 17 17:27:16 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:16 2025 - Bullet destroyed - collision detected at: X=629.701233 Y=1502.659790 with object of layer: 0
+[INFO] Thu Apr 17 17:27:16 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:16 2025 - Bullet destroyed - collision detected at: X=652.793945 Y=1495.186890 with object of layer: 0
+[INFO] Thu Apr 17 17:27:17 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:17 2025 - Bullet destroyed - collision detected at: X=660.040222 Y=1499.615723 with object of layer: 0
+[INFO] Thu Apr 17 17:27:17 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:17 2025 - Bullet destroyed - collision detected at: X=660.040222 Y=1493.504639 with object of layer: 0
+[INFO] Thu Apr 17 17:27:17 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:17 2025 - Bullet destroyed - collision detected at: X=660.040222 Y=1483.282471 with object of layer: 0
+[INFO] Thu Apr 17 17:27:18 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:18 2025 - Bullet destroyed - collision detected at: X=660.040222 Y=1483.282471 with object of layer: 0
+[INFO] Thu Apr 17 17:27:18 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:18 2025 - Bullet destroyed - collision detected at: X=663.544312 Y=1483.541138 with object of layer: 0
+[INFO] Thu Apr 17 17:27:18 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:18 2025 - Bullet destroyed - collision detected at: X=666.945068 Y=1496.815796 with object of layer: 0
+[INFO] Thu Apr 17 17:27:19 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:19 2025 - Bullet destroyed - collision detected at: X=668.839172 Y=1499.650391 with object of layer: 0
+[INFO] Thu Apr 17 17:27:19 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:19 2025 - Bullet destroyed - collision detected at: X=666.431091 Y=1496.544434 with object of layer: 0
+[INFO] Thu Apr 17 17:27:19 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:19 2025 - Bullet destroyed - collision detected at: X=666.431091 Y=1496.544434 with object of layer: 0
+[INFO] Thu Apr 17 17:27:20 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:20 2025 - Bullet destroyed - collision detected at: X=678.519714 Y=1499.603882 with object of layer: 0
+[INFO] Thu Apr 17 17:27:20 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:20 2025 - Bullet destroyed - collision detected at: X=414.670288 Y=1506.361694 with object of layer: 0
+[INFO] Thu Apr 17 17:27:20 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:21 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:21 2025 - Bullet destroyed - collision detected at: X=54.680691 Y=1478.555420 with object of layer: 0
+[INFO] Thu Apr 17 17:27:21 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:21 2025 - Bullet destroyed - collision detected at: X=49.517334 Y=1498.585449 with object of layer: 0
+[INFO] Thu Apr 17 17:27:21 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:21 2025 - Bullet destroyed - collision detected at: X=49.517334 Y=1498.585449 with object of layer: 0
+[INFO] Thu Apr 17 17:27:22 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:22 2025 - Bullet destroyed - collision detected at: X=49.517334 Y=1498.585449 with object of layer: 0
+[INFO] Thu Apr 17 17:27:22 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:22 2025 - Bullet destroyed - collision detected at: X=49.517334 Y=1498.585449 with object of layer: 0
+[INFO] Thu Apr 17 17:27:22 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:22 2025 - Bullet destroyed - collision detected at: X=49.517334 Y=1498.585449 with object of layer: 0
+[INFO] Thu Apr 17 17:27:22 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:22 2025 - Bullet destroyed - collision detected at: X=49.517334 Y=1498.585449 with object of layer: 0
+[INFO] Thu Apr 17 17:27:23 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:23 2025 - Bullet destroyed - collision detected at: X=49.517334 Y=1498.585449 with object of layer: 0
+[INFO] Thu Apr 17 17:27:23 2025 - Bullet destroyed - collision detected at: X=53.517334 Y=1498.585449 with object of layer: 0
+[INFO] Thu Apr 17 17:27:23 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:23 2025 - Bullet destroyed - collision detected at: X=573.851013 Y=1507.457031 with object of layer: 0
+[INFO] Thu Apr 17 17:27:23 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:23 2025 - Bullet destroyed - collision detected at: X=700.903992 Y=1504.145630 with object of layer: 0
+[INFO] Thu Apr 17 17:27:24 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:24 2025 - Bullet destroyed - collision detected at: X=681.367188 Y=1503.666992 with object of layer: 0
+[INFO] Thu Apr 17 17:27:24 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:24 2025 - Bullet destroyed - collision detected at: X=682.074463 Y=1507.212280 with object of layer: 0
+[INFO] Thu Apr 17 17:27:24 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:24 2025 - Bullet destroyed - collision detected at: X=682.074463 Y=1506.767822 with object of layer: 0
+[INFO] Thu Apr 17 17:27:25 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:25 2025 - Bullet destroyed - collision detected at: X=691.334290 Y=1504.869507 with object of layer: 0
+[INFO] Thu Apr 17 17:27:25 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:25 2025 - Bullet destroyed - collision detected at: X=691.334290 Y=1504.869507 with object of layer: 0
+[INFO] Thu Apr 17 17:27:25 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:25 2025 - Bullet destroyed - collision detected at: X=678.823181 Y=1499.891968 with object of layer: 0
+[INFO] Thu Apr 17 17:27:26 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:26 2025 - Bullet destroyed - collision detected at: X=678.823181 Y=1504.558594 with object of layer: 0
+[INFO] Thu Apr 17 17:27:26 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:26 2025 - Bullet destroyed - collision detected at: X=678.823181 Y=1504.558594 with object of layer: 0
+[INFO] Thu Apr 17 17:27:26 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:26 2025 - Bullet destroyed - collision detected at: X=679.156494 Y=1504.558594 with object of layer: 0
+[INFO] Thu Apr 17 17:27:27 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:27 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:28 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:28 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:29 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:29 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:29 2025 - Bullet destroyed - lifetime exceeded at: X=3906.833496 Y=1508.824585
+[INFO] Thu Apr 17 17:27:29 2025 - Bullet destroyed - collision detected at: X=955.296021 Y=778.258240 with object of layer: 0
+[INFO] Thu Apr 17 17:27:29 2025 - Bullet destroyed - collision detected at: X=3946.926025 Y=1512.568848 with object of layer: 0
+[INFO] Thu Apr 17 17:27:29 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:30 2025 - Bullet destroyed - collision detected at: X=3942.075928 Y=1518.042969 with object of layer: 0
+[INFO] Thu Apr 17 17:27:30 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:30 2025 - Bullet destroyed - collision detected at: X=2162.604492 Y=1928.931030 with object of layer: 0
+[INFO] Thu Apr 17 17:27:30 2025 - Bullet destroyed - collision detected at: X=3937.225830 Y=1523.517090 with object of layer: 0
+[INFO] Thu Apr 17 17:27:30 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:30 2025 - Bullet destroyed - collision detected at: X=720.370239 Y=54.068783 with object of layer: 0
+[INFO] Thu Apr 17 17:27:30 2025 - Bullet destroyed - collision detected at: X=2200.437988 Y=1935.562500 with object of layer: 0
+[INFO] Thu Apr 17 17:27:30 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:31 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:27:31 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:31 2025 - Bullet destroyed - collision detected at: X=683.602661 Y=1502.338989 with object of layer: 0
+[INFO] Thu Apr 17 17:27:31 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:31 2025 - Bullet destroyed - collision detected at: X=3938.203857 Y=1610.198242 with object of layer: 0
+[INFO] Thu Apr 17 17:27:31 2025 - Bullet destroyed - collision detected at: X=689.748779 Y=1499.639526 with object of layer: 0
+[INFO] Thu Apr 17 17:27:32 2025 - Bullet destroyed - collision detected at: X=1864.058716 Y=1507.400146 with object of layer: 0
+[INFO] Thu Apr 17 17:27:32 2025 - Bullet destroyed - collision detected at: X=3938.203857 Y=1610.198242 with object of layer: 0
+[INFO] Thu Apr 17 17:27:51 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:52 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:27:52 2025 - Bullet destroyed - collision detected at: X=754.297241 Y=945.964722 with object of layer: 0
+[INFO] Thu Apr 17 17:27:53 2025 - Bullet destroyed - collision detected at: X=754.297241 Y=945.964722 with object of layer: 0
+[INFO] Thu Apr 17 17:27:53 2025 - Game loop ended
+[INFO] Thu Apr 17 17:27:53 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:27:53 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:29:15 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:29:15 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:29:15 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:29:15 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:29:15 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:29:15 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:29:15 2025 - Game loop started
+[INFO] Thu Apr 17 17:29:16 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:29:16 2025 - Shot fired - Mouse state before shot: isMoving=1
+[INFO] Thu Apr 17 17:29:17 2025 - Bullet destroyed - collision detected at: X=476.317596 Y=1297.918823 with object of layer: 0
+[INFO] Thu Apr 17 17:29:17 2025 - Bullet destroyed - collision detected at: X=477.527863 Y=1297.649048 with object of layer: 0
+[INFO] Thu Apr 17 17:29:18 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:29:19 2025 - Bullet destroyed - collision detected at: X=688.067810 Y=534.134644 with object of layer: 1
+[INFO] Thu Apr 17 17:29:19 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:29:19 2025 - Bullet destroyed - collision detected at: X=688.415588 Y=530.347290 with object of layer: 1
+[INFO] Thu Apr 17 17:29:20 2025 - Game loop ended
+[INFO] Thu Apr 17 17:29:20 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:29:20 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 17:29:54 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:29:54 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:29:54 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:29:54 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:29:54 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:29:54 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:29:54 2025 - Game loop started
+[INFO] Thu Apr 17 17:29:55 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:29:56 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:29:56 2025 - Bullet destroyed - collision detected at: X=237.363464 Y=288.762512 with object of layer: 0
+[INFO] Thu Apr 17 17:29:56 2025 - Bullet destroyed - collision detected at: X=462.211884 Y=1945.210083 with object of layer: 0
+[INFO] Thu Apr 17 17:29:56 2025 - Shot fired - Mouse state before shot: isMoving=0
+[INFO] Thu Apr 17 17:29:56 2025 - Bullet destroyed - collision detected at: X=163.215622 Y=192.891266 with object of layer: 1
+[INFO] Thu Apr 17 17:30:01 2025 - Engine initialization started
+[INFO] Thu Apr 17 17:30:01 2025 - Allegro library initialized
+[INFO] Thu Apr 17 17:30:01 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 17:30:01 2025 - Input devices initialized
+[INFO] Thu Apr 17 17:30:01 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 17:30:01 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 17:30:01 2025 - Game loop started
+[INFO] Thu Apr 17 17:30:02 2025 - Game loop ended
+[INFO] Thu Apr 17 17:30:02 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 17:30:02 2025 - Engine shutdown completed
