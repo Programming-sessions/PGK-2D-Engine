@@ -86,6 +86,7 @@ public:
     bool isRunning() const;
     float getDeltaTime() const;
     ALLEGRO_DISPLAY* getDisplay();
+    Logger& getLogger() { return logger; }
 };
 
 #endif // ENGINE_H

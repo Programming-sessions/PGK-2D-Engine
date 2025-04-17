@@ -6,6 +6,8 @@
 #include "../engine/Engine.h"
 #include "../game/Camera.h"
 #include "CollisionManager.h"
+#include "BulletManager.h"
+#include "../engine/Logger.h"
 #include "Map.h"
 
 class Player : public Entity {
@@ -16,9 +18,13 @@ private:
     bool isMoving;
     float health;
     float maxHealth;
+    float shootCooldown;
+    float currentCooldown;
     Camera* camera;
     Map* gameMap;  // WskaŸnik na mapê
     Collision* collision;
+
+    bool logMovement;
 
 public:
     Player();
@@ -33,6 +39,7 @@ public:
     void lookAtMouse();
     void takeDamage(float amount);
     void heal(float amount);
+    void shoot();
 
     // Gettery
     float getHealth() const;

@@ -202,6 +202,8 @@
     <ClCompile Include="src\engine\Sprite.cpp" />
     <ClCompile Include="src\engine\TextureManager.cpp" />
     <ClCompile Include="src\engine\Transform.cpp" />
+    <ClCompile Include="src\game\Bullet.cpp" />
+    <ClCompile Include="src\game\BulletManager.cpp" />
     <ClCompile Include="src\game\Camera.cpp" />
     <ClCompile Include="src\game\CollisionManager.cpp" />
     <ClCompile Include="src\game\Enemy.cpp" />
@@ -218,6 +220,8 @@
     <ClInclude Include="src\engine\Sprite.h" />
     <ClInclude Include="src\engine\TextureManager.h" />
     <ClInclude Include="src\engine\Transform.h" />
+    <ClInclude Include="src\game\Bullet.h" />
+    <ClInclude Include="src\game\BulletManager.h" />
     <ClInclude Include="src\game\Camera.h" />
     <ClInclude Include="src\game\CollisionManager.h" />
     <ClInclude Include="src\game\Enemy.h" />

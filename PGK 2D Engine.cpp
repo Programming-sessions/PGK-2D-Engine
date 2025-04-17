@@ -44,6 +44,7 @@ void update(float deltaTime) {
     for (auto enemy : enemies) {
         enemy->update(deltaTime);
     }
+    BulletManager::getInstance()->update(deltaTime);
 }
 
 void render() {
@@ -63,6 +64,8 @@ void render() {
     for (auto enemy : enemies) {
         enemy->draw();
     }
+
+    BulletManager::getInstance()->draw();
 
     if (camera) {
         camera->endScene();
@@ -105,14 +108,10 @@ int main() {
     player->setCamera(camera);  // Ustawienie kamery dla gracza
 
     // Inicjalizacja renderera prymitywów
-    renderer = new PrimitiveRenderer(engine->getDisplay());
-	if (!renderer) {
-		std::cerr << "Failed to create renderer!" << std::endl;
-		return -1;
-	}
+    PrimitiveRenderer::initialize(engine->getDisplay());
 
     gameMap = new Map(MAP_WIDTH, MAP_HEIGHT, TILE_SIZE);
-    if (!gameMap->init(renderer)) {
+    if (!gameMap->init(PrimitiveRenderer::getInstance())) {
         std::cerr << "Failed to initialize map!" << std::endl;
         return -1;
     }
@@ -151,13 +150,14 @@ int main() {
 
     // Sprzątanie
     delete player;
-    delete camera;
-    delete renderer;
+   
+    PrimitiveRenderer::releaseInstance();
     delete gameMap;
     for (auto enemy : enemies) {
         delete enemy;
     }
     enemies.clear();
+    BulletManager::releaseInstance();
     CollisionManager::releaseInstance();
     al_destroy_font(font);
     engine->shutdown();

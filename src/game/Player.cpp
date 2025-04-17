@@ -9,6 +9,9 @@ Player::Player()
     , isMoving(false)
     , health(100.0f)
     , maxHealth(100.0f)
+    , shootCooldown(0.25f)  // 4 strza³y na sekundê
+    , currentCooldown(0.0f)
+	, logMovement(false)
 {
     tag = "Player";
     collision = new Collision(CollisionShape::CIRCLE, CollisionLayer::ENTITY);
@@ -53,8 +56,8 @@ bool Player::loadResources() {
 
 void Player::handleInput(float deltaTime) {
     Engine* engine = Engine::getInstance();
+    Logger& logger = engine->getLogger();
 
-    // Obliczanie wektora kierunku na podstawie wciœniêtych klawiszy
     float dirX = 0.0f;
     float dirY = 0.0f;
 
@@ -71,12 +74,13 @@ void Player::handleInput(float deltaTime) {
         dirX += 1.0f;
     }
 
-    // Normalizacja wektora kierunku
+    // Logujemy tylko gdy faktycznie jest ruch
     if (dirX != 0.0f || dirY != 0.0f) {
         float length = sqrt(dirX * dirX + dirY * dirY);
         dirX /= length;
         dirY /= length;
         isMoving = true;
+        if (logMovement) { logger.info("Movement input - Dir: X=" + std::to_string(dirX) + " Y=" + std::to_string(dirY)); }
     }
     else {
         isMoving = false;
@@ -87,16 +91,15 @@ void Player::handleInput(float deltaTime) {
         velocity.setX(velocity.getX() + dirX * acceleration * deltaTime);
         velocity.setY(velocity.getY() + dirY * acceleration * deltaTime);
 
-        // Ograniczenie maksymalnej prêdkoœci
         float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
         if (speed > maxSpeed) {
             float scale = maxSpeed / speed;
             velocity.setX(velocity.getX() * scale);
             velocity.setY(velocity.getY() * scale);
         }
+        if (logMovement) { logger.info("Velocity updated - V: X=" + std::to_string(velocity.getX()) + " Y=" + std::to_string(velocity.getY())); }
     }
     else {
-        // Hamowanie
         float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
         if (speed > 0) {
             float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
@@ -104,6 +107,29 @@ void Player::handleInput(float deltaTime) {
             velocity.setY(velocity.getY() * scale);
         }
     }
+
+    // Obs³uga strzelania
+    if (engine->isMouseButtonDown(0) && currentCooldown <= 0) {
+        // Offset od œrodka postaci do lufy pistoletu gdy postaæ patrzy w prawo
+        const float MUZZLE_OFFSET_X = 80.0f;  // (170 - 90) wzglêdem œrodka
+        const float MUZZLE_OFFSET_Y = 40.0f;  // (115 - 75) wzglêdem œrodka
+
+        // Obliczamy pozycjê lufy z uwzglêdnieniem rotacji postaci
+        Point2D bulletPos = position;
+        float rotatedMuzzleX = MUZZLE_OFFSET_X * cos(rotation) - MUZZLE_OFFSET_Y * sin(rotation);
+        float rotatedMuzzleY = MUZZLE_OFFSET_X * sin(rotation) + MUZZLE_OFFSET_Y * cos(rotation);
+
+        bulletPos.setX(bulletPos.getX() + rotatedMuzzleX);
+        bulletPos.setY(bulletPos.getY() + rotatedMuzzleY);
+
+        BulletManager::getInstance()->createBullet(bulletPos, rotation, this);
+        currentCooldown = shootCooldown;
+
+        logger.info("Shot fired - Mouse state before shot: isMoving=" + std::to_string(isMoving));
+    }
+
+
+    currentCooldown -= deltaTime;
 }
 
 void Player::lookAtMouse() {
@@ -117,8 +143,6 @@ void Player::lookAtMouse() {
     float dy = mouseWorld.getY() - position.getY();
     rotation = atan2(dy, dx);
 }
-
-
 
 void Player::update(float deltaTime) {
     if (!isActive) return;
@@ -181,12 +205,6 @@ void Player::update(float deltaTime) {
         sprite->updateAnimation(deltaTime);
     }
 }
-
-
-
-
-
-
 
 void Player::takeDamage(float amount) {
     health = std::max(0.0f, health - amount);

@@ -31,6 +31,8 @@ public:
     // Gettery
     Point2D getPosition() const;
     float getZoom() const;
+    float getViewportWidth() const { return viewportWidth; }
+    float getViewportHeight() const { return viewportHeight; }
 
     // Konwersja wspó³rzêdnych
     Point2D worldToScreen(const Point2D& worldPos) const;
