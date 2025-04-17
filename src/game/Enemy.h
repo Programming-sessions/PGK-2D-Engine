@@ -15,8 +15,6 @@ private:
     float maxSpeed;           // Maksymalna prêdkoœæ
     float acceleration;       // Przyspieszenie
     float deceleration;       // Hamowanie
-    float health;
-    float maxHealth;
     bool isMoving;
     Collision* collision;
 
@@ -37,12 +35,9 @@ public:
     // Settery
     void setMap(Map* map);
     void setTarget(Player* player);
-    void takeDamage(float amount);
     void setDetectionRange(float range);
 
     // Gettery
-    float getHealth() const;
-    float getMaxHealth() const;
     bool isAlive() const;
     Collision* getCollision() const { return collision; }
 };

@@ -66,6 +66,13 @@ void Bullet::update(float deltaTime) {
             }
 			if (hitCollision->getLayer() == CollisionLayer::ENTITY && hitCollision->getOwner() != owner) {
 				hitCollision->getOwner()->takeDamage(damage);
+                if (logBullet) {
+                    Engine::getInstance()->getLogger().info("Bullet hit entity at: X=" +
+                        std::to_string(newPos.getX()) + " Y=" +
+                        std::to_string(newPos.getY()) +
+                        " Damage dealt: " + std::to_string(damage) +
+                        " Target health remaining: " + std::to_string(hitCollision->getOwner()->getHealth()));
+                }
 			}
             destroy();
             return;

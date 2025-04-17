@@ -9,14 +9,13 @@ Enemy::Enemy()
     , maxSpeed(200.0f)        // Trochê wolniejszy ni¿ gracz
     , acceleration(300.0f)
     , deceleration(600.0f)
-    , health(100.0f)
-    , maxHealth(100.0f)
     , isMoving(false)
 {
     tag = "Enemy";
     // Inicjalizacja kolizji
     collision = new Collision(CollisionShape::CIRCLE, CollisionLayer::ENTITY);
     collision->setRadius(30.0f);
+	collision->setOwner(this);
 }
 
 Enemy::~Enemy() {
@@ -187,18 +186,6 @@ void Enemy::setTarget(Player* player) {
 
 void Enemy::setDetectionRange(float range) {
     detectionRange = range;
-}
-
-void Enemy::takeDamage(float amount) {
-    health = std::max(0.0f, health - amount);
-}
-
-float Enemy::getHealth() const {
-    return health;
-}
-
-float Enemy::getMaxHealth() const {
-    return maxHealth;
 }
 
 bool Enemy::isAlive() const {

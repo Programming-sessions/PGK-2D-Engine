@@ -16,6 +16,7 @@ Player::Player()
     tag = "Player";
     collision = new Collision(CollisionShape::CIRCLE, CollisionLayer::ENTITY);
     collision->setRadius(30.0f);  // Dostosuj promieñ kolizji
+    collision->setOwner(this);
 }
 
 Player::~Player() {

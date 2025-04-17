@@ -15,6 +15,7 @@ protected:
     float rotation;
     float speed;
     float health;
+	float maxHealth;
     bool isActive;
     std::string tag;
 
@@ -36,7 +37,8 @@ public:
     void setSpeed(float newSpeed);
     void setActive(bool active);
     void setTag(const std::string& newTag);
-    void setCollisionRadius(float radius);
+	void setHealth(float newHealth);
+	void setMaxHealth(float newMaxHealth);
 
     // Gettery
     Point2D getPosition() const;
@@ -45,7 +47,8 @@ public:
     float getSpeed() const;
     bool getIsActive() const;
     std::string getTag() const;
-    float getCollisionRadius() const;
+	float getHealth() const;
+	float getMaxHealth() const;
 
     // £adowanie zasobów
     virtual bool loadResources();

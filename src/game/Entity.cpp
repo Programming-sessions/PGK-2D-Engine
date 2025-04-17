@@ -7,6 +7,7 @@ Entity::Entity()
     , position(0.0f, 0.0f)
     , velocity(0.0f, 0.0f)
     , rotation(0.0f)
+	, health(15.0f)
     , speed(0.0f)
     , isActive(true)
     , tag("")
@@ -91,6 +92,13 @@ void Entity::setActive(bool active) {
 void Entity::setTag(const std::string& newTag) {
     tag = newTag;
 }
+void Entity::setHealth(float newHealth) {
+	health = newHealth;
+}
+
+void Entity::setMaxHealth(float newMaxHealth) {
+	maxHealth = newMaxHealth;
+}
 
 
 // Gettery
@@ -116,4 +124,11 @@ bool Entity::getIsActive() const {
 
 std::string Entity::getTag() const {
     return tag;
+}
+float Entity::getHealth() const {
+    return health;
+}
+
+float Entity::getMaxHealth() const {
+	return maxHealth;
 }
