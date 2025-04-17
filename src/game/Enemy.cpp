@@ -5,15 +5,22 @@ Enemy::Enemy()
     : Entity()
     , gameMap(nullptr)
     , targetPlayer(nullptr)
-    , detectionRange(500.0f)
+    , detectionRange(600.0f)
     , maxSpeed(200.0f)        // Trochê wolniejszy ni¿ gracz
     , acceleration(300.0f)
     , deceleration(600.0f)
     , isMoving(false)
     , shootCooldown(2.0f)       // Strza³ co 2 sekundy
     , currentCooldown(0.0f)
-    , shootRange(400.0f)         // Zasiêg strza³u
+    , shootRange(500.0f)         // Zasiêg strza³u
     , canShoot(true)
+	, preferredDistance(400.0f)  // Preferowana odleg³oœæ od gracza
+	, distanceMargin(50.0f)      // Margines odleg³oœci
+	, hasLastKnownPosition(false)
+	, arrivalThreshold(30.0f) // Jak blisko punktu musi byæ przeciwnik ¿eby uznaæ ¿e dotar³
+	, alertDuration(3.0f)        // Jak d³ugo bot jest w stanie czujnoœci po trafieniu
+	, currentAlertTime(0.0f)     // Obecny czas czujnoœci
+	, isAlerted(false)          // Czy bot jest w stanie czujnoœci
 {
     tag = "Enemy";
     // Inicjalizacja kolizji
@@ -122,34 +129,134 @@ void Enemy::update(float deltaTime) {
 void Enemy::updateAI(float deltaTime) {
     if (!targetPlayer) return;
 
+    // Aktualizacja stanu czujnoœci
+    if (isAlerted) {
+        currentAlertTime -= deltaTime;
+        if (currentAlertTime <= 0) {
+            isAlerted = false;
+        }
+    }
+
     // Aktualizacja cooldownu
     if (currentCooldown > 0) {
         currentCooldown -= deltaTime;
     }
 
-    if (isPlayerInRange()) {
-        rotateTowardsPlayer();
-        moveTowardsPlayer(deltaTime);
-        isMoving = true;
+    // Oblicz aktualn¹ odleg³oœæ od gracza
+    float dx = targetPlayer->getPosition().getX() - position.getX();
+    float dy = targetPlayer->getPosition().getY() - position.getY();
+    float currentDistance = sqrt(dx * dx + dy * dy);
 
-        // Sprawdzenie czy mo¿e strzelaæ
-        if (isPlayerInShootRange() && currentCooldown <= 0) {
+    bool canSeePlayer = currentDistance <= detectionRange && hasLineOfSight();
+
+    // SprawdŸ czy gracz jest w zasiêgu wykrywania
+    if (canSeePlayer || isAlerted) {
+
+        // Gracz jest widoczny - zapisz jego pozycjê
+        if (canSeePlayer) {
+            updateLastKnownPlayerPosition(targetPlayer->getPosition());
+        }
+
+        // Zawsze obracaj siê w stronê gracza gdy jest w zasiêgu
+        rotateTowardsPlayer();
+
+        // SprawdŸ czy powinien siê poruszaæ (based on preferred distance)
+        bool shouldMove = abs(currentDistance - preferredDistance) > distanceMargin;
+
+        if (shouldMove) {
+            float moveDirection = (currentDistance > preferredDistance) ? 1.0f : -1.0f;
+
+            // Oblicz docelowy wektor prêdkoœci
+            float targetDirX = cos(rotation) * moveDirection;
+            float targetDirY = sin(rotation) * moveDirection;
+
+            // P³ynne przyspieszanie
+            velocity.setX(velocity.getX() + targetDirX * acceleration * deltaTime);
+            velocity.setY(velocity.getY() + targetDirY * acceleration * deltaTime);
+
+            // Ograniczenie maksymalnej prêdkoœci
+            float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+            if (speed > maxSpeed) {
+                float scale = maxSpeed / speed;
+                velocity.setX(velocity.getX() * scale);
+                velocity.setY(velocity.getY() * scale);
+            }
+
+            isMoving = true;
+        }
+        else {
+            // P³ynne hamowanie gdy jest w preferredDistance
+            float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+            if (speed > 0) {
+                float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
+                velocity.setX(velocity.getX() * scale);
+                velocity.setY(velocity.getY() * scale);
+            }
+            isMoving = false;
+        }
+
+        // Strzelanie tylko gdy jest w zasiêgu strza³u
+        if (currentDistance <= shootRange && hasLineOfSight() && currentCooldown <= 0) {
             shoot();
             currentCooldown = shootCooldown;
         }
     }
     else {
-        // P³ynne hamowanie
-        float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
-        if (speed > 0) {
-            float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
-            velocity.setX(velocity.getX() * scale);
-            velocity.setY(velocity.getY() * scale);
+        // Gracz poza zasiêgiem lub zas³oniêty - idŸ do ostatniej znanej pozycji
+        if (hasLastKnownPosition) {
+            // Oblicz odleg³oœæ do ostatniej znanej pozycji
+            float dxLast = lastKnownPlayerPosition.getX() - position.getX();
+            float dyLast = lastKnownPlayerPosition.getY() - position.getY();
+            float distanceToLastPos = sqrt(dxLast * dxLast + dyLast * dyLast);
+
+            // Jeœli jesteœmy wystarczaj¹co blisko, przestañ siê poruszaæ
+            if (distanceToLastPos < arrivalThreshold) {
+                hasLastKnownPosition = false;  // Reset poszukiwania
+
+                // Hamowanie
+                float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+                if (speed > 0) {
+                    float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
+                    velocity.setX(velocity.getX() * scale);
+                    velocity.setY(velocity.getY() * scale);
+                }
+            }
+            else {
+                // Obróæ siê w kierunku ostatniej znanej pozycji
+                float targetRotation = atan2(dyLast, dxLast);
+                rotation = targetRotation;
+
+                // Ruch w kierunku punktu
+                float targetDirX = cos(rotation);
+                float targetDirY = sin(rotation);
+
+                // Przyspieszanie
+                velocity.setX(velocity.getX() + targetDirX * acceleration * deltaTime);
+                velocity.setY(velocity.getY() + targetDirY * acceleration * deltaTime);
+
+                // Ograniczenie prêdkoœci
+                float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+                if (speed > maxSpeed) {
+                    float scale = maxSpeed / speed;
+                    velocity.setX(velocity.getX() * scale);
+                    velocity.setY(velocity.getY() * scale);
+                }
+
+                isMoving = true;
+            }
         }
-        isMoving = false;
+        else {
+            // Nie ma ostatniej znanej pozycji - zatrzymaj siê
+            float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+            if (speed > 0) {
+                float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
+                velocity.setX(velocity.getX() * scale);
+                velocity.setY(velocity.getY() * scale);
+            }
+            isMoving = false;
+        }
     }
 }
-
 
 bool Enemy::isPlayerInRange() const {
     if (!targetPlayer) return false;
@@ -233,6 +340,65 @@ void Enemy::shoot() {
     BulletManager::getInstance()->createBullet(bulletPos, bulletRotation, this);
 }
 
+bool Enemy::hasLineOfSight() const {
+    if (!targetPlayer) return false;
+
+    // Raycast od pozycji przeciwnika do gracza
+    Point2D start = position;
+    Point2D end = targetPlayer->getPosition();
+
+    // Oblicz wektor kierunkowy
+    float dx = end.getX() - start.getX();
+    float dy = end.getY() - start.getY();
+    float distance = sqrt(dx * dx + dy * dy);
+
+    // Normalizacja wektora
+    dx /= distance;
+    dy /= distance;
+
+    // SprawdŸ kolizje wzd³u¿ linii
+    const float step = 10.0f;  // Krok raycasta
+    Point2D checkPoint = start;
+
+    for (float i = 0; i < distance; i += step) {
+        checkPoint.setX(start.getX() + dx * i);
+        checkPoint.setY(start.getY() + dy * i);
+
+        // Stwórz tymczasow¹ kolizjê do sprawdzenia
+        Collision tempCollision(CollisionShape::CIRCLE, CollisionLayer::PROJECTILE);
+        tempCollision.setPosition(checkPoint);
+        tempCollision.setRadius(5.0f);
+
+        auto collisions = CollisionManager::getInstance()->getCollisions(&tempCollision);
+        for (auto* hit : collisions) {
+            // Ignoruj kolizje z graczem i samym sob¹
+            if (hit->getOwner() != this && hit->getOwner() != targetPlayer &&
+                hit->getLayer() == CollisionLayer::ENTITY) {
+                return false;  // Znaleziono przeszkodê
+            }
+        }
+    }
+
+    return true;  // Brak przeszkód
+}
+
+void Enemy::updateLastKnownPlayerPosition(const Point2D& position) {
+    lastKnownPlayerPosition = position;
+    hasLastKnownPosition = true;
+    isAlerted = true;
+    currentAlertTime = alertDuration;
+}
+
+void Enemy::takeDamage(float damage) {
+    Entity::takeDamage(damage);  // Wywo³aj metodê bazow¹
+
+	// Zak³adamy ¿e ka¿dy pocisk który trafia bota jest od gracza //TODO : Przekazywanie ownera Bulleta przez TakeDamage
+    if (targetPlayer) {  // Upewniamy siê ¿e mamy referencjê do gracza
+        updateLastKnownPlayerPosition(targetPlayer->getPosition());
+        isAlerted = true;
+        currentAlertTime = alertDuration;
+    }
+}
 
 void Enemy::setMap(Map* map) {
     gameMap = map;
@@ -249,3 +415,4 @@ void Enemy::setDetectionRange(float range) {
 bool Enemy::isAlive() const {
     return health > 0;
 }
+
