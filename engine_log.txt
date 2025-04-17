@@ -48147,3 +48147,13 @@
 [INFO] Thu Apr 17 18:12:47 2025 - Game loop ended
 [INFO] Thu Apr 17 18:12:47 2025 - Engine shutdown initiated
 [INFO] Thu Apr 17 18:12:47 2025 - Engine shutdown completed
+[INFO] Thu Apr 17 18:17:32 2025 - Engine initialization started
+[INFO] Thu Apr 17 18:17:32 2025 - Allegro library initialized
+[INFO] Thu Apr 17 18:17:33 2025 - Display initialized: 1600x900 windowed
+[INFO] Thu Apr 17 18:17:33 2025 - Input devices initialized
+[INFO] Thu Apr 17 18:17:33 2025 - Timers initialized at 60 FPS
+[INFO] Thu Apr 17 18:17:33 2025 - Engine initialized successfully
+[INFO] Thu Apr 17 18:17:33 2025 - Game loop started
+[INFO] Thu Apr 17 18:17:46 2025 - Game loop ended
+[INFO] Thu Apr 17 18:17:46 2025 - Engine shutdown initiated
+[INFO] Thu Apr 17 18:17:46 2025 - Engine shutdown completed

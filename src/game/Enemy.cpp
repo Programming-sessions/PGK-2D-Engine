@@ -121,13 +121,20 @@ void Enemy::updateAI(float deltaTime) {
     if (isPlayerInRange()) {
         rotateTowardsPlayer();
         moveTowardsPlayer(deltaTime);
+        isMoving = true;
     }
     else {
-        // Zatrzymaj siê jeœli gracz jest poza zasiêgiem
-        velocity.setPosition(0.0f, 0.0f);
+        // P³ynne hamowanie
+        float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+        if (speed > 0) {
+            float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
+            velocity.setX(velocity.getX() * scale);
+            velocity.setY(velocity.getY() * scale);
+        }
         isMoving = false;
     }
 }
+
 
 bool Enemy::isPlayerInRange() const {
     if (!targetPlayer) return false;
