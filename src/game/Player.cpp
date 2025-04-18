@@ -194,8 +194,8 @@ void Player::update(float deltaTime) {
 
 void Player::shoot(Logger& logger) {
     // Offset od œrodka postaci do lufy pistoletu gdy postaæ patrzy w prawo
-    const float MUZZLE_OFFSET_X = 80.0f;  // (170 - 90) wzglêdem œrodka
-    const float MUZZLE_OFFSET_Y = 40.0f;  // (115 - 75) wzglêdem œrodka
+    const float MUZZLE_OFFSET_X = 65.0f;
+    const float MUZZLE_OFFSET_Y = 42.0f;
 
     // Obliczamy pozycjê lufy z uwzglêdnieniem rotacji postaci
     Point2D bulletPos = position;
@@ -218,6 +218,7 @@ void Player::shoot(Logger& logger) {
 
     logger.info("Shot fired - Mouse state before shot: isMoving=" + std::to_string(isMoving));
 }
+
 void Player::heal(float amount) {
     health = std::min(maxHealth, health + amount);
 }
@@ -229,6 +230,7 @@ bool Player::isAlive() const {
 void Player::setCamera(Camera* cam) {
     camera = cam;
 }
+
 void Player::setMap(Map* map) {
     gameMap = map;
 }

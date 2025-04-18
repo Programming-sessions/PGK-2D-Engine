@@ -336,8 +336,8 @@ void Enemy::shoot() {
     if (!canShoot || !targetPlayer) return;
 
     // Offset dla punktu startowego pocisku
-    const float MUZZLE_OFFSET_X = 80.0f;
-    const float MUZZLE_OFFSET_Y = 40.0f;
+    const float MUZZLE_OFFSET_X = 65.0f;
+    const float MUZZLE_OFFSET_Y = 42.0f;
 
     // Oblicz pozycjê lufy
     Point2D bulletPos = position;
@@ -359,43 +359,42 @@ void Enemy::shoot() {
 bool Enemy::hasLineOfSight() const {
     if (!targetPlayer) return false;
 
-    // Raycast od pozycji przeciwnika do gracza
     Point2D start = position;
     Point2D end = targetPlayer->getPosition();
 
-    // Oblicz wektor kierunkowy
     float dx = end.getX() - start.getX();
     float dy = end.getY() - start.getY();
     float distance = sqrt(dx * dx + dy * dy);
 
-    // Normalizacja wektora
     dx /= distance;
     dy /= distance;
 
-    // SprawdŸ kolizje wzd³u¿ linii
-    const float step = 10.0f;  // Krok raycasta
+    const float step = 10.0f;
     Point2D checkPoint = start;
+
+    // Debugowanie
+    //Logger::getInstance()->debug("Checking line of sight from: " + std::to_string(start.getX()) + "," + std::to_string(start.getY()));
+    //Logger::getInstance()->debug("To: " + std::to_string(end.getX()) + "," + std::to_string(end.getY()));
 
     for (float i = 0; i < distance; i += step) {
         checkPoint.setX(start.getX() + dx * i);
         checkPoint.setY(start.getY() + dy * i);
 
-        // Stwórz tymczasow¹ kolizjê do sprawdzenia
         Collision tempCollision(CollisionShape::CIRCLE, CollisionLayer::PROJECTILE);
         tempCollision.setPosition(checkPoint);
         tempCollision.setRadius(5.0f);
 
         auto collisions = CollisionManager::getInstance()->getCollisions(&tempCollision);
         for (auto* hit : collisions) {
-            // Ignoruj kolizje z graczem i samym sob¹
-            if (hit->getOwner() != this && hit->getOwner() != targetPlayer &&
-                hit->getLayer() == CollisionLayer::ENTITY) {
-                return false;  // Znaleziono przeszkodê
+            // SprawdŸ czy kolizja jest ze œcian¹
+            if (hit->getLayer() == CollisionLayer::WALL) {
+                //Logger::getInstance()->debug("Wall detected at: " + std::to_string(checkPoint.getX()) + "," + std::to_string(checkPoint.getY()));
+                return false;
             }
         }
     }
 
-    return true;  // Brak przeszkód
+    return true;
 }
 
 void Enemy::updateLastKnownPlayerPosition(const Point2D& position) {
