@@ -10,6 +10,13 @@ Player::Player()
     , shootCooldown(0.25f)  // 4 strza³y na sekundê
     , currentCooldown(0.0f)
 	, logMovement(false)
+	, maxAmmoInMag(10)  // Pojemnoœæ magazynka
+	, currentAmmoInMag(10)  // Aktualna iloœæ naboi w magazynku
+	, totalAmmo(30)  // Ca³kowita iloœæ amunicji zapasowej
+	, reloadTime(1.5f)  // Czas prze³adowania w sekundach
+	, currentReloadTime(0.0f) // Licznik czasu prze³adowania
+	, isReloading(false)  // Czy trwa prze³adowanie
+	, camera(nullptr)
 {
     tag = "Player";
 	maxHealth = 100.0f;
@@ -109,9 +116,34 @@ void Player::handleInput(float deltaTime) {
         }
     }
 
+    if (isReloading) {
+        currentReloadTime += deltaTime;
+        if (currentReloadTime >= reloadTime) {
+            // Zakoñcz prze³adowanie
+            int ammoNeeded = maxAmmoInMag - currentAmmoInMag;
+            int ammoToLoad = std::min(ammoNeeded, totalAmmo);
+
+            currentAmmoInMag += ammoToLoad;
+            totalAmmo -= ammoToLoad;
+
+            isReloading = false;
+            currentReloadTime = 0.0f;
+            logger.info("Reload complete. Ammo in mag: " + std::to_string(currentAmmoInMag));
+        }
+        return; // Podczas prze³adowania nie mo¿na strzelaæ
+    }
+
     // Obs³uga strzelania
-    if (engine->isMouseButtonDown(0) && currentCooldown <= 0) {
+    if (engine->isMouseButtonDown(0) && canShoot()) {
 		shoot(logger);
+    }
+
+    // Obs³uga prze³adowania
+    if (engine->isKeyDown(ALLEGRO_KEY_R)) {
+        reload();
+        if (isReloading) {
+            logger.info("Reload started. Total ammo: " + std::to_string(totalAmmo));
+        }
     }
 
 
@@ -215,8 +247,9 @@ void Player::shoot(Logger& logger) {
 
     BulletManager::getInstance()->createBullet(bulletPos, bulletRotation, this);
     currentCooldown = shootCooldown;
+    currentAmmoInMag--;
 
-    logger.info("Shot fired - Mouse state before shot: isMoving=" + std::to_string(isMoving));
+    logger.info("Shot fired. Ammo remaining: " + std::to_string(currentAmmoInMag));
 }
 
 void Player::heal(float amount) {
@@ -233,4 +266,15 @@ void Player::setCamera(Camera* cam) {
 
 void Player::setMap(Map* map) {
     gameMap = map;
+}
+
+void Player::reload() {
+    if (isReloading || totalAmmo <= 0 || currentAmmoInMag >= maxAmmoInMag) return;
+
+    isReloading = true;
+    currentReloadTime = 0.0f;
+}
+
+bool Player::canShoot(){
+    return currentAmmoInMag > 0 && !isReloading && currentCooldown <= 0;
 }

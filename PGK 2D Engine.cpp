@@ -59,7 +59,6 @@ void render() {
 
     BodyManager::getInstance()->draw();
 
-    // Rysowanie gracza
     if (player) {
         player->draw();
     }
@@ -68,20 +67,71 @@ void render() {
         enemy->draw();
     }
 
-
     BulletManager::getInstance()->draw();
 
     if (camera) {
         camera->endScene();
     }
 
-
     // UI - rysowane bez transformacji kamery
     ALLEGRO_COLOR textColor = al_map_rgb(255, 255, 255);
+    ALLEGRO_COLOR healthColor = al_map_rgb(255, 50, 50);
+    ALLEGRO_COLOR ammoColor = al_map_rgb(255, 215, 0);
+
+    // Debug info
     Point2D playerPos = player->getPosition();
     al_draw_textf(font, textColor, 10, 10, ALLEGRO_ALIGN_LEFT,
         "Player World Pos: X=%.1f Y=%.1f", playerPos.getX(), playerPos.getY());
+
+    // Pasek zdrowia
+    float health = player->getHealth();
+    float maxHealth = player->getMaxHealth();
+    float healthBarWidth = 200.0f;
+    float healthBarHeight = 20.0f;
+    float healthBarX = 10;
+    float healthBarY = Engine::getInstance()->getScreenHeight() - 40;
+
+    // Tło paska zdrowia
+    al_draw_filled_rectangle(healthBarX, healthBarY,
+        healthBarX + healthBarWidth, healthBarY + healthBarHeight,
+        al_map_rgb(60, 60, 60));
+
+    // Aktualny poziom zdrowia
+    float currentHealthWidth = (health / maxHealth) * healthBarWidth;
+    al_draw_filled_rectangle(healthBarX, healthBarY,
+        healthBarX + currentHealthWidth, healthBarY + healthBarHeight,
+        healthColor);
+
+    // Tekst zdrowia
+    al_draw_textf(font, healthColor, healthBarX + healthBarWidth / 2, healthBarY - 25,
+        ALLEGRO_ALIGN_CENTER, "HP: %.0f/%.0f", health, maxHealth);
+
+    // Wyświetlanie amunicji
+    int currentAmmo = player->getCurrentAmmo();
+    int totalAmmo = player->getTotalAmmo();
+    float ammoX = Engine::getInstance()->getScreenWidth() - 10;
+    float ammoY = Engine::getInstance()->getScreenHeight() - 40;
+
+    if (player->getIsReloading()) {
+        float reloadProgress = player->getCurrentReloadTime() / player->getReloadTime();
+        float reloadBarWidth = 150.0f;
+        float reloadBarHeight = 10.0f;
+
+        al_draw_filled_rectangle(ammoX - reloadBarWidth, ammoY,
+            ammoX - reloadBarWidth + (reloadBarWidth * reloadProgress),
+            ammoY + reloadBarHeight,
+            ammoColor);
+
+        al_draw_text(font, ammoColor, ammoX, ammoY - 25,
+            ALLEGRO_ALIGN_RIGHT, "RELOADING");
+    }
+    else {
+        al_draw_textf(font, ammoColor, ammoX, ammoY, ALLEGRO_ALIGN_RIGHT,
+            "%d / %d", currentAmmo, totalAmmo);
+    }
 }
+
+
 
 int main() {
     engine = Engine::getInstance();

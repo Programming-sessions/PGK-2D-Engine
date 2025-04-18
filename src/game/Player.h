@@ -24,6 +24,14 @@ private:
 
     bool logMovement;
 
+    //Ammo
+    int maxAmmoInMag;        // Pojemnoœæ magazynka
+    int currentAmmoInMag;   // Aktualna iloœæ naboi w magazynku
+    int totalAmmo;           // Ca³kowita iloœæ amunicji zapasowej
+    float reloadTime;     // Czas prze³adowania w sekundach
+    float currentReloadTime;;// Licznik czasu prze³adowania
+    bool isReloading;    // Czy trwa prze³adowanie
+
 public:
     Player();
     virtual ~Player();
@@ -37,9 +45,17 @@ public:
     void lookAtMouse();
     void heal(float amount);
     void shoot(Logger& logger);
+    bool canShoot();
+    void reload();
 
     // Gettery
     bool isAlive() const;
+    int getCurrentAmmo() const { return currentAmmoInMag; }
+    int getTotalAmmo() const { return totalAmmo; }
+    bool getIsReloading() const { return isReloading; }
+    float getMaxHealth() const { return maxHealth; }
+    float getCurrentReloadTime() const { return currentReloadTime; }
+    float getReloadTime() const { return reloadTime; }
     Collision* getCollision() const { return collision; }
 
 	// Settery
