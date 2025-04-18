@@ -31,19 +31,17 @@ Player::~Player() {
 }
 
 bool Player::loadResources() {
-    if (!sprite->loadTexture("assets/textures/hero_idle.png")) {
+    if (!sprite->loadTexture("assets/textures/player_sheet.png")) {
         return false;
     }
 
-    // Tworzenie animacji idle
-    Animation* idleAnimation = new Animation("idle", true);
-
-    // Ustawienia klatek animacji
     const int FRAME_WIDTH = 180;
     const int FRAME_HEIGHT = 150;
-    const float FRAME_DURATION = 0.05f;
 
-    // Dodawanie klatek animacji (4 rzêdy po 5 klatek)
+    // Animacja idle (pierwsze 4 rzêdy)
+    Animation* idleAnimation = new Animation("idle", true);
+    const float IDLE_FRAME_DURATION = 0.05f;
+
     for (int row = 0; row < 4; row++) {
         for (int col = 0; col < 5; col++) {
             idleAnimation->addFrame(
@@ -51,14 +49,29 @@ bool Player::loadResources() {
                 row * FRAME_HEIGHT,
                 FRAME_WIDTH,
                 FRAME_HEIGHT,
-                FRAME_DURATION
+                IDLE_FRAME_DURATION
+            );
+        }
+    }
+    sprite->addAnimation(idleAnimation);
+
+    // Animacja prze³adowania (nastêpne 3 rzêdy)
+    Animation* reloadAnimation = new Animation("reload", true);
+    const float RELOAD_FRAME_DURATION = 0.09f;
+
+    for (int row = 4; row < 7; row++) {
+        for (int col = 0; col < 5; col++) {
+            reloadAnimation->addFrame(
+                col * FRAME_WIDTH,
+                row * FRAME_HEIGHT,
+                FRAME_WIDTH,
+                FRAME_HEIGHT,
+                RELOAD_FRAME_DURATION
             );
         }
     }
 
-    sprite->addAnimation(idleAnimation);
-    sprite->playAnimation("idle");
-
+    sprite->addAnimation(reloadAnimation);
     return true;
 }
 
@@ -116,23 +129,6 @@ void Player::handleInput(float deltaTime) {
         }
     }
 
-    if (isReloading) {
-        currentReloadTime += deltaTime;
-        if (currentReloadTime >= reloadTime) {
-            // Zakoñcz prze³adowanie
-            int ammoNeeded = maxAmmoInMag - currentAmmoInMag;
-            int ammoToLoad = std::min(ammoNeeded, totalAmmo);
-
-            currentAmmoInMag += ammoToLoad;
-            totalAmmo -= ammoToLoad;
-
-            isReloading = false;
-            currentReloadTime = 0.0f;
-            logger.info("Reload complete. Ammo in mag: " + std::to_string(currentAmmoInMag));
-        }
-        return; // Podczas prze³adowania nie mo¿na strzelaæ
-    }
-
     // Obs³uga strzelania
     if (engine->isMouseButtonDown(0) && canShoot()) {
 		shoot(logger);
@@ -164,6 +160,37 @@ void Player::lookAtMouse() {
 
 void Player::update(float deltaTime) {
     if (!isActive) return;
+
+    // Aktualizacja prze³adowania
+    if (isReloading) {
+        currentReloadTime += deltaTime;
+        if (sprite && sprite->getCurrentAnimation()) {
+            Engine::getInstance()->getLogger().info(
+                "Reload progress: " + std::to_string(currentReloadTime) + "/" +
+                std::to_string(reloadTime) + " Animation: " +
+                sprite->getCurrentAnimation()->getName()
+            );
+        }
+
+        if (currentReloadTime >= reloadTime) {
+            // Zakoñcz prze³adowanie
+            int ammoNeeded = maxAmmoInMag - currentAmmoInMag;
+            int ammoToLoad = std::min(ammoNeeded, totalAmmo);
+
+            currentAmmoInMag += ammoToLoad;
+            totalAmmo -= ammoToLoad;
+
+            isReloading = false;
+            currentReloadTime = 0.0f;
+
+            // Prze³¹cz z powrotem na idle
+            if (sprite) {
+                sprite->stopAnimation();
+                sprite->playAnimation("idle");
+                Engine::getInstance()->getLogger().info("Reload complete, switching to idle");
+            }
+        }
+    }
 
     // Obs³uga sterowania
     handleInput(deltaTime);
@@ -269,10 +296,26 @@ void Player::setMap(Map* map) {
 }
 
 void Player::reload() {
-    if (isReloading || totalAmmo <= 0 || currentAmmoInMag >= maxAmmoInMag) return;
+    if (isReloading || totalAmmo <= 0 || currentAmmoInMag >= maxAmmoInMag) {
+        return;
+    }
 
     isReloading = true;
     currentReloadTime = 0.0f;
+
+    // Dodaj debug log
+    Engine::getInstance()->getLogger().info("Starting reload animation");
+
+    // Upewnij siê, ¿e animacja jest prawid³owo prze³¹czana
+    if (sprite) {
+        sprite->stopAnimation(); // Zatrzymaj aktualn¹ animacjê
+        sprite->playAnimation("reload");
+
+        // Debug - sprawdŸ czy animacja siê zmieni³a
+        if (Animation* current = sprite->getCurrentAnimation()) {
+            Engine::getInstance()->getLogger().info("Current animation: " + current->getName());
+        }
+    }
 }
 
 bool Player::canShoot(){
