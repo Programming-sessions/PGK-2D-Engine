@@ -177,15 +177,15 @@ int main() {
         return -1;
     }
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 5; i++) {
         Enemy* enemy = new Enemy();
         if (!enemy->loadResources()) {
             std::cerr << "Failed to load enemy resources!" << std::endl;
             return -1;
         }
         enemy->setPosition(
-            200.0f + i * 500.0f,  // Różne pozycje X
-            200.0f + i * 300.0f   // Różne pozycje Y
+            600.0f + i * 500.0f,  // Różne pozycje X
+            650.0f + i * 300.0f   // Różne pozycje Y
         );
         enemy->setMap(gameMap);
         enemy->setTarget(player);
