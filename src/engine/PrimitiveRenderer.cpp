@@ -1,9 +1,39 @@
 #include "PrimitiveRenderer.h"
 #include <cmath>
 #include <algorithm>
+#include <iostream>
+
+PrimitiveRenderer* PrimitiveRenderer::instance = nullptr;
+
+void PrimitiveRenderer::initialize(ALLEGRO_DISPLAY* display) {
+    if (!instance) {
+        instance = new PrimitiveRenderer(display);
+    }
+}
+
+PrimitiveRenderer* PrimitiveRenderer::getInstance() {
+    if (!instance) {
+        // Logowanie b³êdu lub rzucenie wyj¹tku
+        std::cerr << "Failed to create renderer!" << std::endl;
+    }
+    return instance;
+}
+
+void PrimitiveRenderer::releaseInstance() {
+    if (instance) {
+        delete instance;
+        instance = nullptr;
+    }
+}
 
 PrimitiveRenderer::PrimitiveRenderer(ALLEGRO_DISPLAY* display)
-    : display(display), currentColor(al_map_rgb(255, 255, 255)) {
+    : display(display)
+    , currentColor(al_map_rgb(255, 255, 255))
+{
+}
+
+PrimitiveRenderer::~PrimitiveRenderer() {
+    // Cleanup jeœli potrzebny
 }
 
 void PrimitiveRenderer::setColor(ALLEGRO_COLOR color) {
