@@ -6,513 +6,513 @@
 #define PRIMITIVES_H
 
  /**
-  * @brief Klasa reprezentujÄ…ca punkt w przestrzeni 2D
+  * @brief Klasa reprezentuj¹ca punkt w przestrzeni 2D
   */
 class Point2D {
 private:
-    float x; ///< WspÃ³Å‚rzÄ™dna X punktu
-    float y; ///< WspÃ³Å‚rzÄ™dna Y punktu
+    float x; ///< Wspó³rzêdna X punktu
+    float y; ///< Wspó³rzêdna Y punktu
 
 public:
     /**
-     * @brief Konstruktor domyÅ›lny, tworzy punkt (0,0)
+     * @brief Konstruktor domyœlny, tworzy punkt (0,0)
      */
     Point2D();
     /**
      * @brief Konstruktor z parametrami
-     * @param x WspÃ³Å‚rzÄ™dna X punktu
-     * @param y WspÃ³Å‚rzÄ™dna Y punktu
+     * @param x Wspó³rzêdna X punktu
+     * @param y Wspó³rzêdna Y punktu
      */
     Point2D(float x, float y);
 
     /**
-     * @brief Pobiera wspÃ³Å‚rzÄ™dnÄ… X punktu
-     * @return WartoÅ›Ä‡ wspÃ³Å‚rzÄ™dnej X
+     * @brief Pobiera wspó³rzêdn¹ X punktu
+     * @return Wartoœæ wspó³rzêdnej X
      */
     float getX() const;
     /**
-     * @brief Pobiera wspÃ³Å‚rzÄ™dnÄ… Y punktu
-     * @return WartoÅ›Ä‡ wspÃ³Å‚rzÄ™dnej Y
+     * @brief Pobiera wspó³rzêdn¹ Y punktu
+     * @return Wartoœæ wspó³rzêdnej Y
      */
     float getY() const;
 
     /**
-     * @brief Ustawia wspÃ³Å‚rzÄ™dnÄ… X punktu
-     * @param newX Nowa wartoÅ›Ä‡ wspÃ³Å‚rzÄ™dnej X
+     * @brief Ustawia wspó³rzêdn¹ X punktu
+     * @param newX Nowa wartoœæ wspó³rzêdnej X
      */
     void setX(float newX);
     /**
-     * @brief Ustawia wspÃ³Å‚rzÄ™dnÄ… Y punktu
-     * @param newY Nowa wartoÅ›Ä‡ wspÃ³Å‚rzÄ™dnej Y
+     * @brief Ustawia wspó³rzêdn¹ Y punktu
+     * @param newY Nowa wartoœæ wspó³rzêdnej Y
      */
     void setY(float newY);
     /**
-     * @brief Ustawia obie wspÃ³Å‚rzÄ™dne punktu
-     * @param newX Nowa wartoÅ›Ä‡ wspÃ³Å‚rzÄ™dnej X
-     * @param newY Nowa wartoÅ›Ä‡ wspÃ³Å‚rzÄ™dnej Y
+     * @brief Ustawia obie wspó³rzêdne punktu
+     * @param newX Nowa wartoœæ wspó³rzêdnej X
+     * @param newY Nowa wartoœæ wspó³rzêdnej Y
      */
     void setPosition(float newX, float newY);
 
 
     /**
      * @brief Przesuwa punkt o zadany wektor
-     * @param dx PrzesuniÄ™cie w osi X
-     * @param dy PrzesuniÄ™cie w osi Y
+     * @param dx Przesuniêcie w osi X
+     * @param dy Przesuniêcie w osi Y
      */
     void translate(float dx, float dy);
     /**
-     * @brief Skaluje poÅ‚oÅ¼enie punktu wzglÄ™dem zadanego centrum
-     * @param sx WspÃ³Å‚czynnik skalowania w osi X
-     * @param sy WspÃ³Å‚czynnik skalowania w osi Y
-     * @param center Punkt wzglÄ™dem ktÃ³rego nastÄ™puje skalowanie
+     * @brief Skaluje po³o¿enie punktu wzglêdem zadanego centrum
+     * @param sx Wspó³czynnik skalowania w osi X
+     * @param sy Wspó³czynnik skalowania w osi Y
+     * @param center Punkt wzglêdem którego nastêpuje skalowanie
      */
     void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
     /**
-     * @brief Obraca punkt o zadany kÄ…t wzglÄ™dem centrum
-     * @param angle KÄ…t obrotu w radianach
-     * @param center Punkt wzglÄ™dem ktÃ³rego nastÄ™puje obrÃ³t
+     * @brief Obraca punkt o zadany k¹t wzglêdem centrum
+     * @param angle K¹t obrotu w radianach
+     * @param center Punkt wzglêdem którego nastêpuje obrót
      */
     void rotate(float angle, const Point2D& center = Point2D(0, 0));
 
     /**
-     * @brief Ogranicza wspÃ³Å‚rzÄ™dne punktu do zadanego zakresu
-     * @param minX Minimalna wartoÅ›Ä‡ X
-     * @param minY Minimalna wartoÅ›Ä‡ Y
-     * @param maxX Maksymalna wartoÅ›Ä‡ X
-     * @param maxY Maksymalna wartoÅ›Ä‡ Y
+     * @brief Ogranicza wspó³rzêdne punktu do zadanego zakresu
+     * @param minX Minimalna wartoœæ X
+     * @param minY Minimalna wartoœæ Y
+     * @param maxX Maksymalna wartoœæ X
+     * @param maxY Maksymalna wartoœæ Y
      */
     void clamp(float minX, float minY, float maxX, float maxY);
 };
 
 /**
- * @brief Klasa reprezentujÄ…ca odcinek w przestrzeni 2D
+ * @brief Klasa reprezentuj¹ca odcinek w przestrzeni 2D
  */
 class LineSegment {
 private:
-    Point2D start;  ///< Punkt poczÄ…tkowy odcinka
-    Point2D end;    ///< Punkt koÅ„cowy odcinka
+    Point2D start;  ///< Punkt pocz¹tkowy odcinka
+    Point2D end;    ///< Punkt koñcowy odcinka
 
 public:
     /**
-     * @brief Konstruktor domyÅ›lny, tworzy odcinek miÄ™dzy punktami (0,0)
+     * @brief Konstruktor domyœlny, tworzy odcinek miêdzy punktami (0,0)
      */
     LineSegment();
     /**
-     * @brief Konstruktor z punktami koÅ„cowymi
-     * @param start Punkt poczÄ…tkowy
-     * @param end Punkt koÅ„cowy
+     * @brief Konstruktor z punktami koñcowymi
+     * @param start Punkt pocz¹tkowy
+     * @param end Punkt koñcowy
      */
     LineSegment(const Point2D& start, const Point2D& end);
     /**
-     * @brief Konstruktor ze wspÃ³Å‚rzÄ™dnymi punktÃ³w koÅ„cowych
-     * @param x1 WspÃ³Å‚rzÄ™dna X punktu poczÄ…tkowego
-     * @param y1 WspÃ³Å‚rzÄ™dna Y punktu poczÄ…tkowego
-     * @param x2 WspÃ³Å‚rzÄ™dna X punktu koÅ„cowego
-     * @param y2 WspÃ³Å‚rzÄ™dna Y punktu koÅ„cowego
+     * @brief Konstruktor ze wspó³rzêdnymi punktów koñcowych
+     * @param x1 Wspó³rzêdna X punktu pocz¹tkowego
+     * @param y1 Wspó³rzêdna Y punktu pocz¹tkowego
+     * @param x2 Wspó³rzêdna X punktu koñcowego
+     * @param y2 Wspó³rzêdna Y punktu koñcowego
      */
     LineSegment(float x1, float y1, float x2, float y2);
 
 
     /**
-	* @brief Pobiera punkt poczÄ…tkowy odcinka
-	* @return Punkt poczÄ…tkowy
+	* @brief Pobiera punkt pocz¹tkowy odcinka
+	* @return Punkt pocz¹tkowy
     */
     Point2D getStart() const;
 	/**
-	* @brief Pobiera punkt koÅ„cowy odcinka
-	* @return Punkt koÅ„cowy
+	* @brief Pobiera punkt koñcowy odcinka
+	* @return Punkt koñcowy
     */
     Point2D getEnd() const;
 
     /**
-	* @brief Ustawia punkt poczÄ…tkowy odcinka
-	* @param point Nowy punkt poczÄ…tkowy
+	* @brief Ustawia punkt pocz¹tkowy odcinka
+	* @param point Nowy punkt pocz¹tkowy
     */
     void setStart(const Point2D& point);
     /**
-    * @brief Ustawia punkt koÅ„cowy odcinka
-	* @param point Nowy punkt koÅ„cowy
+    * @brief Ustawia punkt koñcowy odcinka
+	* @param point Nowy punkt koñcowy
     */
     void setEnd(const Point2D& point);
     /**
-	* @brief Ustawia punkt poczÄ…tkowy na podstawie wspÃ³Å‚rzÄ™dnych
-	* @param x WspÃ³Å‚rzÄ™dna X punktu poczÄ…tkowego
-	* @param y WspÃ³Å‚rzÄ™dna Y punktu poczÄ…tkowego
+	* @brief Ustawia punkt pocz¹tkowy na podstawie wspó³rzêdnych
+	* @param x Wspó³rzêdna X punktu pocz¹tkowego
+	* @param y Wspó³rzêdna Y punktu pocz¹tkowego
     */
     void setStart(float x, float y);
     /**
-    * @brief Ustawia punkt koÅ„cowy na podstawie wspÃ³Å‚rzÄ™dnych
-    * @param x WspÃ³Å‚rzÄ™dna X punktu koÅ„cowego
-    * @param y WspÃ³Å‚rzÄ™dna Y punktu koÅ„cowego
+    * @brief Ustawia punkt koñcowy na podstawie wspó³rzêdnych
+    * @param x Wspó³rzêdna X punktu koñcowego
+    * @param y Wspó³rzêdna Y punktu koñcowego
     */
     void setEnd(float x, float y);
 	/**
-	* @brief Ustawia odcinek na podstawie dwÃ³ch punktÃ³w
-	* @param newStart Nowy punkt poczÄ…tkowy
-	* @param newEnd Nowy punkt koÅ„cowy
+	* @brief Ustawia odcinek na podstawie dwóch punktów
+	* @param newStart Nowy punkt pocz¹tkowy
+	* @param newEnd Nowy punkt koñcowy
 	*/
     void setLine(const Point2D& newStart, const Point2D& newEnd);
     /**
-	* @brief Ustawia odcinek na podstawie wspÃ³Å‚rzÄ™dnych
-	* @param x1 WspÃ³Å‚rzÄ™dna X punktu poczÄ…tkowego
-	* @param y1 WspÃ³Å‚rzÄ™dna Y punktu poczÄ…tkowego
-	* @param x2 WspÃ³Å‚rzÄ™dna X punktu koÅ„cowego
-	* @param y2 WspÃ³Å‚rzÄ™dna Y punktu koÅ„cowego
+	* @brief Ustawia odcinek na podstawie wspó³rzêdnych
+	* @param x1 Wspó³rzêdna X punktu pocz¹tkowego
+	* @param y1 Wspó³rzêdna Y punktu pocz¹tkowego
+	* @param x2 Wspó³rzêdna X punktu koñcowego
+	* @param y2 Wspó³rzêdna Y punktu koñcowego
 	*/
     void setLine(float x1, float y1, float x2, float y2);
 
     /**
      * @brief Przesuwa punkt o zadany wektor
-     * @param dx PrzesuniÄ™cie w osi X
-     * @param dy PrzesuniÄ™cie w osi Y
+     * @param dx Przesuniêcie w osi X
+     * @param dy Przesuniêcie w osi Y
      */
     void translate(float dx, float dy);
     /**
-     * @brief Skaluje poÅ‚oÅ¼enie punktu wzglÄ™dem zadanego centrum
-     * @param sx WspÃ³Å‚czynnik skalowania w osi X
-     * @param sy WspÃ³Å‚czynnik skalowania w osi Y
-     * @param center Punkt wzglÄ™dem ktÃ³rego nastÄ™puje skalowanie
+     * @brief Skaluje po³o¿enie punktu wzglêdem zadanego centrum
+     * @param sx Wspó³czynnik skalowania w osi X
+     * @param sy Wspó³czynnik skalowania w osi Y
+     * @param center Punkt wzglêdem którego nastêpuje skalowanie
      */
     void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
     /**
-     * @brief Obraca punkt o zadany kÄ…t wzglÄ™dem centrum
-     * @param angle KÄ…t obrotu w radianach
-     * @param center Punkt wzglÄ™dem ktÃ³rego nastÄ™puje obrÃ³t
+     * @brief Obraca punkt o zadany k¹t wzglêdem centrum
+     * @param angle K¹t obrotu w radianach
+     * @param center Punkt wzglêdem którego nastêpuje obrót
      */
     void rotate(float angle, const Point2D& center = Point2D(0, 0));
 };
 
 /**
- * @brief Klasa reprezentujÄ…ca trÃ³jkÄ…t w przestrzeni 2D
+ * @brief Klasa reprezentuj¹ca trójk¹t w przestrzeni 2D
  */
 class Triangle {
 private:
-    Point2D p1;    ///< Pierwszy wierzchoÅ‚ek trÃ³jkÄ…ta
-    Point2D p2;    ///< Drugi wierzchoÅ‚ek trÃ³jkÄ…ta
-    Point2D p3;    ///< Trzeci wierzchoÅ‚ek trÃ³jkÄ…ta
-    bool filled;   ///< Flaga wypeÅ‚nienia trÃ³jkÄ…ta
+    Point2D p1;    ///< Pierwszy wierzcho³ek trójk¹ta
+    Point2D p2;    ///< Drugi wierzcho³ek trójk¹ta
+    Point2D p3;    ///< Trzeci wierzcho³ek trójk¹ta
+    bool filled;   ///< Flaga wype³nienia trójk¹ta
 
 public:
     /**
-    * @brief Konstruktor domyÅ›lny, tworzy trÃ³jkÄ…t w punkcie (0,0)
+    * @brief Konstruktor domyœlny, tworzy trójk¹t w punkcie (0,0)
     */
     Triangle();
     /**
-     * @brief Konstruktor z punktami i wypeÅ‚nieniem
-     * @param p1 Pierwszy wierzchoÅ‚ek
-     * @param p2 Drugi wierzchoÅ‚ek
-     * @param p3 Trzeci wierzchoÅ‚ek
-     * @param filled Flaga wypeÅ‚nienia
+     * @brief Konstruktor z punktami i wype³nieniem
+     * @param p1 Pierwszy wierzcho³ek
+     * @param p2 Drugi wierzcho³ek
+     * @param p3 Trzeci wierzcho³ek
+     * @param filled Flaga wype³nienia
      */
     Triangle(const Point2D& p1, const Point2D& p2, const Point2D& p3, bool filled = false);
 	/**
-	 * @brief Konstruktor z wspÃ³Å‚rzÄ™dnymi punktÃ³w i wypeÅ‚nieniem
-	 * @param x1 WspÃ³Å‚rzÄ™dna X pierwszego wierzchoÅ‚ka
-	 * @param y1 WspÃ³Å‚rzÄ™dna Y pierwszego wierzchoÅ‚ka
-	 * @param x2 WspÃ³Å‚rzÄ™dna X drugiego wierzchoÅ‚ka
-	 * @param y2 WspÃ³Å‚rzÄ™dna Y drugiego wierzchoÅ‚ka
-	 * @param x3 WspÃ³Å‚rzÄ™dna X trzeciego wierzchoÅ‚ka
-	 * @param y3 WspÃ³Å‚rzÄ™dna Y trzeciego wierzchoÅ‚ka
-	 * @param filled Flaga wypeÅ‚nienia
+	 * @brief Konstruktor z wspó³rzêdnymi punktów i wype³nieniem
+	 * @param x1 Wspó³rzêdna X pierwszego wierzcho³ka
+	 * @param y1 Wspó³rzêdna Y pierwszego wierzcho³ka
+	 * @param x2 Wspó³rzêdna X drugiego wierzcho³ka
+	 * @param y2 Wspó³rzêdna Y drugiego wierzcho³ka
+	 * @param x3 Wspó³rzêdna X trzeciego wierzcho³ka
+	 * @param y3 Wspó³rzêdna Y trzeciego wierzcho³ka
+	 * @param filled Flaga wype³nienia
 	 */
     Triangle(float x1, float y1, float x2, float y2, float x3, float y3, bool filled = false);
 
     /**
-	* @brief Pobiera pierwszy wierzchoÅ‚ek trÃ³jkÄ…ta
-	* @return Pierwszy wierzchoÅ‚ek
+	* @brief Pobiera pierwszy wierzcho³ek trójk¹ta
+	* @return Pierwszy wierzcho³ek
 	*/
     Point2D getP1() const;
 	/**
-	* @brief Pobiera drugi wierzchoÅ‚ek trÃ³jkÄ…ta
-	* @return Drugi wierzchoÅ‚ek
+	* @brief Pobiera drugi wierzcho³ek trójk¹ta
+	* @return Drugi wierzcho³ek
     */
     Point2D getP2() const;
 	/**
-	* @brief Pobiera trzeci wierzchoÅ‚ek trÃ³jkÄ…ta
-	* @return Trzeci wierzchoÅ‚ek
+	* @brief Pobiera trzeci wierzcho³ek trójk¹ta
+	* @return Trzeci wierzcho³ek
 	*/
     Point2D getP3() const;
 	/**
-	* @brief Pobiera flagÄ™ wypeÅ‚nienia trÃ³jkÄ…ta
-	* @return Flaga wypeÅ‚nienia
+	* @brief Pobiera flagê wype³nienia trójk¹ta
+	* @return Flaga wype³nienia
 	*/
     bool isFilled() const;
 
     /**
-     * @brief Ustawia pierwszy wierzchoÅ‚ek trÃ³jkÄ…ta
-     * @param point Nowy pierwszy wierzchoÅ‚ek
+     * @brief Ustawia pierwszy wierzcho³ek trójk¹ta
+     * @param point Nowy pierwszy wierzcho³ek
      */
     void setP1(const Point2D& point);
     /**
-     * @brief Ustawia drugi wierzchoÅ‚ek trÃ³jkÄ…ta
-     * @param point Nowy drugi wierzchoÅ‚ek
+     * @brief Ustawia drugi wierzcho³ek trójk¹ta
+     * @param point Nowy drugi wierzcho³ek
      */
     void setP2(const Point2D& point);
     /**
-     * @brief Ustawia trzeci wierzchoÅ‚ek trÃ³jkÄ…ta
-     * @param point Nowy trzeci wierzchoÅ‚ek
+     * @brief Ustawia trzeci wierzcho³ek trójk¹ta
+     * @param point Nowy trzeci wierzcho³ek
      */
     void setP3(const Point2D& point);
     /**
-     * @brief Ustawia wszystkie wierzchoÅ‚ki trÃ³jkÄ…ta
-     * @param p1 Nowy pierwszy wierzchoÅ‚ek
-     * @param p2 Nowy drugi wierzchoÅ‚ek
-     * @param p3 Nowy trzeci wierzchoÅ‚ek
+     * @brief Ustawia wszystkie wierzcho³ki trójk¹ta
+     * @param p1 Nowy pierwszy wierzcho³ek
+     * @param p2 Nowy drugi wierzcho³ek
+     * @param p3 Nowy trzeci wierzcho³ek
      */
     void setPoints(const Point2D& p1, const Point2D& p2, const Point2D& p3);
     /**
-     * @brief Ustawia wszystkie wierzchoÅ‚ki trÃ³jkÄ…ta na podstawie wspÃ³Å‚rzÄ™dnych
-     * @param x1 WspÃ³Å‚rzÄ™dna X pierwszego wierzchoÅ‚ka
-     * @param y1 WspÃ³Å‚rzÄ™dna Y pierwszego wierzchoÅ‚ka
-     * @param x2 WspÃ³Å‚rzÄ™dna X drugiego wierzchoÅ‚ka
-     * @param y2 WspÃ³Å‚rzÄ™dna Y drugiego wierzchoÅ‚ka
-     * @param x3 WspÃ³Å‚rzÄ™dna X trzeciego wierzchoÅ‚ka
-     * @param y3 WspÃ³Å‚rzÄ™dna Y trzeciego wierzchoÅ‚ka
+     * @brief Ustawia wszystkie wierzcho³ki trójk¹ta na podstawie wspó³rzêdnych
+     * @param x1 Wspó³rzêdna X pierwszego wierzcho³ka
+     * @param y1 Wspó³rzêdna Y pierwszego wierzcho³ka
+     * @param x2 Wspó³rzêdna X drugiego wierzcho³ka
+     * @param y2 Wspó³rzêdna Y drugiego wierzcho³ka
+     * @param x3 Wspó³rzêdna X trzeciego wierzcho³ka
+     * @param y3 Wspó³rzêdna Y trzeciego wierzcho³ka
      */
     void setPoints(float x1, float y1, float x2, float y2, float x3, float y3);
     /**
-     * @brief Ustawia flagÄ™ wypeÅ‚nienia trÃ³jkÄ…ta
-     * @param fill Nowa wartoÅ›Ä‡ flagi wypeÅ‚nienia
+     * @brief Ustawia flagê wype³nienia trójk¹ta
+     * @param fill Nowa wartoœæ flagi wype³nienia
      */
     void setFilled(bool fill);
 
     /**
-      * @brief Przesuwa trÃ³jkÄ…t o zadany wektor
-      * @param dx PrzesuniÄ™cie w osi X
-      * @param dy PrzesuniÄ™cie w osi Y
+      * @brief Przesuwa trójk¹t o zadany wektor
+      * @param dx Przesuniêcie w osi X
+      * @param dy Przesuniêcie w osi Y
       */
     void translate(float dx, float dy);
     /**
-     * @brief Skaluje trÃ³jkÄ…t wzglÄ™dem zadanego centrum
-     * @param sx WspÃ³Å‚czynnik skalowania w osi X
-     * @param sy WspÃ³Å‚czynnik skalowania w osi Y
-     * @param center Punkt wzglÄ™dem ktÃ³rego nastÄ™puje skalowanie
+     * @brief Skaluje trójk¹t wzglêdem zadanego centrum
+     * @param sx Wspó³czynnik skalowania w osi X
+     * @param sy Wspó³czynnik skalowania w osi Y
+     * @param center Punkt wzglêdem którego nastêpuje skalowanie
      */
     void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
     /**
-     * @brief Obraca trÃ³jkÄ…t o zadany kÄ…t wzglÄ™dem centrum
-     * @param angle KÄ…t obrotu w radianach
-     * @param center Punkt wzglÄ™dem ktÃ³rego nastÄ™puje obrÃ³t
+     * @brief Obraca trójk¹t o zadany k¹t wzglêdem centrum
+     * @param angle K¹t obrotu w radianach
+     * @param center Punkt wzglêdem którego nastêpuje obrót
      */
     void rotate(float angle, const Point2D& center = Point2D(0, 0));
 };
 
 /**
- * @brief Klasa reprezentujÄ…ca prostokÄ…t w przestrzeni 2D
+ * @brief Klasa reprezentuj¹ca prostok¹t w przestrzeni 2D
  */
 class Rectangle {
 private:
-    Point2D topLeft;    ///< Lewy gÃ³rny wierzchoÅ‚ek prostokÄ…ta
-    float width;        ///< SzerokoÅ›Ä‡ prostokÄ…ta
-    float height;       ///< WysokoÅ›Ä‡ prostokÄ…ta
-    bool filled;        ///< Flaga wypeÅ‚nienia prostokÄ…ta
+    Point2D topLeft;    ///< Lewy górny wierzcho³ek prostok¹ta
+    float width;        ///< Szerokoœæ prostok¹ta
+    float height;       ///< Wysokoœæ prostok¹ta
+    bool filled;        ///< Flaga wype³nienia prostok¹ta
 
 public:
     /**
-     * @brief Konstruktor domyÅ›lny, tworzy prostokÄ…t w punkcie (0,0) o wymiarach 0x0
+     * @brief Konstruktor domyœlny, tworzy prostok¹t w punkcie (0,0) o wymiarach 0x0
      */
     Rectangle();
     /**
-     * @brief Konstruktor z lewym gÃ³rnym wierzchoÅ‚kiem, szerokoÅ›ciÄ…, wysokoÅ›ciÄ… i wypeÅ‚nieniem
-     * @param topLeft Lewy gÃ³rny wierzchoÅ‚ek
-     * @param width SzerokoÅ›Ä‡ prostokÄ…ta
-     * @param height WysokoÅ›Ä‡ prostokÄ…ta
-     * @param filled Flaga wypeÅ‚nienia
+     * @brief Konstruktor z lewym górnym wierzcho³kiem, szerokoœci¹, wysokoœci¹ i wype³nieniem
+     * @param topLeft Lewy górny wierzcho³ek
+     * @param width Szerokoœæ prostok¹ta
+     * @param height Wysokoœæ prostok¹ta
+     * @param filled Flaga wype³nienia
      */
     Rectangle(const Point2D& topLeft, float width, float height, bool filled = false);
     /**
-     * @brief Konstruktor ze wspÃ³Å‚rzÄ™dnymi lewego gÃ³rnego wierzchoÅ‚ka, szerokoÅ›ciÄ…, wysokoÅ›ciÄ… i wypeÅ‚nieniem
-     * @param x WspÃ³Å‚rzÄ™dna X lewego gÃ³rnego wierzchoÅ‚ka
-     * @param y WspÃ³Å‚rzÄ™dna Y lewego gÃ³rnego wierzchoÅ‚ka
-     * @param width SzerokoÅ›Ä‡ prostokÄ…ta
-     * @param height WysokoÅ›Ä‡ prostokÄ…ta
-     * @param filled Flaga wypeÅ‚nienia
+     * @brief Konstruktor ze wspó³rzêdnymi lewego górnego wierzcho³ka, szerokoœci¹, wysokoœci¹ i wype³nieniem
+     * @param x Wspó³rzêdna X lewego górnego wierzcho³ka
+     * @param y Wspó³rzêdna Y lewego górnego wierzcho³ka
+     * @param width Szerokoœæ prostok¹ta
+     * @param height Wysokoœæ prostok¹ta
+     * @param filled Flaga wype³nienia
      */
     Rectangle(float x, float y, float width, float height, bool filled = false);
 
     /**
-     * @brief Pobiera lewy gÃ³rny wierzchoÅ‚ek prostokÄ…ta
-     * @return Lewy gÃ³rny wierzchoÅ‚ek
+     * @brief Pobiera lewy górny wierzcho³ek prostok¹ta
+     * @return Lewy górny wierzcho³ek
      */
     Point2D getTopLeft() const;
     /**
-     * @brief Pobiera prawy gÃ³rny wierzchoÅ‚ek prostokÄ…ta
-     * @return Prawy gÃ³rny wierzchoÅ‚ek
+     * @brief Pobiera prawy górny wierzcho³ek prostok¹ta
+     * @return Prawy górny wierzcho³ek
      */
     Point2D getTopRight() const;
     /**
-     * @brief Pobiera lewy dolny wierzchoÅ‚ek prostokÄ…ta
-     * @return Lewy dolny wierzchoÅ‚ek
+     * @brief Pobiera lewy dolny wierzcho³ek prostok¹ta
+     * @return Lewy dolny wierzcho³ek
      */
     Point2D getBottomLeft() const;
     /**
-     * @brief Pobiera prawy dolny wierzchoÅ‚ek prostokÄ…ta
-     * @return Prawy dolny wierzchoÅ‚ek
+     * @brief Pobiera prawy dolny wierzcho³ek prostok¹ta
+     * @return Prawy dolny wierzcho³ek
      */
     Point2D getBottomRight() const;
     /**
-     * @brief Pobiera szerokoÅ›Ä‡ prostokÄ…ta
-     * @return SzerokoÅ›Ä‡ prostokÄ…ta
+     * @brief Pobiera szerokoœæ prostok¹ta
+     * @return Szerokoœæ prostok¹ta
      */
     float getWidth() const;
     /**
-     * @brief Pobiera wysokoÅ›Ä‡ prostokÄ…ta
-     * @return WysokoÅ›Ä‡ prostokÄ…ta
+     * @brief Pobiera wysokoœæ prostok¹ta
+     * @return Wysokoœæ prostok¹ta
      */
     float getHeight() const;
     /**
-     * @brief Pobiera flagÄ™ wypeÅ‚nienia prostokÄ…ta
-     * @return Flaga wypeÅ‚nienia
+     * @brief Pobiera flagê wype³nienia prostok¹ta
+     * @return Flaga wype³nienia
      */
     bool isFilled() const;
 
     /**
-     * @brief Ustawia lewy gÃ³rny wierzchoÅ‚ek prostokÄ…ta
-     * @param point Nowy lewy gÃ³rny wierzchoÅ‚ek
+     * @brief Ustawia lewy górny wierzcho³ek prostok¹ta
+     * @param point Nowy lewy górny wierzcho³ek
      */
     void setTopLeft(const Point2D& point);
     /**
-     * @brief Ustawia lewy gÃ³rny wierzchoÅ‚ek prostokÄ…ta na podstawie wspÃ³Å‚rzÄ™dnych
-     * @param x Nowa wspÃ³Å‚rzÄ™dna X lewego gÃ³rnego wierzchoÅ‚ka
-     * @param y Nowa wspÃ³Å‚rzÄ™dna Y lewego gÃ³rnego wierzchoÅ‚ka
+     * @brief Ustawia lewy górny wierzcho³ek prostok¹ta na podstawie wspó³rzêdnych
+     * @param x Nowa wspó³rzêdna X lewego górnego wierzcho³ka
+     * @param y Nowa wspó³rzêdna Y lewego górnego wierzcho³ka
      */
     void setTopLeft(float x, float y);
     /**
-     * @brief Ustawia szerokoÅ›Ä‡ i wysokoÅ›Ä‡ prostokÄ…ta
-     * @param width Nowa szerokoÅ›Ä‡ prostokÄ…ta
-     * @param height Nowa wysokoÅ›Ä‡ prostokÄ…ta
+     * @brief Ustawia szerokoœæ i wysokoœæ prostok¹ta
+     * @param width Nowa szerokoœæ prostok¹ta
+     * @param height Nowa wysokoœæ prostok¹ta
      */
     void setSize(float width, float height);
     /**
-     * @brief Ustawia flagÄ™ wypeÅ‚nienia prostokÄ…ta
-     * @param fill Nowa wartoÅ›Ä‡ flagi wypeÅ‚nienia
+     * @brief Ustawia flagê wype³nienia prostok¹ta
+     * @param fill Nowa wartoœæ flagi wype³nienia
      */
     void setFilled(bool fill);
 
 
     /**
-    * @brief Przesuwa prostokÄ…t o zadany wektor
-    * @param dx PrzesuniÄ™cie w osi X
-    * @param dy PrzesuniÄ™cie w osi Y
+    * @brief Przesuwa prostok¹t o zadany wektor
+    * @param dx Przesuniêcie w osi X
+    * @param dy Przesuniêcie w osi Y
     */
     void translate(float dx, float dy);
     /**
-     * @brief Skaluje prostokÄ…t wzglÄ™dem zadanego centrum
-     * @param sx WspÃ³Å‚czynnik skalowania w osi X
-     * @param sy WspÃ³Å‚czynnik skalowania w osi Y
-     * @param center Punkt wzglÄ™dem ktÃ³rego nastÄ™puje skalowanie
+     * @brief Skaluje prostok¹t wzglêdem zadanego centrum
+     * @param sx Wspó³czynnik skalowania w osi X
+     * @param sy Wspó³czynnik skalowania w osi Y
+     * @param center Punkt wzglêdem którego nastêpuje skalowanie
      */
     void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
     /**
-     * @brief Obraca prostokÄ…t o zadany kÄ…t wzglÄ™dem centrum
-     * @param angle KÄ…t obrotu w radianach
-     * @param center Punkt wzglÄ™dem ktÃ³rego nastÄ™puje obrÃ³t
+     * @brief Obraca prostok¹t o zadany k¹t wzglêdem centrum
+     * @param angle K¹t obrotu w radianach
+     * @param center Punkt wzglêdem którego nastêpuje obrót
      */
     void rotate(float angle, const Point2D& center = Point2D(0, 0));
 
 
     /**
-     * @brief Sprawdza, czy dany punkt znajduje siÄ™ wewnÄ…trz prostokÄ…ta
+     * @brief Sprawdza, czy dany punkt znajduje siê wewn¹trz prostok¹ta
      * @param point Sprawdzany punkt
-     * @return true jeÅ›li punkt jest wewnÄ…trz, false w przeciwnym razie
+     * @return true jeœli punkt jest wewn¹trz, false w przeciwnym razie
      */
     bool contains(const Point2D& point) const;
     /**
-     * @brief Sprawdza, czy ten prostokÄ…t przecina siÄ™ z innym prostokÄ…tem
-     * @param other Drugi prostokÄ…t do sprawdzenia przeciÄ™cia
-     * @return true jeÅ›li prostokÄ…ty siÄ™ przecinajÄ…, false w przeciwnym razie
+     * @brief Sprawdza, czy ten prostok¹t przecina siê z innym prostok¹tem
+     * @param other Drugi prostok¹t do sprawdzenia przeciêcia
+     * @return true jeœli prostok¹ty siê przecinaj¹, false w przeciwnym razie
      */
     bool intersects(const Rectangle& other) const;
 };
 
 /**
- * @brief Klasa reprezentujÄ…ca okrÄ…g w przestrzeni 2D
+ * @brief Klasa reprezentuj¹ca okr¹g w przestrzeni 2D
  */
 class Circle {
 private:
-    Point2D center; ///< Åšrodek okrÄ™gu
-    float radius;   ///< PromieÅ„ okrÄ™gu
-    bool filled;    ///< Flaga wypeÅ‚nienia okrÄ™gu
+    Point2D center; ///< Œrodek okrêgu
+    float radius;   ///< Promieñ okrêgu
+    bool filled;    ///< Flaga wype³nienia okrêgu
 
 
 public:
     /**
-     * @brief Konstruktor domyÅ›lny, tworzy okrÄ…g o Å›rodku w (0,0) i promieniu 0
+     * @brief Konstruktor domyœlny, tworzy okr¹g o œrodku w (0,0) i promieniu 0
      */
     Circle();
     /**
-     * @brief Konstruktor z Å›rodkiem, promieniem i wypeÅ‚nieniem
-     * @param center Åšrodek okrÄ™gu
-     * @param radius PromieÅ„ okrÄ™gu
-     * @param filled Flaga wypeÅ‚nienia
+     * @brief Konstruktor z œrodkiem, promieniem i wype³nieniem
+     * @param center Œrodek okrêgu
+     * @param radius Promieñ okrêgu
+     * @param filled Flaga wype³nienia
      */
     Circle(const Point2D& center, float radius, bool filled = false);
     /**
-     * @brief Konstruktor ze wspÃ³Å‚rzÄ™dnymi Å›rodka, promieniem i wypeÅ‚nieniem
-     * @param x WspÃ³Å‚rzÄ™dna X Å›rodka okrÄ™gu
-     * @param y WspÃ³Å‚rzÄ™dna Y Å›rodka okrÄ™gu
-     * @param radius PromieÅ„ okrÄ™gu
-     * @param filled Flaga wypeÅ‚nienia
+     * @brief Konstruktor ze wspó³rzêdnymi œrodka, promieniem i wype³nieniem
+     * @param x Wspó³rzêdna X œrodka okrêgu
+     * @param y Wspó³rzêdna Y œrodka okrêgu
+     * @param radius Promieñ okrêgu
+     * @param filled Flaga wype³nienia
      */
     Circle(float x, float y, float radius, bool filled = false);
 
     /**
-     * @brief Pobiera Å›rodek okrÄ™gu
-     * @return Åšrodek okrÄ™gu
+     * @brief Pobiera œrodek okrêgu
+     * @return Œrodek okrêgu
      */
     Point2D getCenter() const;
     /**
-     * @brief Pobiera promieÅ„ okrÄ™gu
-     * @return PromieÅ„ okrÄ™gu
+     * @brief Pobiera promieñ okrêgu
+     * @return Promieñ okrêgu
      */
     float getRadius() const;
     /**
-     * @brief Pobiera flagÄ™ wypeÅ‚nienia okrÄ™gu
-     * @return Flaga wypeÅ‚nienia
+     * @brief Pobiera flagê wype³nienia okrêgu
+     * @return Flaga wype³nienia
      */
     bool isFilled() const;
 
 
     /**
-     * @brief Ustawia Å›rodek okrÄ™gu
-     * @param point Nowy Å›rodek okrÄ™gu
+     * @brief Ustawia œrodek okrêgu
+     * @param point Nowy œrodek okrêgu
      */
     void setCenter(const Point2D& point);
     /**
-     * @brief Ustawia Å›rodek okrÄ™gu na podstawie wspÃ³Å‚rzÄ™dnych
-     * @param x Nowa wspÃ³Å‚rzÄ™dna X Å›rodka okrÄ™gu
-     * @param y Nowa wspÃ³Å‚rzÄ™dna Y Å›rodka okrÄ™gu
+     * @brief Ustawia œrodek okrêgu na podstawie wspó³rzêdnych
+     * @param x Nowa wspó³rzêdna X œrodka okrêgu
+     * @param y Nowa wspó³rzêdna Y œrodka okrêgu
      */
     void setCenter(float x, float y);
     /**
-     * @brief Ustawia promieÅ„ okrÄ™gu
-     * @param newRadius Nowy promieÅ„ okrÄ™gu
+     * @brief Ustawia promieñ okrêgu
+     * @param newRadius Nowy promieñ okrêgu
      */
     void setRadius(float newRadius);
     /**
-     * @brief Ustawia flagÄ™ wypeÅ‚nienia okrÄ™gu
-     * @param fill Nowa wartoÅ›Ä‡ flagi wypeÅ‚nienia
+     * @brief Ustawia flagê wype³nienia okrêgu
+     * @param fill Nowa wartoœæ flagi wype³nienia
      */
     void setFilled(bool fill);
 
 
     /**
-     * @brief Przesuwa okrÄ…g o zadany wektor
-     * @param dx PrzesuniÄ™cie w osi X
-     * @param dy PrzesuniÄ™cie w osi Y
+     * @brief Przesuwa okr¹g o zadany wektor
+     * @param dx Przesuniêcie w osi X
+     * @param dy Przesuniêcie w osi Y
      */
     void translate(float dx, float dy);
     /**
-     * @brief Skaluje okrÄ…g
-     * @param s WspÃ³Å‚czynnik skalowania (jednakowy dla obu osi)
+     * @brief Skaluje okr¹g
+     * @param s Wspó³czynnik skalowania (jednakowy dla obu osi)
      */
-    void scale(float s);  // Dla koÅ‚a sx i sy powinny byÄ‡ rÃ³wne
-    // KoÅ‚o nie potrzebuje rotacji, bo jest symetryczne
+    void scale(float s);  // Dla ko³a sx i sy powinny byæ równe
+    // Ko³o nie potrzebuje rotacji, bo jest symetryczne
 
     /**
-     * @brief Sprawdza, czy dany punkt znajduje siÄ™ wewnÄ…trz okrÄ™gu
+     * @brief Sprawdza, czy dany punkt znajduje siê wewn¹trz okrêgu
      * @param point Sprawdzany punkt
-     * @return true jeÅ›li punkt jest wewnÄ…trz, false w przeciwnym razie
+     * @return true jeœli punkt jest wewn¹trz, false w przeciwnym razie
      */
     bool contains(const Point2D& point) const;
 };
