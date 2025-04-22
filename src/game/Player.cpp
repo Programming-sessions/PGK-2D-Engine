@@ -13,7 +13,7 @@ Player::Player()
 	, maxAmmoInMag(10)  // Pojemnoœæ magazynka
 	, currentAmmoInMag(10)  // Aktualna iloœæ naboi w magazynku
 	, totalAmmo(30)  // Ca³kowita iloœæ amunicji zapasowej
-	, reloadTime(1.5f)  // Czas prze³adowania w sekundach
+	, reloadTime(1.05f)  // Czas prze³adowania w sekundach
 	, currentReloadTime(0.0f) // Licznik czasu prze³adowania
 	, isReloading(false)  // Czy trwa prze³adowanie
 	, camera(nullptr)
@@ -56,8 +56,8 @@ bool Player::loadResources() {
     sprite->addAnimation(idleAnimation);
 
     // Animacja prze³adowania (nastêpne 3 rzêdy)
-    Animation* reloadAnimation = new Animation("reload", true);
-    const float RELOAD_FRAME_DURATION = 0.09f;
+    Animation* reloadAnimation = new Animation("reload", false);
+    const float RELOAD_FRAME_DURATION = 0.07f;
 
     for (int row = 4; row < 7; row++) {
         for (int col = 0; col < 5; col++) {
