@@ -11,11 +11,15 @@ Animation::Animation(const std::string& name, bool looping)
 }
 
 void Animation::addFrame(int x, int y, int width, int height, float duration) {
+    // U¿ywamy emplace_back zamiast push_back dla lepszej wydajnoœci
+    // Konstruuje obiekt AnimationFrame bezpoœrednio w wektorze, unikaj¹c kopii
     frames.emplace_back(x, y, width, height, duration);
-    totalDuration += duration;
+    totalDuration += duration;  // Aktualizacja ca³kowitego czasu trwania animacji
 }
 
 const AnimationFrame& Animation::getCurrentFrame() const {
+    // Zabezpieczenie przed dostêpem do pustego wektora
+    // Zwraca domyœln¹ klatkê jeœli wektor jest pusty
     if (frames.empty()) {
         static AnimationFrame defaultFrame(0, 0, 0, 0, 0.0f);
         return defaultFrame;
@@ -46,20 +50,20 @@ void Animation::update(float deltaTime) {
 
     currentFrameTime += deltaTime;
 
-    // Sprawdzamy czy czas obecnej klatki siê skoñczy³
     while (currentFrameTime >= frames[currentFrameIndex].duration) {
+        // Odejmujemy czas aktualnej klatki i przechodzimy do nastêpnej
         currentFrameTime -= frames[currentFrameIndex].duration;
         currentFrameIndex++;
 
-        // Sprawdzamy czy dotarliœmy do koñca animacji
+        // Logika zapêtlania animacji
         if (currentFrameIndex >= frames.size()) {
             if (isLooping) {
-                currentFrameIndex = 0;
+                currentFrameIndex = 0;  // Wracamy na pocz¹tek animacji
             }
             else {
-                currentFrameIndex = frames.size() - 1;
+                currentFrameIndex = frames.size() - 1;  // Zostajemy na ostatniej klatce
                 isPlaying = false;
-                break;
+                break;  // Przerywamy pêtlê, bo animacja siê skoñczy³a
             }
         }
     }

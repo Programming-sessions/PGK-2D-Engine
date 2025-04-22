@@ -292,10 +292,8 @@ void Circle::translate(float dx, float dy) {
     center.translate(dx, dy);
 }
 
-void Circle::scale(float sx, float sy) {
-    // Dla ko³a u¿ywamy tylko jednego wspó³czynnika skalowania
-    float scale = (sx + sy) / 2.0f;  // Mo¿na te¿ u¿yæ std::max(sx, sy)
-    radius *= scale;
+void Circle::scale(float s) {
+    radius *= s;
 }
 
 // Dodatkowe metody

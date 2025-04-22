@@ -1,4 +1,12 @@
-#pragma once
+/**
+ * @file TextureManager.h
+ * @brief Mened¿er tekstur implementuj¹cy wzorzec Singleton
+ *
+ * Klasa zarz¹dza ³adowaniem, przechowywaniem i zwalnianiem tekstur.
+ * Zapobiega wielokrotnemu ³adowaniu tych samych tekstur i zapewnia
+ * centralne miejsce zarz¹dzania zasobami graficznymi.
+ */
+
 #ifndef TEXTURE_MANAGER_H
 #define TEXTURE_MANAGER_H
 
@@ -7,52 +15,109 @@
 #include <map>
 #include "Logger.h"
 
+ /**
+  * @brief Klasa zarz¹dzaj¹ca teksturami w aplikacji
+  *
+  * TextureManager implementuje wzorzec Singleton i odpowiada za:
+  * - £adowanie tekstur z plików
+  * - Buforowanie za³adowanych tekstur
+  * - Zarz¹dzanie pamiêci¹ tekstur
+  * - Dostarczanie tekstur do innych komponentów
+  */
 class TextureManager {
 private:
-    // Singleton instance
-    static TextureManager* instance;
+    static TextureManager* instance;    ///< Instancja Singletona
 
-    // Mapa przechowuj¹ca tekstury (œcie¿ka -> bitmap)
+    /** @brief Mapa przechowuj¹ca za³adowane tekstury (œcie¿ka -> bitmapa) */
     std::map<std::string, ALLEGRO_BITMAP*> textures;
 
-    // Logger do obs³ugi b³êdów
-    Logger logger;
+    Logger logger;    ///< Logger do rejestrowania operacji i b³êdów
 
-    // Prywatny konstruktor (Singleton)
+    /**
+     * @brief Prywatny konstruktor (wzorzec Singleton)
+     *
+     * Inicjalizuje dodatek do obs³ugi obrazów Allegro.
+     */
     TextureManager();
 
-    // Prywatny destruktor
+    /**
+     * @brief Prywatny destruktor
+     *
+     * Zwalnia wszystkie za³adowane tekstury.
+     */
     ~TextureManager();
 
-    // Zablokowanie kopiowania
+    // Zablokowanie kopiowania (Singleton)
     TextureManager(const TextureManager&) = delete;
     TextureManager& operator=(const TextureManager&) = delete;
 
 public:
-    // Pobranie instancji singletona
+    /**
+     * @brief Pobiera instancjê mened¿era tekstur
+     * @return WskaŸnik na jedyn¹ instancjê klasy
+     *
+     * Tworzy instancjê przy pierwszym wywo³aniu.
+     */
     static TextureManager* getInstance();
 
-    // Zwolnienie instancji
+    /**
+     * @brief Zwalnia instancjê mened¿era tekstur
+     *
+     * Nale¿y wywo³aæ przed zakoñczeniem programu.
+     * Zwalnia wszystkie za³adowane tekstury.
+     */
     static void releaseInstance();
 
-    // £adowanie tekstury
+    /**
+     * @brief £aduje teksturê z pliku
+     * @param path Œcie¿ka do pliku tekstury
+     * @return WskaŸnik na za³adowan¹ bitmapê lub nullptr w przypadku b³êdu
+     *
+     * Jeœli tekstura by³a ju¿ wczeœniej za³adowana, zwraca istniej¹c¹ instancjê.
+     */
     ALLEGRO_BITMAP* loadTexture(const std::string& path);
 
-    // Pobranie za³adowanej tekstury
+    /**
+     * @brief Pobiera za³adowan¹ teksturê
+     * @param path Œcie¿ka do pliku tekstury
+     * @return WskaŸnik na bitmapê lub nullptr jeœli tekstura nie jest za³adowana
+     *
+     * Jeœli tekstura nie jest za³adowana, próbuje j¹ za³adowaæ.
+     */
     ALLEGRO_BITMAP* getTexture(const std::string& path);
 
-    // Sprawdzenie czy tekstura jest za³adowana
+    /**
+     * @brief Sprawdza czy tekstura jest ju¿ za³adowana
+     * @param path Œcie¿ka do pliku tekstury
+     * @return true jeœli tekstura jest za³adowana
+     */
     bool isTextureLoaded(const std::string& path) const;
 
-    // Zwolnienie pojedynczej tekstury
+    /**
+     * @brief Zwalnia pojedyncz¹ teksturê
+     * @param path Œcie¿ka do pliku tekstury
+     *
+     * Usuwa teksturê z pamiêci i z mapy tekstur.
+     */
     void unloadTexture(const std::string& path);
 
-    // Zwolnienie wszystkich tekstur
+    /**
+     * @brief Zwalnia wszystkie za³adowane tekstury
+     *
+     * Czyœci ca³¹ pamiêæ zajmowan¹ przez tekstury.
+     */
     void unloadAllTextures();
 
-    // Pobranie wymiarów tekstury
+    /**
+     * @brief Pobiera wymiary tekstury
+     * @param path Œcie¿ka do pliku tekstury
+     * @param[out] width Szerokoœæ tekstury w pikselach
+     * @param[out] height Wysokoœæ tekstury w pikselach
+     * @return true jeœli uda³o siê pobraæ wymiary
+     *
+     * Jeœli tekstura nie jest za³adowana, próbuje j¹ za³adowaæ.
+     */
     bool getTextureDimensions(const std::string& path, int& width, int& height);
 };
 
 #endif // TEXTURE_MANAGER_H
-
