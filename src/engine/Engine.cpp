@@ -26,7 +26,7 @@ Engine::Engine() :
     mouseX(0),
     mouseY(0) {
 
-    clearColor = al_map_rgb(0, 0, 0);
+    clearColor = al_map_rgb(0, 0, 0);   // Domyœlny kolor t³a - czarny
 
     // Inicjalizacja stanów klawiszy i myszy
     for (int i = 0; i < ALLEGRO_KEY_MAX; i++) {
@@ -107,9 +107,10 @@ bool Engine::initAllegro() {
 }
 
 bool Engine::initDisplay() {
-    // Ustawienie parametrów wyœwietlania
+    // Ustawienie parametrów wyœwietlania, konfiguracja anty-aliasingu
     al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 1, ALLEGRO_SUGGEST);
     al_set_new_display_option(ALLEGRO_SAMPLES, 8, ALLEGRO_SUGGEST);
+    // Ustawienie trybu okna przed jego utworzeniem
     al_set_new_display_flags(fullscreen ? ALLEGRO_FULLSCREEN : ALLEGRO_WINDOWED);
 
     display = al_create_display(screenWidth, screenHeight);
@@ -169,7 +170,7 @@ void Engine::startGameLoop(std::function<void(float)> updateCallback,
         return;
     }
 
-    float deltaTime = 1.0f / fps;
+    float deltaTime = 1.0f / fps; // Sta³y krok czasowy dla aktualizacji
     running = true;
     redraw = false;
 
@@ -209,15 +210,18 @@ void Engine::processEvents() {
     while (al_get_next_event(eventQueue, &event)) {
         switch (event.type) {
         case ALLEGRO_EVENT_TIMER:
+            // Timer ustawia flagê odœwie¿ania ekranu
             redraw = true;
             break;
 
         case ALLEGRO_EVENT_DISPLAY_CLOSE:
+            // Obs³uga zamkniêcia okna
             running = false;
             break;
 
         case ALLEGRO_EVENT_KEY_DOWN:
             keys[event.keyboard.keycode] = true;
+            // Escape koñczy dzia³anie programu
             if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
                 running = false;
             }
@@ -266,7 +270,7 @@ void Engine::shutdown() {
         display = nullptr;
     }
 
-    // Deinicjalizacja dodatków Allegro
+    // Wy³¹czanie dodatków Allegro
     al_shutdown_font_addon();
     al_shutdown_ttf_addon();
     al_shutdown_image_addon();
