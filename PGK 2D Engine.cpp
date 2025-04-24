@@ -1,4 +1,4 @@
-﻿#include "src/engine/Engine.h"
+#include "src/engine/Engine.h"
 #include "src/engine/PrimitiveRenderer.h"
 #include "src/engine/Sprite.h"
 #include "src/game/Player.h"
@@ -134,12 +134,16 @@ void render() {
 
 
 int main() {
+    
     engine = Engine::getInstance();
 
     // Konfiguracja silnika
     engine->setScreenSize(1600, 900);
     engine->setTitle("Arena Combat Game");
     engine->setClearColor(al_map_rgb(0, 0, 0));  // Czarne tło
+    engine->setFullscreen(false);               //Ustawienie trybu pełnoekranowego
+    engine->setFPS(60);                         // Ustawienie ilości klatek na sekunde
+
 
     // Inicjalizacja silnika
     if (!engine->init()) {
