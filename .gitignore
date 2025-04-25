@@ -363,3 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 # Doxygen - auto-generated
 docs/
+/src/engine/engine.md
+/src/engine/gatherdata.py
+/src/game/game.md
+/src/game/gatherdata.py
