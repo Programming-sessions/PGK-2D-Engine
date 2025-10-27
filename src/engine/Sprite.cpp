@@ -16,11 +16,7 @@ Sprite::Sprite()
 }
 
 Sprite::~Sprite() {
-    // Czyszczenie animacji
-    for (auto& pair : animations) {
-        delete pair.second;
-    }
-    animations.clear();
+    // Animations are now managed by unique_ptr, no manual deletion needed.
 }
 
 bool Sprite::loadTexture(const std::string& path) {
@@ -64,34 +60,37 @@ void Sprite::resetSourceRect() {
     }
 }
 
-void Sprite::addAnimation(Animation* animation) {
+void Sprite::addAnimation(std::unique_ptr<Animation> animation) {
     if (animation) {
-        // Jeœli animacja o tej nazwie ju¿ istnieje, usuñ j¹
-        auto it = animations.find(animation->getName());
-        if (it != animations.end()) {
-            delete it->second;
-        }
+        const std::string& name = animation->getName();
+        // If an animation with this name already exists, it will be replaced.
+        animations[name] = std::move(animation);
 
-        animations[animation->getName()] = animation;
-
-        // Jeœli to pierwsza animacja, ustaw j¹ jako aktualn¹
+        // If this is the first animation, set it as the current one
         if (!currentAnimation) {
-            currentAnimation = animation;
+            currentAnimation = animations[name].get();
         }
     }
 }
 
 void Sprite::playAnimation(const std::string& name) {
     auto it = animations.find(name);
-    if (it != animations.end()) {
-        if (currentAnimation != it->second) {
-            if (currentAnimation) {
-                currentAnimation->stop();
-            }
-            currentAnimation = it->second;
-        }
-        currentAnimation->play();
+    if (it == animations.end()) {
+        return; // Animation not found
     }
+
+    Animation* newAnimation = it->second.get();
+    if (currentAnimation == newAnimation) {
+        currentAnimation->play(); // Already the current animation, just ensure it's playing
+        return;
+    }
+
+    if (currentAnimation) {
+        currentAnimation->stop();
+    }
+
+    currentAnimation = newAnimation;
+    currentAnimation->play();
 }
 
 void Sprite::stopAnimation() {
@@ -116,7 +115,7 @@ void Sprite::updateAnimation(float deltaTime) {
     if (currentAnimation) {
         currentAnimation->update(deltaTime);
 
-        // Aktualizacja Ÿród³owego prostok¹ta na podstawie aktualnej klatki
+        // Update the source rectangle based on the current frame
         const AnimationFrame& frame = currentAnimation->getCurrentFrame();
         sourceX = frame.x;
         sourceY = frame.y;
@@ -156,32 +155,14 @@ int Sprite::getHeight() const {
 void Sprite::draw() {
     if (!texture) return;
 
-    // Zachowanie obecnego stanu transformacji
-    ALLEGRO_TRANSFORM transform;
-    al_copy_transform(&transform, al_get_current_transform());
-
-    // Ustawienie nowej transformacji dla sprite'a
-    ALLEGRO_TRANSFORM spriteTransform;
-    al_identity_transform(&spriteTransform);
-    al_translate_transform(&spriteTransform, -sourceWidth / 2.0f, -sourceHeight / 2.0f);
-    al_scale_transform(&spriteTransform, scale.getX(), scale.getY());
-    al_rotate_transform(&spriteTransform, rotation);
-    al_translate_transform(&spriteTransform, position.getX(), position.getY());
-    al_compose_transform(&spriteTransform, &transform);
-
-    // Zastosowanie transformacji
-    al_use_transform(&spriteTransform);
-
-    // Rysowanie z uwzglêdnieniem przezroczystoœci i aktualnej klatki animacji
-    al_draw_tinted_bitmap_region(
+    al_draw_tinted_scaled_rotated_bitmap_region(
         texture,
+        sourceX, sourceY, sourceWidth, sourceHeight,
         al_map_rgba_f(1.0f, 1.0f, 1.0f, alpha),
-        sourceX, sourceY,
-        sourceWidth, sourceHeight,
-        0, 0,
+        sourceWidth / 2.0f, sourceHeight / 2.0f,
+        position.getX(), position.getY(),
+        scale.getX(), scale.getY(),
+        rotation,
         0
     );
-
-    // Przywrócenie poprzedniej transformacji
-    al_use_transform(&transform);
 }
