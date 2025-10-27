@@ -1,6 +1,7 @@
 #include "CollisionManager.h"
 #include <algorithm>
 #include <cmath>
+#include <glm/gtx/norm.hpp>
 
 CollisionManager* CollisionManager::instance = nullptr;
 
@@ -32,7 +33,7 @@ void CollisionManager::removeCollision(Collision* collision) {
     }
 }
 
-bool CollisionManager::checkPointTriangle(const Point2D& p, const Point2D& a, const Point2D& b, const Point2D& c) const {
+bool CollisionManager::checkPointTriangle(const glm::vec2& p, const glm::vec2& a, const glm::vec2& b, const glm::vec2& c) const {
     float d1 = sign(p, a, b);
     float d2 = sign(p, b, c);
     float d3 = sign(p, c, a);
@@ -43,53 +44,48 @@ bool CollisionManager::checkPointTriangle(const Point2D& p, const Point2D& a, co
     return !(hasNeg && hasPos);
 }
 
-float CollisionManager::sign(const Point2D& p1, const Point2D& p2, const Point2D& p3) const {
-    return (p1.getX() - p3.getX()) * (p2.getY() - p3.getY()) -
-        (p2.getX() - p3.getX()) * (p1.getY() - p3.getY());
+float CollisionManager::sign(const glm::vec2& p1, const glm::vec2& p2, const glm::vec2& p3) const {
+    return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
 }
 
 bool CollisionManager::checkCircleCircle(const Collision* a, const Collision* b) const {
-    float dx = a->getPosition().getX() - b->getPosition().getX();
-    float dy = a->getPosition().getY() - b->getPosition().getY();
-    float distanceSquared = dx * dx + dy * dy;
+    float distanceSquared = glm::distance2(a->getPosition(), b->getPosition());
     float radiusSum = a->getRadius() + b->getRadius();
     return distanceSquared <= radiusSum * radiusSum;
 }
 
 bool CollisionManager::checkCircleRectangle(const Collision* circle, const Collision* rect) const {
-    float circleX = circle->getPosition().getX();
-    float circleY = circle->getPosition().getY();
-    float rectX = rect->getPosition().getX();
-    float rectY = rect->getPosition().getY();
+    glm::vec2 circlePos = circle->getPosition();
+    glm::vec2 rectPos = rect->getPosition();
     float rectW = rect->getWidth();
     float rectH = rect->getHeight();
 
-    float testX = circleX;
-    float testY = circleY;
+    float testX = circlePos.x;
+    float testY = circlePos.y;
 
-    if (circleX < rectX) testX = rectX;
-    else if (circleX > rectX + rectW) testX = rectX + rectW;
+    if (circlePos.x < rectPos.x) testX = rectPos.x;
+    else if (circlePos.x > rectPos.x + rectW) testX = rectPos.x + rectW;
 
-    if (circleY < rectY) testY = rectY;
-    else if (circleY > rectY + rectH) testY = rectY + rectH;
+    if (circlePos.y < rectPos.y) testY = rectPos.y;
+    else if (circlePos.y > rectPos.y + rectH) testY = rectPos.y + rectH;
 
-    float distX = circleX - testX;
-    float distY = circleY - testY;
+    float distX = circlePos.x - testX;
+    float distY = circlePos.y - testY;
     float distanceSquared = (distX * distX) + (distY * distY);
 
     return distanceSquared <= (circle->getRadius() * circle->getRadius());
 }
 
 bool CollisionManager::checkRectangleRectangle(const Collision* a, const Collision* b) const {
-    return !(a->getPosition().getX() + a->getWidth() <= b->getPosition().getX() ||
-        b->getPosition().getX() + b->getWidth() <= a->getPosition().getX() ||
-        a->getPosition().getY() + a->getHeight() <= b->getPosition().getY() ||
-        b->getPosition().getY() + b->getHeight() <= a->getPosition().getY());
+    return !(a->getPosition().x + a->getWidth() <= b->getPosition().x ||
+        b->getPosition().x + b->getWidth() <= a->getPosition().x ||
+        a->getPosition().y + a->getHeight() <= b->getPosition().y ||
+        b->getPosition().y + b->getHeight() <= a->getPosition().y);
 }
 
 bool CollisionManager::checkCircleTriangle(const Collision* circle, const Collision* triangle) const {
     const auto& points = triangle->getTrianglePoints();
-    const Point2D& circleCenter = circle->getPosition();
+    const glm::vec2& circleCenter = circle->getPosition();
     float radius = circle->getRadius();
 
     // Check if circle center is inside triangle
@@ -99,24 +95,16 @@ bool CollisionManager::checkCircleTriangle(const Collision* circle, const Collis
 
     // Check collision with each edge of the triangle
     for (int i = 0; i < 3; i++) {
-        const Point2D& a = points[i];
-        const Point2D& b = points[(i + 1) % 3];
+        const glm::vec2& a = points[i];
+        const glm::vec2& b = points[(i + 1) % 3];
 
-        float ab_x = b.getX() - a.getX();
-        float ab_y = b.getY() - a.getY();
-        float t = ((circleCenter.getX() - a.getX()) * ab_x +
-            (circleCenter.getY() - a.getY()) * ab_y) /
-            (ab_x * ab_x + ab_y * ab_y);
+        glm::vec2 ab = b - a;
+        float t = glm::dot(circleCenter - a, ab) / glm::dot(ab, ab);
         t = std::max(0.0f, std::min(1.0f, t));
 
-        Point2D closest(
-            a.getX() + t * ab_x,
-            a.getY() + t * ab_y
-        );
+        glm::vec2 closest = a + t * ab;
 
-        float dx = circleCenter.getX() - closest.getX();
-        float dy = circleCenter.getY() - closest.getY();
-        if (dx * dx + dy * dy <= radius * radius) {
+        if (glm::distance2(circleCenter, closest) <= radius * radius) {
             return true;
         }
     }
@@ -126,24 +114,24 @@ bool CollisionManager::checkCircleTriangle(const Collision* circle, const Collis
 
 bool CollisionManager::checkTriangleRectangle(const Collision* triangle, const Collision* rectangle) const {
     const auto& points = triangle->getTrianglePoints();
-    Point2D rectPos = rectangle->getPosition();
+    glm::vec2 rectPos = rectangle->getPosition();
     float rectWidth = rectangle->getWidth();
     float rectHeight = rectangle->getHeight();
 
     // Check if any triangle vertex is inside rectangle
     for (const auto& p : points) {
-        if (p.getX() >= rectPos.getX() && p.getX() <= rectPos.getX() + rectWidth &&
-            p.getY() >= rectPos.getY() && p.getY() <= rectPos.getY() + rectHeight) {
+        if (p.x >= rectPos.x && p.x <= rectPos.x + rectWidth &&
+            p.y >= rectPos.y && p.y <= rectPos.y + rectHeight) {
             return true;
         }
     }
 
     // Check if any rectangle vertex is inside triangle
-    std::vector<Point2D> rectPoints = {
+    std::vector<glm::vec2> rectPoints = {
         rectPos,
-        Point2D(rectPos.getX() + rectWidth, rectPos.getY()),
-        Point2D(rectPos.getX() + rectWidth, rectPos.getY() + rectHeight),
-        Point2D(rectPos.getX(), rectPos.getY() + rectHeight)
+        glm::vec2(rectPos.x + rectWidth, rectPos.y),
+        glm::vec2(rectPos.x + rectWidth, rectPos.y + rectHeight),
+        glm::vec2(rectPos.x, rectPos.y + rectHeight)
     };
 
     for (const auto& p : rectPoints) {
@@ -154,20 +142,17 @@ bool CollisionManager::checkTriangleRectangle(const Collision* triangle, const C
 
     // Check for line segment intersections
     for (int i = 0; i < 3; i++) {
-        const Point2D& a = points[i];
-        const Point2D& b = points[(i + 1) % 3];
+        const glm::vec2& a = points[i];
+        const glm::vec2& b = points[(i + 1) % 3];
         for (int j = 0; j < 4; j++) {
-            const Point2D& c = rectPoints[j];
-            const Point2D& d = rectPoints[(j + 1) % 4];
+            const glm::vec2& c = rectPoints[j];
+            const glm::vec2& d = rectPoints[(j + 1) % 4];
 
-            float denominator = ((b.getX() - a.getX()) * (d.getY() - c.getY())) -
-                ((b.getY() - a.getY()) * (d.getX() - c.getX()));
+            float denominator = ((b.x - a.x) * (d.y - c.y)) - ((b.y - a.y) * (d.x - c.x));
             if (denominator == 0) continue;
 
-            float ua = (((d.getX() - c.getX()) * (a.getY() - c.getY())) -
-                ((d.getY() - c.getY()) * (a.getX() - c.getX()))) / denominator;
-            float ub = (((b.getX() - a.getX()) * (a.getY() - c.getY())) -
-                ((b.getY() - a.getY()) * (a.getX() - c.getX()))) / denominator;
+            float ua = (((d.x - c.x) * (a.y - c.y)) - ((d.y - c.y) * (a.x - c.x))) / denominator;
+            float ub = (((b.x - a.x) * (a.y - c.y)) - ((b.y - a.y) * (a.x - c.x))) / denominator;
 
             if (ua >= 0 && ua <= 1 && ub >= 0 && ub <= 1) {
                 return true;
@@ -209,10 +194,10 @@ bool CollisionManager::checkCollision(const Collision* a, const Collision* b) co
     return false;
 }
 
-bool CollisionManager::checkCollision(const Collision* collision, const Point2D& position) const {
+bool CollisionManager::checkCollision(const Collision* collision, const glm::vec2& position) const {
     if (!collision || !collision->isActive()) return false;
 
-    Point2D oldPos = collision->getPosition();
+    glm::vec2 oldPos = collision->getPosition();
     const_cast<Collision*>(collision)->setPosition(position);
 
     bool collided = false;

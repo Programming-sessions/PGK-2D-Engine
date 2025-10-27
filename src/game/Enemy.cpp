@@ -87,14 +87,10 @@ void Enemy::update(float deltaTime) {
     updateAI(deltaTime);
 
     // Handle collision and movement
-    Point2D previousPosition = position;
-    Point2D newPosition = position;
-    Point2D movement(velocity.getX() * deltaTime, velocity.getY() * deltaTime);
+    glm::vec2 previousPosition = position;
+    glm::vec2 movement = velocity * deltaTime;
+    glm::vec2 newPosition = position + movement;
 
-    // Try diagonal movement
-    newPosition = previousPosition;
-    newPosition.setX(previousPosition.getX() + movement.getX());
-    newPosition.setY(previousPosition.getY() + movement.getY());
     collision->setPosition(newPosition);
 
     if (CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
@@ -102,7 +98,7 @@ void Enemy::update(float deltaTime) {
 
         // Try moving on the X axis
         newPosition = previousPosition;
-        newPosition.setX(previousPosition.getX() + movement.getX());
+        newPosition.x += movement.x;
         collision->setPosition(newPosition);
 
         if (!CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
@@ -110,12 +106,12 @@ void Enemy::update(float deltaTime) {
             previousPosition = newPosition;
         }
         else {
-            velocity.setX(0.0f);
+            velocity.x = 0.0f;
         }
 
         // Try moving on the Y axis
         newPosition = previousPosition;
-        newPosition.setY(previousPosition.getY() + movement.getY());
+        newPosition.y += movement.y;
         collision->setPosition(newPosition);
 
         if (!CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
@@ -123,7 +119,7 @@ void Enemy::update(float deltaTime) {
             previousPosition = newPosition;
         }
         else {
-            velocity.setY(0.0f);
+            velocity.y = 0.0f;
         }
 
         // The final position is previousPosition
@@ -136,7 +132,7 @@ void Enemy::update(float deltaTime) {
 
     // Update sprite
     if (sprite) {
-        sprite->setPosition(position.getX(), position.getY());
+        sprite->setPosition(position);
         sprite->setRotation(rotation);
         sprite->updateAnimation(deltaTime);
     }
@@ -160,9 +156,7 @@ void Enemy::updateAI(float deltaTime) {
     }
 
     // Calculate the current distance from the player
-    float dx = targetPlayer->getPosition().getX() - position.getX();
-    float dy = targetPlayer->getPosition().getY() - position.getY();
-    float currentDistance = sqrt(dx * dx + dy * dy);
+    float currentDistance = glm::distance(targetPlayer->getPosition(), position);
 
     bool canSeePlayer = currentDistance <= detectionRange && hasLineOfSight();
 
@@ -184,30 +178,28 @@ void Enemy::updateAI(float deltaTime) {
             float moveDirection = (currentDistance > preferredDistance) ? 1.0f : -1.0f;
 
             // Calculate the target velocity vector
-            float targetDirX = cos(rotation) * moveDirection;
-            float targetDirY = sin(rotation) * moveDirection;
+            glm::vec2 targetDir(cos(rotation) * moveDirection, sin(rotation) * moveDirection);
 
             // Smooth acceleration
-            velocity.setX(velocity.getX() + targetDirX * acceleration * deltaTime);
-            velocity.setY(velocity.getY() + targetDirY * acceleration * deltaTime);
+            velocity += targetDir * acceleration * deltaTime;
 
             // Limit maximum speed
-            float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
-            if (speed > maxSpeed) {
-                float scale = maxSpeed / speed;
-                velocity.setX(velocity.getX() * scale);
-                velocity.setY(velocity.getY() * scale);
+            if (glm::length(velocity) > maxSpeed) {
+                velocity = glm::normalize(velocity) * maxSpeed;
             }
 
             isMoving = true;
         }
         else {
             // Smooth braking when at preferredDistance
-            float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+            float speed = glm::length(velocity);
             if (speed > 0) {
-                float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
-                velocity.setX(velocity.getX() * scale);
-                velocity.setY(velocity.getY() * scale);
+                glm::vec2 decelVec = glm::normalize(velocity) * deceleration * deltaTime;
+                if (glm::length(decelVec) > speed) {
+                    velocity = glm::vec2(0.0f, 0.0f);
+                } else {
+                    velocity -= decelVec;
+                }
             }
             isMoving = false;
         }
@@ -222,41 +214,37 @@ void Enemy::updateAI(float deltaTime) {
         // Player out of range or obscured - go to the last known position
         if (hasLastKnownPosition) {
             // Calculate the distance to the last known position
-            float dxLast = lastKnownPlayerPosition.getX() - position.getX();
-            float dyLast = lastKnownPlayerPosition.getY() - position.getY();
-            float distanceToLastPos = sqrt(dxLast * dxLast + dyLast * dyLast);
+            float distanceToLastPos = glm::distance(lastKnownPlayerPosition, position);
 
             // If we are close enough, stop moving
             if (distanceToLastPos < arrivalThreshold) {
                 hasLastKnownPosition = false; // Reset searching
 
                 // Braking
-                float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+                float speed = glm::length(velocity);
                 if (speed > 0) {
-                    float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
-                    velocity.setX(velocity.getX() * scale);
-                    velocity.setY(velocity.getY() * scale);
+                    glm::vec2 decelVec = glm::normalize(velocity) * deceleration * deltaTime;
+                    if (glm::length(decelVec) > speed) {
+                        velocity = glm::vec2(0.0f, 0.0f);
+                    } else {
+                        velocity -= decelVec;
+                    }
                 }
             }
             else {
                 // Turn towards the last known position
-                float targetRotation = atan2(dyLast, dxLast);
-                rotation = targetRotation;
+                glm::vec2 dir = lastKnownPlayerPosition - position;
+                rotation = atan2(dir.y, dir.x);
 
                 // Move towards the point
-                float targetDirX = cos(rotation);
-                float targetDirY = sin(rotation);
+                glm::vec2 targetDir(cos(rotation), sin(rotation));
 
                 // Acceleration
-                velocity.setX(velocity.getX() + targetDirX * acceleration * deltaTime);
-                velocity.setY(velocity.getY() + targetDirY * acceleration * deltaTime);
+                velocity += targetDir * acceleration * deltaTime;
 
                 // Limit speed
-                float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
-                if (speed > maxSpeed) {
-                    float scale = maxSpeed / speed;
-                    velocity.setX(velocity.getX() * scale);
-                    velocity.setY(velocity.getY() * scale);
+                if (glm::length(velocity) > maxSpeed) {
+                    velocity = glm::normalize(velocity) * maxSpeed;
                 }
 
                 isMoving = true;
@@ -264,11 +252,14 @@ void Enemy::updateAI(float deltaTime) {
         }
         else {
             // No last known position - stop
-            float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+            float speed = glm::length(velocity);
             if (speed > 0) {
-                float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
-                velocity.setX(velocity.getX() * scale);
-                velocity.setY(velocity.getY() * scale);
+                glm::vec2 decelVec = glm::normalize(velocity) * deceleration * deltaTime;
+                if (glm::length(decelVec) > speed) {
+                    velocity = glm::vec2(0.0f, 0.0f);
+                } else {
+                    velocity -= decelVec;
+                }
             }
             isMoving = false;
         }
@@ -278,46 +269,33 @@ void Enemy::updateAI(float deltaTime) {
 bool Enemy::isPlayerInRange() const {
     if (!targetPlayer) return false;
 
-    float dx = targetPlayer->getPosition().getX() - position.getX();
-    float dy = targetPlayer->getPosition().getY() - position.getY();
-    float distanceSquared = dx * dx + dy * dy;
-
-    return distanceSquared <= detectionRange * detectionRange;
+    return glm::distance(targetPlayer->getPosition(), position) <= detectionRange;
 }
 
 void Enemy::rotateTowardsPlayer() {
     if (!targetPlayer) return;
 
-    float dx = targetPlayer->getPosition().getX() - position.getX();
-    float dy = targetPlayer->getPosition().getY() - position.getY();
-    rotation = atan2(dy, dx);
+    glm::vec2 dir = targetPlayer->getPosition() - position;
+    rotation = atan2(dir.y, dir.x);
 }
 
 void Enemy::moveTowardsPlayer(float deltaTime) {
     if (!targetPlayer) return;
 
     // Calculate direction to player
-    float dx = targetPlayer->getPosition().getX() - position.getX();
-    float dy = targetPlayer->getPosition().getY() - position.getY();
-    float length = sqrt(dx * dx + dy * dy);
-
-    if (length > 0) {
-        dx /= length;
-        dy /= length;
+    glm::vec2 dir = targetPlayer->getPosition() - position;
+    if (glm::length(dir) > 0) {
+        dir = glm::normalize(dir);
         isMoving = true;
     }
 
     // Update velocity with acceleration
     if (isMoving) {
-        velocity.setX(velocity.getX() + dx * acceleration * deltaTime);
-        velocity.setY(velocity.getY() + dy * acceleration * deltaTime);
+        velocity += dir * acceleration * deltaTime;
 
         // Limit maximum speed
-        float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
-        if (speed > maxSpeed) {
-            float scale = maxSpeed / speed;
-            velocity.setX(velocity.getX() * scale);
-            velocity.setY(velocity.getY() * scale);
+        if (glm::length(velocity) > maxSpeed) {
+            velocity = glm::normalize(velocity) * maxSpeed;
         }
     }
 }
@@ -325,12 +303,7 @@ void Enemy::moveTowardsPlayer(float deltaTime) {
 bool Enemy::isPlayerInShootRange() const {
     if (!targetPlayer) return false;
 
-    // We calculate the distance between the enemy and the player
-    float dx = targetPlayer->getPosition().getX() - position.getX();
-    float dy = targetPlayer->getPosition().getY() - position.getY();
-    float distanceToPlayer = sqrt(dx * dx + dy * dy);
-
-    return distanceToPlayer <= shootRange;
+    return glm::distance(targetPlayer->getPosition(), position) <= shootRange;
 }
 
 void Enemy::shoot() {
@@ -341,18 +314,17 @@ void Enemy::shoot() {
     const float MUZZLE_OFFSET_Y = 42.0f;
 
     // Calculate muzzle position
-    Point2D bulletPos = position;
+    glm::vec2 bulletPos = position;
     float rotatedMuzzleX = MUZZLE_OFFSET_X * cos(rotation) - MUZZLE_OFFSET_Y * sin(rotation);
     float rotatedMuzzleY = MUZZLE_OFFSET_X * sin(rotation) + MUZZLE_OFFSET_Y * cos(rotation);
 
-    bulletPos.setX(bulletPos.getX() + rotatedMuzzleX);
-    bulletPos.setY(bulletPos.getY() + rotatedMuzzleY);
+    bulletPos.x += rotatedMuzzleX;
+    bulletPos.y += rotatedMuzzleY;
 
     // Calculate new rotation from the muzzle point to the player
-    Point2D targetPos = targetPlayer->getPosition();
-    float dx = targetPos.getX() - bulletPos.getX();
-    float dy = targetPos.getY() - bulletPos.getY();
-    float bulletRotation = atan2(dy, dx);
+    glm::vec2 targetPos = targetPlayer->getPosition();
+    glm::vec2 dir = targetPos - bulletPos;
+    float bulletRotation = atan2(dir.y, dir.x);
 
     BulletManager::getInstance()->createBullet(bulletPos, bulletRotation, this);
 }
@@ -360,22 +332,18 @@ void Enemy::shoot() {
 bool Enemy::hasLineOfSight() const {
     if (!targetPlayer) return false;
 
-    Point2D start = position;
-    Point2D end = targetPlayer->getPosition();
+    glm::vec2 start = position;
+    glm::vec2 end = targetPlayer->getPosition();
 
-    float dx = end.getX() - start.getX();
-    float dy = end.getY() - start.getY();
-    float distance = sqrt(dx * dx + dy * dy);
-
-    dx /= distance;
-    dy /= distance;
+    glm::vec2 dir = end - start;
+    float distance = glm::length(dir);
+    dir = glm::normalize(dir);
 
     const float step = 10.0f;
-    Point2D checkPoint = start;
+    glm::vec2 checkPoint = start;
 
     for (float i = 0; i < distance; i += step) {
-        checkPoint.setX(start.getX() + dx * i);
-        checkPoint.setY(start.getY() + dy * i);
+        checkPoint = start + dir * i;
 
         Collision tempCollision(CollisionShape::CIRCLE, CollisionLayer::PROJECTILE);
         tempCollision.setPosition(checkPoint);
@@ -385,7 +353,6 @@ bool Enemy::hasLineOfSight() const {
         for (auto* hit : collisions) {
             // Check if the collision is with a wall
             if (hit->getLayer() == CollisionLayer::WALL) {
-                //Logger::getInstance()->debug("Wall detected at: " + std::to_string(checkPoint.getX()) + "," + std::to_string(checkPoint.getY()));
                 return false;
             }
         }
@@ -394,8 +361,8 @@ bool Enemy::hasLineOfSight() const {
     return true;
 }
 
-void Enemy::updateLastKnownPlayerPosition(const Point2D& position) {
-    lastKnownPlayerPosition = position;
+void Enemy::updateLastKnownPlayerPosition(const glm::vec2& pos) {
+    lastKnownPlayerPosition = pos;
     hasLastKnownPosition = true;
     isAlerted = true;
     currentAlertTime = alertDuration;

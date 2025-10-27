@@ -197,7 +197,6 @@
     <ClCompile Include="src\engine\Animation.cpp" />
     <ClCompile Include="src\engine\Engine.cpp" />
     <ClCompile Include="src\engine\Logger.cpp" />
-    <ClCompile Include="src\engine\PrimitiveRenderer.cpp" />
     <ClCompile Include="src\engine\Primitives.cpp" />
     <ClCompile Include="src\engine\Sprite.cpp" />
     <ClCompile Include="src\engine\TextureManager.cpp" />
@@ -216,7 +215,6 @@
     <ClInclude Include="src\engine\Animation.h" />
     <ClInclude Include="src\engine\Engine.h" />
     <ClInclude Include="src\engine\Logger.h" />
-    <ClInclude Include="src\engine\PrimitiveRenderer.h" />
     <ClInclude Include="src\engine\Primitives.h" />
     <ClInclude Include="src\engine\Sprite.h" />
     <ClInclude Include="src\engine\TextureManager.h" />

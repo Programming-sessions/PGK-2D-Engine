@@ -30,7 +30,12 @@ bool Sprite::loadTexture(const std::string& path) {
 }
 
 void Sprite::setPosition(float x, float y) {
-    position.setPosition(x, y);
+    position.x = x;
+    position.y = y;
+}
+
+void Sprite::setPosition(const glm::vec2& pos) {
+    position = pos;
 }
 
 void Sprite::setRotation(float angle) {
@@ -38,7 +43,12 @@ void Sprite::setRotation(float angle) {
 }
 
 void Sprite::setScale(float scaleX, float scaleY) {
-    scale.setPosition(scaleX, scaleY);
+    scale.x = scaleX;
+    scale.y = scaleY;
+}
+
+void Sprite::setScale(const glm::vec2& newScale) {
+    scale = newScale;
 }
 
 void Sprite::setAlpha(float newAlpha) {
@@ -128,11 +138,11 @@ Animation* Sprite::getCurrentAnimation() const {
     return currentAnimation;
 }
 
-Point2D Sprite::getPosition() const {
+glm::vec2 Sprite::getPosition() const {
     return position;
 }
 
-Point2D Sprite::getScale() const {
+glm::vec2 Sprite::getScale() const {
     return scale;
 }
 
@@ -160,8 +170,8 @@ void Sprite::draw() {
         sourceX, sourceY, sourceWidth, sourceHeight,
         al_map_rgba_f(1.0f, 1.0f, 1.0f, alpha),
         sourceWidth / 2.0f, sourceHeight / 2.0f,
-        position.getX(), position.getY(),
-        scale.getX(), scale.getY(),
+        position.x, position.y,
+        scale.x, scale.y,
         rotation,
         0
     );

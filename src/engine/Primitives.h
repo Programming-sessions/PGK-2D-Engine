@@ -7,368 +7,51 @@
 #include <vector>
 #include <cmath>
 
-// Forward declaration
-class Point2D;
-
-/**
- * @brief Klasa reprezentująca punkt w przestrzeni 2D
- */
-class Point2D {
-private:
-    glm::vec2 position; ///< Wektor pozycji punktu
-
-public:
-    /**
-     * @brief Konstruktor domyślny, tworzy punkt (0,0)
-     */
-    Point2D();
-    /**
-     * @brief Konstruktor z parametrami
-     * @param x Współrzędna X punktu
-     * @param y Współrzędna Y punktu
-     */
-    Point2D(float x, float y);
-
-    /**
-     * @brief Konstruktor z wektora glm::vec2
-     * @param pos Wektor pozycji
-     */
-    Point2D(const glm::vec2& pos);
-
-    /**
-     * @brief Pobiera współrzędną X punktu
-     * @return Wartość współrzędnej X
-     */
-    float getX() const;
-    /**
-     * @brief Pobiera współrzędną Y punktu
-     * @return Wartość współrzędnej Y
-     */
-    float getY() const;
-
-    /**
-     * @brief Pobiera pozycję jako wektor glm::vec2
-     * @return Wektor pozycji
-     */
-    const glm::vec2& getPosition() const;
-
-    /**
-     * @brief Ustawia współrzędną X punktu
-     * @param newX Nowa wartość współrzędnej X
-     */
-    void setX(float newX);
-    /**
-     * @brief Ustawia współrzędną Y punktu
-     * @param newY Nowa wartość współrzędnej Y
-     */
-    void setY(float newY);
-    /**
-     * @brief Ustawia obie współrzędne punktu
-     * @param newX Nowa wartość współrzędnej X
-     * @param newY Nowa wartość współrzędnej Y
-     */
-    void setPosition(float newX, float newY);
-
-    /**
-     * @brief Ustawia pozycję na podstawie wektora glm::vec2
-     * @param newPosition Nowy wektor pozycji
-     */
-    void setPosition(const glm::vec2& newPosition);
-
-
-    /**
-     * @brief Przesuwa punkt o zadany wektor
-     * @param dx Przesunięcie w osi X
-     * @param dy Przesunięcie w osi Y
-     */
-    void translate(float dx, float dy);
-    /**
-     * @brief Skaluje położenie punktu względem zadanego centrum
-     * @param sx Współczynnik skalowania w osi X
-     * @param sy Współczynnik skalowania w osi Y
-     * @param center Punkt względem którego następuje skalowanie
-     */
-    void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
-    /**
-     * @brief Obraca punkt o zadany kąt względem centrum
-     * @param angle Kąt obrotu w stopniach
-     * @param center Punkt względem którego następuje obrót
-     */
-    void rotate(float angle, const Point2D& center = Point2D(0, 0));
-
-    /**
-     * @brief Ogranicza współrzędne punktu do zadanego zakresu
-     * @param minX Minimalna wartość X
-     * @param minY Minimalna wartość Y
-     * @param maxX Maksymalna wartość X
-     * @param maxY Maksymalna wartość Y
-     */
-    void clamp(float minX, float minY, float maxX, float maxY);
-};
-
 /**
  * @brief Klasa reprezentująca odcinek w przestrzeni 2D
  */
 class LineSegment {
-private:
-    Point2D start;    ///< Punkt początkowy odcinka
-    Point2D end;      ///< Punkt końcowy odcinka
-
 public:
-    /**
-     * @brief Konstruktor domyślny, tworzy odcinek między punktami (0,0)
-     */
+    glm::vec2 start;    ///< Punkt początkowy odcinka
+    glm::vec2 end;      ///< Punkt końcowy odcinka
+
     LineSegment();
-    /**
-     * @brief Konstruktor z punktami końcowymi
-     * @param start Punkt początkowy
-     * @param end Punkt końcowy
-     */
-    LineSegment(const Point2D& start, const Point2D& end);
-    /**
-     * @brief Konstruktor ze współrzędnymi punktów końcowych
-     * @param x1 Współrzędna X punktu początkowego
-     * @param y1 Współrzędna Y punktu początkowego
-     * @param x2 Współrzędna X punktu końcowego
-     * @param y2 Współrzędna Y punktu końcowego
-     */
+    LineSegment(const glm::vec2& start, const glm::vec2& end);
     LineSegment(float x1, float y1, float x2, float y2);
-
-
-    /**
-	 * @brief Pobiera punkt początkowy odcinka
-	 * @return Punkt początkowy
-     */
-    Point2D getStart() const;
-	/**
-	 * @brief Pobiera punkt końcowy odcinka
-	 * @return Punkt końcowy
-     */
-    Point2D getEnd() const;
-
-    /**
-	 * @brief Ustawia punkt początkowy odcinka
-	 * @param point Nowy punkt początkowy
-     */
-    void setStart(const Point2D& point);
-    /**
-     * @brief Ustawia punkt końcowy odcinka
-	 * @param point Nowy punkt końcowy
-     */
-    void setEnd(const Point2D& point);
-    /**
-	 * @brief Ustawia punkt początkowy na podstawie współrzędnych
-	 * @param x Współrzędna X punktu początkowego
-	 * @param y Współrzędna Y punktu początkowego
-     */
-    void setStart(float x, float y);
-    /**
-     * @brief Ustawia punkt końcowy na podstawie współrzędnych
-     * @param x Współrzędna X punktu końcowego
-     * @param y Współrzędna Y punktu końcowego
-     */
-    void setEnd(float x, float y);
-	/**
-	 * @brief Ustawia odcinek na podstawie dwóch punktów
-	 * @param newStart Nowy punkt początkowy
-	 * @param newEnd Nowy punkt końcowy
-	 */
-    void setLine(const Point2D& newStart, const Point2D& newEnd);
-    /**
-	 * @brief Ustawia odcinek na podstawie współrzędnych
-	 * @param x1 Współrzędna X punktu początkowego
-	 * @param y1 Współrzędna Y punktu początkowego
-	 * @param x2 Współrzędna X punktu końcowego
-	 * @param y2 Współrzędna Y punktu końcowego
-	 */
-    void setLine(float x1, float y1, float x2, float y2);
-
-    /**
-     * @brief Przesuwa punkt o zadany wektor
-     * @param dx Przesunięcie w osi X
-     * @param dy Przesunięcie w osi Y
-     */
-    void translate(float dx, float dy);
-    /**
-     * @brief Skaluje położenie punktu względem zadanego centrum
-     * @param sx Współczynnik skalowania w osi X
-     * @param sy Współczynnik skalowania w osi Y
-     * @param center Punkt względem którego następuje skalowanie
-     */
-    void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
-    /**
-     * @brief Obraca punkt o zadany kąt względem centrum
-     * @param angle Kąt obrotu w radianach
-     * @param center Punkt względem którego następuje obrót
-     */
-    void rotate(float angle, const Point2D& center = Point2D(0, 0));
 };
 
 /**
  * @brief Klasa reprezentująca trójkąt w przestrzeni 2D
  */
 class Triangle {
-private:
-    Point2D p1;      ///< Pierwszy wierzchołek trójkąta
-    Point2D p2;      ///< Drugi wierzchołek trójkąta
-    Point2D p3;      ///< Trzeci wierzchołek trójkąta
+public:
+    glm::vec2 p1;      ///< Pierwszy wierzchołek trójkąta
+    glm::vec2 p2;      ///< Drugi wierzchołek trójkąta
+    glm::vec2 p3;      ///< Trzeci wierzchołek trójkąta
     bool filled;     ///< Flaga wypełnienia trójkąta
 
-public:
-    /**
-     * @brief Konstruktor domyślny, tworzy trójkąt w punkcie (0,0)
-     */
     Triangle();
-    /**
-     * @brief Konstruktor z punktami i wypełnieniem
-     * @param p1 Pierwszy wierzchołek
-     * @param p2 Drugi wierzchołek
-     * @param p3 Trzeci wierzchołek
-     * @param filled Flaga wypełnienia
-     */
-    Triangle(const Point2D& p1, const Point2D& p2, const Point2D& p3, bool filled = false);
-	/**
-	 * @brief Konstruktor z współrzędnymi punktów i wypełnieniem
-	 * @param x1 Współrzędna X pierwszego wierzchołka
-	 * @param y1 Współrzędna Y pierwszego wierzchołka
-	 * @param x2 Współrzędna X drugiego wierzchołka
-	 * @param y2 Współrzędna Y drugiego wierzchołka
-	 * @param x3 Współrzędna X trzeciego wierzchołka
-	 * @param y3 Współrzędna Y trzeciego wierzchołka
-	 * @param filled Flaga wypełnienia
-	 */
+    Triangle(const glm::vec2& p1, const glm::vec2& p2, const glm::vec2& p3, bool filled = false);
     Triangle(float x1, float y1, float x2, float y2, float x3, float y3, bool filled = false);
-
-    /**
-	 * @brief Pobiera pierwszy wierzchołek trójkąta
-	 * @return Pierwszy wierzchołek
-	 */
-    Point2D getP1() const;
-	/**
-	 * @brief Pobiera drugi wierzchołek trójkąta
-	 * @return Drugi wierzchołek
-     */
-    Point2D getP2() const;
-	/**
-	 * @brief Pobiera trzeci wierzchołek trójkąta
-	 * @return Trzeci wierzchołek
-	 */
-    Point2D getP3() const;
-	/**
-	 * @brief Pobiera flagę wypełnienia trójkąta
-	 * @return Flaga wypełnienia
-	 */
-    bool isFilled() const;
-
-    /**
-     * @brief Ustawia pierwszy wierzchołek trójkąta
-     * @param point Nowy pierwszy wierzchołek
-     */
-    void setP1(const Point2D& point);
-    /**
-     * @brief Ustawia drugi wierzchołek trójkąta
-     * @param point Nowy drugi wierzchołek
-     */
-    void setP2(const Point2D& point);
-    /**
-     * @brief Ustawia trzeci wierzchołek trójkąta
-     * @param point Nowy trzeci wierzchołek
-     */
-    void setP3(const Point2D& point);
-    /**
-     * @brief Ustawia wszystkie wierzchołki trójkąta
-     * @param p1 Nowy pierwszy wierzchołek
-     * @param p2 Nowy drugi wierzchołek
-     * @param p3 Nowy trzeci wierzchołek
-     */
-    void setPoints(const Point2D& p1, const Point2D& p2, const Point2D& p3);
-    /**
-     * @brief Ustawia wszystkie wierzchołki trójkąta na podstawie współrzędnych
-     * @param x1 Współrzędna X pierwszego wierzchołka
-     * @param y1 Współrzędna Y pierwszego wierzchołka
-     * @param x2 Współrzędna X drugiego wierzchołka
-     * @param y2 Współrzędna Y drugiego wierzchołka
-     * @param x3 Współrzędna X trzeciego wierzchołka
-     * @param y3 Współrzędna Y trzeciego wierzchołka
-     */
-    void setPoints(float x1, float y1, float x2, float y2, float x3, float y3);
-    /**
-     * @brief Ustawia flagę wypełnienia trójkąta
-     * @param fill Nowa wartość flagi wypełnienia
-     */
-    void setFilled(bool fill);
-
-    /**
-     * @brief Przesuwa trójkąt o zadany wektor
-     * @param dx Przesunięcie w osi X
-     * @param dy Przesunięcie w osi Y
-     */
-    void translate(float dx, float dy);
-    /**
-     * @brief Skaluje trójkąt względem zadanego centrum
-     * @param sx Współczynnik skalowania w osi X
-     * @param sy Współczynnik skalowania w osi Y
-     * @param center Punkt względem którego następuje skalowanie
-     */
-    void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
-    /**
-     * @brief Obraca trójkąt o zadany kąt względem centrum
-     * @param angle Kąt obrotu w radianach
-     * @param center Punkt względem którego następuje obrót
-     */
-    void rotate(float angle, const Point2D& center = Point2D(0, 0));
 };
 
 /**
  * @brief Klasa reprezentująca prostokąt w przestrzeni 2D
  */
 class Rectangle {
-private:
-    Point2D topLeft;      // Lewy górny wierzchołek
-    Point2D topRight;     // Prawy górny wierzchołek
-    Point2D bottomLeft;   // Lewy dolny wierzchołek
-    Point2D bottomRight;  // Prawy dolny wierzchołek
-    bool filled;          // Flaga wypełnienia prostokąta
-
-
 public:
+    glm::vec2 position;
+    glm::vec2 size;
+    float rotation; // In degrees
+    bool filled;
+
     Rectangle();
-    Rectangle(const Point2D& topLeft, float width, float height, bool filled = false);
-    Rectangle(float x, float y, float width, float height, bool filled = false);
+    Rectangle(const glm::vec2& pos, const glm::vec2& size, bool filled = false, float rotation = 0.0f);
+    Rectangle(float x, float y, float width, float height, bool filled = false, float rotation = 0.0f);
 
-
-    // Gettery dla punktów
-    Point2D getTopLeft() const;
-    Point2D getTopRight() const;
-    Point2D getBottomLeft() const;
-    Point2D getBottomRight() const;
-
-    // Gettery dla wymiarów
-    float getWidth() const;
-    float getHeight() const;
-    bool isFilled() const;
-
-
-    // Settery
-    void setTopLeft(const Point2D& point);
-    void setTopLeft(float x, float y);
-    void setSize(float width, float height);
-    void setFilled(bool fill);
-
-
-    // Transformacje
-    void translate(float dx, float dy);
-    void scale(float sx, float sy, const Point2D& center = Point2D(0, 0));
-    void rotate(float angle, const Point2D& center = Point2D(0, 0));
-
-
-    // Metody pomocnicze
-    bool contains(const Point2D& point) const;
+    std::vector<glm::vec2> getCorners() const;
+    bool contains(const glm::vec2& point) const;
     bool intersects(const Rectangle& other) const;
-
-
-private:
-    void updateCorners(float width, float height);
 };
 
 
@@ -376,91 +59,16 @@ private:
  * @brief Klasa reprezentująca okrąg w przestrzeni 2D
  */
 class Circle {
-private:
-    Point2D center; ///< Środek okręgu
+public:
+    glm::vec2 center; ///< Środek okręgu
     float radius;   ///< Promień okręgu
     bool filled;    ///< Flaga wypełnienia okręgu
 
-
-public:
-    /**
-     * @brief Konstruktor domyślny, tworzy okrąg o środku w (0,0) i promieniu 0
-     */
     Circle();
-    /**
-     * @brief Konstruktor z środkiem, promieniem i wypełnieniem
-     * @param center Środek okręgu
-     * @param radius Promień okręgu
-     * @param filled Flaga wypełnienia
-     */
-    Circle(const Point2D& center, float radius, bool filled = false);
-    /**
-     * @brief Konstruktor ze współrzędnymi środka, promieniem i wypełnieniem
-     * @param x Współrzędna X środka okręgu
-     * @param y Współrzędna Y środka okręgu
-     * @param radius Promień okręgu
-     * @param filled Flaga wypełnienia
-     */
+    Circle(const glm::vec2& center, float radius, bool filled = false);
     Circle(float x, float y, float radius, bool filled = false);
 
-    /**
-     * @brief Pobiera środek okręgu
-     * @return Środek okręgu
-     */
-    Point2D getCenter() const;
-    /**
-     * @brief Pobiera promień okręgu
-     * @return Promień okręgu
-     */
-    float getRadius() const;
-    /**
-     * @brief Pobiera flagę wypełnienia okręgu
-     * @return Flaga wypełnienia
-     */
-    bool isFilled() const;
-
-
-    /**
-     * @brief Ustawia środek okręgu
-     * @param point Nowy środek okręgu
-     */
-    void setCenter(const Point2D& point);
-    /**
-     * @brief Ustawia środek okręgu na podstawie współrzędnych
-     * @param x Nowa współrzędna X środka okręgu
-     * @param y Nowa współrzędna Y środka okręgu
-     */
-    void setCenter(float x, float y);
-    /**
-     * @brief Ustawia promień okręgu
-     * @param newRadius Nowy promień okręgu
-     */
-    void setRadius(float newRadius);
-    /**
-     * @brief Ustawia flagę wypełnienia okręgu
-     * @param fill Nowa wartość flagi wypełnienia
-     */
-    void setFilled(bool fill);
-
-
-    /**
-     * @brief Przesuwa okrąg o zadany wektor
-     * @param dx Przesunięcie w osi X
-     * @param dy Przesunięcie w osi Y
-     */
-    void translate(float dx, float dy);
-    /**
-     * @brief Skaluje okrąg
-     * @param s Współczynnik skalowania (jednakowy dla obu osi)
-     */
-    void scale(float s); // Dla koła sx i sy powinny być równe
-    // Koło nie potrzebuje rotacji, bo jest symetryczne
-
-    /**
-     * @brief Sprawdza, czy dany punkt znajduje się wewnątrz okręgu
-     * @param point Sprawdzany punkt
-     * @return true jeśli punkt jest wewnątrz, false w przeciwnym razie
-     */
-    bool contains(const Point2D& point) const;
+    bool contains(const glm::vec2& point) const;
 };
+
 #endif // PRIMITIVES_H

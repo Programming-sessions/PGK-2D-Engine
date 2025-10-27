@@ -82,29 +82,25 @@ void Player::handleInput(float deltaTime) {
     Engine* engine = Engine::getInstance();
     Logger& logger = engine->getLogger();
 
-    float dirX = 0.0f;
-    float dirY = 0.0f;
+    glm::vec2 dir(0.0f, 0.0f);
 
     if (engine->isKeyDown(ALLEGRO_KEY_W) || engine->isKeyDown(ALLEGRO_KEY_UP)) {
-        dirY -= 1.0f;
+        dir.y -= 1.0f;
     }
     if (engine->isKeyDown(ALLEGRO_KEY_S) || engine->isKeyDown(ALLEGRO_KEY_DOWN)) {
-        dirY += 1.0f;
+        dir.y += 1.0f;
     }
     if (engine->isKeyDown(ALLEGRO_KEY_A) || engine->isKeyDown(ALLEGRO_KEY_LEFT)) {
-        dirX -= 1.0f;
+        dir.x -= 1.0f;
     }
     if (engine->isKeyDown(ALLEGRO_KEY_D) || engine->isKeyDown(ALLEGRO_KEY_RIGHT)) {
-        dirX += 1.0f;
+        dir.x += 1.0f;
     }
 
-    // We only log when there is actual movement
-    if (dirX != 0.0f || dirY != 0.0f) {
-        float length = sqrt(dirX * dirX + dirY * dirY);
-        dirX /= length;
-        dirY /= length;
+    if (glm::length(dir) > 0.0f) {
+        dir = glm::normalize(dir);
         isMoving = true;
-        if (logMovement) { logger.info("Movement input - Dir: X=" + std::to_string(dirX) + " Y=" + std::to_string(dirY)); }
+        if (logMovement) { logger.info("Movement input - Dir: X=" + std::to_string(dir.x) + " Y=" + std::to_string(dir.y)); }
     }
     else {
         isMoving = false;
@@ -112,23 +108,22 @@ void Player::handleInput(float deltaTime) {
 
     // Update velocity with acceleration
     if (isMoving) {
-        velocity.setX(velocity.getX() + dirX * acceleration * deltaTime);
-        velocity.setY(velocity.getY() + dirY * acceleration * deltaTime);
+        velocity += dir * acceleration * deltaTime;
 
-        float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
-        if (speed > maxSpeed) {
-            float scale = maxSpeed / speed;
-            velocity.setX(velocity.getX() * scale);
-            velocity.setY(velocity.getY() * scale);
+        if (glm::length(velocity) > maxSpeed) {
+            velocity = glm::normalize(velocity) * maxSpeed;
         }
-        if (logMovement) { logger.info("Velocity updated - V: X=" + std::to_string(velocity.getX()) + " Y=" + std::to_string(velocity.getY())); }
+        if (logMovement) { logger.info("Velocity updated - V: X=" + std::to_string(velocity.x) + " Y=" + std::to_string(velocity.y)); }
     }
     else {
-        float speed = sqrt(velocity.getX() * velocity.getX() + velocity.getY() * velocity.getY());
+        float speed = glm::length(velocity);
         if (speed > 0) {
-            float scale = std::max(0.0f, speed - deceleration * deltaTime) / speed;
-            velocity.setX(velocity.getX() * scale);
-            velocity.setY(velocity.getY() * scale);
+            glm::vec2 decelVec = glm::normalize(velocity) * deceleration * deltaTime;
+            if (glm::length(decelVec) > speed) {
+                velocity = glm::vec2(0.0f, 0.0f);
+            } else {
+                velocity -= decelVec;
+            }
         }
     }
 
@@ -153,12 +148,11 @@ void Player::lookAtMouse() {
     if (!camera) return;
 
     Engine* engine = Engine::getInstance();
-    Point2D mouseScreen(engine->getMouseX(), engine->getMouseY());
-    Point2D mouseWorld = camera->screenToWorld(mouseScreen);
+    glm::vec2 mouseScreen(engine->getMouseX(), engine->getMouseY());
+    glm::vec2 mouseWorld = camera->screenToWorld(mouseScreen);
 
-    float dx = mouseWorld.getX() - position.getX();
-    float dy = mouseWorld.getY() - position.getY();
-    rotation = atan2(dy, dx);
+    glm::vec2 dir = mouseWorld - position;
+    rotation = atan2(dir.y, dir.x);
 }
 
 void Player::update(float deltaTime) {
@@ -199,46 +193,39 @@ void Player::update(float deltaTime) {
     handleInput(deltaTime);
     lookAtMouse();
 
-    Point2D previousPosition = position;
-    Point2D newPosition = position;
-    Point2D movement(velocity.getX() * deltaTime, velocity.getY() * deltaTime);
+    glm::vec2 previousPosition = position;
+    glm::vec2 movement = velocity * deltaTime;
+    glm::vec2 newPosition = position + movement;
 
-    // Try diagonal movement
-    newPosition = previousPosition;
-    newPosition.setX(previousPosition.getX() + movement.getX());
-    newPosition.setY(previousPosition.getY() + movement.getY());
     collision->setPosition(newPosition);
 
     if (CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
         // If a collision occurred, we try to move separately on the X and Y axes
-
+        
         // Try moving on the X axis
         newPosition = previousPosition;
-        newPosition.setX(previousPosition.getX() + movement.getX());
+        newPosition.x += movement.x;
         collision->setPosition(newPosition);
 
         if (!CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
-            // Movement on the X axis is possible
             previousPosition = newPosition;
         }
         else {
-            velocity.setX(0.0f);
+            velocity.x = 0.0f;
         }
 
         // Try moving on the Y axis
         newPosition = previousPosition;
-        newPosition.setY(previousPosition.getY() + movement.getY());
+        newPosition.y += movement.y;
         collision->setPosition(newPosition);
 
         if (!CollisionManager::getInstance()->checkCollision(collision, newPosition)) {
-            // Movement on the Y axis is possible
             previousPosition = newPosition;
         }
         else {
-            velocity.setY(0.0f);
+            velocity.y = 0.0f;
         }
 
-        // The final position is previousPosition
         newPosition = previousPosition;
     }
 
@@ -248,7 +235,7 @@ void Player::update(float deltaTime) {
 
     // Update sprite
     if (sprite) {
-        sprite->setPosition(position.getX(), position.getY());
+        sprite->setPosition(position);
         sprite->setRotation(rotation);
         sprite->updateAnimation(deltaTime);
     }
@@ -260,20 +247,19 @@ void Player::shoot(Logger& logger) {
     const float MUZZLE_OFFSET_Y = 42.0f;
 
     // We calculate the muzzle position considering the character's rotation
-    Point2D bulletPos = position;
+    glm::vec2 bulletPos = position;
     float rotatedMuzzleX = MUZZLE_OFFSET_X * cos(rotation) - MUZZLE_OFFSET_Y * sin(rotation);
     float rotatedMuzzleY = MUZZLE_OFFSET_X * sin(rotation) + MUZZLE_OFFSET_Y * cos(rotation);
 
-    bulletPos.setX(bulletPos.getX() + rotatedMuzzleX);
-    bulletPos.setY(bulletPos.getY() + rotatedMuzzleY);
+    bulletPos.x += rotatedMuzzleX;
+    bulletPos.y += rotatedMuzzleY;
 
     // Calculate the new rotation from the muzzle point to the player
     Engine* engine = Engine::getInstance();
-    Point2D mouseScreen(engine->getMouseX(), engine->getMouseY());
-    Point2D mouseWorld = camera->screenToWorld(mouseScreen);
-    float dx = mouseWorld.getX() - bulletPos.getX();
-    float dy = mouseWorld.getY() - bulletPos.getY();
-    float bulletRotation = atan2(dy, dx);
+    glm::vec2 mouseScreen(engine->getMouseX(), engine->getMouseY());
+    glm::vec2 mouseWorld = camera->screenToWorld(mouseScreen);
+    glm::vec2 dir = mouseWorld - bulletPos;
+    float bulletRotation = atan2(dir.y, dir.x);
 
     BulletManager::getInstance()->createBullet(bulletPos, bulletRotation, this);
     currentCooldown = shootCooldown;

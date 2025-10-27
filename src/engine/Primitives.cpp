@@ -1,319 +1,59 @@
 #include "Primitives.h"
 #include <algorithm>
 
-// Point2D Implementation
-Point2D::Point2D() : position(0.0f, 0.0f) {}
-
-Point2D::Point2D(float x, float y) : position(x, y) {}
-
-Point2D::Point2D(const glm::vec2& pos) : position(pos) {}
-
-float Point2D::getX() const {
-    return position.x;
-}
-
-float Point2D::getY() const {
-    return position.y;
-}
-
-const glm::vec2& Point2D::getPosition() const {
-    return position;
-}
-
-void Point2D::setX(float newX) {
-    position.x = newX;
-}
-
-void Point2D::setY(float newY) {
-    position.y = newY;
-}
-
-void Point2D::setPosition(float newX, float newY) {
-    position.x = newX;
-    position.y = newY;
-}
-
-void Point2D::setPosition(const glm::vec2& newPosition) {
-    position = newPosition;
-}
-
-void Point2D::translate(float dx, float dy) {
-    position += glm::vec2(dx, dy);
-}
-
-void Point2D::scale(float sx, float sy, const Point2D& center) {
-    glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(center.getX(), center.getY(), 0.0f));
-    transform = glm::scale(transform, glm::vec3(sx, sy, 1.0f));
-    transform = glm::translate(transform, glm::vec3(-center.getX(), -center.getY(), 0.0f));
-    position = glm::vec2(transform * glm::vec4(position, 0.0f, 1.0f));
-}
-
-void Point2D::rotate(float angle, const Point2D& center) {
-    float radians = glm::radians(angle);
-    glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(center.getX(), center.getY(), 0.0f));
-    transform = glm::rotate(transform, radians, glm::vec3(0.0f, 0.0f, 1.0f));
-    transform = glm::translate(transform, glm::vec3(-center.getX(), -center.getY(), 0.0f));
-    position = glm::vec2(transform * glm::vec4(position, 0.0f, 1.0f));
-}
-
-void Point2D::clamp(float minX, float minY, float maxX, float maxY) {
-    position.x = std::max(minX, std::min(position.x, maxX));
-    position.y = std::max(minY, std::min(position.y, maxY));
-}
-
 // LineSegment Implementation
 LineSegment::LineSegment() : start(0.0f, 0.0f), end(0.0f, 0.0f) {}
-
-LineSegment::LineSegment(const Point2D& start, const Point2D& end)
-    : start(start), end(end) {
-}
-
-LineSegment::LineSegment(float x1, float y1, float x2, float y2)
-    : start(x1, y1), end(x2, y2) {
-}
-
-Point2D LineSegment::getStart() const {
-    return start;
-}
-
-Point2D LineSegment::getEnd() const {
-    return end;
-}
-
-void LineSegment::setStart(const Point2D& point) {
-    start = point;
-}
-
-void LineSegment::setEnd(const Point2D& point) {
-    end = point;
-}
-
-void LineSegment::setStart(float x, float y) {
-    start.setPosition(x, y);
-}
-
-void LineSegment::setEnd(float x, float y) {
-    end.setPosition(x, y);
-}
-
-void LineSegment::setLine(const Point2D& newStart, const Point2D& newEnd) {
-    start = newStart;
-    end = newEnd;
-}
-
-void LineSegment::setLine(float x1, float y1, float x2, float y2) {
-    start.setPosition(x1, y1);
-    end.setPosition(x2, y2);
-}
-
-void LineSegment::translate(float dx, float dy) {
-    start.translate(dx, dy);
-    end.translate(dx, dy);
-}
-
-void LineSegment::scale(float sx, float sy, const Point2D& center) {
-    start.scale(sx, sy, center);
-    end.scale(sx, sy, center);
-}
-
-void LineSegment::rotate(float angle, const Point2D& center) {
-    start.rotate(angle, center);
-    end.rotate(angle, center);
-}
-
+LineSegment::LineSegment(const glm::vec2& start, const glm::vec2& end) : start(start), end(end) {}
+LineSegment::LineSegment(float x1, float y1, float x2, float y2) : start(x1, y1), end(x2, y2) {}
 
 // Triangle Implementation
 Triangle::Triangle() : p1(0.0f, 0.0f), p2(0.0f, 0.0f), p3(0.0f, 0.0f), filled(false) {}
-
-Triangle::Triangle(const Point2D& p1, const Point2D& p2, const Point2D& p3, bool filled)
-    : p1(p1), p2(p2), p3(p3), filled(filled) {
-}
-
+Triangle::Triangle(const glm::vec2& p1, const glm::vec2& p2, const glm::vec2& p3, bool filled)
+    : p1(p1), p2(p2), p3(p3), filled(filled) {}
 Triangle::Triangle(float x1, float y1, float x2, float y2, float x3, float y3, bool filled)
-    : p1(x1, y1), p2(x2, y2), p3(x3, y3), filled(filled) {
-}
-
-Point2D Triangle::getP1() const { return p1; }
-Point2D Triangle::getP2() const { return p2; }
-Point2D Triangle::getP3() const { return p3; }
-bool Triangle::isFilled() const { return filled; }
-
-void Triangle::setP1(const Point2D& point) { p1 = point; }
-void Triangle::setP2(const Point2D& point) { p2 = point; }
-void Triangle::setP3(const Point2D& point) { p3 = point; }
-
-void Triangle::setPoints(const Point2D& newP1, const Point2D& newP2, const Point2D& newP3) {
-    p1 = newP1;
-    p2 = newP2;
-    p3 = newP3;
-}
-
-void Triangle::setPoints(float x1, float y1, float x2, float y2, float x3, float y3) {
-    p1.setPosition(x1, y1);
-    p2.setPosition(x2, y2);
-    p3.setPosition(x3, y3);
-}
-
-void Triangle::setFilled(bool fill) { filled = fill; }
-
-void Triangle::translate(float dx, float dy) {
-    p1.translate(dx, dy);
-    p2.translate(dx, dy);
-    p3.translate(dx, dy);
-}
-
-void Triangle::scale(float sx, float sy, const Point2D& center) {
-    p1.scale(sx, sy, center);
-    p2.scale(sx, sy, center);
-    p3.scale(sx, sy, center);
-}
-
-void Triangle::rotate(float angle, const Point2D& center) {
-    p1.rotate(angle, center);
-    p2.rotate(angle, center);
-    p3.rotate(angle, center);
-}
+    : p1(x1, y1), p2(x2, y2), p3(x3, y3), filled(filled) {}
 
 // Rectangle Implementation
-Rectangle::Rectangle()
-    : topLeft(0.0f, 0.0f), topRight(0.0f, 0.0f),
-    bottomLeft(0.0f, 0.0f), bottomRight(0.0f, 0.0f),
-    filled(false) {
+Rectangle::Rectangle() : position(0.0f, 0.0f), size(0.0f, 0.0f), rotation(0.0f), filled(false) {}
+Rectangle::Rectangle(const glm::vec2& pos, const glm::vec2& size, bool filled, float rotation)
+    : position(pos), size(size), filled(filled), rotation(rotation) {}
+Rectangle::Rectangle(float x, float y, float width, float height, bool filled, float rotation)
+    : position(x, y), size(width, height), filled(filled), rotation(rotation) {}
+
+std::vector<glm::vec2> Rectangle::getCorners() const {
+    std::vector<glm::vec2> corners;
+    glm::vec2 halfSize = size / 2.0f;
+    corners.push_back(glm::vec2(-halfSize.x, -halfSize.y));
+    corners.push_back(glm::vec2(halfSize.x, -halfSize.y));
+    corners.push_back(glm::vec2(halfSize.x, halfSize.y));
+    corners.push_back(glm::vec2(-halfSize.x, halfSize.y));
+
+    glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(position, 0.0f));
+    transform = glm::rotate(transform, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
+
+    for (auto& corner : corners) {
+        corner = glm::vec2(transform * glm::vec4(corner, 0.0f, 1.0f));
+    }
+    return corners;
 }
 
-
-Rectangle::Rectangle(const Point2D& topLeft, float width, float height, bool filled)
-    : topLeft(topLeft), filled(filled) {
-    updateCorners(width, height);
-}
-
-
-Rectangle::Rectangle(float x, float y, float width, float height, bool filled)
-    : topLeft(x, y), filled(filled) {
-    updateCorners(width, height);
-}
-
-
-void Rectangle::updateCorners(float width, float height) {
-    topRight.setPosition(topLeft.getX() + width, topLeft.getY());
-    bottomLeft.setPosition(topLeft.getX(), topLeft.getY() + height);
-    bottomRight.setPosition(topLeft.getX() + width, topLeft.getY() + height);
-}
-
-
-Point2D Rectangle::getTopLeft() const { return topLeft; }
-Point2D Rectangle::getTopRight() const { return topRight; }
-Point2D Rectangle::getBottomLeft() const { return bottomLeft; }
-Point2D Rectangle::getBottomRight() const { return bottomRight; }
-
-
-float Rectangle::getWidth() const {
-    return std::sqrt(std::pow(topRight.getX() - topLeft.getX(), 2) +
-                     std::pow(topRight.getY() - topLeft.getY(), 2));
-}
-
-
-float Rectangle::getHeight() const {
-    return std::sqrt(std::pow(bottomLeft.getX() - topLeft.getX(), 2) +
-                     std::pow(bottomLeft.getY() - topLeft.getY(), 2));
-}
-
-
-bool Rectangle::isFilled() const { return filled; }
-
-
-void Rectangle::setTopLeft(const Point2D& point) {
-    float width = getWidth();
-    float height = getHeight();
-    topLeft = point;
-    updateCorners(width, height);
-}
-
-
-void Rectangle::setTopLeft(float x, float y) {
-    setTopLeft(Point2D(x, y));
-}
-
-
-void Rectangle::setSize(float width, float height) {
-    updateCorners(width, height);
-}
-
-
-void Rectangle::setFilled(bool fill) { filled = fill; }
-
-
-void Rectangle::translate(float dx, float dy) {
-    topLeft.translate(dx, dy);
-    topRight.translate(dx, dy);
-    bottomLeft.translate(dx, dy);
-    bottomRight.translate(dx, dy);
-}
-
-
-void Rectangle::scale(float sx, float sy, const Point2D& center) {
-    topLeft.scale(sx, sy, center);
-    topRight.scale(sx, sy, center);
-    bottomLeft.scale(sx, sy, center);
-    bottomRight.scale(sx, sy, center);
-}
-
-
-void Rectangle::rotate(float angle, const Point2D& center) {
-    topLeft.rotate(angle, center);
-    topRight.rotate(angle, center);
-    bottomLeft.rotate(angle, center);
-    bottomRight.rotate(angle, center);
-}
-
-
-bool Rectangle::contains(const Point2D& point) const {
-    // TODO: Zaimplementować sprawdzanie dla obróconych prostokątów
+bool Rectangle::contains(const glm::vec2& point) const {
+    // TODO: Implement contains for rotated rectangles
     return false;
 }
-
 
 bool Rectangle::intersects(const Rectangle& other) const {
-    // TODO: Zaimplementować sprawdzanie dla obróconych prostokątów
+    // TODO: Implement intersects for rotated rectangles
     return false;
 }
 
-
-Circle::Circle()
-    : center(0.0f, 0.0f), radius(0.0f), filled(false) {
-}
-
-Circle::Circle(const Point2D& center, float radius, bool filled)
-    : center(center), radius(radius), filled(filled) {
-}
-
+// Circle Implementation
+Circle::Circle() : center(0.0f, 0.0f), radius(0.0f), filled(false) {}
+Circle::Circle(const glm::vec2& center, float radius, bool filled)
+    : center(center), radius(radius), filled(filled) {}
 Circle::Circle(float x, float y, float radius, bool filled)
-    : center(x, y), radius(radius), filled(filled) {
-}
+    : center(x, y), radius(radius), filled(filled) {}
 
-// Gettery
-Point2D Circle::getCenter() const { return center; }
-float Circle::getRadius() const { return radius; }
-bool Circle::isFilled() const { return filled; }
-
-// Settery
-void Circle::setCenter(const Point2D& point) { center = point; }
-void Circle::setCenter(float x, float y) { center.setPosition(x, y); }
-void Circle::setRadius(float newRadius) { radius = newRadius; }
-void Circle::setFilled(bool fill) { filled = fill; }
-
-// Transformacje
-void Circle::translate(float dx, float dy) {
-    center.translate(dx, dy);
-}
-
-void Circle::scale(float s) {
-    radius *= s;
-}
-
-// Dodatkowe metody
-bool Circle::contains(const Point2D& point) const {
-    float dx = point.getX() - center.getX();
-    float dy = point.getY() - center.getY();
-    return (dx * dx + dy * dy) <= (radius * radius);
+bool Circle::contains(const glm::vec2& point) const {
+    return glm::distance(point, center) <= radius;
 }

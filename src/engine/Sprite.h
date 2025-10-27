@@ -30,8 +30,8 @@
 class Sprite {
 private:
     ALLEGRO_BITMAP* texture;   ///< Pointer to the texture
-    Point2D position;          ///< Position of the sprite
-    Point2D scale;             ///< Scale on the X and Y axes
+    glm::vec2 position;          ///< Position of the sprite
+    glm::vec2 scale;             ///< Scale on the X and Y axes
     float rotation;            ///< Angle of rotation in radians
     float alpha;               ///< Transparency (0.0 - 1.0)
 
@@ -77,6 +77,7 @@ public:
      * @param y Y coordinate.
      */
     void setPosition(float x, float y);
+    void setPosition(const glm::vec2& pos);
 
     /**
      * @brief Sets the rotation angle.
@@ -90,6 +91,7 @@ public:
      * @param scaleY Scale on the Y axis.
      */
     void setScale(float scaleX, float scaleY);
+    void setScale(const glm::vec2& newScale);
 
     /**
      * @brief Sets the transparency.
@@ -155,15 +157,15 @@ public:
 
     /**
      * @brief Gets the current position.
-     * @return Point2D object with the position.
+     * @return glm::vec2 object with the position.
      */
-    Point2D getPosition() const;
+    glm::vec2 getPosition() const;
 
     /**
      * @brief Gets the current scale.
-     * @return Point2D object with the X and Y scale.
+     * @return glm::vec2 object with the X and Y scale.
      */
-    Point2D getScale() const;
+    glm::vec2 getScale() const;
 
     /**
      * @brief Gets the current rotation angle.
