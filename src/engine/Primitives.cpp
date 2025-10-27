@@ -38,13 +38,70 @@ std::vector<glm::vec2> Rectangle::getCorners() const {
 }
 
 bool Rectangle::contains(const glm::vec2& point) const {
-    // TODO: Implement contains for rotated rectangles
-    return false;
+    glm::vec2 point_relative = point - position;
+
+    float r = glm::radians(-rotation);
+    float c = cos(r);
+    float s = sin(r);
+
+    float point_x_rotated = point_relative.x * c - point_relative.y * s;
+    float point_y_rotated = point_relative.x * s + point_relative.y * c;
+
+    glm::vec2 halfSize = size / 2.0f;
+
+    return (point_x_rotated >= -halfSize.x && point_x_rotated <= halfSize.x &&
+        point_y_rotated >= -halfSize.y && point_y_rotated <= halfSize.y);
 }
 
 bool Rectangle::intersects(const Rectangle& other) const {
-    // TODO: Implement intersects for rotated rectangles
-    return false;
+    auto getAxes = [](const Rectangle& rect) {
+        std::vector<glm::vec2> axes;
+        std::vector<glm::vec2> corners = rect.getCorners();
+        for (int i = 0; i < 4; i++) {
+            glm::vec2 p1 = corners[i];
+            glm::vec2 p2 = corners[(i + 1) % 4];
+            glm::vec2 edge = p2 - p1;
+            glm::vec2 normal = glm::normalize(glm::vec2(-edge.y, edge.x));
+            axes.push_back(normal);
+        }
+        return axes;
+    };
+
+    auto project = [](const Rectangle& rect, const glm::vec2& axis) {
+        float min = glm::dot(rect.getCorners()[0], axis);
+        float max = min;
+        for (int i = 1; i < 4; i++) {
+            float p = glm::dot(rect.getCorners()[i], axis);
+            if (p < min) {
+                min = p;
+            }
+            else if (p > max) {
+                max = p;
+            }
+        }
+        return std::make_pair(min, max);
+    };
+
+    std::vector<glm::vec2> axes1 = getAxes(*this);
+    std::vector<glm::vec2> axes2 = getAxes(other);
+
+    for (const auto& axis : axes1) {
+        auto p1 = project(*this, axis);
+        auto p2 = project(other, axis);
+        if (p1.second < p2.first || p2.second < p1.first) {
+            return false;
+        }
+    }
+
+    for (const auto& axis : axes2) {
+        auto p1 = project(*this, axis);
+        auto p2 = project(other, axis);
+        if (p1.second < p2.first || p2.second < p1.first) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 // Circle Implementation
