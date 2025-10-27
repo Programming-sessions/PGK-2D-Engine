@@ -1,6 +1,9 @@
 # **PGK 2D Engine**
 
-![Game Preview](./.github/assets/preview.gif)
+<p align="center">
+  <img src="./.github/assets/preview.gif" alt="Game Preview" />
+</p>
+
 A simple 2D engine created in C++ using the Allegro 5 library for the Computer Graphics Fundamentals course. The engine allows the creation of simple 2D games, supporting basic mechanisms such as graphics rendering, input handling, resource management, and animations. The repository also includes a Top-Down Shooter demo game ("Arena Combat Game") showcasing the engine's capabilities.
 
 ## **📋 Table of Contents**
