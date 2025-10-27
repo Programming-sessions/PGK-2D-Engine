@@ -31,8 +31,6 @@ private:
     /** @brief Mapa przechowująca załadowane tekstury (ścieżka -> bitmapa) */
     std::map<std::string, ALLEGRO_BITMAP*> textures;
 
-    Logger logger;    ///< Logger do rejestrowania operacji i błędów
-
     /**
      * @brief Prywatny konstruktor (wzorzec Singleton)
      *

@@ -40,7 +40,7 @@ void Bullet::update(float deltaTime) {
     lifeTime -= deltaTime;
     if (lifeTime <= 0) {
         if (logBullet) {
-            Engine::getInstance()->getLogger().info("Bullet destroyed - lifetime exceeded at: X=" +
+            Logger::getInstance().info("Bullet destroyed - lifetime exceeded at: X=" +
                 std::to_string(position.x) + " Y=" +
                 std::to_string(position.y));
         }
@@ -55,7 +55,7 @@ void Bullet::update(float deltaTime) {
     for (auto* hitCollision : collisions) {
         if (hitCollision->getLayer() != CollisionLayer::PROJECTILE) {
             if (logBullet) {
-                Engine::getInstance()->getLogger().info("Bullet destroyed - collision detected at: X=" +
+                Logger::getInstance().info("Bullet destroyed - collision detected at: X=" +
                     std::to_string(newPos.x) + " Y=" +
                     std::to_string(newPos.y) +
                     " with object of layer: " + std::to_string(static_cast<int>(hitCollision->getLayer())));
@@ -64,7 +64,7 @@ void Bullet::update(float deltaTime) {
             if (hitCollision->getLayer() == CollisionLayer::ENTITY && hitCollision->getOwner() != owner) {
                 hitCollision->getOwner()->takeDamage(damage);
                 if (logBullet) {
-                    Engine::getInstance()->getLogger().info("Bullet hit entity at: X=" +
+                    Logger::getInstance().info("Bullet hit entity at: X=" +
                         std::to_string(newPos.x) + " Y=" +
                         std::to_string(newPos.y) +
                         " Damage dealt: " + std::to_string(damage) +

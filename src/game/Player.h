@@ -45,7 +45,7 @@ public:
     void handleInput(float deltaTime);
     void lookAtMouse();
     void heal(float amount);
-    void shoot(Logger& logger);
+    void shoot();
     bool canShoot();
     void reload();
 

@@ -80,7 +80,6 @@ bool Player::loadResources() {
 
 void Player::handleInput(float deltaTime) {
     Engine* engine = Engine::getInstance();
-    Logger& logger = engine->getLogger();
 
     glm::vec2 dir(0.0f, 0.0f);
 
@@ -100,7 +99,7 @@ void Player::handleInput(float deltaTime) {
     if (glm::length(dir) > 0.0f) {
         dir = glm::normalize(dir);
         isMoving = true;
-        if (logMovement) { logger.info("Movement input - Dir: X=" + std::to_string(dir.x) + " Y=" + std::to_string(dir.y)); }
+        if (logMovement) { Logger::getInstance().info("Movement input - Dir: X=" + std::to_string(dir.x) + " Y=" + std::to_string(dir.y)); }
     }
     else {
         isMoving = false;
@@ -113,7 +112,7 @@ void Player::handleInput(float deltaTime) {
         if (glm::length(velocity) > maxSpeed) {
             velocity = glm::normalize(velocity) * maxSpeed;
         }
-        if (logMovement) { logger.info("Velocity updated - V: X=" + std::to_string(velocity.x) + " Y=" + std::to_string(velocity.y)); }
+        if (logMovement) { Logger::getInstance().info("Velocity updated - V: X=" + std::to_string(velocity.x) + " Y=" + std::to_string(velocity.y)); }
     }
     else {
         float speed = glm::length(velocity);
@@ -129,14 +128,14 @@ void Player::handleInput(float deltaTime) {
 
     // Handle shooting
     if (engine->isMouseButtonDown(0) && canShoot()) {
-        shoot(logger);
+        shoot();
     }
 
     // Handle reloading
     if (engine->isKeyDown(ALLEGRO_KEY_R)) {
         reload();
         if (isReloading && logReload) {
-            logger.info("Reload started. Total ammo: " + std::to_string(totalAmmo));
+            Logger::getInstance().info("Reload started. Total ammo: " + std::to_string(totalAmmo));
         }
     }
 
@@ -162,7 +161,7 @@ void Player::update(float deltaTime) {
     if (isReloading) {
         currentReloadTime += deltaTime;
         if (sprite && sprite->getCurrentAnimation() && logReload) {
-            Engine::getInstance()->getLogger().info(
+            Logger::getInstance().info(
                 "Reload progress: " + std::to_string(currentReloadTime) + "/" +
                 std::to_string(reloadTime) + " Animation: " +
                 sprite->getCurrentAnimation()->getName()
@@ -184,7 +183,7 @@ void Player::update(float deltaTime) {
             if (sprite) {
                 sprite->stopAnimation();
                 sprite->playAnimation("idle");
-                if(logReload) Engine::getInstance()->getLogger().info("Reload complete, switching to idle");
+                if(logReload) Logger::getInstance().info("Reload complete, switching to idle");
             }
         }
     }
@@ -241,7 +240,7 @@ void Player::update(float deltaTime) {
     }
 }
 
-void Player::shoot(Logger& logger) {
+void Player::shoot() {
     // Offset from the center of the character to the gun's muzzle when the character is looking to the right
     const float MUZZLE_OFFSET_X = 65.0f;
     const float MUZZLE_OFFSET_Y = 42.0f;
@@ -265,7 +264,7 @@ void Player::shoot(Logger& logger) {
     currentCooldown = shootCooldown;
     currentAmmoInMag--;
 
-    logger.info("Shot fired. Ammo remaining: " + std::to_string(currentAmmoInMag));
+    Logger::getInstance().info("Shot fired. Ammo remaining: " + std::to_string(currentAmmoInMag));
 }
 
 void Player::heal(float amount) {
@@ -293,7 +292,7 @@ void Player::reload() {
     currentReloadTime = 0.0f;
 
     // Add debug log
-    Engine::getInstance()->getLogger().info("Starting reload animation");
+    Logger::getInstance().info("Starting reload animation");
 
     // Make sure the animation is switched correctly
     if (sprite) {
@@ -302,7 +301,7 @@ void Player::reload() {
 
         // Debug - check if the animation has changed
         if (Animation* current = sprite->getCurrentAnimation()) {
-            Engine::getInstance()->getLogger().info("Current animation: " + current->getName());
+            Logger::getInstance().info("Current animation: " + current->getName());
         }
     }
 }

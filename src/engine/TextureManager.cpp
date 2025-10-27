@@ -5,9 +5,9 @@
 TextureManager* TextureManager::instance = nullptr;
 
 TextureManager::TextureManager() {
-    // Inicjalizacja dodatku do obs³ugi obrazów
+    // Inicjalizacja dodatku do obsÅ‚ugi obrazÃ³w
     if (!al_init_image_addon()) {
-        logger.error("Failed to initialize image addon!");
+        Logger::getInstance().error("Failed to initialize image addon!");
     }
 }
 
@@ -30,22 +30,22 @@ void TextureManager::releaseInstance() {
 }
 
 ALLEGRO_BITMAP* TextureManager::loadTexture(const std::string& path) {
-    // SprawdŸ czy tekstura ju¿ jest za³adowana
+    // SprawdÅº czy tekstura juÅ¼ jest zaÅ‚adowana
     if (isTextureLoaded(path)) {
         return textures[path];
     }
 
-    // Za³aduj now¹ teksturê
+    // ZaÅ‚aduj nowÄ… teksturÄ™
     ALLEGRO_BITMAP* texture = al_load_bitmap(path.c_str());
 
     if (texture == nullptr) {
-        logger.error("Failed to load texture: " + path);
+        Logger::getInstance().error("Failed to load texture: " + path);
         return nullptr;
     }
 
-    // Zapisz teksturê w mapie
+    // Zapisz teksturÄ™ w mapie
     textures[path] = texture;
-    logger.info("Texture loaded: " + path);
+    Logger::getInstance().info("Texture loaded: " + path);
 
     return texture;
 }
@@ -66,14 +66,14 @@ void TextureManager::unloadTexture(const std::string& path) {
     if (it != textures.end()) {
         al_destroy_bitmap(it->second);
         textures.erase(it);
-        logger.info("Texture unloaded: " + path);
+        Logger::getInstance().info("Texture unloaded: " + path);
     }
 }
 
 void TextureManager::unloadAllTextures() {
     for (auto& pair : textures) {
         al_destroy_bitmap(pair.second);
-        logger.info("Texture unloaded: " + pair.first);
+        Logger::getInstance().info("Texture unloaded: " + pair.first);
     }
     textures.clear();
 }

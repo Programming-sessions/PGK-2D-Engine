@@ -211,6 +211,7 @@ int main() {
     enemies.clear();
     BulletManager::releaseInstance();
     CollisionManager::releaseInstance();
+    TextureManager::releaseInstance();
     al_destroy_font(font);
     engine->shutdown();
 
